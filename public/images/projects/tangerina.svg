@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Tangerina project illustration</title>
+  <desc id="desc">Abstract chat, voice, and music assistant composition in warm neutral tones with amber accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8f5ef" />
+      <stop offset="100%" stop-color="#eee7dc" />
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="sage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8c4b1" />
+      <stop offset="100%" stop-color="#9faf98" />
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)" />
+
+  <ellipse cx="380" cy="220" rx="180" ry="110" fill="#f6b34f" opacity="0.18" filter="url(#blur)" />
+  <ellipse cx="1280" cy="740" rx="210" ry="140" fill="#97aa8d" opacity="0.22" filter="url(#blur)" />
+
+  <rect x="120" y="160" width="540" height="680" rx="36" fill="#fefcf9" stroke="#e8ded0" stroke-width="4" />
+  <rect x="160" y="220" width="220" height="24" rx="12" fill="#d9ccbb" />
+  <rect x="160" y="270" width="360" height="80" rx="20" fill="#f1e8dc" />
+  <rect x="180" y="296" width="280" height="20" rx="10" fill="#c6b8a4" />
+  <rect x="160" y="380" width="420" height="120" rx="24" fill="#f59e0b" opacity="0.2" />
+  <rect x="186" y="418" width="250" height="20" rx="10" fill="#af7a24" opacity="0.7" />
+  <rect x="160" y="540" width="320" height="92" rx="22" fill="#e6dccf" />
+  <rect x="182" y="576" width="210" height="18" rx="9" fill="#b3a38f" />
+
+  <rect x="680" y="240" width="450" height="520" rx="34" fill="#fefbf6" stroke="#e5d9c8" stroke-width="4" />
+  <rect x="720" y="300" width="250" height="26" rx="13" fill="#d4c6b2" />
+  <rect x="720" y="350" width="370" height="90" rx="22" fill="#ece2d4" />
+  <rect x="746" y="382" width="240" height="20" rx="10" fill="#9cae95" />
+  <rect x="720" y="470" width="370" height="90" rx="22" fill="#f0e7db" />
+  <rect x="746" y="502" width="220" height="20" rx="10" fill="#c4b49f" />
+  <rect x="720" y="590" width="370" height="90" rx="22" fill="#eadfce" />
+  <circle cx="780" cy="635" r="16" fill="url(#amber)" />
+  <rect x="810" y="622" width="210" height="24" rx="12" fill="#b1946e" />
+
+  <rect x="1160" y="190" width="320" height="620" rx="34" fill="#fffdfa" stroke="#e7dccb" stroke-width="4" />
+  <rect x="1200" y="250" width="240" height="100" rx="24" fill="url(#sage)" opacity="0.3" />
+  <rect x="1226" y="288" width="180" height="20" rx="10" fill="#6f8368" opacity="0.7" />
+  <rect x="1200" y="380" width="220" height="22" rx="11" fill="#cbbca6" />
+  <rect x="1200" y="420" width="180" height="22" rx="11" fill="#d6c8b4" />
+  <rect x="1200" y="460" width="250" height="22" rx="11" fill="#dfd1be" />
+
+  <g fill="none" stroke="#d97706" stroke-width="6" stroke-linecap="round" opacity="0.7">
+    <path d="M620 490 C660 450, 700 450, 740 490" />
+    <path d="M620 530 C670 470, 710 470, 760 530" />
+    <path d="M620 570 C680 500, 720 500, 780 570" />
+  </g>
+
+  <circle cx="590" cy="530" r="26" fill="url(#amber)" />
+  <circle cx="1120" cy="530" r="22" fill="#c6b59e" />
+  <circle cx="1148" cy="530" r="14" fill="#e4d7c5" />
+</svg>

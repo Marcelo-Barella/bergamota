@@ -1,0 +1,33 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+package-lock.json
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+Thumbs.db
+.fleet
+.idea
+.cursor
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+.vercel
+
+.cursor/plans/
+coordination/
+CLAUDE.md

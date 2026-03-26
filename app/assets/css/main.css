@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --color-bg: #f8f6f3;
+  --color-text: #5c5349;
+  --color-accent: #d97706;
+  --color-muted: #9ca38f;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+
+  --ui-primary: var(--color-accent);
+  --ui-text: var(--color-text);
+  --ui-text-dimmed: var(--color-muted);
+  --ui-text-muted: var(--color-muted);
+  --ui-text-toned: var(--color-text);
+  --ui-text-highlighted: var(--color-text);
+  --ui-bg: var(--color-bg);
+  --ui-bg-muted: #f0ede8;
+  --ui-bg-elevated: #ebe8e3;
+  --ui-bg-accented: #e0dbd4;
+  --ui-border: #e0dbd4;
+  --ui-border-muted: #e0dbd4;
+  --ui-border-accented: #d1cbc2;
+  --ui-radius: 12px;
+}
+
+:root.dark {
+  --color-bg: #1c1917;
+  --color-text: #e7e5e4;
+  --color-accent: #d97706;
+  --color-muted: #a8a29e;
+  --ui-bg-muted: #292524;
+  --ui-bg-elevated: #44403c;
+  --ui-bg-accented: #57534e;
+  --ui-border: #44403c;
+  --ui-border-muted: #57534e;
+  --ui-border-accented: #78716c;
+}
+
+@theme {
+  --font-sans: var(--font-body);
+}
