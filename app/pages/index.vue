@@ -13,6 +13,8 @@
       </div>
     </section>
 
+    <FlagshipDepthChapter v-if="flagshipProject" :project="flagshipProject" />
+
     <section id="meetup-photos" class="meetup">
       <h2 class="section-title">Cursor Meetup Photos</h2>
       <p class="meetup-copy">Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.</p>
@@ -98,9 +100,9 @@
 </template>
 
 <script setup lang="ts">
-import projectsData from '../../.cursor/plans/artifacts/projects-data.json'
+import { projects } from '~/data/projects'
 
-const projects = projectsData
+const flagshipProject = projects.find((p) => p.id === 'tangerina') ?? projects[0] ?? null
 
 const meetupPhotos = [
   { id: 1, src: '/images/cursor-meetup/bergamota-01.jpg', alt: 'Bergamota in a group conversation at the Cursor meetup' },
