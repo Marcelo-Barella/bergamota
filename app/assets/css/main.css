@@ -12,6 +12,12 @@
   --font-display: 'Fraunces', serif;
   --font-body: 'Source Sans 3', system-ui, sans-serif;
 
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-duration-fast: 0.18s;
+  --motion-duration-medium: 0.28s;
+  --motion-reveal-duration: 0.55s;
+
   --ui-primary: var(--color-accent);
   --ui-text: var(--color-text);
   --ui-text-dimmed: var(--color-muted);
@@ -43,4 +49,12 @@
 
 @theme {
   --font-sans: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-reveal-duration: 0.001ms;
+    --motion-duration-fast: 0.001ms;
+    --motion-duration-medium: 0.001ms;
+  }
 }

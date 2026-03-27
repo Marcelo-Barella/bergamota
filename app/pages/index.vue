@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio-page">
-    <section id="hero" class="hero">
+    <MotionSection id="hero" tag="section" class="hero" immediate>
       <div class="hero-content">
         <h1 class="hero-name hero-item">Marcelo Barella</h1>
         <p class="hero-brand hero-item">Bergamota • Cursor Ambassador</p>
@@ -11,9 +11,9 @@
           <div class="hero-blur" />
         </div>
       </div>
-    </section>
+    </MotionSection>
 
-    <section id="meetup-photos" class="meetup">
+    <MotionSection id="meetup-photos" tag="section" class="meetup">
       <h2 class="section-title">Cursor Meetup Photos</h2>
       <p class="meetup-copy">Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.</p>
       <div class="meetup-grid">
@@ -31,9 +31,9 @@
           >
         </figure>
       </div>
-    </section>
+    </MotionSection>
 
-    <section id="cafe-cursor-florianopolis" class="meetup">
+    <MotionSection id="cafe-cursor-florianopolis" tag="section" class="meetup">
       <h2 class="section-title">Cafe Cursor Florianópolis</h2>
       <p class="meetup-copy">Selected frames where Bergamota appears at Cafe Cursor Florianópolis.</p>
       <div class="meetup-grid">
@@ -51,9 +51,9 @@
           >
         </figure>
       </div>
-    </section>
+    </MotionSection>
 
-    <section id="projects" class="projects">
+    <MotionSection id="projects" tag="section" class="projects">
       <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
         <article
@@ -80,9 +80,9 @@
           </a>
         </article>
       </div>
-    </section>
+    </MotionSection>
 
-    <section id="contact" class="contact">
+    <MotionSection id="contact" tag="section" class="contact">
       <h2 class="section-title">Contact</h2>
       <a href="mailto:hello@bergamota.dev" class="contact-email">hello@bergamota.dev</a>
       <nav class="contact-links" aria-label="Social links">
@@ -90,7 +90,7 @@
         <a href="#" class="contact-link" rel="noopener noreferrer">LinkedIn</a>
         <a href="#" class="contact-link" rel="noopener noreferrer">Twitter</a>
       </nav>
-    </section>
+    </MotionSection>
     <p class="cursor-note">
       Built with Cursor. Every image on this site was found and selected by Cursor.
     </p>
@@ -98,7 +98,7 @@
 </template>
 
 <script setup lang="ts">
-import projectsData from '../../.cursor/plans/artifacts/projects-data.json'
+import projectsData from '~/data/projects-data.json'
 
 const projects = projectsData
 
@@ -238,8 +238,15 @@ const cafeCursorFlorianopolisPhotos = [
   background: color-mix(in srgb, var(--color-text) 4%, var(--color-bg));
   border-radius: var(--radius-md);
   padding: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform var(--motion-duration-medium, 0.28s) var(--motion-ease-standard, ease),
+    box-shadow var(--motion-duration-medium, 0.28s) var(--motion-ease-standard, ease);
   box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--color-text) 10%, transparent);
 }
 
 .project-card:focus-within {
@@ -294,7 +301,7 @@ const cafeCursorFlorianopolisPhotos = [
   color: var(--color-accent);
   text-decoration: none;
   margin-bottom: 1.5rem;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--motion-duration-fast, 0.18s) var(--motion-ease-standard, ease);
 }
 
 .contact-email:hover {
@@ -317,7 +324,7 @@ const cafeCursorFlorianopolisPhotos = [
   font-size: 1rem;
   color: var(--color-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--motion-duration-fast, 0.18s) var(--motion-ease-standard, ease);
 }
 
 .contact-link:hover {
@@ -335,5 +342,20 @@ const cafeCursorFlorianopolisPhotos = [
   color: color-mix(in srgb, var(--color-muted) 70%, transparent);
   text-align: center;
   letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .contact-email,
+  .contact-link {
+    transition: none;
+  }
 }
 </style>
