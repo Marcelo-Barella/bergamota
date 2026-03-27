@@ -1,0 +1,11 @@
+{
+  "task_id": "flagship-project-depth-chapter",
+  "status": "completed",
+  "summary": "Added FlagshipDepthChapter for Tangerina: pinned horizontal scrub chapter with layered parallax; prefers-reduced-motion shows a static vertical outline with the same copy and CTA. Replaced broken projects JSON import with app/data/projects.ts.",
+  "blocked_reason": null,
+  "outputs": {
+    "component": "app/components/FlagshipDepthChapter.vue",
+    "projects_data": "app/data/projects.ts",
+    "integration": "app/pages/index.vue"
+  }
+}
