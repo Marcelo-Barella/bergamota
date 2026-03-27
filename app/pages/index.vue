@@ -1,19 +1,39 @@
 <template>
   <div class="portfolio-page">
-    <section id="hero" class="hero">
+    <section
+      id="hero"
+      class="hero"
+      aria-labelledby="hero-heading"
+    >
+      <div class="hero-depth" aria-hidden="true">
+        <div class="hero-depth-layer hero-depth-layer--back" />
+        <div class="hero-depth-layer hero-depth-layer--mid" />
+        <div class="hero-depth-grid" />
+      </div>
       <div class="hero-content">
-        <h1 class="hero-name hero-item">Marcelo Barella</h1>
-        <p class="hero-brand hero-item">Bergamota • Cursor Ambassador</p>
-        <p class="hero-tagline hero-item">
+        <p id="hero-lede" class="hero-kinetic">
+          <span
+            v-for="(word, i) in kineticWords"
+            :key="i"
+            class="hero-kinetic-word"
+          >{{ word }}</span>
+        </p>
+        <h1 id="hero-heading" class="hero-name">
+          Marcelo Barella
+        </h1>
+        <p class="hero-brand">
+          Bergamota • Cursor Ambassador
+        </p>
+        <p class="hero-tagline">
           Building practical AI systems and creating agents that turn ideas into reliable workflows.
         </p>
-        <div class="hero-visual hero-item" aria-hidden="true">
+        <div class="hero-visual" aria-hidden="true">
           <div class="hero-blur" />
         </div>
       </div>
     </section>
 
-    <section id="meetup-photos" class="meetup">
+    <section id="meetup-photos" class="meetup hero-handoff">
       <h2 class="section-title">Cursor Meetup Photos</h2>
       <p class="meetup-copy">Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.</p>
       <div class="meetup-grid">
@@ -98,9 +118,99 @@
 </template>
 
 <script setup lang="ts">
-import projectsData from '../../.cursor/plans/artifacts/projects-data.json'
+import projectsData from '../data/projects-data.json'
 
 const projects = projectsData
+
+const kineticWords = ['Ideas', 'into', 'reliable', 'workflows.']
+
+const nuxtApp = useNuxtApp()
+
+let heroMotionCtx: ReturnType<typeof import('gsap').gsap.context> | null = null
+
+onMounted(() => {
+  if (typeof window === 'undefined' || !window.matchMedia) {
+    return
+  }
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) {
+    return
+  }
+  const gsap = nuxtApp.$gsap
+  if (!gsap) {
+    return
+  }
+  const heroRoot = document.querySelector<HTMLElement>('.hero')
+  if (!heroRoot) {
+    return
+  }
+
+  heroMotionCtx = gsap.context(() => {
+    const kineticEls = heroRoot.querySelectorAll<HTMLElement>('.hero-kinetic-word')
+    const calmEls = heroRoot.querySelectorAll<HTMLElement>('.hero-name, .hero-brand, .hero-tagline, .hero-visual')
+    const back = heroRoot.querySelector<HTMLElement>('.hero-depth-layer--back')
+    const mid = heroRoot.querySelector<HTMLElement>('.hero-depth-layer--mid')
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    tl.from(kineticEls, {
+      opacity: 0,
+      y: 28,
+      letterSpacing: '0.06em',
+      duration: 0.75,
+      stagger: 0.09
+    })
+    tl.from(
+      calmEls,
+      {
+        opacity: 0,
+        y: 18,
+        duration: 0.65,
+        stagger: 0.1
+      },
+      '-=0.35'
+    )
+
+    if (back && mid) {
+      gsap.fromTo(
+        back,
+        { y: 0 },
+        {
+          y: 48,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRoot,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.65
+          }
+        }
+      )
+      gsap.fromTo(
+        mid,
+        { y: 0 },
+        {
+          y: 28,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRoot,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.45
+          }
+        }
+      )
+    }
+  }, heroRoot)
+
+  requestAnimationFrame(() => {
+    nuxtApp.$ScrollTrigger?.refresh()
+  })
+})
+
+onBeforeUnmount(() => {
+  heroMotionCtx?.revert()
+  heroMotionCtx = null
+})
 
 const meetupPhotos = [
   { id: 1, src: '/images/cursor-meetup/bergamota-01.jpg', alt: 'Bergamota in a group conversation at the Cursor meetup' },
@@ -138,16 +248,94 @@ const cafeCursorFlorianopolisPhotos = [
 }
 
 .hero {
-  min-height: 80vh;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: 85vh;
+  width: 100%;
+  max-width: 72rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0;
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+  margin-bottom: 0.5rem;
+}
+
+.hero-depth {
+  position: absolute;
+  inset: -12% -8% -8%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-depth-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.35;
+}
+
+.hero-depth-layer--back {
+  width: min(90vw, 42rem);
+  height: min(90vw, 42rem);
+  left: 50%;
+  top: 38%;
+  translate: -50% -50%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    color-mix(in srgb, var(--color-accent) 55%, transparent),
+    transparent 68%
+  );
+}
+
+.hero-depth-layer--mid {
+  width: min(70vw, 28rem);
+  height: min(70vw, 28rem);
+  right: 8%;
+  bottom: 12%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--color-muted) 45%, transparent),
+    transparent 65%
+  );
+  opacity: 0.28;
+}
+
+.hero-depth-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-text) 35%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text) 35%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, black 20%, transparent 75%);
 }
 
 .hero-content {
+  position: relative;
+  z-index: 1;
   text-align: center;
   max-width: 50ch;
+}
+
+.hero-kinetic {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4.2vw, 2.35rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 72;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em 0.5em;
+  justify-content: center;
+}
+
+.hero-kinetic-word {
+  display: inline-block;
 }
 
 .hero-name {
@@ -188,6 +376,20 @@ const cafeCursorFlorianopolisPhotos = [
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-muted) 100%);
   opacity: 0.25;
   filter: blur(24px);
+}
+
+.hero-handoff {
+  position: relative;
+  z-index: 2;
+  margin-top: 1.5rem;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-bg) 88%, var(--color-text) 12%) 0%,
+    var(--color-bg) 2.5rem
+  );
+  box-shadow: 0 -24px 48px -32px color-mix(in srgb, var(--color-text) 8%, transparent);
 }
 
 .meetup {

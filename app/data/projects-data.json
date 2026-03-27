@@ -1,0 +1,42 @@
+[
+  {
+    "id": "agentic-browser-ai",
+    "title": "Agentic browser AI",
+    "description": "Explorations in browser-native agents and structured automation.",
+    "repoUrl": "https://github.com/Marcelo-Barella/bergamota",
+    "imageSrc": "/images/projects/agentic-browser-ai.png",
+    "imageAlt": "Screenshot of the agentic browser AI project interface"
+  },
+  {
+    "id": "ai-sdk-prototype",
+    "title": "AI SDK prototype",
+    "description": "Rapid prototypes wiring model APIs into product-shaped flows.",
+    "repoUrl": "https://github.com/Marcelo-Barella/bergamota",
+    "imageSrc": "/images/projects/ai-sdk-prototype.png",
+    "imageAlt": "Screenshot of the AI SDK prototype project"
+  },
+  {
+    "id": "cursor-ca-orchestrator",
+    "title": "Cursor CA orchestrator",
+    "description": "Orchestration patterns for multi-step agent workflows.",
+    "repoUrl": "https://github.com/Marcelo-Barella/bergamota",
+    "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
+    "imageAlt": "Screenshot of the Cursor CA orchestrator project"
+  },
+  {
+    "id": "cursor-sync",
+    "title": "Cursor sync",
+    "description": "Keeping local and shared context aligned across sessions.",
+    "repoUrl": "https://github.com/Marcelo-Barella/bergamota",
+    "imageSrc": "/images/projects/cursor-sync.png",
+    "imageAlt": "Screenshot of the Cursor sync project"
+  },
+  {
+    "id": "tangerina",
+    "title": "Tangerina",
+    "description": "Brand and interface experiments for a citrus-forward product line.",
+    "repoUrl": "https://github.com/Marcelo-Barella/bergamota",
+    "imageSrc": "/images/projects/tangerina.svg",
+    "imageAlt": "Tangerina project wordmark and mark"
+  }
+]
