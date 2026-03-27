@@ -13,6 +13,31 @@
       </div>
     </section>
 
+    <section
+      id="credibility"
+      class="credibility"
+      data-scroll-beat
+      aria-labelledby="credibility-heading"
+    >
+      <h2 id="credibility-heading" class="section-title" data-scroll-section-title>
+        Credibility
+      </h2>
+      <p class="credibility-lead" data-scroll-reveal>
+        Logos and short signals from the same world as the work below.
+      </p>
+      <ul class="credibility-logos" aria-label="Tools and communities">
+        <li v-for="logo in credibilityLogos" :key="logo.id" class="credibility-logo" data-scroll-reveal>
+          <span class="credibility-logo-mark" aria-hidden="true">{{ logo.mark }}</span>
+          <span class="credibility-logo-label">{{ logo.label }}</span>
+        </li>
+      </ul>
+      <ul class="credibility-fragments" aria-label="Focus areas">
+        <li v-for="(fragment, i) in credibilityFragments" :key="i" class="credibility-fragment" data-scroll-reveal>
+          {{ fragment }}
+        </li>
+      </ul>
+    </section>
+
     <section id="meetup-photos" class="meetup">
       <h2 class="section-title">Cursor Meetup Photos</h2>
       <p class="meetup-copy">Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.</p>
@@ -53,14 +78,18 @@
       </div>
     </section>
 
-    <section id="projects" class="projects">
-      <h2 class="section-title">Projects</h2>
+    <section id="projects" class="projects" data-scroll-beat aria-labelledby="work-heading">
+      <h2 id="work-heading" class="section-title" data-scroll-section-title>Work index</h2>
+      <p class="work-lead" data-scroll-reveal>
+        Case-sized teasers; each card opens the repository in a new tab.
+      </p>
       <div class="projects-grid">
         <article
           v-for="(project, idx) in projects"
           :key="project.id"
           class="project-card"
           :data-index="idx"
+          data-scroll-reveal
         >
           <a
             :href="project.repoUrl"
@@ -77,6 +106,7 @@
             >
             <h3 class="project-title">{{ project.title }}</h3>
             <p class="project-desc">{{ project.description }}</p>
+            <p v-if="project.caseTeaser" class="project-teaser">{{ project.caseTeaser }}</p>
           </a>
         </article>
       </div>
@@ -98,9 +128,20 @@
 </template>
 
 <script setup lang="ts">
-import projectsData from '../../.cursor/plans/artifacts/projects-data.json'
+import { projects } from '~/data/projects'
 
-const projects = projectsData
+const credibilityLogos = [
+  { id: 'cursor', mark: 'Cu', label: 'Cursor' },
+  { id: 'nuxt', mark: 'Nu', label: 'Nuxt' },
+  { id: 'vue', mark: 'V', label: 'Vue' },
+  { id: 'ts', mark: 'TS', label: 'TypeScript' }
+]
+
+const credibilityFragments = [
+  'Agent orchestration with clear section beats',
+  'Keyboard-first links and visible focus',
+  'Motion that steps aside when you ask the OS to reduce it'
+]
 
 const meetupPhotos = [
   { id: 1, src: '/images/cursor-meetup/bergamota-01.jpg', alt: 'Bergamota in a group conversation at the Cursor meetup' },
@@ -190,6 +231,85 @@ const cafeCursorFlorianopolisPhotos = [
   filter: blur(24px);
 }
 
+.credibility {
+  width: 100%;
+  max-width: 960px;
+  padding: 3rem 0 1rem;
+}
+
+.credibility-lead {
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin-bottom: 1.5rem;
+}
+
+.credibility-logos {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.credibility-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-text) 5%, var(--color-bg));
+  border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+}
+
+.credibility-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-bg);
+  background: var(--color-accent);
+}
+
+.credibility-logo-label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.credibility-fragments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.credibility-fragment {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.credibility-fragment::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.75;
+}
+
 .meetup {
   width: 100%;
   max-width: 960px;
@@ -220,6 +340,13 @@ const cafeCursorFlorianopolisPhotos = [
   display: block;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.work-lead {
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .projects {
@@ -280,6 +407,24 @@ const cafeCursorFlorianopolisPhotos = [
   font-size: 0.9rem;
   color: var(--color-muted);
   line-height: 1.5;
+}
+
+.project-teaser {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .contact-email,
+  .contact-link {
+    transition: none;
+  }
 }
 
 .contact {
