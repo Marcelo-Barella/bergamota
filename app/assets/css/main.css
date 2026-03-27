@@ -44,3 +44,12 @@
 @theme {
   --font-sans: var(--font-body);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .contact-email,
+  .contact-link {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
