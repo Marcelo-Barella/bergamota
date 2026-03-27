@@ -30,7 +30,18 @@ body {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 10;
+  z-index: 30;
+  transition: opacity var(--motion-duration-fast, 0.18s) var(--motion-ease-standard, ease);
+}
+
+.theme-toggle:focus-within {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+  }
 }
 
 .noise-overlay {
