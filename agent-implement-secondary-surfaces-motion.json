@@ -1,0 +1,28 @@
+{
+  "task_id": "implement-secondary-surfaces-motion",
+  "status": "completed",
+  "summary": "Unified nav, footer, section reveals, and route transitions with shared motion tokens; router scrollBehavior and Lenis respect prefers-reduced-motion; added SiteNav/SiteFooter, MotionSection, motion-accessibility plugin; versioned app/data/projects-data.json for builds.",
+  "blocked_reason": null,
+  "outputs": {
+    "branch": "cursor-orch/implement-secondary-surfaces-motion",
+    "pr_compare_url": "https://github.com/Marcelo-Barella/bergamota/compare/main...cursor-orch/implement-secondary-surfaces-motion",
+    "pr_note": "Automated PR creation failed (403 token scope); open PR manually from compare URL.",
+    "files": [
+      "app/assets/css/main.css",
+      "app/layouts/default.vue",
+      "app/components/SiteNav.vue",
+      "app/components/SiteFooter.vue",
+      "app/components/MotionSection.vue",
+      "app/router.options.ts",
+      "app/plugins/lenis.client.ts",
+      "app/plugins/motion-accessibility.client.ts",
+      "app/composables/usePrefersReducedMotion.ts",
+      "app/pages/index.vue",
+      "app/pages/blog/index.vue",
+      "app/pages/blog/[id].vue",
+      "app/components/BlogCard.vue",
+      "app/app.vue",
+      "app/data/projects-data.json"
+    ]
+  }
+}

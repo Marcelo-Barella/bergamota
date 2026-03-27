@@ -1,0 +1,13 @@
+{
+  "task_id": "motion-concept-spec-bergamota",
+  "status": "completed",
+  "summary": "Added docs/motion-concept.md with motion pillars, user journey, pacing, depth/layering, risks/mitigations, and differentiation; committed and pushed to cursor-orch/motion-concept-spec-bergamota and run/65855485. PR creation via gh failed (token lacks createPullRequest).",
+  "blocked_reason": null,
+  "outputs": {
+    "motion_concept_path": "docs/motion-concept.md",
+    "feature_branch": "cursor-orch/motion-concept-spec-bergamota",
+    "run_branch": "run/65855485",
+    "commit": "4696060",
+    "pr_note": "Open PR manually: base main, head cursor-orch/motion-concept-spec-bergamota"
+  }
+}
