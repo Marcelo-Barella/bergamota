@@ -1,0 +1,12 @@
+{
+  "task_id": "bergamota-portfolio-motion-concept-doc",
+  "status": "completed",
+  "summary": "Restructured docs/motion-concept.md into Motion pillars, User journey, Risks and mitigations, and Optional differentiation; linked from README; committed and pushed branch cursor-orch/2af2ec2a-d182-4caa-8322-869658705fdf/bergamota-portfolio-motion-concept-doc; opened PR #6.",
+  "blocked_reason": null,
+  "outputs": {
+    "motion_concept_path": "docs/motion-concept.md",
+    "readme_link": "README.md",
+    "git_branch": "cursor-orch/2af2ec2a-d182-4caa-8322-869658705fdf/bergamota-portfolio-motion-concept-doc",
+    "pull_request": "https://github.com/Marcelo-Barella/bergamota/pull/6"
+  }
+}
