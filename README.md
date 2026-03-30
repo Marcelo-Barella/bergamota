@@ -2,6 +2,8 @@
 
 Personal portfolio site for **Marcelo Barella**, branded as **Bergamota**. Single-page Nuxt 4 app: hero, projects, blog index, and contact.
 
+Motion and narrative pacing direction: [docs/motion-concept.md](docs/motion-concept.md).
+
 ## Requirements
 
 - Node.js (LTS recommended)
