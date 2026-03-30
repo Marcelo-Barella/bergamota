@@ -1,17 +1,23 @@
 <template>
   <div class="portfolio-page">
-    <MotionSection id="hero" tag="section" class="hero" immediate>
-      <div class="hero-content">
-        <h1 class="hero-name hero-item">Marcelo Barella</h1>
-        <p class="hero-brand hero-item">Bergamota • Cursor Ambassador</p>
-        <p class="hero-tagline hero-item">
-          Building practical AI systems and creating agents that turn ideas into reliable workflows.
-        </p>
-        <div class="hero-visual hero-item" aria-hidden="true">
-          <div class="hero-blur" />
+    <div
+      ref="heroRoot"
+      class="hero-kinetic"
+      :class="{ 'hero-kinetic--prep': prepHeroKinetic }"
+    >
+      <MotionSection id="hero" tag="section" class="hero" immediate>
+        <div class="hero-content">
+          <h1 class="hero-name hero-item">Marcelo Barella</h1>
+          <p class="hero-brand hero-item">Bergamota • Cursor Ambassador</p>
+          <p class="hero-tagline hero-item">
+            Building practical AI systems and creating agents that turn ideas into reliable workflows.
+          </p>
+          <div class="hero-visual hero-item" aria-hidden="true">
+            <div class="hero-blur" />
+          </div>
         </div>
-      </div>
-    </MotionSection>
+      </MotionSection>
+    </div>
 
     <MotionSection id="meetup-photos" tag="section" class="meetup">
       <h2 class="section-title">Cursor Meetup Photos</h2>
@@ -53,34 +59,60 @@
       </div>
     </MotionSection>
 
-    <MotionSection id="projects" tag="section" class="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <article
-          v-for="(project, idx) in projects"
-          :key="project.id"
-          class="project-card"
-          :data-index="idx"
-        >
-          <a
-            :href="project.repoUrl"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div
+      ref="projectsRoot"
+      class="projects-reveal"
+      :class="{ 'projects-reveal--prep': prepHeroKinetic }"
+    >
+      <MotionSection id="projects" tag="section" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <article
+            v-for="(project, idx) in projects"
+            :key="project.id"
+            class="project-card"
+            :data-index="idx"
           >
-            <img
-              :src="project.imageSrc"
-              :alt="project.imageAlt"
-              class="project-image"
-              loading="lazy"
-              decoding="async"
+            <a
+              :href="project.repoUrl"
+              class="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-            <h3 class="project-title">{{ project.title }}</h3>
-            <p class="project-desc">{{ project.description }}</p>
-          </a>
-        </article>
-      </div>
-    </MotionSection>
+              <img
+                :src="project.imageSrc"
+                :alt="project.imageAlt"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              >
+              <h3 class="project-title">{{ project.title }}</h3>
+              <p class="project-desc">{{ project.description }}</p>
+            </a>
+          </article>
+        </div>
+        <section
+          v-if="flagshipProject"
+          ref="flagshipChapter"
+          class="flagship-chapter"
+          aria-labelledby="flagship-heading"
+        >
+          <h3 id="flagship-heading" class="flagship-heading">
+            {{ flagshipProject.title }} — depth
+          </h3>
+          <div ref="flagshipTrack" class="flagship-track">
+            <article
+              v-for="beat in flagshipProject.storyBeats"
+              :key="beat.id"
+              class="flagship-panel"
+            >
+              <p class="flagship-stat">{{ beat.stat }}</p>
+              <p class="flagship-copy">{{ beat.copy }}</p>
+            </article>
+          </div>
+        </section>
+      </MotionSection>
+    </div>
 
     <MotionSection id="contact" tag="section" class="contact">
       <h2 class="section-title">Contact</h2>
@@ -100,7 +132,38 @@
 <script setup lang="ts">
 import projectsData from '~/data/projects-data.json'
 
-const projects = projectsData
+type StoryBeat = { id: string; stat: string; copy: string }
+type Project = (typeof projectsData)[number] & { storyBeats?: StoryBeat[] }
+
+const projects = projectsData as Project[]
+
+const flagshipProject = computed(() => projects.find((p) => p.storyBeats?.length))
+
+const reducedMotion = usePrefersReducedMotion()
+const prepHeroKinetic = computed(() => {
+  if (import.meta.server) {
+    return false
+  }
+  if (reducedMotion.value) {
+    return false
+  }
+  if (typeof document !== 'undefined' && document.documentElement.dataset.reducedMotion === 'true') {
+    return false
+  }
+  return true
+})
+
+const heroRoot = ref<HTMLElement | null>(null)
+const projectsRoot = ref<HTMLElement | null>(null)
+const flagshipChapter = ref<HTMLElement | null>(null)
+const flagshipTrack = ref<HTMLElement | null>(null)
+
+useHomeScrollMotion({
+  heroRoot,
+  projectsRoot,
+  flagshipChapter,
+  flagshipTrack,
+})
 
 const meetupPhotos = [
   { id: 1, src: '/images/cursor-meetup/bergamota-01.jpg', alt: 'Bergamota in a group conversation at the Cursor meetup' },
@@ -135,6 +198,18 @@ const cafeCursorFlorianopolisPhotos = [
   font-weight: 500;
   color: var(--color-text);
   margin-bottom: 1.5rem;
+}
+
+.hero-kinetic--prep :deep(.hero-item) {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  filter: blur(6px);
+}
+
+.projects-reveal--prep :deep(.projects .section-title),
+.projects-reveal--prep :deep(.projects .project-card) {
+  opacity: 0;
+  transform: translateY(2rem);
 }
 
 .hero {
@@ -289,6 +364,60 @@ const cafeCursorFlorianopolisPhotos = [
   line-height: 1.5;
 }
 
+.flagship-chapter {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-muted) 35%, transparent);
+  overflow: hidden;
+}
+
+.flagship-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+.flagship-track {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  width: max-content;
+  padding-bottom: 0.5rem;
+}
+
+.flagship-panel {
+  flex: 0 0 min(72vw, 320px);
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 5%, var(--color-bg));
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.flagship-stat {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.flagship-copy {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (min-width: 720px) {
+  .flagship-panel {
+    flex-basis: 300px;
+  }
+}
+
 .contact {
   max-width: 56ch;
   padding: 4rem 0;
@@ -345,6 +474,26 @@ const cafeCursorFlorianopolisPhotos = [
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-kinetic--prep :deep(.hero-item),
+  .projects-reveal--prep :deep(.projects .section-title),
+  .projects-reveal--prep :deep(.projects .project-card) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .flagship-track {
+    flex-direction: column;
+    width: auto;
+    transform: none !important;
+  }
+
+  .flagship-panel {
+    flex: none;
+    width: 100%;
+    max-width: 42rem;
+  }
+
   .project-card {
     transition: none;
   }

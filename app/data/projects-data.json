@@ -5,6 +5,23 @@
     "description": "Design-minded product surface and workflow experiments.",
     "repoUrl": "https://github.com/Marcelo-Barella",
     "imageSrc": "/images/projects/tangerina.svg",
-    "imageAlt": "Tangerina project preview"
+    "imageAlt": "Tangerina project preview",
+    "storyBeats": [
+      {
+        "id": "tb1",
+        "stat": "Iterations",
+        "copy": "Rapid surface and flow experiments kept scope honest before committing to build."
+      },
+      {
+        "id": "tb2",
+        "stat": "Systems",
+        "copy": "Shared tokens and patterns so product and engineering stay aligned on one language."
+      },
+      {
+        "id": "tb3",
+        "stat": "Ship",
+        "copy": "Small, reviewable releases with measurable checks—not motion for its own sake."
+      }
+    ]
   }
 ]
