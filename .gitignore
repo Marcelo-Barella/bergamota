@@ -31,3 +31,5 @@ Thumbs.db
 .cursor/plans/
 coordination/
 CLAUDE.md
+
+.tooling/exports/

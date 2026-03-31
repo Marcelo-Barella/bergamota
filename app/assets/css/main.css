@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@import "./showcase.css";
 
 :root {
   --color-bg: #f8f6f3;
@@ -49,6 +50,9 @@
 
 @theme {
   --font-sans: var(--font-body);
+  --font-headline: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-showcase: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: "Newsreader", ui-serif, Georgia, serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
