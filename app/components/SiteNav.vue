@@ -30,15 +30,6 @@
             Contact
           </NuxtLink>
         </li>
-        <li>
-          <NuxtLink
-            to="/blog"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': route.path.startsWith('/blog') }"
-          >
-            Blog
-          </NuxtLink>
-        </li>
       </ul>
     </nav>
   </header>

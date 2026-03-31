@@ -6,5 +6,29 @@
     "repoUrl": "https://github.com/Marcelo-Barella",
     "imageSrc": "/images/projects/tangerina.svg",
     "imageAlt": "Tangerina project preview"
+  },
+  {
+    "id": "agentic-browser-ai",
+    "title": "Agentic browser AI",
+    "description": "Exploring autonomous browsing patterns and AI-driven interaction loops.",
+    "repoUrl": "https://github.com/Marcelo-Barella",
+    "imageSrc": "/images/projects/agentic-browser-ai.png",
+    "imageAlt": "Agentic browser AI project preview"
+  },
+  {
+    "id": "ai-sdk-prototype",
+    "title": "AI SDK prototype",
+    "description": "Streaming and tool-calling experiments on top of the Vercel AI SDK.",
+    "repoUrl": "https://github.com/Marcelo-Barella",
+    "imageSrc": "/images/projects/ai-sdk-prototype.png",
+    "imageAlt": "AI SDK prototype preview"
+  },
+  {
+    "id": "cursor-ca-orchestrator",
+    "title": "Cursor CA orchestrator",
+    "description": "Workflows for coordinating Cursor agents and repeatable delivery paths.",
+    "repoUrl": "https://github.com/Marcelo-Barella",
+    "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
+    "imageAlt": "Cursor CA orchestrator preview"
   }
 ]

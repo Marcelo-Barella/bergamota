@@ -4,7 +4,6 @@
       <p class="site-footer-note">Marcelo Barella — Bergamota</p>
       <nav class="site-footer-nav" aria-label="Footer">
         <NuxtLink to="/" class="site-footer-link">Home</NuxtLink>
-        <NuxtLink to="/blog" class="site-footer-link">Blog</NuxtLink>
         <a href="mailto:hello@bergamota.dev" class="site-footer-link">Email</a>
       </nav>
     </div>

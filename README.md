@@ -1,6 +1,6 @@
 # Bergamota
 
-Personal portfolio site for **Marcelo Barella**, branded as **Bergamota**. Single-page Nuxt 4 app: hero, projects, blog index, and contact.
+Personal portfolio site for **Marcelo Barella**, branded as **Bergamota**. Single-page Nuxt 4 app: hero, projects, and contact.
 
 ## Requirements
 
