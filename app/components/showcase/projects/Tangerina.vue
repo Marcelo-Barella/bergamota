@@ -1,25 +1,29 @@
 <template>
   <div class="scroll-smooth overflow-x-hidden bg-[#fffbf2] font-showcase text-[#0a0a0a] selection:bg-[#9ef01a] selection:text-black">
-    <nav class="fixed top-0 z-50 flex w-full items-center justify-between px-6 py-6 mix-blend-difference text-white md:px-10">
-      <NuxtLink to="/" class="font-headline text-2xl font-black uppercase italic tracking-tighter">M. Barella</NuxtLink>
-      <div class="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
+    <nav
+      class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#0a0a0a]/10 bg-[#fffbf2]/95 px-4 py-4 text-[#0a0a0a] backdrop-blur-sm md:flex-nowrap md:px-10 md:py-6"
+    >
+      <NuxtLink to="/" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">M. Barella</NuxtLink>
+      <div class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-8 md:text-[10px]">
         <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/">Back to Work</NuxtLink>
         <span class="opacity-30">/</span>
         <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/#projects">Next Project</NuxtLink>
       </div>
     </nav>
 
-    <header class="relative flex min-h-screen flex-col overflow-hidden pt-32">
+    <header class="relative flex min-h-screen flex-col overflow-visible pt-28 md:pt-32">
       <div class="showcase-grainy-bg pointer-events-none absolute inset-0" />
-      <div class="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10">
+      <div class="relative z-20 mx-auto w-full min-w-0 max-w-[1400px] px-4 sm:px-6 md:px-10">
         <div class="showcase-rotate-neg-2 mb-8 inline-block bg-[#9ef01a] px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] text-black">
           Design Experiment 01
         </div>
-        <h1 class="font-headline mb-12 text-[16vw] font-extrabold uppercase leading-[0.75] tracking-tighter md:text-[14vw]">
+        <h1
+          class="showcase-hero-title-tight font-headline relative z-0 mb-8 font-extrabold uppercase tracking-tighter md:mb-12"
+        >
           Tange-<br />rina<span class="italic text-[#ff5c00]">.</span>
         </h1>
-        <div class="showcase-custom-grid">
-          <div class="relative z-20 col-span-12 md:col-span-5">
+        <div class="showcase-custom-grid relative z-10">
+          <div class="relative z-10 col-span-12 md:col-span-5">
             <p class="mb-12 border-l-8 border-[#ff5c00] pl-6 text-3xl font-bold uppercase leading-[0.9] md:text-5xl">
               {{ project.description }}
             </p>
@@ -32,7 +36,7 @@
         </div>
       </div>
       <div
-        class="absolute top-1/4 right-0 -z-0 h-[819px] w-full translate-x-20 md:h-[1126px] md:w-3/5 md:translate-x-32 showcase-rotate-pos-3"
+        class="absolute top-1/4 right-0 z-[1] h-[min(70vh,819px)] w-[min(92vw,100%)] max-w-full translate-x-8 sm:translate-x-12 md:h-[1126px] md:w-3/5 md:translate-x-32 showcase-rotate-pos-3"
       >
         <div class="relative h-full w-full overflow-hidden bg-[#ff5c00] shadow-2xl">
           <img
@@ -42,7 +46,11 @@
             loading="eager"
             decoding="async"
           >
-          <div class="showcase-outline-text absolute left-10 top-10 font-headline text-9xl font-black text-white">CITRUS</div>
+          <div
+            class="showcase-outline-text absolute left-4 top-6 font-headline text-[clamp(3.5rem,min(14vw,15vh),9rem)] font-black text-white sm:left-10 sm:top-10"
+          >
+            CITRUS
+          </div>
         </div>
       </div>
     </header>
@@ -92,7 +100,9 @@
       <div class="mx-auto max-w-[1400px]">
         <div class="mb-24 flex flex-col items-end justify-between gap-8 md:flex-row">
           <div class="max-w-2xl">
-            <h2 class="font-headline text-6xl font-black uppercase leading-[0.8] tracking-tighter md:text-8xl">
+            <h2
+              class="font-headline max-w-full text-[clamp(2.5rem,7vw+0.5rem,6.5rem)] font-black uppercase leading-[0.85] tracking-tighter"
+            >
               Visual <span class="text-[#2b9348]">Chaos</span> Controlled
             </h2>
           </div>
@@ -145,7 +155,9 @@
 
     <section class="bg-[#0a0a0a] px-6 py-40 text-[#fffbf2] md:px-10">
       <div class="mx-auto max-w-4xl">
-        <h2 class="font-headline mb-16 text-7xl font-black uppercase leading-[0.8] tracking-tighter md:text-9xl">
+        <h2
+          class="font-headline mb-16 max-w-full text-[clamp(2.5rem,8vw+0.5rem,7rem)] font-black uppercase leading-[0.85] tracking-tighter"
+        >
           The<br /><span class="text-[#9ef01a]">Outcome.</span>
         </h2>
         <div class="grid grid-cols-1 gap-16 md:grid-cols-2">

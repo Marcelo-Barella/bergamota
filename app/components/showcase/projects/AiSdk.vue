@@ -3,12 +3,17 @@
     class="scroll-smooth overflow-x-hidden bg-[#0a0a0c] font-showcase text-white selection:bg-[#00ff9d] selection:text-black"
   >
     <nav
-      class="fixed top-0 z-50 flex w-full items-center justify-between border-b border-white/5 bg-[#0a0a0c]/80 px-10 py-6 backdrop-blur-md"
+      class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-white/5 bg-[#0a0a0c]/90 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
-      <NuxtLink to="/" class="font-headline text-2xl font-extrabold uppercase italic tracking-tighter text-[#00ff9d]">
+      <NuxtLink
+        to="/"
+        class="font-headline text-xl font-extrabold uppercase italic tracking-tighter text-[#00ff9d] md:text-2xl"
+      >
         M. Barella
       </NuxtLink>
-      <div class="hidden items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] md:flex">
+      <div
+        class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px] lg:flex-nowrap"
+      >
         <NuxtLink class="flex items-center gap-2 transition-colors hover:text-[#00ff9d]" to="/">
           <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
         </NuxtLink>
@@ -17,7 +22,9 @@
       </div>
     </nav>
 
-    <header class="relative flex min-h-screen flex-col justify-center overflow-hidden px-10 pt-32">
+    <header
+      class="relative flex min-h-screen flex-col justify-center overflow-visible px-4 pt-28 sm:px-6 md:px-10 md:pt-32"
+    >
       <div
         class="pointer-events-none absolute inset-0 flex select-none flex-wrap content-start gap-4 overflow-hidden font-mono text-[10px] leading-none opacity-10"
       >
@@ -26,20 +33,22 @@
         <div class="w-full pl-16">for await (const text of textStream) { process.stdout.write(text); }</div>
         <div class="w-full text-[#00ff9d]">01010110 01100101 01110010 01100011 01100101 01101100</div>
       </div>
-      <div class="relative z-10 mx-auto w-full max-w-7xl">
+      <div class="relative z-10 mx-auto w-full min-w-0 max-w-7xl">
         <div class="mb-8 flex items-center gap-4">
           <span class="h-[2px] w-12 bg-[#00ff9d]" />
           <span class="text-xs font-bold uppercase tracking-[0.4em] text-[#00ff9d]">Vercel AI SDK • Prototype 04</span>
         </div>
-        <h1 class="font-headline mb-12 text-[10vw] font-black uppercase leading-[0.85] tracking-tighter">
+        <h1
+          class="showcase-hero-title-fit font-headline relative z-0 mb-8 font-black uppercase tracking-tighter md:mb-12"
+        >
           The AI<br />
           <span
             class="border-b-4 border-[#00ff9d] pb-2 text-transparent"
             style="-webkit-text-stroke: 1px #00ff9d"
           >Playground</span>
         </h1>
-        <div class="showcase-custom-grid mt-20 gap-12">
-          <div class="col-span-12 self-center md:col-span-5">
+        <div class="showcase-custom-grid relative z-10 gap-12">
+          <div class="relative z-10 col-span-12 self-center md:col-span-5">
             <p class="mb-10 text-3xl font-light leading-tight text-white/90">
               {{ project.description }}
             </p>
@@ -54,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="relative col-span-12 md:col-span-7">
+          <div class="relative z-10 col-span-12 md:col-span-7">
             <div class="relative aspect-[4/3] w-full">
               <div class="showcase-skew-1-soft absolute inset-0 border-2 border-white/5 bg-[#141418]" />
               <img
@@ -80,11 +89,13 @@
       </div>
     </header>
 
-    <section class="relative overflow-hidden px-10 py-32">
-      <div class="mx-auto max-w-7xl">
+    <section class="relative overflow-x-clip px-4 py-24 sm:px-6 md:px-10 md:py-32">
+      <div class="mx-auto min-w-0 max-w-7xl">
         <div class="grid grid-cols-1 items-start gap-24 md:grid-cols-2">
           <div class="top-32 md:sticky">
-            <h2 class="font-headline mb-8 text-7xl font-bold uppercase leading-none tracking-tighter">
+            <h2
+              class="font-headline mb-8 max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-bold uppercase leading-[0.9] tracking-tighter"
+            >
               Devs are <br /><span class="italic text-[#bcff00]">Drowning</span> <br />in Glue Code.
             </h2>
             <div class="mb-8 h-2 w-20 bg-[#00f0ff]" />
@@ -123,8 +134,8 @@
       </div>
     </section>
 
-    <section class="border-y border-white/5 bg-[#141418]/50 py-32 px-10">
-      <div class="mx-auto max-w-7xl">
+    <section class="border-y border-white/5 bg-[#141418]/50 px-4 py-24 md:px-10 md:py-32">
+      <div class="mx-auto min-w-0 max-w-7xl">
         <h3 class="font-headline mb-20 text-center text-4xl font-bold uppercase italic tracking-widest">
           The Component Blocks
         </h3>
@@ -159,8 +170,8 @@
       </div>
     </section>
 
-    <section class="relative px-10 py-40">
-      <div class="showcase-custom-grid mx-auto max-w-7xl items-center gap-16">
+    <section class="relative px-4 py-28 md:px-10 md:py-40">
+      <div class="showcase-custom-grid mx-auto min-w-0 max-w-7xl items-center gap-16">
         <div class="relative col-span-12 md:col-span-6">
           <div class="absolute -inset-10 rounded-full bg-[#00ff9d]/5 blur-3xl" />
           <img
@@ -173,7 +184,9 @@
         </div>
         <div class="col-span-12 md:col-span-5 md:col-start-8">
           <span class="text-xs font-bold uppercase tracking-[0.5em] text-[#bcff00]">The Outcome</span>
-          <h2 class="font-headline mt-6 mb-8 text-7xl font-bold uppercase leading-[0.9] tracking-tighter">
+          <h2
+            class="font-headline mt-6 mb-8 max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-bold uppercase leading-[0.9] tracking-tighter"
+          >
             Zero To <br /><span class="italic text-[#00ff9d]">Live</span><br />In Minutes.
           </h2>
           <p class="mb-12 text-2xl font-light leading-relaxed text-white/80">
@@ -195,8 +208,8 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden border-t border-white/10 bg-[#0a0a0c] px-10 py-20">
-      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 md:flex-row">
+    <section class="relative overflow-x-clip border-t border-white/10 bg-[#0a0a0c] px-4 py-16 md:px-10 md:py-20">
+      <div class="mx-auto flex min-w-0 max-w-7xl flex-col items-center justify-between gap-12 md:flex-row">
         <div class="max-w-md">
           <h4 class="font-headline mb-4 text-3xl font-bold uppercase italic">Built for the Cursor Community</h4>
           <p class="text-white/60">

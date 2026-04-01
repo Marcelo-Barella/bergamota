@@ -24,6 +24,9 @@ body {
 .app-root {
   position: relative;
   min-height: 100vh;
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 .theme-toggle {

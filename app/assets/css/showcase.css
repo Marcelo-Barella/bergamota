@@ -1,3 +1,27 @@
+.showcase-hero-title {
+  font-size: clamp(2.75rem, min(10vw + 0.5rem, 16vh), min(8.5rem, 14vw));
+  line-height: 0.82;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .showcase-hero-title {
+    font-size: clamp(1.875rem, min(7.8vw + 0.35rem, 12vh), 2.6rem);
+  }
+}
+
+.showcase-hero-title-tight {
+  font-size: clamp(2.85rem, min(12vw + 0.35rem, 18vh), min(9.5rem, 15vw));
+  line-height: 0.78;
+  max-width: 100%;
+}
+
+.showcase-hero-title-fit {
+  font-size: clamp(2.25rem, min(7vw + 0.5rem, 13vh), min(5.75rem, 10.5vw));
+  line-height: 0.86;
+  max-width: 100%;
+}
+
 @layer utilities {
   .showcase-skew-1 {
     transform: skewY(-1deg);

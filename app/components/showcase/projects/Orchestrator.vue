@@ -3,13 +3,18 @@
     class="showcase-grid-dots scroll-smooth overflow-x-hidden bg-[#0f1115] font-showcase text-[#94a3b8] selection:bg-[#312e81] selection:text-white"
   >
     <nav
-      class="fixed top-0 z-50 flex w-full items-center justify-between border-b border-white/5 bg-[#0f1115]/80 px-10 py-6 backdrop-blur-md"
+      class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-white/5 bg-[#0f1115]/90 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
-      <NuxtLink to="/" class="font-headline flex items-center gap-2 text-2xl font-extrabold uppercase italic tracking-tighter text-white">
+      <NuxtLink
+        to="/"
+        class="font-headline flex items-center gap-2 text-xl font-extrabold uppercase italic tracking-tighter text-white md:text-2xl"
+      >
         <span class="h-3 w-3 rounded-full bg-[#d97706]" />
         M. BARELLA
       </NuxtLink>
-      <div class="hidden items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] md:flex">
+      <div
+        class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
+      >
         <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" to="/">
           <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
         </NuxtLink>
@@ -24,10 +29,12 @@
       </div>
     </nav>
 
-    <header class="relative flex min-h-screen flex-col justify-center overflow-hidden px-10 pt-20">
+    <header
+      class="relative flex min-h-screen flex-col justify-center overflow-visible px-4 pt-24 sm:px-6 md:px-10 md:pt-20"
+    >
       <div class="absolute top-1/4 -right-20 h-[500px] w-[500px] rounded-full bg-[#312e81]/20 blur-[120px]" />
       <div class="absolute bottom-1/4 -left-20 h-[400px] w-[400px] rounded-full bg-[#064e3b]/10 blur-[100px]" />
-      <div class="relative z-10 mx-auto w-full max-w-7xl">
+      <div class="relative z-20 mx-auto w-full min-w-0 max-w-7xl">
         <div class="mb-12 flex items-center gap-6">
           <span class="border border-[#4c0519] bg-[#4c0519]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-400">
             Live Orchestration
@@ -35,9 +42,9 @@
           <div class="h-px flex-grow bg-white/10" />
         </div>
         <div class="grid grid-cols-12 gap-0">
-          <div class="col-span-12 lg:col-span-8">
+          <div class="relative z-10 col-span-12 min-w-0 lg:col-span-10">
             <h1
-              class="font-headline mb-8 text-[clamp(4rem,10vw,12rem)] font-extrabold uppercase leading-[0.85] tracking-tighter text-white"
+              class="showcase-hero-title-fit font-headline mb-8 font-extrabold uppercase tracking-tighter text-white md:mb-10"
             >
               Cursor<br />
               <span class="text-transparent" style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4)">Orchestrator</span>
@@ -51,7 +58,7 @@
         </div>
       </div>
       <div
-        class="pointer-events-none absolute right-0 top-1/2 hidden h-[819px] w-1/3 -translate-y-1/2 opacity-40 mix-blend-lighten lg:block"
+        class="pointer-events-none absolute right-0 top-1/2 z-[5] hidden h-[819px] w-1/3 -translate-y-1/2 opacity-40 mix-blend-lighten lg:block"
       >
         <div class="relative h-full w-full overflow-hidden border-l border-white/10">
           <img
@@ -66,11 +73,11 @@
       </div>
     </header>
 
-    <main class="relative z-10 space-y-40 px-10 py-32">
-      <section class="mx-auto max-w-7xl">
+    <main class="relative z-10 space-y-24 px-4 py-24 md:space-y-40 md:px-10 md:py-32">
+      <section class="mx-auto min-w-0 max-w-7xl">
         <div class="grid grid-cols-12 gap-8">
           <div
-            class="relative col-span-12 self-start border border-white/10 bg-white/5 p-12 backdrop-blur-sm lg:col-span-5"
+            class="relative col-span-12 self-start border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-10 md:p-12 lg:col-span-5"
           >
             <div class="absolute -left-4 -top-4 h-12 w-12 border-l-2 border-t-2 border-[#312e81]" />
             <h2 class="font-headline mb-6 text-4xl font-bold uppercase text-white">The Precision Paradigm</h2>
@@ -110,8 +117,8 @@
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl">
-        <div class="relative py-20">
+      <section class="mx-auto min-w-0 max-w-7xl">
+        <div class="relative py-12 md:py-20">
           <div class="pointer-events-none absolute left-0 top-0 h-full w-full border-y border-white/5" />
           <div class="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
             <div class="relative order-2 h-[500px] lg:order-1">
@@ -133,7 +140,9 @@
               </div>
             </div>
             <div class="order-1 lg:order-2">
-              <h2 class="font-headline mb-10 text-7xl font-black uppercase leading-none text-white showcase-skew-1">
+              <h2
+                class="showcase-skew-1 font-headline mb-10 max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-black uppercase leading-[0.9] text-white"
+              >
                 Refining<br />the Loop
               </h2>
               <p class="font-editorial mb-8 text-xl italic leading-relaxed">
@@ -148,7 +157,7 @@
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl py-20">
+      <section class="mx-auto min-w-0 max-w-7xl py-12 md:py-20">
         <div class="grid grid-cols-1 gap-0 border border-white/10 md:grid-cols-4">
           <div class="group border-b border-white/10 p-10 transition-colors hover:bg-[#4c0519]/10 md:border-b-0 md:border-r">
             <div class="mb-4 text-4xl font-black text-[#4c0519]">01</div>
@@ -178,10 +187,12 @@
       </section>
     </main>
 
-    <section class="relative overflow-hidden px-10 py-40">
+    <section class="relative overflow-x-clip px-4 py-28 md:px-10 md:py-40">
       <div class="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <div class="relative z-10 mx-auto max-w-4xl text-center">
-        <h2 class="font-headline mb-12 text-[8vw] font-black uppercase leading-none tracking-tighter text-white">
+      <div class="relative z-10 mx-auto min-w-0 max-w-4xl text-center">
+        <h2
+          class="font-headline mb-12 max-w-full text-[clamp(2.75rem,8vw+0.5rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter text-white"
+        >
           Ready for<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">The Machine?</span>
         </h2>
         <p class="mx-auto mb-16 max-w-xl text-xl text-[#94a3b8]/80">
