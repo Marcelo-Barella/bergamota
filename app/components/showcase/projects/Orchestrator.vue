@@ -1,8 +1,10 @@
 <template>
   <div
+    ref="projectRoot"
     class="showcase-grid-dots scroll-smooth overflow-x-hidden bg-[#0f1115] font-showcase text-[#94a3b8] selection:bg-[#312e81] selection:text-white"
   >
     <nav
+      data-gsap-project-nav
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-white/5 bg-[#0f1115]/90 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
       <NuxtLink
@@ -18,26 +20,29 @@
         <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" to="/">
           <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
         </NuxtLink>
-        <NuxtLink class="transition-colors hover:text-white" to="/#projects">System</NuxtLink>
-        <a class="transition-colors hover:text-white" href="mailto:hello@bergamota.dev">Logic</a>
+        <NuxtLink class="transition-colors hover:text-white" to="/#projects">Experiments</NuxtLink>
         <a
           class="bg-[#312e81] px-6 py-2 text-white transition-all hover:bg-white hover:text-[#0f1115]"
           :href="project.repoUrl"
           target="_blank"
           rel="noopener noreferrer"
-        >Deploy</a>
+        >GitHub</a>
       </div>
     </nav>
 
     <header
+      data-gsap-project-hero
       class="relative flex min-h-screen flex-col justify-center overflow-visible px-4 pt-24 sm:px-6 md:px-10 md:pt-20"
     >
       <div class="absolute top-1/4 -right-20 h-[500px] w-[500px] rounded-full bg-[#312e81]/20 blur-[120px]" />
       <div class="absolute bottom-1/4 -left-20 h-[400px] w-[400px] rounded-full bg-[#064e3b]/10 blur-[100px]" />
       <div class="relative z-20 mx-auto w-full min-w-0 max-w-7xl">
         <div class="mb-12 flex items-center gap-6">
-          <span class="border border-[#4c0519] bg-[#4c0519]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-400">
-            Live Orchestration
+          <span
+            data-gsap-project-hero-el
+            class="border border-[#4c0519] bg-[#4c0519]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-400"
+          >
+            CLI · cursor-orch
           </span>
           <div class="h-px flex-grow bg-white/10" />
         </div>
@@ -46,22 +51,32 @@
             <h1
               class="showcase-hero-title-fit font-headline mb-8 font-extrabold uppercase tracking-tighter text-white md:mb-10"
             >
-              Cursor<br />
-              <span class="text-transparent" style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4)">Orchestrator</span>
+              <span data-gsap-project-hero-el class="block">Cursor</span>
+              <span
+                data-gsap-project-hero-el
+                class="block text-transparent"
+                style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4)"
+              >Orchestrator</span>
             </h1>
             <p
-              class="font-editorial mt-12 mb-16 max-w-2xl border-l-4 border-[#312e81] pl-8 text-2xl font-light italic leading-snug md:text-3xl"
+              data-gsap-project-hero-el
+              class="font-editorial mt-12 mb-6 max-w-2xl border-l-4 border-[#312e81] pl-8 text-2xl font-light italic leading-snug md:text-3xl"
             >
-              {{ project.description }}
+              Run one prompt across several GitHub repositories: the CLI provisions a bootstrap repo, opens a per-run branch as a shared bulletin board, and launches an orchestrator Cloud Agent that plans tasks and dispatches workers—exactly as described in <code class="text-white/60">README.md</code>.
+            </p>
+            <p data-gsap-project-hero-el class="max-w-xl text-sm leading-relaxed text-white/50">
+              Stack from <code class="text-white/70">package.json</code>: TypeScript, oclif CLI, Vitest, esbuild-bundled runtime for the cloud loader.
             </p>
           </div>
         </div>
       </div>
       <div
+        data-gsap-project-hero-visual
         class="pointer-events-none absolute right-0 top-1/2 z-[5] hidden h-[819px] w-1/3 -translate-y-1/2 opacity-40 mix-blend-lighten lg:block"
       >
         <div class="relative h-full w-full overflow-hidden border-l border-white/10">
           <img
+            data-gsap-project-hero-visual-img
             class="h-full w-full object-cover grayscale contrast-125"
             :src="project.imageSrc"
             :alt="project.imageAlt"
@@ -74,42 +89,47 @@
     </header>
 
     <main class="relative z-10 space-y-24 px-4 py-24 md:space-y-40 md:px-10 md:py-32">
-      <section class="mx-auto min-w-0 max-w-7xl">
+      <section data-gsap-project-section class="mx-auto min-w-0 max-w-7xl">
+        <div
+          data-gsap-section-head
+          class="mb-12 border-l-8 border-[#d97706] pl-6 md:pl-8"
+        >
+          <h2 class="font-headline text-4xl font-black uppercase text-white md:text-5xl">
+            Why it exists
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg text-white/60">
+            Cross-repo work with agents is easy to start and hard to keep coherent. The README frames the problem as coordinating multiple Cursor Cloud Agents with explicit task graphs and GitHub as the source of shared run state.
+          </p>
+        </div>
         <div class="grid grid-cols-12 gap-8">
           <div
             class="relative col-span-12 self-start border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-10 md:p-12 lg:col-span-5"
           >
             <div class="absolute -left-4 -top-4 h-12 w-12 border-l-2 border-t-2 border-[#312e81]" />
-            <h2 class="font-headline mb-6 text-4xl font-bold uppercase text-white">The Precision Paradigm</h2>
-            <p class="mb-8 text-lg leading-relaxed">
-              Workflows for coordinating Cursor agents and repeatable delivery paths—this case study mirrors the jeweled slate layout and watch-hero motif from the original concept.
+            <h3 class="font-headline mb-6 text-2xl font-bold uppercase text-white">What you ship</h3>
+            <p class="mb-6 text-lg leading-relaxed">
+              A local command-line tool that can run interactively (REPL with slash commands), from YAML (<code class="text-white/80">cursor-orch run --config</code>), and exposes <code class="text-white/80">status</code>, <code class="text-white/80">logs</code>, and <code class="text-white/80">stop</code> for live runs—documented in the quick-start table in <code class="text-white/80">README.md</code>.
             </p>
-            <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/60">
-              <li class="flex items-center gap-3">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#064e3b]" /> Sub-millisecond Dispatch
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#064e3b]" /> Agentic Loop Validation
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#064e3b]" /> State Persistence
-              </li>
+            <ul class="space-y-3 text-sm text-white/55">
+              <li>Interactive session file: README documents persistence under <code class="text-white/70">~/.cursor-orch/session.yaml</code>.</li>
+              <li>Config doctor: <code class="text-white/70">cursor-orch config doctor --strict</code> for token and precedence checks.</li>
+              <li>Shell autocomplete via oclif plugin (see README &quot;Shell Autocomplete&quot;).</li>
             </ul>
           </div>
-          <div class="col-span-12 pt-12 lg:col-span-6 lg:col-start-7">
-            <div class="space-y-16">
+          <div class="col-span-12 pt-4 lg:col-span-6 lg:col-start-7">
+            <div class="space-y-12">
               <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#064e3b]">Phase 01 — Analysis</span>
-                <h3 class="mt-2 mb-4 text-3xl font-bold text-white">Parsing the Chaos</h3>
-                <p class="leading-relaxed text-[#94a3b8]/70">
-                  Tasks are decomposed into checkable units with explicit dependencies before agents touch the tree.
+                <span class="text-xs font-bold uppercase tracking-widest text-[#064e3b]">Architecture</span>
+                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Three moving parts</h3>
+                <p class="leading-relaxed text-[#94a3b8]/80">
+                  README diagrams local CLI, user bootstrap repo (rules + pinned runtime), and cloud agents: orchestrator on the bootstrap repo, workers on target repos. Per-run branch <code class="text-white/70">run/&lt;run_id&gt;</code> holds <code class="text-white/70">config.yaml</code>, <code class="text-white/70">state.json</code>, worker JSON outputs, and related artifacts—with one writer per file to avoid races.
                 </p>
               </div>
               <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">Phase 02 — Execution</span>
-                <h3 class="mt-2 mb-4 text-3xl font-bold text-white">Synchronous Flow</h3>
-                <p class="leading-relaxed text-[#94a3b8]/70">
-                  Orchestration keeps architectural rules in view so autonomous edits stay aligned with the product contract.
+                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">Limits (from README)</span>
+                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Know the guardrails</h3>
+                <p class="leading-relaxed text-[#94a3b8]/80">
+                  Up to 20 tasks per run, 30s polling orchestration loop, 512KB cap on worker output per task, combined runtime under 1MB. Workers do not talk to each other; the orchestrator coordinates via the run branch.
                 </p>
               </div>
             </div>
@@ -117,13 +137,14 @@
         </div>
       </section>
 
-      <section class="mx-auto min-w-0 max-w-7xl">
+      <section data-gsap-project-section class="mx-auto min-w-0 max-w-7xl">
         <div class="relative py-12 md:py-20">
           <div class="pointer-events-none absolute left-0 top-0 h-full w-full border-y border-white/5" />
           <div class="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
             <div class="relative order-2 h-[500px] lg:order-1">
               <div class="showcase-rotate-neg-1 absolute left-0 top-0 z-10 h-4/5 w-4/5 border border-white/10 bg-[#0f1115] p-2">
                 <img
+                  data-gsap-project-media-parallax
                   class="h-full w-full object-cover brightness-75 transition-all hover:brightness-100"
                   src="/images/projects/cursor-ca-orchestrator.png"
                   alt=""
@@ -134,54 +155,58 @@
               <div
                 class="showcase-rotate-pos-1 absolute bottom-0 right-0 z-20 h-3/5 w-3/5 border border-white/20 bg-[#064e3b]/20 p-2 backdrop-blur-md"
               >
-                <div class="flex h-full w-full items-center justify-center border border-white/5 bg-[#0f1115]">
-                  <span class="font-headline text-4xl font-black text-[#064e3b]">LOGIC_04</span>
+                <div class="flex h-full w-full flex-col items-center justify-center border border-white/5 bg-[#0f1115] p-4 text-center">
+                  <span class="font-headline text-2xl font-black text-[#064e3b] md:text-3xl">YAML + REPL</span>
+                  <span class="mt-2 text-[10px] uppercase tracking-widest text-white/40">Same CLI, two entry paths</span>
                 </div>
               </div>
             </div>
             <div class="order-1 lg:order-2">
-              <h2
-                class="showcase-skew-1 font-headline mb-10 max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-black uppercase leading-[0.9] text-white"
+              <div
+                data-gsap-section-head
+                class="mb-10"
               >
-                Refining<br />the Loop
-              </h2>
-              <p class="font-editorial mb-8 text-xl italic leading-relaxed">
-                "The goal was never to replace the engineer. The goal was to build a nervous system that makes the engineer's vision propagate perfectly across the codebase."
-              </p>
-              <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[#d97706]">
-                <span class="material-symbols-outlined">settings_input_component</span>
-                <span>Designed by Marcelo Barella — Cursor Ambassador</span>
+                <h2
+                  class="showcase-skew-1 font-headline max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-black uppercase leading-[0.9] text-white"
+                >
+                  Single prompt,<br />many repos
+                </h2>
               </div>
+              <p class="font-editorial mb-8 text-xl italic leading-relaxed text-white/70">
+                In single-prompt mode the planner agent breaks your goal into tasks and assigns each to a repository alias from your config—so you describe the outcome once instead of hand-writing every worker prompt (README &quot;Single-Prompt Mode&quot;).
+              </p>
+              <p class="text-sm leading-relaxed text-[#94a3b8]/70">
+                Publishing: README points to <code class="text-white/60">.github/workflows/publish.yml</code> and npm automation via <code class="text-white/60">NODE_AUTH_TOKEN</code> when the <code class="text-white/60">package.json</code> version bumps on <code class="text-white/60">main</code>.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="mx-auto min-w-0 max-w-7xl py-12 md:py-20">
-        <div class="grid grid-cols-1 gap-0 border border-white/10 md:grid-cols-4">
+      <section data-gsap-project-section class="mx-auto min-w-0 max-w-7xl py-12 md:py-20">
+        <div
+          data-gsap-section-head
+          class="mb-10"
+        >
+          <h2 class="font-headline text-3xl font-black uppercase text-white md:text-4xl">
+            Trust the repo
+          </h2>
+          <p class="mt-4 max-w-2xl text-white/55">
+            Deeper behavior—error code format, recovery steps, completion-mode notes—lives in <code class="text-white/70">README.md</code>, <code class="text-white/70">CHANGELOG.md</code>, and supporting markdown in the repository root.
+          </p>
+        </div>
+        <div data-gsap-project-stagger class="grid grid-cols-1 gap-0 border border-white/10 md:grid-cols-2">
           <div class="group border-b border-white/10 p-10 transition-colors hover:bg-[#4c0519]/10 md:border-b-0 md:border-r">
-            <div class="mb-4 text-4xl font-black text-[#4c0519]">01</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Stability</h4>
-            <p class="text-sm text-[#94a3b8]/60">Repeatable agent handoffs with explicit checkpoints in the orchestration graph.</p>
+            <div class="mb-4 text-3xl font-black text-[#4c0519]">01</div>
+            <h4 class="mb-2 font-bold uppercase text-white">Evidence</h4>
+            <p class="text-sm text-[#94a3b8]/60">Commands, env vars, and architecture ASCII art are maintained in the GitHub README; this page only summarizes what is stated there.</p>
           </div>
-          <div
-            class="group mt-0 border-b border-white/10 bg-white/5 p-10 transition-colors hover:bg-[#312e81]/20 md:mt-8 md:border-b-0 md:border-r"
-          >
-            <div class="mb-4 text-4xl font-black text-[#312e81]">02</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Scale</h4>
-            <p class="text-sm text-[#94a3b8]/60">Parallel workstreams without losing shared context or repo invariants.</p>
-          </div>
-          <div
-            class="group -mt-0 border-b border-white/10 bg-[#064e3b]/5 p-10 transition-colors hover:bg-[#064e3b]/20 md:-mt-8 md:border-b-0 md:border-r"
-          >
-            <div class="mb-4 text-4xl font-black text-[#064e3b]">03</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Integrity</h4>
-            <p class="text-sm text-[#94a3b8]/60">Guardrails for destructive operations and human-readable audit trails.</p>
-          </div>
-          <div class="group mt-0 bg-white/5 p-10 transition-colors hover:bg-[#d97706]/20 md:mt-12">
-            <div class="mb-4 text-4xl font-black text-[#d97706]">04</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Speed</h4>
-            <p class="text-sm text-[#94a3b8]/60">Faster first meaningful commit by templating the agent choreography up front.</p>
+          <div class="group bg-white/5 p-10 transition-colors hover:bg-[#312e81]/20">
+            <div class="mb-4 text-3xl font-black text-[#312e81]">02</div>
+            <h4 class="mb-2 font-bold uppercase text-white">Next step</h4>
+            <p class="text-sm text-[#94a3b8]/60">
+              Clone the repo, copy <code class="text-white/50">.env.example</code>, run <code class="text-white/50">scripts/bootstrap.sh</code> as documented, then <code class="text-white/50">cursor-orch config doctor --strict</code> before your first run.
+            </p>
           </div>
         </div>
       </section>
@@ -189,26 +214,32 @@
 
     <section class="relative overflow-x-clip px-4 py-28 md:px-10 md:py-40">
       <div class="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <div class="relative z-10 mx-auto min-w-0 max-w-4xl text-center">
+      <div data-gsap-project-cta class="relative z-10 mx-auto min-w-0 max-w-4xl text-center">
         <h2
           class="font-headline mb-12 max-w-full text-[clamp(2.75rem,8vw+0.5rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter text-white"
         >
-          Ready for<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">The Machine?</span>
+          Open the<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">source</span>
         </h2>
         <p class="mx-auto mb-16 max-w-xl text-xl text-[#94a3b8]/80">
-          Orchestration for agentic workflows—reach out to align on how repeatable delivery should feel in your stack.
+          Install flow, credentials, and operational limits are defined in the repository—not on this marketing surface.
         </p>
         <div class="flex flex-col items-center justify-center gap-12 md:flex-row">
           <a
-            class="group relative overflow-hidden bg-white px-16 py-6 text-lg font-bold uppercase tracking-widest text-[#0f1115] transition-transform hover:scale-105"
-            href="mailto:hello@bergamota.dev"
+            data-gsap-magnetic
+            class="group relative overflow-hidden bg-white px-16 py-6 text-lg font-bold uppercase tracking-widest text-[#0f1115]"
+            :href="project.repoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span class="relative z-10">Initialize Protocol</span>
+            <span class="relative z-10">View on GitHub</span>
             <div class="absolute inset-0 translate-y-full bg-[#d97706] transition-transform duration-300 group-hover:translate-y-0" />
           </a>
           <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
             <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" to="/">Portfolio</NuxtLink>
-            <a class="transition-colors hover:text-white" :href="project.repoUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a
+              class="transition-colors hover:text-white"
+              href="mailto:hello@bergamota.dev"
+            >Email</a>
           </div>
         </div>
       </div>
@@ -220,8 +251,7 @@
       </div>
       <div class="flex gap-12 text-[9px] font-bold uppercase tracking-[0.3em] opacity-40 transition-opacity hover:opacity-100">
         <span>Bergamota.dev</span>
-        <span>Porto Alegre / Florianópolis</span>
-        <span class="text-[#d97706]">Status: Optimal</span>
+        <span>cursor-orch CLI</span>
       </div>
     </footer>
   </div>
@@ -231,4 +261,6 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const projectRoot = ref<HTMLElement | null>(null)
+useShowcaseProjectGsap(projectRoot)
 </script>
