@@ -15,8 +15,10 @@
         <NuxtLink class="transition-colors hover:text-[#00f2ff]" to="/#projects">Experiments</NuxtLink>
         <a
           class="bg-white px-3 py-1.5 text-black transition-all hover:bg-[#00f2ff] md:px-4 md:py-2"
-          href="mailto:hello@bergamota.dev"
-        >Let's Sync</a>
+          :href="project.repoUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Repository</a>
       </div>
     </nav>
 
@@ -32,13 +34,13 @@
           class="showcase-skew-1-soft mb-6 inline-flex items-center gap-3 border border-[#3b82f6]/30 bg-[#3b82f6]/20 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00f2ff]"
         >
           <span class="material-symbols-outlined text-sm">precision_manufacturing</span>
-          Agentic browser AI / Phase 04
+          MCP · Browser automation (pre-native)
         </div>
         <h1
           class="agentic-hero-h1 showcase-hero-title font-headline relative z-0 mb-8 max-w-full font-extrabold uppercase tracking-tighter max-md:tracking-tight md:mb-14"
         >
-          Digital<br />
-          <span class="text-transparent" style="-webkit-text-stroke: 1px #f8f6f3">Autonomy</span>
+          Agentic<br />
+          <span class="text-transparent" style="-webkit-text-stroke: 1px #f8f6f3">Browser AI</span>
         </h1>
         <div class="showcase-custom-grid relative z-10 items-end gap-12">
           <div class="relative z-10 col-span-12 md:col-span-5">
@@ -80,7 +82,7 @@
             <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#00f2ff]">The Friction</span>
             <h2 class="font-headline mt-4 mb-8 text-6xl font-bold">Static Browsing is Dead.</h2>
             <p class="mb-6 text-xl font-light leading-relaxed text-white/60">
-              This repo explores autonomous browsing patterns and AI-driven interaction loops—moving past passive tabs toward agents that plan, act, and verify.
+              An MCP that exposed real browser control to agents in the IDE—built before Cursor shipped native browser tools, when the gap between “model output” and “live page” still needed a bridge.
             </p>
             <ul class="space-y-4 text-sm font-bold tracking-wide">
               <li class="flex items-center gap-3">

@@ -1,34 +1,34 @@
 [
   {
+    "id": "cursor-ca-orchestrator",
+    "title": "Cursor Orchestrator",
+    "description": "The flagship build: coordinating Cursor agents, repeatable delivery paths, and a nervous system for shipping complex software without losing intent.",
+    "repoUrl": "https://github.com/Marcelo-Barella/Cursor-CA-Orchestrator",
+    "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
+    "imageAlt": "Cursor Orchestrator project preview"
+  },
+  {
+    "id": "cursor-sync",
+    "title": "Cursor Sync",
+    "description": "The most useful project so far—settings and preferences that follow you across machines, already helping thousands of developers stay in flow.",
+    "repoUrl": "https://github.com/Marcelo-Barella/cursor-sync",
+    "imageSrc": "/images/projects/cursor-sync.png",
+    "imageAlt": "Cursor Sync project preview"
+  },
+  {
     "id": "tangerina",
     "title": "Tangerina",
-    "description": "Design-minded product surface and workflow experiments.",
-    "repoUrl": "https://github.com/Marcelo-Barella",
+    "description": "A Discord bot built to bring fun and joy to servers—friendly automation that feels like part of the community, not another utilitarian bot.",
+    "repoUrl": "https://github.com/Marcelo-Barella/Tangerina",
     "imageSrc": "/images/projects/tangerina.svg",
     "imageAlt": "Tangerina project preview"
   },
   {
     "id": "agentic-browser-ai",
-    "title": "Agentic browser AI",
-    "description": "Exploring autonomous browsing patterns and AI-driven interaction loops.",
-    "repoUrl": "https://github.com/Marcelo-Barella",
+    "title": "Agentic Browser AI",
+    "description": "An MCP server that made AI-driven browser interaction possible in the IDE—shipped before Cursor shipped native browser tools, when agents still needed a bridge to the live web.",
+    "repoUrl": "https://github.com/Marcelo-Barella/Agentic-Browser-AI",
     "imageSrc": "/images/projects/agentic-browser-ai.png",
-    "imageAlt": "Agentic browser AI project preview"
-  },
-  {
-    "id": "ai-sdk-prototype",
-    "title": "AI SDK prototype",
-    "description": "Streaming and tool-calling experiments on top of the Vercel AI SDK.",
-    "repoUrl": "https://github.com/Marcelo-Barella",
-    "imageSrc": "/images/projects/ai-sdk-prototype.png",
-    "imageAlt": "AI SDK prototype preview"
-  },
-  {
-    "id": "cursor-ca-orchestrator",
-    "title": "Cursor CA orchestrator",
-    "description": "Workflows for coordinating Cursor agents and repeatable delivery paths.",
-    "repoUrl": "https://github.com/Marcelo-Barella",
-    "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
-    "imageAlt": "Cursor CA orchestrator preview"
+    "imageAlt": "Agentic Browser AI project preview"
   }
 ]

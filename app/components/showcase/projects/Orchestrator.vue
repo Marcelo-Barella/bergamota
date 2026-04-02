@@ -125,7 +125,7 @@
               <div class="showcase-rotate-neg-1 absolute left-0 top-0 z-10 h-4/5 w-4/5 border border-white/10 bg-[#0f1115] p-2">
                 <img
                   class="h-full w-full object-cover brightness-75 transition-all hover:brightness-100"
-                  src="/images/projects/ai-sdk-prototype.png"
+                  src="/images/projects/cursor-ca-orchestrator.png"
                   alt=""
                   loading="lazy"
                   decoding="async"

@@ -1,7 +1,7 @@
 <template>
   <ShowcaseProjectsTangerina v-if="project.id === 'tangerina'" :project="project" />
   <ShowcaseProjectsAgentic v-else-if="project.id === 'agentic-browser-ai'" :project="project" />
-  <ShowcaseProjectsAiSdk v-else-if="project.id === 'ai-sdk-prototype'" :project="project" />
+  <ShowcaseProjectsCursorSync v-else-if="project.id === 'cursor-sync'" :project="project" />
   <ShowcaseProjectsOrchestrator v-else-if="project.id === 'cursor-ca-orchestrator'" :project="project" />
 </template>
 
