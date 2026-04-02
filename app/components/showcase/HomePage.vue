@@ -240,9 +240,9 @@
               </NuxtLink>
             </div>
             <div class="showcase-rotate-pos-1 col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-0">
-              <span class="text-xs font-bold uppercase tracking-widest text-[#2563eb]">02 / Most useful</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#2563eb]">02 / Extension</span>
               <p class="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#1b1c1a]/50">
-                Thousands of developers
+                Gist-backed settings sync
               </p>
               <h3 class="font-headline mt-4 mb-6 text-6xl font-bold">Cursor Sync</h3>
               <p class="text-lg font-medium leading-relaxed">
