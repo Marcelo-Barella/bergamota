@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script>
+      (function () {
+        var key = 'bergamota_i18n_locale='
+        var c = document.cookie
+        var i = c.indexOf(key)
+        var code = ''
+        if (i !== -1) {
+          var start = i + key.length
+          var end = c.indexOf(';', start)
+          code = decodeURIComponent((end === -1 ? c.slice(start) : c.slice(start, end)).replace(/\+/g, ' '))
+        }
+        if (code === 'pt-BR') {
+          document.documentElement.lang = 'pt-BR'
+        } else {
+          document.documentElement.lang = 'en'
+        }
+        document.documentElement.dir = 'ltr'
+      })()
+    </script>
+    {{ HEAD }}
+  </head>
+  <body>
+    {{ APP }}
+  </body>
+</html>

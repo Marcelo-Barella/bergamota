@@ -1,11 +1,11 @@
 <template>
   <header class="site-nav" role="banner">
     <nav class="site-nav-inner" aria-label="Primary">
-      <NuxtLink to="/" class="site-nav-brand">Bergamota</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="site-nav-brand">Bergamota</NuxtLink>
       <ul class="site-nav-list">
         <li>
           <NuxtLink
-            to="/#hero"
+            :to="localePath({ path: '/', hash: '#hero' })"
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
           >
@@ -14,7 +14,7 @@
         </li>
         <li>
           <NuxtLink
-            to="/#projects"
+            :to="localePath({ path: '/', hash: '#projects' })"
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
           >
@@ -23,7 +23,7 @@
         </li>
         <li>
           <NuxtLink
-            to="/#contact"
+            :to="localePath({ path: '/', hash: '#contact' })"
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
           >
@@ -37,9 +37,10 @@
 
 <script setup lang="ts">
 const route = useRoute()
+const localePath = useLocalePath()
 
 function isHashCurrent(hash: string) {
-  if (route.path !== '/') {
+  if (route.path !== '/' && route.path !== '/pt-BR') {
     return false
   }
   const h = route.hash || '#hero'

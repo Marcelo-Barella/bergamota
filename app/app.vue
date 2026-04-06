@@ -1,6 +1,7 @@
 <template>
   <div class="app-root">
     <div class="theme-toggle">
+      <LocaleSwitcher class="locale-switcher-slot" />
       <UColorModeButton />
     </div>
     <div v-if="showNoise" class="noise-overlay" aria-hidden="true" />
@@ -34,7 +35,14 @@ body {
   top: 1rem;
   right: 1rem;
   z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   transition: opacity var(--motion-duration-fast, 0.18s) var(--motion-ease-standard, ease);
+}
+
+.locale-switcher-slot {
+  margin-right: 0.15rem;
 }
 
 .theme-toggle:focus-within {

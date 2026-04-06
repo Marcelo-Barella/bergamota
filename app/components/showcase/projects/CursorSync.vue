@@ -8,7 +8,7 @@
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#1b1c1a]/10 bg-[#f8f6f3]/95 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="font-headline text-xl font-extrabold uppercase italic tracking-tighter md:text-2xl"
       >
         M. Barella
@@ -16,10 +16,10 @@
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
       >
-        <NuxtLink class="flex items-center gap-2 transition-colors hover:text-[#d97706]" to="/">
+        <NuxtLink class="flex items-center gap-2 transition-colors hover:text-[#d97706]" :to="localePath('/')">
           <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
         </NuxtLink>
-        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/#projects">Projects</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#d97706]" :to="localePath({ path: '/', hash: '#projects' })">Projects</NuxtLink>
         <a
           class="bg-[#1b1c1a] px-4 py-2 text-[#f8f6f3] transition-all hover:bg-[#2563eb]"
           :href="project.repoUrl"
@@ -220,7 +220,7 @@
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-50 transition-opacity hover:opacity-100">
         <span>Cursor Sync</span>
-        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/">Home</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#d97706]" :to="localePath('/')">Home</NuxtLink>
       </div>
     </footer>
   </div>
@@ -230,6 +230,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const localePath = useLocalePath()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

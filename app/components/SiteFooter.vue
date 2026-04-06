@@ -3,12 +3,16 @@
     <div class="site-footer-inner">
       <p class="site-footer-note">Marcelo Barella — Bergamota</p>
       <nav class="site-footer-nav" aria-label="Footer">
-        <NuxtLink to="/" class="site-footer-link">Home</NuxtLink>
+        <NuxtLink :to="localePath('/')" class="site-footer-link">Home</NuxtLink>
         <a href="mailto:hello@bergamota.dev" class="site-footer-link">Email</a>
       </nav>
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const localePath = useLocalePath()
+</script>
 
 <style scoped>
 .site-footer {

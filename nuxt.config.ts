@@ -56,7 +56,15 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     // prefix_except_default: unprefixed URLs for defaultLocale (en); pt-BR under /pt-BR/... Aligns with Nuxt routing and localePath().
     strategy: 'prefix_except_default',
-    detectBrowserLanguage: false,
+    detectBrowserLanguage: {
+      cookieKey: 'bergamota_i18n_locale',
+      cookieSecure: process.env.NODE_ENV === 'production',
+      cookieCrossOrigin: false,
+      fallbackLocale: 'en',
+      redirectOn: 'root',
+      alwaysRedirect: false,
+      useCookie: true,
+    },
   },
   colorMode: {
     preference: 'dark'
