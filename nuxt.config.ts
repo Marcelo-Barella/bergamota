@@ -44,7 +44,20 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui'],
+  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
+  i18n: {
+    restructureDir: '.',
+    vueI18n: './i18n.config.ts',
+    langDir: 'locales',
+    locales: [
+      { code: 'en', language: 'en', name: 'English', file: 'en.json' },
+      { code: 'pt-BR', language: 'pt-BR', name: 'Português (Brasil)', file: 'pt-BR.json' },
+    ],
+    defaultLocale: 'en',
+    // prefix_except_default: unprefixed URLs for defaultLocale (en); pt-BR under /pt-BR/... Aligns with Nuxt routing and localePath().
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: false,
+  },
   colorMode: {
     preference: 'dark'
   },
