@@ -47,6 +47,7 @@ export function useShowcaseHomeGsap(root: Ref<HTMLElement | null>) {
         gsap.set(el.querySelectorAll('figure[data-gsap-photo-tile]'), { opacity: 1, x: 0, y: 0, scale: 1 })
         gsap.set(el.querySelectorAll('figure[data-gsap-photo-tile] img'), { scale: 1, clearProps: 'transform' })
         gsap.set(el.querySelectorAll('[data-gsap-project]'), { opacity: 1, x: 0, y: 0 })
+        gsap.set(el.querySelectorAll('[data-gsap-project-tween]'), { opacity: 1, x: 0, y: 0 })
         gsap.set(el.querySelectorAll('[data-gsap-project-media] img'), { yPercent: 0, clearProps: 'transform' })
         gsap.set(el.querySelectorAll('[data-gsap-how-step]'), { opacity: 1, y: 0 })
         gsap.set(el.querySelectorAll('[data-gsap-how-num]'), { color: '#d97706', scale: 1 })
@@ -187,12 +188,16 @@ export function useShowcaseHomeGsap(root: Ref<HTMLElement | null>) {
 
       el.querySelectorAll('[data-gsap-project]').forEach((row, i) => {
         const fromX = i % 2 === 0 ? -56 : 56
-        gsap.from(row, {
+        const tweenEls = row.querySelectorAll<HTMLElement>('[data-gsap-project-tween]')
+        const targets: HTMLElement | HTMLElement[] =
+          tweenEls.length > 0 ? Array.from(tweenEls) : (row as HTMLElement)
+        gsap.from(targets, {
           scrollTrigger: { scroller, trigger: row, start: 'top 88%', toggleActions: 'play none none none' },
           x: fromX,
           opacity: 0,
           duration: 0.95,
-          ease: 'power3.out'
+          ease: 'power3.out',
+          stagger: 0
         })
       })
 

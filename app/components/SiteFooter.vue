@@ -4,11 +4,15 @@
       <p class="site-footer-note">Marcelo Barella — Bergamota</p>
       <nav class="site-footer-nav" aria-label="Footer">
         <NuxtLink to="/" class="site-footer-link">Home</NuxtLink>
-        <a href="mailto:hello@bergamota.dev" class="site-footer-link">Email</a>
+        <a :href="mailtoHref" class="site-footer-link">Email</a>
       </nav>
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const { mailtoHref } = useContact()
+</script>
 
 <style scoped>
 .site-footer {

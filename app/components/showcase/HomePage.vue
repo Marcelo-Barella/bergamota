@@ -49,7 +49,7 @@
         <div class="showcase-custom-grid relative z-10 gap-8">
           <div class="relative z-10 col-span-12 md:col-span-5 md:ml-20">
             <p data-gsap-hero-lead class="mb-8 text-2xl font-bold leading-tight">
-              Building practical AI systems and creating agents that turn ideas into reliable workflows.
+              I ship AI tools and agent workflows that turn ambitious ideas into something people use every day.
             </p>
             <div class="flex gap-4">
               <a
@@ -94,10 +94,10 @@
       <div class="mx-auto min-w-0 max-w-7xl">
         <div
           data-gsap-section-head
-          class="mb-16 flex flex-col items-baseline justify-between gap-6 border-l-8 border-[#d97706] pl-6 md:flex-row md:gap-0 md:pl-8"
+          class="mb-16 grid grid-cols-1 gap-6 border-l-8 border-[#d97706] pl-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
         >
           <h2
-            class="font-headline max-w-full text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
+            class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
           >
             Cursor<br />Meetup
           </h2>
@@ -105,23 +105,25 @@
             Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.
           </p>
         </div>
-        <div
-          data-gsap-photo-grid
-          class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4 [perspective:1400px]"
-        >
+        <div data-gsap-photo-grid class="showcase-photo-mosaic">
           <figure
             v-for="photo in meetupPhotos"
             :key="photo.id"
             data-gsap-photo-tile
-            class="overflow-hidden bg-[#1b1c1a]/5 [transform-style:preserve-3d]"
+            class="showcase-photo-mosaic-tile group relative z-0 overflow-visible hover:z-20"
           >
-            <img
-              class="aspect-[4/3] h-full w-full origin-center object-cover"
-              :src="photo.src"
-              :alt="photo.alt"
-              loading="lazy"
-              decoding="async"
+            <div
+              class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
+              :class="photoThrowClass(photo.id, 0)"
             >
+              <img
+                class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
+                :src="photo.src"
+                :alt="photo.alt"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
           </figure>
         </div>
       </div>
@@ -131,10 +133,10 @@
       <div class="mx-auto min-w-0 max-w-7xl">
         <div
           data-gsap-section-head
-          class="mb-16 flex flex-col items-baseline justify-between gap-6 border-l-8 border-[#1b1c1a] pl-6 md:flex-row md:gap-0 md:pl-8"
+          class="mb-16 grid grid-cols-1 gap-6 border-l-8 border-[#1b1c1a] pl-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
         >
           <h2
-            class="font-headline max-w-full text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
+            class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
           >
             Cafe Cursor<br />Florianópolis
           </h2>
@@ -142,23 +144,25 @@
             Selected frames where Bergamota appears at Cafe Cursor Florianópolis.
           </p>
         </div>
-        <div
-          data-gsap-photo-grid
-          class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4 [perspective:1400px]"
-        >
+        <div data-gsap-photo-grid class="showcase-photo-mosaic">
           <figure
             v-for="photo in cafeCursorFlorianopolisPhotos"
             :key="photo.id"
             data-gsap-photo-tile
-            class="overflow-hidden bg-[#1b1c1a]/5 [transform-style:preserve-3d]"
+            class="showcase-photo-mosaic-tile group relative z-0 overflow-visible hover:z-20"
           >
-            <img
-              class="aspect-[4/3] h-full w-full origin-center object-cover"
-              :src="photo.src"
-              :alt="photo.alt"
-              loading="lazy"
-              decoding="async"
+            <div
+              class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
+              :class="photoThrowClass(photo.id, 5)"
             >
+              <img
+                class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
+                :src="photo.src"
+                :alt="photo.alt"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
           </figure>
         </div>
       </div>
@@ -168,15 +172,15 @@
       <div class="mx-auto min-w-0 max-w-7xl">
         <div
           data-gsap-section-head
-          class="mb-24 flex flex-col items-baseline justify-between gap-6 border-l-8 border-[#d97706] pl-6 md:mb-32 md:flex-row md:gap-0 md:pl-8"
+          class="mb-24 grid grid-cols-1 gap-6 border-l-8 border-[#d97706] pl-6 md:mb-32 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
         >
           <h2
-            class="font-headline max-w-full text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
+            class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
           >
             Where My<br />Brain Goes
           </h2>
           <p class="font-editorial mt-8 max-w-sm text-3xl italic md:mt-0">
-            The projects that kept me awake and pushed the needle forward.
+            What each one is for, what it does for you, and how it earns a place in a real workflow.
           </p>
         </div>
         <div class="space-y-32 md:space-y-40">
@@ -184,38 +188,59 @@
             data-gsap-project
             class="relative -mx-4 overflow-hidden bg-[#1b1c1a] px-4 py-20 text-[#f8f6f3] sm:-mx-6 sm:px-6 md:-mx-10 md:px-10 md:py-28"
           >
-            <div class="showcase-custom-grid mx-auto min-w-0 max-w-7xl items-end gap-y-12">
-              <div class="col-span-12 md:col-span-6">
+            <div class="relative mx-auto min-w-0 max-w-7xl">
+              <div data-gsap-project-tween>
                 <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#d97706]">01 / Flagship</span>
-                <h3
-                  class="font-headline mt-4 mb-8 text-[clamp(3rem,12vw+0.5rem,7.5rem)] font-black uppercase leading-[0.88] tracking-tighter"
-                >
-                  Cursor<br>Orchestrator
-                </h3>
-                <p class="max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
-                  {{ projectCopy['cursor-ca-orchestrator'] }}
-                </p>
-                <NuxtLink
-                  :to="projectPath('cursor-ca-orchestrator')"
-                  class="mt-8 inline-block text-sm font-bold uppercase tracking-widest text-[#d97706] underline decoration-2 underline-offset-4"
-                >
-                  Open case study
-                </NuxtLink>
               </div>
-              <div class="col-span-12 md:col-span-5 md:col-start-8">
-                <NuxtLink
-                  :to="projectPath('cursor-ca-orchestrator')"
-                  data-gsap-project-media
-                  class="group relative block overflow-hidden border-2 border-[#d97706]/40"
+              <div class="showcase-flagship-title-block relative mt-4">
+                <div data-gsap-project-tween class="showcase-custom-grid relative z-0 w-full items-end gap-y-12">
+                  <div class="relative z-10 col-span-12 md:col-span-6">
+                    <div
+                      aria-hidden="true"
+                      class="showcase-flagship-project-title-spacer mb-8"
+                    />
+                    <p class="max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
+                      {{ projectCopy['cursor-ca-orchestrator'] }}
+                    </p>
+                    <NuxtLink
+                      :to="projectPath('cursor-ca-orchestrator')"
+                      class="mt-8 inline-block text-sm font-bold uppercase tracking-widest text-[#d97706] underline decoration-2 underline-offset-4"
+                    >
+                      See the story
+                    </NuxtLink>
+                  </div>
+                  <div class="relative z-0 col-span-12 md:col-span-5 md:col-start-8">
+                    <NuxtLink
+                      :to="projectPath('cursor-ca-orchestrator')"
+                      data-gsap-project-media
+                      class="group relative z-0 block overflow-hidden border-2 border-[#d97706]/40"
+                    >
+                      <img
+                        class="aspect-[4/5] w-full object-cover grayscale transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0"
+                        src="/images/projects/cursor-ca-orchestrator.png"
+                        alt="Cursor Orchestrator project preview"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    </NuxtLink>
+                  </div>
+                </div>
+                <div
+                  data-gsap-project-tween
+                  class="pointer-events-none absolute left-0 top-0 z-30 w-full min-w-0 max-w-full"
                 >
-                  <img
-                    class="aspect-[4/5] w-full object-cover grayscale transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0"
-                    src="/images/projects/cursor-ca-orchestrator.png"
-                    alt="Cursor Orchestrator project preview"
-                    loading="lazy"
-                    decoding="async"
+                  <h3
+                    class="showcase-flagship-project-title font-headline absolute left-0 top-0 z-30 w-full min-w-0 max-w-full break-words font-black uppercase tracking-tighter text-white showcase-flagship-title-clip-left"
                   >
-                </NuxtLink>
+                    Cursor<br>Orchestrator
+                  </h3>
+                  <span
+                    aria-hidden="true"
+                    class="showcase-flagship-project-title font-headline absolute left-0 top-0 z-30 hidden w-full min-w-0 max-w-full break-words font-black uppercase tracking-tighter text-[#1b1c1a] md:block showcase-flagship-title-clip-right"
+                  >
+                    Cursor<br>Orchestrator
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -242,7 +267,7 @@
             <div class="showcase-rotate-pos-1 col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-0">
               <span class="text-xs font-bold uppercase tracking-widest text-[#2563eb]">02 / Extension</span>
               <p class="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#1b1c1a]/50">
-                Gist-backed settings sync
+                Portable workspace
               </p>
               <h3 class="font-headline mt-4 mb-6 text-6xl font-bold">Cursor Sync</h3>
               <p class="text-lg font-medium leading-relaxed">
@@ -252,7 +277,7 @@
                 :to="projectPath('cursor-sync')"
                 class="mt-6 inline-block text-sm font-bold uppercase tracking-widest text-[#d97706] underline decoration-2 underline-offset-4"
               >
-                Open case study
+                See the story
               </NuxtLink>
             </div>
           </div>
@@ -268,7 +293,7 @@
                 :to="projectPath('tangerina')"
                 class="mt-6 inline-block text-sm font-bold uppercase tracking-widest text-[#d97706] underline decoration-2 underline-offset-4"
               >
-                Open case study
+                See the story
               </NuxtLink>
             </div>
             <div class="group relative order-1 col-span-12 md:order-2 md:col-span-7 md:col-start-6">
@@ -292,15 +317,18 @@
           </div>
 
           <div data-gsap-project class="showcase-custom-grid items-center">
-            <div class="relative col-span-12 md:col-span-7">
+            <div class="group relative col-span-12 md:col-span-7">
               <div class="absolute -top-10 -left-10 -z-10 h-40 w-40 border-4 border-[#1b1c1a]" />
+              <div
+                class="absolute inset-0 translate-x-4 -translate-y-4 bg-[#d97706]/10 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"
+              />
               <NuxtLink
                 :to="projectPath('agentic-browser-ai')"
                 data-gsap-project-media
-                class="block overflow-hidden"
+                class="relative block overflow-hidden"
               >
                 <img
-                  class="aspect-video w-full object-cover"
+                  class="aspect-video w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
                   src="/images/projects/agentic-browser-ai.png"
                   alt="Agentic Browser AI project preview"
                   loading="lazy"
@@ -309,7 +337,7 @@
               </NuxtLink>
             </div>
             <div class="showcase-skew-1 col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-0">
-              <span class="text-xs font-bold uppercase tracking-widest text-[#d97706]">04 / MCP</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#d97706]">04 / Live web</span>
               <h3 class="font-headline mt-4 mb-6 text-5xl font-bold md:text-6xl">Agentic Browser AI</h3>
               <p class="text-lg font-medium leading-relaxed">
                 {{ projectCopy['agentic-browser-ai'] }}
@@ -318,7 +346,7 @@
                 :to="projectPath('agentic-browser-ai')"
                 class="mt-6 inline-block text-sm font-bold uppercase tracking-widest text-[#d97706] underline decoration-2 underline-offset-4"
               >
-                Open case study
+                See the story
               </NuxtLink>
             </div>
           </div>
@@ -373,14 +401,14 @@
         </h2>
         <p class="mx-auto mb-16 max-w-2xl text-2xl font-medium">
           Reach out at
-          <a class="text-[#d97706] underline decoration-2 underline-offset-4" href="mailto:hello@bergamota.dev">hello@bergamota.dev</a>
+          <a class="text-[#d97706] underline decoration-2 underline-offset-4" :href="mailtoHref">{{ email }}</a>
           for projects that want to stand out, not fit in.
         </p>
         <div class="flex flex-col items-center justify-center gap-10 md:flex-row">
           <a
             data-gsap-magnetic
             class="group relative inline-block overflow-hidden bg-[#1b1c1a] px-12 py-6 text-xl font-bold uppercase tracking-widest text-[#f8f6f3]"
-            href="mailto:hello@bergamota.dev"
+            :href="mailtoHref"
           >
             <span class="relative z-10">Let's Talk Shop</span>
             <div
@@ -388,9 +416,24 @@
             />
           </a>
           <div class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-            <a class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]" href="#">GitHub</a>
-            <a class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]" href="#">LinkedIn</a>
-            <a class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]" href="#">Twitter</a>
+            <a
+              class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]"
+              :href="github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >GitHub</a>
+            <a
+              class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]"
+              :href="linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+            <a
+              class="underline decoration-2 underline-offset-4 transition-colors hover:text-[#d97706]"
+              :href="twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Twitter</a>
           </div>
         </div>
       </div>
@@ -418,6 +461,8 @@
 <script setup lang="ts">
 import projectsData from '~/data/projects-data.json'
 
+const { email, mailtoHref, github, linkedin, twitter } = useContact()
+
 const showcaseRoot = ref<HTMLElement | null>(null)
 useShowcaseHomeGsap(showcaseRoot)
 
@@ -427,6 +472,12 @@ const projectCopy = Object.fromEntries(
 
 function projectPath(id: string) {
   return `/projects/${id}`
+}
+
+const photoThrowCount = 12
+
+function photoThrowClass(id: number, offset: number) {
+  return `showcase-photo-throw-${(id - 1 + offset) % photoThrowCount}`
 }
 
 const meetupPhotos = [
