@@ -44,7 +44,37 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui'],
+  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
+  i18n: {
+    restructureDir: 'i18n',
+    langDir: 'locales',
+    defaultLocale: 'en',
+    fallbackLocale: 'en',
+    strategy: 'prefix_except_default',
+    locales: [
+      {
+        code: 'en',
+        language: 'en-US',
+        name: 'English',
+        file: 'en.json'
+      },
+      {
+        code: 'pt-BR',
+        language: 'pt-BR',
+        name: 'Portuguese (Brazil)',
+        file: 'pt-BR.json'
+      }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'bergamota_locale',
+      redirectOn: 'root',
+      cookieSecure: process.env.NODE_ENV === 'production'
+    },
+    bundle: {
+      runtimeOnly: true
+    }
+  },
   colorMode: {
     preference: 'dark'
   },
