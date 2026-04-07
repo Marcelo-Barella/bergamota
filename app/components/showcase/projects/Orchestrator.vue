@@ -42,7 +42,7 @@
             data-gsap-project-hero-el
             class="border border-[#4c0519] bg-[#4c0519]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-400"
           >
-            CLI · cursor-orch
+            Multi-repo agent runs
           </span>
           <div class="h-px flex-grow bg-white/10" />
         </div>
@@ -62,10 +62,10 @@
               data-gsap-project-hero-el
               class="font-editorial mt-12 mb-6 max-w-2xl border-l-4 border-[#312e81] pl-8 text-2xl font-light italic leading-snug md:text-3xl"
             >
-              Run one prompt across several GitHub repositories: the CLI provisions a bootstrap repo, opens a per-run branch as a shared bulletin board, and launches an orchestrator Cloud Agent that plans tasks and dispatches workers—exactly as described in <code class="text-white/60">README.md</code>.
+              Describe the outcome once. The tool prepares a shared space on GitHub, opens a dedicated branch for the run, and coordinates an orchestrator with worker agents across the repos you name—so many hands stay on one plan instead of inventing twenty versions of it.
             </p>
             <p data-gsap-project-hero-el class="max-w-xl text-sm leading-relaxed text-white/50">
-              Stack from <code class="text-white/70">package.json</code>: TypeScript, oclif CLI, Vitest, esbuild-bundled runtime for the cloud loader.
+              Shipped as a fast local CLI with a config-first workflow: interactive sessions, YAML runs, and the usual guardrails for tokens and environments.
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@
             Why it exists
           </h2>
           <p class="mt-4 max-w-2xl text-lg text-white/60">
-            Cross-repo work with agents is easy to start and hard to keep coherent. The README frames the problem as coordinating multiple Cursor Cloud Agents with explicit task graphs and GitHub as the source of shared run state.
+            Spinning up agents on different repositories is thrilling for five minutes and painful by day three without a single place that holds intent, assignments, and progress. This project treats GitHub as that shared surface so everyone reads the same run, not their own Slack thread.
           </p>
         </div>
         <div class="grid grid-cols-12 gap-8">
@@ -106,14 +106,14 @@
             class="relative col-span-12 self-start border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-10 md:p-12 lg:col-span-5"
           >
             <div class="absolute -left-4 -top-4 h-12 w-12 border-l-2 border-t-2 border-[#312e81]" />
-            <h3 class="font-headline mb-6 text-2xl font-bold uppercase text-white">What you ship</h3>
+            <h3 class="font-headline mb-6 text-2xl font-bold uppercase text-white">What you get</h3>
             <p class="mb-6 text-lg leading-relaxed">
-              A local command-line tool that can run interactively (REPL with slash commands), from YAML (<code class="text-white/80">cursor-orch run --config</code>), and exposes <code class="text-white/80">status</code>, <code class="text-white/80">logs</code>, and <code class="text-white/80">stop</code> for live runs—documented in the quick-start table in <code class="text-white/80">README.md</code>.
+              A CLI you can drive from an interactive session or from a checked-in config file, plus live commands to watch status, tail logs, and stop a run when the plan changes mid-flight.
             </p>
             <ul class="space-y-3 text-sm text-white/55">
-              <li>Interactive session file: README documents persistence under <code class="text-white/70">~/.cursor-orch/session.yaml</code>.</li>
-              <li>Config doctor: <code class="text-white/70">cursor-orch config doctor --strict</code> for token and precedence checks.</li>
-              <li>Shell autocomplete via oclif plugin (see README &quot;Shell Autocomplete&quot;).</li>
+              <li>Sessions remember where you left off so iterative runs feel continuous, not a fresh guessing game each time.</li>
+              <li>A config doctor tells you early if tokens or precedence are wrong—before you burn an hour on a silent failure.</li>
+              <li>Shell autocomplete so frequent operators stay in flow instead of re-reading help text.</li>
             </ul>
           </div>
           <div class="col-span-12 pt-4 lg:col-span-6 lg:col-start-7">
@@ -122,14 +122,14 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-[#064e3b]">Architecture</span>
                 <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Three moving parts</h3>
                 <p class="leading-relaxed text-[#94a3b8]/80">
-                  README diagrams local CLI, user bootstrap repo (rules + pinned runtime), and cloud agents: orchestrator on the bootstrap repo, workers on target repos. Per-run branch <code class="text-white/70">run/&lt;run_id&gt;</code> holds <code class="text-white/70">config.yaml</code>, <code class="text-white/70">state.json</code>, worker JSON outputs, and related artifacts—with one writer per file to avoid races.
+                  Your machine runs the CLI; a bootstrap repository carries the rules and runtime your cloud agents expect; workers land on each target repo while the orchestrator keeps the graph honest. Every run gets its own branch that holds configuration, state, and outputs in small files so collaboration stays orderly instead of a free-for-all.
                 </p>
               </div>
               <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">Limits (from README)</span>
-                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Know the guardrails</h3>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">Guardrails</span>
+                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Honest boundaries</h3>
                 <p class="leading-relaxed text-[#94a3b8]/80">
-                  Up to 20 tasks per run, 30s polling orchestration loop, 512KB cap on worker output per task, combined runtime under 1MB. Workers do not talk to each other; the orchestrator coordinates via the run branch.
+                  Task counts, polling cadence, and per-task output caps keep cloud runs predictable. Workers stay focused on their repo; the orchestrator is the only coordinator, which avoids whisper networks and duplicate writes.
                 </p>
               </div>
             </div>
@@ -173,10 +173,10 @@
                 </h2>
               </div>
               <p class="font-editorial mb-8 text-xl italic leading-relaxed text-white/70">
-                In single-prompt mode the planner agent breaks your goal into tasks and assigns each to a repository alias from your config—so you describe the outcome once instead of hand-writing every worker prompt (README &quot;Single-Prompt Mode&quot;).
+                In single-prompt mode you state the north star; the planner turns it into tasks and maps each task to a repo alias from your config—so you are not copy-pasting ten near-identical worker briefs.
               </p>
               <p class="text-sm leading-relaxed text-[#94a3b8]/70">
-                Publishing: README points to <code class="text-white/60">.github/workflows/publish.yml</code> and npm automation via <code class="text-white/60">NODE_AUTH_TOKEN</code> when the <code class="text-white/60">package.json</code> version bumps on <code class="text-white/60">main</code>.
+                Releases are automated from main when the version moves—ideal for teams that want the CLI to track the product without a manual publish ritual.
               </p>
             </div>
           </div>
@@ -189,23 +189,23 @@
           class="mb-10"
         >
           <h2 class="font-headline text-3xl font-black uppercase text-white md:text-4xl">
-            Trust the repo
+            Go deeper on GitHub
           </h2>
           <p class="mt-4 max-w-2xl text-white/55">
-            Deeper behavior—error code format, recovery steps, completion-mode notes—lives in <code class="text-white/70">README.md</code>, <code class="text-white/70">CHANGELOG.md</code>, and supporting markdown in the repository root.
+            Error semantics, recovery paths, and completion modes are documented alongside the changelog—this page sells the idea; the repository is where operators live.
           </p>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-1 gap-0 border border-white/10 md:grid-cols-2">
           <div class="group border-b border-white/10 p-10 transition-colors hover:bg-[#4c0519]/10 md:border-b-0 md:border-r">
             <div class="mb-4 text-3xl font-black text-[#4c0519]">01</div>
             <h4 class="mb-2 font-bold uppercase text-white">Evidence</h4>
-            <p class="text-sm text-[#94a3b8]/60">Commands, env vars, and architecture ASCII art are maintained in the GitHub README; this page only summarizes what is stated there.</p>
+            <p class="text-sm text-[#94a3b8]/60">Every command, environment variable, and architecture diagram ships in the open so you can verify before you bet a production run on it.</p>
           </div>
           <div class="group bg-white/5 p-10 transition-colors hover:bg-[#312e81]/20">
             <div class="mb-4 text-3xl font-black text-[#312e81]">02</div>
             <h4 class="mb-2 font-bold uppercase text-white">Next step</h4>
             <p class="text-sm text-[#94a3b8]/60">
-              Clone the repo, copy <code class="text-white/50">.env.example</code>, run <code class="text-white/50">scripts/bootstrap.sh</code> as documented, then <code class="text-white/50">cursor-orch config doctor --strict</code> before your first run.
+              Clone, copy the example environment, run the bootstrap script from the docs, then let the config doctor validate tokens before your first real orchestration.
             </p>
           </div>
         </div>
@@ -221,7 +221,7 @@
           Open the<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">source</span>
         </h2>
         <p class="mx-auto mb-16 max-w-xl text-xl text-[#94a3b8]/80">
-          Install flow, credentials, and operational limits are defined in the repository—not on this marketing surface.
+          Credentials, install order, and the exact limits of a run are all spelled out beside the code—no hidden behavior behind a landing page.
         </p>
         <div class="flex flex-col items-center justify-center gap-12 md:flex-row">
           <a
@@ -238,7 +238,7 @@
             <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" to="/">Portfolio</NuxtLink>
             <a
               class="transition-colors hover:text-white"
-              href="mailto:hello@bergamota.dev"
+              :href="mailtoHref"
             >Email</a>
           </div>
         </div>
@@ -251,7 +251,7 @@
       </div>
       <div class="flex gap-12 text-[9px] font-bold uppercase tracking-[0.3em] opacity-40 transition-opacity hover:opacity-100">
         <span>Bergamota.dev</span>
-        <span>cursor-orch CLI</span>
+        <span>Cursor Orchestrator</span>
       </div>
     </footer>
   </div>
@@ -261,6 +261,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

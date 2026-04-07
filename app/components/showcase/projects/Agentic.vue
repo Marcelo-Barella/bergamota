@@ -38,7 +38,7 @@
           class="showcase-skew-1-soft mb-6 inline-flex items-center gap-3 border border-[#3b82f6]/30 bg-[#3b82f6]/20 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00f2ff]"
         >
           <span class="material-symbols-outlined text-sm">hub</span>
-          MCP server · Node 18+
+          Browser bridge for AI tools
         </div>
         <h1
           class="agentic-hero-h1 showcase-hero-title font-headline relative z-0 mb-8 max-w-full font-extrabold uppercase tracking-tighter max-md:tracking-tight md:mb-14"
@@ -56,11 +56,11 @@
               {{ project.description }}
             </p>
             <p data-gsap-project-hero-el class="text-sm leading-relaxed text-white/50">
-              README titles the project &quot;InDOM&quot; and describes MCP with SSE, browser automation via Puppeteer, and optional hybrid/dev entry scripts. <code class="text-white/70">package.json</code> still carries the <code class="text-white/70">indom</code> name; treat marketing name vs package name as coexisting in the repo.
+              The project started life in docs as InDOM; the package name on npm may still reflect that lineage. What matters for you: a standards-shaped bridge from the IDE to a real browser session.
             </p>
             <div class="mt-6 flex gap-6">
               <div class="mt-2 h-px w-24 bg-[#00f2ff]" />
-              <span class="text-xs font-bold uppercase tracking-[0.35em] text-[#00f2ff]">@modelcontextprotocol/sdk · puppeteer</span>
+              <span class="text-xs font-bold uppercase tracking-[0.35em] text-[#00f2ff]">MCP · Live browser</span>
             </div>
           </div>
           <div data-gsap-project-hero-visual class="group relative z-10 col-span-12 mt-12 min-w-0 max-w-full md:col-span-7 md:mt-0">
@@ -90,11 +90,11 @@
             <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#00f2ff]">Friction</span>
             <h2 class="font-headline mt-4 mb-6 text-4xl font-bold md:text-5xl">IDE agents need the live page</h2>
             <p class="mb-6 text-lg font-light leading-relaxed text-white/60">
-              Before native browser tooling was ubiquitous in every editor workflow, bridging MCP to a real browser session was the practical way to close the gap between model output and DOM state. This repository implements that bridge with the MCP TypeScript SDK, Express, and Puppeteer—see dependency list in <code class="text-white/70">package.json</code>.
+              Models read text; users live in rendered pages. This server closes the loop by exposing browser sessions to tools your assistant already knows how to call—so “check the dashboard” means open the tab, look, and act—not hallucinate the DOM.
             </p>
             <ul class="space-y-3 text-sm text-white/45">
-              <li>Scripts: <code class="text-white/60">npm run hybrid</code>, <code class="text-white/60">dev</code>, <code class="text-white/60">sse</code>, <code class="text-white/60">mcp</code> (from package.json).</li>
-              <li>Entrypoints include <code class="text-white/60">src/echo-mcp-server.ts</code>, <code class="text-white/60">src/mcp-server-entry.ts</code>, <code class="text-white/60">src/sse-server.ts</code>.</li>
+              <li>Run it as a classic MCP process, a dev-friendly hybrid server, or an SSE-oriented stream—pick the mode that matches how your editor connects.</li>
+              <li>Multiple entry paths exist in the repo so you can wire Cursor or other MCP clients without reinventing the transport layer.</li>
             </ul>
           </div>
           <div class="col-span-12 min-w-0 max-w-full md:col-span-8 md:col-start-5 md:-mt-24">
@@ -123,23 +123,23 @@
             <h2
               class="font-headline max-w-full text-[clamp(2rem,6vw+0.5rem,4.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
             >
-              What the repo actually wires
+              What you can ask it to do
             </h2>
             <p class="mt-6 text-lg text-white/55">
-              README lists tool names such as <code class="text-white/70">browser.createSession</code>, <code class="text-white/70">browser.navigate</code>, <code class="text-white/70">browser.screenshot</code>, <code class="text-white/70">browser.click</code>, <code class="text-white/70">browser.fill</code>, and console inspection helpers. Verify behavior against <code class="text-white/70">src/mcp-server.ts</code> and <code class="text-white/70">src/modules/</code>—do not assume every README example is exercised without checking the code.
+              Open sessions, move between URLs, capture what is on screen, click, type into fields, and inspect console output—tooling shaped like the verbs you already use when you debug in a browser. Treat the repository as the contract for exact names and behavior.
             </p>
           </div>
           <div data-gsap-project-stagger class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div class="border border-white/10 bg-white/5 p-10">
-              <h3 class="mb-4 text-xl font-bold uppercase text-[#00f2ff]">Configuration</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase text-[#00f2ff]">Wire-up</h3>
               <p class="text-sm leading-relaxed text-white/55">
-                Sample Cursor MCP config appears in README using <code class="text-white/60">node</code> and <code class="text-white/60">dist/echo-mcp-server.js</code>. The committed <code class="text-white/60">mcp.json</code> points at <code class="text-white/60">http://localhost:3100/sse</code> for a streamable HTTP server—align your local ports with whichever script you run.
+                README shows how to point Cursor at the built server or at an SSE URL on localhost. Match the port in your config to whichever mode you start—streamable HTTP versus a local process—so the handshake succeeds on the first try.
               </p>
             </div>
             <div class="border border-white/10 bg-white/5 p-10">
-              <h3 class="mb-4 text-xl font-bold uppercase text-white">Testing stack</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase text-white">Quality &amp; ops</h3>
               <p class="text-sm leading-relaxed text-white/55">
-                <code class="text-white/60">package.json</code> defines Jest targets (<code class="text-white/60">npm test</code>, <code class="text-white/60">test:coverage</code>, <code class="text-white/60">test:ci</code>). README also references PM2 via <code class="text-white/60">ecosystem.json</code> and <code class="text-white/60">npm run ecosystem:start</code>.
+                Automated tests and CI targets ship in the repo; optional process management helpers exist if you want the server to stay up like any other long-running service.
               </p>
             </div>
           </div>
@@ -150,39 +150,39 @@
         <div class="mx-auto min-w-0 max-w-7xl px-4 md:px-10">
           <div class="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
             <div data-gsap-section-head>
-              <span class="text-xs font-bold uppercase tracking-widest text-[#3b82f6]">Honest scope</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#3b82f6]">Reality check</span>
               <h2
                 class="font-headline mt-4 max-w-full text-[clamp(2.25rem,6vw+0.5rem,5rem)] font-black uppercase leading-[0.9]"
               >
-                README vs code
+                Promise vs product
               </h2>
               <p class="mt-6 max-w-xl text-lg text-black/60">
-                The README includes aspirational metrics and a broad tool catalog. This showcase page sticks to what is directly evidenced: dependencies (Puppeteer, Sharp, Express, Zod, MCP SDK), scripts, and the <code class="text-sm">src/core</code> + <code class="text-sm">src/modules</code> layout described in the README tree. Performance numbers in README are not repeated here as guarantees.
+                Docs can outpace code. This site summarizes the product story; the repo shows the exact dependencies, scripts, and module layout you will run. Treat benchmark-style claims in README as directional unless you reproduce them yourself.
               </p>
             </div>
             <div class="max-w-md text-right">
               <p class="font-editorial text-2xl italic text-black/70">
-                README &quot;future of InDOM&quot; section notes a planned rewrite away from Puppeteer—check the repo for current status.
+                Roadmap notes in the repository discuss evolving the automation engine—read there for what is live today versus what is next.
               </p>
             </div>
           </div>
           <div data-gsap-project-stagger class="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div class="border-2 border-[#0a0b10] bg-[#f8f6f3] p-10">
-              <h4 class="mb-3 text-lg font-bold uppercase">MCP + SSE</h4>
+              <h4 class="mb-3 text-lg font-bold uppercase">MCP + streaming</h4>
               <p class="text-sm leading-relaxed text-black/50">
-                Hybrid and SSE scripts are first-class in <code class="text-sm">package.json</code>; SSE-oriented env vars are documented in README.
+                First-class scripts for hybrid and streamable setups, with environment knobs documented beside the code for SSE-style deployments.
               </p>
             </div>
             <div class="border-2 border-[#007abd] bg-[#007abd] p-10 text-white">
-              <h4 class="mb-3 text-lg font-bold uppercase">Browser automation</h4>
+              <h4 class="mb-3 text-lg font-bold uppercase">Real browser</h4>
               <p class="text-sm leading-relaxed text-white/85">
-                Puppeteer drives sessions; Sharp appears for image work per dependencies—see <code class="text-white/90">package.json</code>.
+                Automation drives an actual Chromium session; image helpers sit alongside for screenshot and asset workflows—see dependencies in the repo for the exact stack.
               </p>
             </div>
             <div class="border-2 border-[#0a0b10] bg-[#f8f6f3] p-10">
-              <h4 class="mb-3 text-lg font-bold uppercase">License field</h4>
+              <h4 class="mb-3 text-lg font-bold uppercase">Licensing</h4>
               <p class="text-sm leading-relaxed text-black/50">
-                <code class="text-sm">package.json</code> sets <code class="text-sm">&quot;license&quot;: &quot;MIT&quot;</code>; no <code class="text-sm">LICENSE</code> file appeared at repo root when checked.
+                Intended as open usage; confirm the license file and metadata on GitHub before you embed it in a commercial workflow.
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@
               Next step
             </h3>
             <p class="mb-10 max-w-md text-white/50">
-              Clone, <code class="text-white/70">npm install</code>, <code class="text-white/70">npm run build</code>, then wire Cursor using the pattern in README or your own <code class="text-white/70">mcp.json</code>—matching ports to <code class="text-white/70">hybrid</code> or <code class="text-white/70">sse</code>.
+              Clone, install dependencies, build once, then add the server to your MCP client using the sample config—keeping the URL and port aligned with the mode you started.
             </p>
             <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
               <a
@@ -225,8 +225,8 @@
         Bergamota × Cursor Ambassador
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em]">
-        <span>MCP + Puppeteer</span>
-        <span>TypeScript</span>
+        <span>Live web</span>
+        <span>Open source</span>
       </div>
     </footer>
   </div>

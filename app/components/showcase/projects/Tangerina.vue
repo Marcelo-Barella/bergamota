@@ -30,7 +30,7 @@
           data-gsap-project-hero-el
           class="showcase-rotate-neg-2 mb-8 inline-block bg-[#9ef01a] px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] text-black"
         >
-          Discord bot · Python 3.8+
+          Discord · AI companion
         </div>
         <h1
           class="showcase-hero-title-tight font-headline relative z-0 mb-8 font-extrabold uppercase tracking-tighter md:mb-12"
@@ -47,9 +47,9 @@
               {{ project.description }}
             </p>
             <div data-gsap-project-hero-el class="flex flex-wrap gap-3 text-[10px] font-bold uppercase tracking-widest">
-              <span class="border border-[#0a0a0a] px-3 py-1">app.py</span>
-              <span class="border border-[#0a0a0a] px-3 py-1">flask_routes.py</span>
-              <span class="border border-[#0a0a0a] px-3 py-1">features/</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">Voice &amp; music</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">Conversation</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">Server actions</span>
             </div>
           </div>
         </div>
@@ -83,33 +83,33 @@
           class="mb-14 border-l-8 border-[#9ef01a] pl-6 md:pl-8"
         >
           <h2 class="font-headline text-4xl font-black uppercase leading-none md:text-5xl">
-            Servers needed more than commands
+            One member, the whole vibe
           </h2>
           <p class="mt-6 max-w-2xl text-lg opacity-80">
-            README positions Tangerina as an intelligent Discord bot with multiple AI backends, function calling for music and voice, and optional long-term memory (ChromaDB) behind environment flags—not a generic command-only bot.
+            Communities do not want a wall of prefixes—they want someone in the channel who can answer, queue a track, join voice, and use sensible tools when the moment calls for it. Tangerina is built for that kind of presence, not for ticking boxes on a feature list.
           </p>
         </div>
         <div class="showcase-custom-grid gap-y-16">
           <div class="showcase-rotate-neg-2 col-span-12 bg-[#0a0a0a] p-10 text-[#fffbf2] shadow-2xl md:col-span-6 md:p-16">
             <span class="mb-6 block text-xs font-bold uppercase tracking-widest text-[#9ef01a]">Challenge</span>
             <h3 class="font-headline mb-6 text-3xl font-black uppercase md:text-4xl">
-              One surface, many capabilities
+              Everything in one conversation
             </h3>
             <p class="text-lg leading-relaxed opacity-85">
-              Users expect music, voice, and conversational help in one member. The repository maps that to a chatbot layer under <code class="text-white/80">chatbot/</code> (Zhipu, OpenAI, Gemini integrations per README) and feature modules under <code class="text-white/80">features/music</code>, <code class="text-white/80">features/tts</code>, and <code class="text-white/80">features/voice</code>.
+              People ask for songs, help, and voice interaction in the same thread. The bot is structured so those behaviors live together: models you can swap, music and TTS paths that feel native to Discord, and voice flows that match how servers actually hang out—not a separate app for each job.
             </p>
           </div>
           <div class="col-span-12 flex flex-col gap-10 md:col-span-5 md:col-start-8">
             <div class="border-t-2 border-[#ff5c00] pt-6">
-              <h3 class="mb-4 text-xl font-bold uppercase">HTTP control plane</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase">Beyond the chat box</h3>
               <p class="opacity-75">
-                README documents REST endpoints on port 5000—<code class="text-sm">GET /health</code>, voice channel helpers, music queue operations, TTS routes, and <code class="text-sm">POST /chatbot/message</code>—implemented alongside the Discord client (see <code class="text-sm">flask_routes.py</code> in the repo layout).
+                A small HTTP layer sits next to Discord so you can trigger health checks, voice and queue actions, TTS, and chat-style messages from automations or your own integrations—when you want the bot to speak to the world outside a single channel.
               </p>
             </div>
             <div class="border-t-2 border-[#9ef01a] pt-6">
-              <h3 class="mb-4 text-xl font-bold uppercase">Tooling the model sees</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase">Actions, not monologues</h3>
               <p class="opacity-75">
-                README lists sixteen named tools (channels, voice join/leave, music queue, Spotify play, TTS speak, web search, etc.). The model chooses tools from context; README notes chatbot text is not auto-sent to Discord except via <code class="text-sm">SEND_Mensagem</code> or external workflows such as n8n when configured.
+                The assistant can pick structured actions—channels, voice, queues, playback, speech, search—so replies turn into outcomes. You stay in control of what gets posted where, including wiring outbound messages through tools or external flows when that fits your server.
               </p>
             </div>
           </div>
@@ -123,7 +123,7 @@
       >
         <span class="mr-16 text-white/25">VOICE</span>
         <span class="mr-16 text-black">MUSIC</span>
-        <span class="mr-16 text-white/25">MCP-LIKE TOOLS</span>
+        <span class="mr-16 text-white/25">SMART ACTIONS</span>
         <span class="text-black">DISCORD</span>
       </div>
     </section>
@@ -138,31 +138,31 @@
             <h2
               class="font-headline max-w-full text-[clamp(2.25rem,6vw+0.5rem,5rem)] font-black uppercase leading-[0.9] tracking-tighter"
             >
-              Proof in the <span class="text-[#2b9348]">repo</span>
+              Built to run <span class="text-[#2b9348]">for real</span>
             </h2>
             <p class="mt-6 text-lg text-black/65">
-              CI runs tests in Docker; README requires at least 70% line coverage for <code class="text-sm">chatbot</code>, <code class="text-sm">features</code>, and <code class="text-sm">flask_routes</code>, enforced in GitHub Actions and local <code class="text-sm">./test.sh</code>.
+              Automated tests and coverage gates back the pieces members rely on—so refactors are less scary and regressions surface before your community does.
             </p>
           </div>
           <div class="max-w-sm font-editorial text-2xl italic text-black/70">
-            Deploy: <code class="font-mono text-sm not-italic">deploy/docker-compose.yaml</code> with optional Piper TTS and n8n profile per README.
+            Docker-first deployment with optional voice and automation profiles when you want the full stack, not just the bot binary.
           </div>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-12 gap-6">
           <div class="col-span-12 border-4 border-[#0a0a0a] bg-[#fffbf2] p-8 md:col-span-5">
-            <span class="font-headline text-5xl font-black italic text-[#ff5c00]">API</span>
-            <p class="mt-2 font-bold uppercase tracking-widest text-sm">Tool surface in README</p>
+            <span class="font-headline text-5xl font-black italic text-[#ff5c00]">Tools</span>
+            <p class="mt-2 font-bold uppercase tracking-widest text-sm">What the assistant can do</p>
             <p class="mt-4 text-sm leading-relaxed text-black/60">
-              README section &quot;Ferramentas Disponíveis&quot; names discrete tools (channels, voice, queue, Spotify, TTS, web search, etc.); the model selects them via function calling.
+              A clear catalog of server-facing capabilities—channels, voice, queues, playback, speech, search—so the model chooses real steps instead of hand-waving.
             </p>
           </div>
           <div class="col-span-12 md:col-span-6 md:col-start-7">
             <div class="space-y-6 text-lg leading-relaxed">
               <p>
-                Persona file: <code class="text-sm">chatbot/tangerina_persona.txt</code> (Portuguese copy) with Docker volume notes in README.
+                Personality and tone ship as editable text so the voice of the bot matches your community, with deployment notes for mounting that file in containers.
               </p>
               <p>
-                Optional memory: ChromaDB paths and embedding providers are environment-driven; defaults and limits are listed in the README environment tables.
+                Optional long-term memory is toggled through environment settings—pick embeddings and limits that fit how much history you want the bot to carry.
               </p>
               <p>
                 <a
@@ -187,11 +187,11 @@
           Outcome
         </h2>
         <p class="mb-12 text-lg leading-relaxed opacity-70">
-          A runnable Discord + Flask stack you can extend: README covers voice keyword listening (&quot;tangerina&quot; wake flow), n8n webhook payloads, and troubleshooting (intents, PyNaCl for voice). Anything not in README is not verified here.
+          You get a stack you can run, extend, and hand to a community: wake-style voice entry, automation-friendly webhooks, and practical notes for Discord intents and voice dependencies so setup matches how people actually host bots.
         </p>
         <div data-gsap-project-cta class="flex flex-col items-center justify-between gap-10 border-t border-white/20 pt-12 md:flex-row">
           <div class="font-headline text-3xl font-bold uppercase tracking-tighter text-center md:text-left">
-            Run <code class="text-[#9ef01a]">python app.py</code>
+            Self-host or fork
           </div>
           <a
             data-gsap-magnetic
@@ -213,7 +213,7 @@
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
         <NuxtLink class="transition-all hover:text-[#ff5c00] hover:opacity-100" to="/">Back to portfolio</NuxtLink>
-        <a class="transition-all hover:text-[#ff5c00] hover:opacity-100" href="mailto:hello@bergamota.dev">Email</a>
+        <a class="transition-all hover:text-[#ff5c00] hover:opacity-100" :href="mailtoHref">Email</a>
       </div>
     </footer>
   </div>
@@ -223,6 +223,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

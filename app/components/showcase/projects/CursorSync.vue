@@ -43,7 +43,7 @@
             VS Code / Cursor extension
           </span>
           <span data-gsap-project-hero-el class="text-xs font-bold uppercase tracking-[0.3em] text-[#1b1c1a]/50">
-            Private GitHub Gist
+            Your backup, your account
           </span>
         </div>
         <h1
@@ -63,12 +63,12 @@
             </p>
             <div class="flex flex-wrap gap-6">
               <div data-gsap-project-hero-el class="showcase-rotate-neg-1 border-2 border-[#1b1c1a] bg-white p-5">
-                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Backed by</span>
-                <div class="font-headline text-lg font-bold text-[#2563eb]">Gist API + SecretStorage</div>
+                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Stores</span>
+                <div class="font-headline text-lg font-bold text-[#2563eb]">Private gist snapshot</div>
               </div>
               <div data-gsap-project-hero-el class="showcase-rotate-pos-1 border-2 border-[#d97706] bg-[#d97706]/10 p-5">
-                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Build</span>
-                <div class="font-headline text-lg font-bold">esbuild · vitest</div>
+                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Feels like</span>
+                <div class="font-headline text-lg font-bold">Native editor commands</div>
               </div>
             </div>
           </div>
@@ -100,28 +100,28 @@
             Same editor.<br />Portable state.
           </h2>
           <p class="mt-6 max-w-2xl text-lg text-[#1b1c1a]/70">
-            README states the goal plainly: sync user-level Cursor settings and selected <code class="text-[#1b1c1a]">~/.cursor</code> paths to a private GitHub Gist, with push/pull, optional scheduling, and export/import flows.
+            The point is simple: your shortcuts, rules, snippets, and the Cursor-side files you care about should follow you to the next machine. Push a snapshot, pull when you land, schedule if you like, and recover when two copies disagree.
           </p>
         </div>
         <div class="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
           <div class="md:sticky md:top-32">
             <div class="mb-8 h-2 w-20 bg-[#d97706]" />
-            <h3 class="font-headline mb-4 text-xl font-bold uppercase">What actually syncs</h3>
+            <h3 class="font-headline mb-4 text-xl font-bold uppercase">What travels with you</h3>
             <p class="max-w-md text-lg leading-relaxed text-[#1b1c1a]/75">
-              From the README path matrix: <code class="text-sm">settings.json</code>, <code class="text-sm">keybindings.json</code>, <code class="text-sm">snippets/**</code>, generated <code class="text-sm">extensions.json</code> on push, plus <code class="text-sm">skills/**</code>, <code class="text-sm">commands/**/*.md</code>, and <code class="text-sm">rules/*.mdc</code> under <code class="text-sm">~/.cursor</code>—with a long always-excluded list for caches and secrets.
+              Editor settings, keymaps, snippets, and a generated picture of your extensions on push—plus the parts of your Cursor home that define how you work: skills, command docs, and rules. Noise like caches and sensitive paths stays out by design.
             </p>
           </div>
           <div class="space-y-10">
             <div class="border-l-8 border-[#2563eb] bg-[#f8f6f3] p-10">
               <h4 class="font-headline mb-4 text-2xl font-bold uppercase">The problem</h4>
               <p class="text-lg leading-relaxed text-[#1b1c1a]/80">
-                Multiple machines mean divergent keymaps, rules, and extension sets. The extension treats that drift as something you push to a gist and pull back with optional safe-mode confirmation before overwrites.
+                Laptop and desktop diverge. The extension treats your gist as the shared truth: push when this machine wins, pull when you want to catch up, and confirm before anything destructive so you are never surprised by a silent overwrite.
               </p>
             </div>
             <div class="border-l-8 border-[#d97706] bg-[#f8f6f3] p-10">
               <h4 class="font-headline mb-4 text-2xl font-bold uppercase">How it works</h4>
               <p class="text-lg leading-relaxed text-[#1b1c1a]/80">
-                Token in VS Code SecretStorage (README &quot;Security&quot;). Commands such as <strong>Sync Now</strong>, <strong>Push Now</strong>, and <strong>Pull Now</strong> are registered in <code class="text-sm">package.json</code> under <code class="text-sm">contributes.commands</code>. Sidebar webview and activity-bar container IDs match that manifest.
+                You authorize once; credentials stay in the editor’s secure storage. Day to day you use familiar commands—sync, push, pull—from the palette or sidebar, the same way you already drive the rest of your tooling.
               </p>
             </div>
             <div class="relative border-2 border-dashed border-[#1b1c1a]/20 p-8">
@@ -152,24 +152,24 @@
             Standout surfaces
           </h3>
           <p class="mx-auto mt-4 max-w-2xl text-[#1b1c1a]/65">
-            Described in README: sidebar status card, Sync Now, actions grid, history (up to 50 entries), and transcript tooling with opt-in settings in <code class="text-sm">package.json</code> (<code class="text-sm">cursorSync.transcripts.enabled</code>, size limits).
+            A sidebar that tells you where you stand, one-tap sync actions, a short history so you can trust what changed, and optional transcript export when you want agent sessions to travel with the rest of your setup.
           </p>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#2563eb]">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#2563eb]">tune</span>
             <h5 class="font-headline mb-3 text-xl font-bold uppercase">Conflicts &amp; recovery</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">README documents <strong>Resolve Conflicts</strong> and automatic rollback from backup snapshots on failed pull/import, keeping the last three snapshots.</p>
+            <p class="leading-relaxed text-[#1b1c1a]/70">When two sides disagree, you get a conflict flow—not silent corruption—and failed pulls can roll back from the last few automatic snapshots.</p>
           </div>
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#d97706] md:translate-y-8">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#d97706]">extension</span>
             <h5 class="font-headline mb-3 text-xl font-bold uppercase">Extensions</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">Push generates extension list; pull can auto-install missing entries when enabled—behavior spelled out in README &quot;Extension List Sync&quot; and defaults in <code class="text-sm">package.json</code>.</p>
+            <p class="leading-relaxed text-[#1b1c1a]/70">Pushing captures what you have installed; on pull you can optionally fill in gaps so a fresh machine quickly matches your extension lineup.</p>
           </div>
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#1b1c1a]">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#1b1c1a]">history</span>
             <h5 class="font-headline mb-3 text-xl font-bold uppercase">Transcripts</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">Optional export/import of agent transcripts with manifest schema and verification notes pointing to <code class="text-sm">docs/transcript-simulation-verification.md</code> in the repo.</p>
+            <p class="leading-relaxed text-[#1b1c1a]/70">Optional transcript bundles for people who want agent conversations to be portable too, with verification notes in the repo for the cautious.</p>
           </div>
         </div>
       </div>
@@ -178,12 +178,12 @@
     <section data-gsap-project-section class="border-t-2 border-[#1b1c1a] bg-[#1b1c1a] px-4 py-28 text-[#f8f6f3] md:px-10 md:py-36">
       <div data-gsap-project-cta class="showcase-custom-grid mx-auto min-w-0 max-w-7xl items-center gap-16">
         <div class="col-span-12 md:col-span-5">
-          <span class="text-xs font-bold uppercase tracking-[0.4em] text-[#d97706]">Source of truth</span>
+          <span class="text-xs font-bold uppercase tracking-[0.4em] text-[#d97706]">Details when you need them</span>
           <h2 class="font-headline mt-6 mb-8 text-[clamp(2rem,5vw+0.5rem,3.5rem)] font-black uppercase leading-[0.95]">
-            README &amp;<br />marketplace listing.
+            Install, configure,<br />and trust the flow.
           </h2>
           <p class="mb-10 text-xl font-light leading-relaxed text-white/75">
-            Install steps, command palette names, and security notes are maintained on GitHub. Anonymous usage metrics are mentioned in README; no sensitive fields are claimed to be transmitted.
+            Full install paths, every command name, and security expectations live on GitHub and the marketplace listing—this page is the pitch; the repo is the manual.
           </p>
           <div class="flex flex-wrap items-center gap-8">
             <a
@@ -195,7 +195,7 @@
             >View on GitHub</a>
             <a
               class="border-b-2 border-white/40 pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
-              href="mailto:hello@bergamota.dev"
+              :href="mailtoHref"
             >Contact</a>
           </div>
         </div>
@@ -230,6 +230,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>
