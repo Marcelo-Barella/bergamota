@@ -44,7 +44,7 @@ export function useShowcaseHomeGsap(root: Ref<HTMLElement | null>) {
         const heroImg = el.querySelector('[data-gsap-hero-visual-img]')
         if (heroImg) gsap.set(heroImg, { yPercent: 0, scale: 1, clearProps: 'transform' })
         gsap.set(el.querySelectorAll('[data-gsap-hero-watermark]'), { opacity: 1, scale: 1, clearProps: 'transform' })
-        gsap.set(el.querySelectorAll('figure[data-gsap-photo-tile]'), { opacity: 1, x: 0, y: 0, scale: 1 })
+        gsap.set(el.querySelectorAll('figure[data-gsap-photo-tile]'), { opacity: 1, x: 0, y: 0, scale: 1, rotation: 0 })
         gsap.set(el.querySelectorAll('figure[data-gsap-photo-tile] img'), { scale: 1, clearProps: 'transform' })
         gsap.set(el.querySelectorAll('[data-gsap-project]'), { opacity: 1, x: 0, y: 0 })
         gsap.set(el.querySelectorAll('[data-gsap-project-tween]'), { opacity: 1, x: 0, y: 0 })
@@ -69,7 +69,7 @@ export function useShowcaseHomeGsap(root: Ref<HTMLElement | null>) {
       const heroLead = el.querySelector('[data-gsap-hero-lead]')
       const heroCta = el.querySelector('[data-gsap-hero-cta]')
       const heroVisual = el.querySelector('[data-gsap-hero-visual]')
-      const heroImg = heroVisual?.querySelector<HTMLImageElement>('[data-gsap-hero-visual-img]')
+      const heroImg = heroVisual?.querySelector<HTMLElement>('[data-gsap-hero-visual-img]')
       const heroWater = el.querySelector('[data-gsap-hero-watermark]')
       const nav = el.querySelector<HTMLElement>('[data-gsap-nav]')
       const scroller = document.documentElement
@@ -177,12 +177,15 @@ export function useShowcaseHomeGsap(root: Ref<HTMLElement | null>) {
         const figs = grid.querySelectorAll('figure')
         if (!figs.length) return
         gsap.from(figs, {
-          scrollTrigger: { scroller, trigger: grid, start: 'top 86%', toggleActions: 'play none none none' },
-          y: 40,
+          scrollTrigger: { scroller, trigger: grid, start: 'top 82%', toggleActions: 'play none none none' },
+          y: 64,
           opacity: 0,
-          duration: 0.62,
-          stagger: { each: 0.07, from: 'start' },
-          ease: 'back.out(1.15)'
+          scale: 0.78,
+          rotation: (i) => (i % 2 === 0 ? -6 : 6),
+          transformOrigin: '50% 88%',
+          duration: 0.88,
+          stagger: { each: 0.1, from: 'center' },
+          ease: 'back.out(1.9)'
         })
       })
 

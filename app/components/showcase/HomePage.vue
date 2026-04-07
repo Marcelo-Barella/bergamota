@@ -69,14 +69,44 @@
               data-gsap-hero-visual
               class="showcase-rotate-pos-1 relative aspect-[4/3] w-full overflow-hidden bg-[#1b1c1a]"
             >
-              <img
-                data-gsap-hero-visual-img
-                class="h-full w-full object-cover contrast-110 saturate-125"
-                src="/images/cursor-meetup/bergamota-01.jpg"
-                alt="Bergamota in a group conversation at the Cursor meetup"
-                loading="eager"
-                decoding="async"
-              >
+              <div data-gsap-hero-visual-img class="absolute inset-0">
+                <img
+                  class="h-full w-full object-cover contrast-110 saturate-125"
+                  src="/images/cursor-meetup/bergamota-01.jpg"
+                  alt="Bergamota in a group conversation at the Cursor meetup"
+                  loading="eager"
+                  decoding="async"
+                >
+                <div class="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+                  <svg
+                    class="showcase-hero-me-arrow absolute inset-0 h-full w-full"
+                    viewBox="0 0 100 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                  >
+                    <path
+                      d="M50.2 10.8C57.4 13.8 56 18.4 52 20.6C47.4 23.2 54.2 25.8 48.4 28.4C42.8 30.8 51.2 33.2 48.6 35.6"
+                      stroke="#ea580c"
+                      stroke-width="0.52"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M44.4 32L48.6 35.6L50.6 30.2"
+                      stroke="#ea580c"
+                      stroke-width="0.52"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p
+                    class="showcase-hero-me-label font-editorial absolute left-[51%] top-[4%] w-max -translate-x-1/2 bg-[#1b1c1a] px-2.5 py-1.5 text-center text-[clamp(0.8rem,2.2vw,1.15rem)] font-semibold italic leading-tight text-white sm:top-[5%] md:left-[52%] md:top-[6%] md:px-3 md:py-2 md:text-[clamp(0.9rem,1.9vw,1.25rem)]"
+                  >
+                    That's me
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -40,6 +40,10 @@
   min-height: calc(0.88 * 2 * var(--flagship-title-fs));
 }
 
+.showcase-hero-me-label {
+  transform: rotate(-5deg);
+}
+
 @layer utilities {
   .showcase-skew-1 {
     transform: skewY(-1deg);
@@ -135,20 +139,27 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: clamp(0.75rem, 2.5vw, 1.75rem) clamp(0.5rem, 2vw, 1.25rem);
-    padding: clamp(1rem, 3vw, 2.75rem) clamp(0.25rem, 1vw, 0.5rem);
+    gap: clamp(0.65rem, 2vw, 1.35rem) clamp(0.45rem, 1.6vw, 1.1rem);
+    padding: clamp(0.75rem, 2.2vw, 1.65rem) clamp(0.25rem, 1vw, 0.5rem);
     perspective: 1400px;
   }
 
   .showcase-photo-mosaic-tile {
-    flex: 1 1 min(100%, 220px);
-    max-width: 280px;
+    flex: 1 1 min(100%, 268px);
+    max-width: 340px;
   }
 
   @media (min-width: 640px) {
     .showcase-photo-mosaic-tile {
-      flex: 1 1 230px;
-      max-width: 300px;
+      flex: 1 1 292px;
+      max-width: 380px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .showcase-photo-mosaic-tile {
+      flex: 1 1 312px;
+      max-width: 400px;
     }
   }
 
