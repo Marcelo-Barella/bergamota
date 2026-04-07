@@ -2,7 +2,7 @@
   {
     "id": "cursor-ca-orchestrator",
     "title": "Cursor Orchestrator",
-    "description": "A Node 20+ CLI (`cursor-orch`) that spins up Cursor Cloud Agents across GitHub repos using a bootstrap repo and per-run branches as the coordination surface—documented end-to-end in the repository README.",
+    "description": "Run one goal across many GitHub repos at once. It lines up Cursor Cloud Agents, keeps shared run state visible, and hands work to the right repository so parallel agent work stays coordinated instead of scattered.",
     "repoUrl": "https://github.com/Marcelo-Barella/Cursor-CA-Orchestrator",
     "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
     "imageAlt": "Cursor Orchestrator project preview"
@@ -10,7 +10,7 @@
   {
     "id": "cursor-sync",
     "title": "Cursor Sync",
-    "description": "VS Code/Cursor extension that syncs user-level Cursor settings and `~/.cursor` paths to a private GitHub Gist—manual or scheduled—with conflict resolution and optional agent transcript export/import per README and `package.json`.",
+    "description": "Carry your Cursor setup with you. Sync settings, rules, snippets, and the pieces of your workflow you care about to a private cloud backup—push, pull on a new machine, and sort out conflicts when two worlds diverge.",
     "repoUrl": "https://github.com/Marcelo-Barella/cursor-sync",
     "imageSrc": "/images/projects/cursor-sync.png",
     "imageAlt": "Cursor Sync project preview"
@@ -18,7 +18,7 @@
   {
     "id": "tangerina",
     "title": "Tangerina",
-    "description": "Python Discord bot with pluggable AI providers (Zhipu, OpenAI, Gemini), function-calling for music, voice, and Discord actions, plus a Flask REST API on port 5000—see `README.md` and `features/` in the repository.",
+    "description": "A Discord companion that chats, plays music, speaks in voice channels, and acts on your server with the right tools at the right time—so members get help and atmosphere from one place instead of juggling a dozen bots.",
     "repoUrl": "https://github.com/Marcelo-Barella/Tangerina",
     "imageSrc": "/images/projects/tangerina.svg",
     "imageAlt": "Tangerina project preview"
@@ -26,7 +26,7 @@
   {
     "id": "agentic-browser-ai",
     "title": "Agentic Browser AI",
-    "description": "TypeScript MCP server using Puppeteer and Express: browser sessions, navigation, screenshots, and related tooling wired for Cursor via MCP and optional SSE/hybrid scripts (`package.json`, `README.md`).",
+    "description": "Give your AI assistant eyes on the real web: real browser sessions, navigation, screenshots, and interaction with the page—so answers and actions are grounded in what is actually on screen, not a stale snapshot.",
     "repoUrl": "https://github.com/Marcelo-Barella/Agentic-Browser-AI",
     "imageSrc": "/images/projects/agentic-browser-ai.png",
     "imageAlt": "Agentic Browser AI project preview"

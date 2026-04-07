@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Portfolio of Marcelo Barella: Bergamota — product engineering, design-minded builds, and selected work.'
+            'Marcelo Barella (Bergamota): AI tools and workflows that ship—portfolio, projects, and how to get in touch.'
         }
       ],
       link: [
