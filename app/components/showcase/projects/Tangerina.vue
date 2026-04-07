@@ -7,9 +7,9 @@
       data-gsap-project-nav
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#0a0a0a]/10 bg-[#fffbf2]/95 px-4 py-4 text-[#0a0a0a] backdrop-blur-sm md:flex-nowrap md:px-10 md:py-6"
     >
-      <NuxtLink to="/" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">M. Barella</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">M. Barella</NuxtLink>
       <div class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-8 md:text-[10px]">
-        <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/">Back to Work</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#ff5c00]" :to="localePath('/')">Back to Work</NuxtLink>
         <span class="opacity-30">/</span>
         <a
           class="transition-colors hover:text-[#ff5c00]"
@@ -212,7 +212,7 @@
         Marcelo Barella — Tangerina
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
-        <NuxtLink class="transition-all hover:text-[#ff5c00] hover:opacity-100" to="/">Back to portfolio</NuxtLink>
+        <NuxtLink class="transition-all hover:text-[#ff5c00] hover:opacity-100" :to="localePath('/')">Back to portfolio</NuxtLink>
         <a class="transition-all hover:text-[#ff5c00] hover:opacity-100" href="mailto:hello@bergamota.dev">Email</a>
       </div>
     </footer>
@@ -223,6 +223,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const localePath = useLocalePath()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

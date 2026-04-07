@@ -8,7 +8,7 @@
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-white/5 bg-[#0f1115]/90 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="font-headline flex items-center gap-2 text-xl font-extrabold uppercase italic tracking-tighter text-white md:text-2xl"
       >
         <span class="h-3 w-3 rounded-full bg-[#d97706]" />
@@ -17,10 +17,10 @@
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
       >
-        <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" to="/">
+        <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" :to="localePath('/')">
           <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
         </NuxtLink>
-        <NuxtLink class="transition-colors hover:text-white" to="/#projects">Experiments</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-white" :to="localePath({ path: '/', hash: '#projects' })">Experiments</NuxtLink>
         <a
           class="bg-[#312e81] px-6 py-2 text-white transition-all hover:bg-white hover:text-[#0f1115]"
           :href="project.repoUrl"
@@ -235,7 +235,7 @@
             <div class="absolute inset-0 translate-y-full bg-[#d97706] transition-transform duration-300 group-hover:translate-y-0" />
           </a>
           <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" to="/">Portfolio</NuxtLink>
+            <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" :to="localePath('/')">Portfolio</NuxtLink>
             <a
               class="transition-colors hover:text-white"
               href="mailto:hello@bergamota.dev"
@@ -261,6 +261,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const localePath = useLocalePath()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

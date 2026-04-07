@@ -7,14 +7,14 @@
       data-gsap-project-nav
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-white/10 bg-[#0a0b10]/95 px-4 py-4 backdrop-blur-md md:flex-nowrap md:px-10 md:py-6"
     >
-      <NuxtLink to="/" class="font-headline text-xl font-extrabold uppercase italic tracking-tighter text-white md:text-2xl">
+      <NuxtLink :to="localePath('/')" class="font-headline text-xl font-extrabold uppercase italic tracking-tighter text-white md:text-2xl">
         M. Barella
       </NuxtLink>
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-3 text-[9px] font-bold uppercase tracking-[0.2em] text-white md:gap-8 md:text-[10px]"
       >
-        <NuxtLink class="transition-colors hover:text-[#00f2ff]" to="/">Back to Work</NuxtLink>
-        <NuxtLink class="transition-colors hover:text-[#00f2ff]" to="/#projects">Experiments</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#00f2ff]" :to="localePath('/')">Back to Work</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#00f2ff]" :to="localePath({ path: '/', hash: '#projects' })">Experiments</NuxtLink>
         <a
           class="bg-white px-3 py-1.5 text-black transition-all hover:bg-[#00f2ff] md:px-4 md:py-2"
           :href="project.repoUrl"
@@ -210,7 +210,7 @@
               >Open GitHub</a>
               <NuxtLink
                 class="inline-block border-2 border-white/40 px-8 py-4 text-center text-sm font-bold uppercase tracking-widest text-white transition-all hover:border-[#00f2ff]"
-                to="/#projects"
+                :to="localePath({ path: '/', hash: '#projects' })"
               >
                 More projects
               </NuxtLink>
@@ -236,6 +236,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const localePath = useLocalePath()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
 </script>

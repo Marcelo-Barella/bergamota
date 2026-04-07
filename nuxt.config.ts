@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       allowedHosts: ['bergamota.dev']
     }
   },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       title: 'Marcelo Barella — Bergamota',
@@ -69,6 +69,7 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'bergamota_locale',
       redirectOn: 'root',
+      fallbackLocale: 'en',
       cookieSecure: process.env.NODE_ENV === 'production'
     },
     bundle: {

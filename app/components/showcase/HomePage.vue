@@ -9,7 +9,7 @@
       aria-label="Primary"
     >
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="font-headline text-xl font-extrabold uppercase italic tracking-tighter md:text-2xl"
       >
         M. Barella
@@ -418,6 +418,7 @@
 <script setup lang="ts">
 import projectsData from '~/data/projects-data.json'
 
+const localePath = useLocalePath()
 const showcaseRoot = ref<HTMLElement | null>(null)
 useShowcaseHomeGsap(showcaseRoot)
 
@@ -426,7 +427,7 @@ const projectCopy = Object.fromEntries(
 ) as Record<string, string>
 
 function projectPath(id: string) {
-  return `/projects/${id}`
+  return localePath({ name: 'projects-id', params: { id } })
 }
 
 const meetupPhotos = [
