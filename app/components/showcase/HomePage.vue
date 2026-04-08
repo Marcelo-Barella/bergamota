@@ -132,7 +132,13 @@
             Cursor<br />Meetup
           </h2>
           <p class="font-editorial mt-8 max-w-sm text-2xl italic md:mt-0">
-            Selected frames where Bergamota appears in the 2026-03-17 Cursor meetup.
+            {{ t('showcase.meetup_lead', { date: formatMeetupDate }) }}
+          </p>
+          <p class="font-editorial mt-2 max-w-sm text-sm text-[#1b1c1a]/70 md:mt-1">
+            {{ t('showcase.photo_gallery_label', meetupPhotos.length) }}
+          </p>
+          <p class="font-editorial mt-1 max-w-sm text-xs text-[#1b1c1a]/55 md:mt-0.5">
+            {{ t('showcase.locale_number_sample', { n: formatNumber(1234.5, { minimumFractionDigits: 1 }) }) }}
           </p>
         </div>
         <div data-gsap-photo-grid class="showcase-photo-mosaic">
@@ -490,6 +496,12 @@
 
 <script setup lang="ts">
 import projectsData from '~/data/projects-data.json'
+
+const { t } = useI18n()
+const { format: formatDate } = useFormattedDateTime()
+const { format: formatNumber } = useFormattedNumber()
+const meetupIso = '2026-03-17'
+const formatMeetupDate = computed(() => formatDate(meetupIso, { dateStyle: 'long' }))
 
 const { email, mailtoHref, github, linkedin, twitter } = useContact()
 

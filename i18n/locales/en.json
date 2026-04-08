@@ -2,5 +2,10 @@
   "meta": {
     "title": "Marcelo Barella — Bergamota",
     "description": "Marcelo Barella (Bergamota): AI tools and workflows that ship—portfolio, projects, and how to get in touch."
+  },
+  "showcase": {
+    "meetup_lead": "Selected frames where Bergamota appears in the {date} Cursor meetup.",
+    "photo_gallery_label": "no photos | {n} photo | {n} photos",
+    "locale_number_sample": "Locale number sample: {n}"
   }
 }
