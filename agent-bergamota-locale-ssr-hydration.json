@@ -5,7 +5,8 @@
   "blocked_reason": null,
   "outputs": {
     "branch": "cursor-orch/cd7e2166-fe44-41a1-8b55-a113e0503074/main/run",
-    "commit": "32735e8",
+    "commit": "a75171c",
+    "code_commit": "32735e8",
     "files": [
       "nuxt.config.ts",
       "i18n/locale-detector.ts"
