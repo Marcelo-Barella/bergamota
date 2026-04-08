@@ -144,7 +144,7 @@
           >
             <div
               class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
-              :class="photoThrowClass(photo.id, 0)"
+              :class="photoThrowClass(photo.id, 3)"
             >
               <img
                 class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
@@ -183,7 +183,7 @@
           >
             <div
               class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
-              :class="photoThrowClass(photo.id, 5)"
+              :class="photoThrowClass(photo.id, 8)"
             >
               <img
                 class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
