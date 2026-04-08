@@ -22,7 +22,7 @@ export default defineNuxtConfig({
       allowedHosts: ['bergamota.dev']
     }
   },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       meta: [],
@@ -72,7 +72,8 @@ export default defineNuxtConfig({
     },
     baseUrl: siteUrl,
     experimental: {
-      strictSeo: true
+      strictSeo: true,
+      localeDetector: 'locale-detector.ts'
     }
   },
   colorMode: {
