@@ -21,6 +21,7 @@
         <a class="transition-colors hover:text-[#d97706]" href="#projects">Experiments</a>
         <a class="transition-colors hover:text-[#d97706]" href="#meetup-photos">Chaos</a>
         <a class="text-[#d97706]" href="#contact">Talk?</a>
+        <LanguageSwitcher variant="showcase" />
       </div>
     </nav>
 

@@ -1,4 +1,8 @@
 {
+  "a11y": {
+    "language_label": "Language",
+    "language_hint": "Site language. Current: {current}. Choose another language to load this page in that locale."
+  },
   "meta": {
     "title": "Marcelo Barella — Bergamota",
     "description": "Marcelo Barella (Bergamota): AI tools and workflows that ship—portfolio, projects, and how to get in touch."

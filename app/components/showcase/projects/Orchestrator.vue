@@ -27,6 +27,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >GitHub</a>
+        <LanguageSwitcher variant="showcase" />
       </div>
     </nav>
 

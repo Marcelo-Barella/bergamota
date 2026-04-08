@@ -2,6 +2,7 @@
   <header class="site-nav" role="banner">
     <nav class="site-nav-inner" aria-label="Primary">
       <NuxtLink to="/" class="site-nav-brand">Bergamota</NuxtLink>
+      <div class="site-nav-actions">
       <ul class="site-nav-list">
         <li>
           <NuxtLink
@@ -31,6 +32,8 @@
           </NuxtLink>
         </li>
       </ul>
+      <LanguageSwitcher />
+      </div>
     </nav>
   </header>
 </template>
@@ -65,6 +68,14 @@ function isHashCurrent(hash: string) {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.site-nav-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem 1.5rem;
 }
 
 .site-nav-brand {
