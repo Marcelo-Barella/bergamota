@@ -1,34 +1,34 @@
 [
   {
     "id": "cursor-ca-orchestrator",
-    "title": "Cursor Orchestrator",
-    "description": "Run one goal across many GitHub repos at once. It lines up Cursor Cloud Agents, keeps shared run state visible, and hands work to the right repository so parallel agent work stays coordinated instead of scattered.",
+    "titleKey": "projectsData.cursor-ca-orchestrator.title",
+    "descriptionKey": "projectsData.cursor-ca-orchestrator.description",
     "repoUrl": "https://github.com/Marcelo-Barella/Cursor-CA-Orchestrator",
     "imageSrc": "/images/projects/cursor-ca-orchestrator.png",
-    "imageAlt": "Cursor Orchestrator project preview"
+    "imageAltKey": "projectsData.cursor-ca-orchestrator.imageAlt"
   },
   {
     "id": "cursor-sync",
-    "title": "Cursor Sync",
-    "description": "Carry your Cursor setup with you. Sync settings, rules, snippets, and the pieces of your workflow you care about to a private cloud backup—push, pull on a new machine, and sort out conflicts when two worlds diverge.",
+    "titleKey": "projectsData.cursor-sync.title",
+    "descriptionKey": "projectsData.cursor-sync.description",
     "repoUrl": "https://github.com/Marcelo-Barella/cursor-sync",
     "imageSrc": "/images/projects/cursor-sync.png",
-    "imageAlt": "Cursor Sync project preview"
+    "imageAltKey": "projectsData.cursor-sync.imageAlt"
   },
   {
     "id": "tangerina",
-    "title": "Tangerina",
-    "description": "A Discord companion that chats, plays music, speaks in voice channels, and acts on your server with the right tools at the right time—so members get help and atmosphere from one place instead of juggling a dozen bots.",
+    "titleKey": "projectsData.tangerina.title",
+    "descriptionKey": "projectsData.tangerina.description",
     "repoUrl": "https://github.com/Marcelo-Barella/Tangerina",
     "imageSrc": "/images/projects/tangerina.svg",
-    "imageAlt": "Tangerina project preview"
+    "imageAltKey": "projectsData.tangerina.imageAlt"
   },
   {
     "id": "agentic-browser-ai",
-    "title": "Agentic Browser AI",
-    "description": "Give your AI assistant eyes on the real web: real browser sessions, navigation, screenshots, and interaction with the page—so answers and actions are grounded in what is actually on screen, not a stale snapshot.",
+    "titleKey": "projectsData.agentic-browser-ai.title",
+    "descriptionKey": "projectsData.agentic-browser-ai.description",
     "repoUrl": "https://github.com/Marcelo-Barella/Agentic-Browser-AI",
     "imageSrc": "/images/projects/agentic-browser-ai.png",
-    "imageAlt": "Agentic Browser AI project preview"
+    "imageAltKey": "projectsData.agentic-browser-ai.imageAlt"
   }
 ]

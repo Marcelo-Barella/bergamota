@@ -1,42 +1,46 @@
 <template>
   <header class="site-nav" role="banner">
-    <nav class="site-nav-inner" aria-label="Primary">
-      <NuxtLink to="/" class="site-nav-brand">Bergamota</NuxtLink>
-      <ul class="site-nav-list">
-        <li>
-          <NuxtLink
-            to="/#hero"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
-          >
-            Home
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/#projects"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
-          >
-            Projects
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/#contact"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
-          >
-            Contact
-          </NuxtLink>
-        </li>
-      </ul>
+    <nav class="site-nav-inner" :aria-label="t('common.navPrimary')">
+      <NuxtLink to="/" class="site-nav-brand">{{ t('common.brand') }}</NuxtLink>
+      <div class="site-nav-end">
+        <LocaleSwitcher />
+        <ul class="site-nav-list">
+          <li>
+            <NuxtLink
+              to="/#hero"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
+            >
+              {{ t('common.home') }}
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/#projects"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
+            >
+              {{ t('common.projects') }}
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/#contact"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
+            >
+              {{ t('common.contact') }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
+const { t } = useI18n()
 
 function isHashCurrent(hash: string) {
   if (route.path !== '/') {
@@ -65,6 +69,15 @@ function isHashCurrent(hash: string) {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.site-nav-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1.15rem;
+  margin-left: auto;
 }
 
 .site-nav-brand {

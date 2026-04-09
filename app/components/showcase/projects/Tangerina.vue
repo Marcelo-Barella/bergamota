@@ -7,16 +7,17 @@
       data-gsap-project-nav
       class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#0a0a0a]/10 bg-[#fffbf2]/95 px-4 py-4 text-[#0a0a0a] backdrop-blur-sm md:flex-nowrap md:px-10 md:py-6"
     >
-      <NuxtLink to="/" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">M. Barella</NuxtLink>
+      <NuxtLink to="/" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">{{ t('home.brandInitials') }}</NuxtLink>
       <div class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-8 md:text-[10px]">
-        <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/">Back to Work</NuxtLink>
-        <span class="opacity-30">/</span>
+        <LocaleSwitcher theme="showcase-light" />
+        <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/">{{ t('common.backToWork') }}</NuxtLink>
+        <span class="opacity-30">{{ t('common.slash') }}</span>
         <a
           class="transition-colors hover:text-[#ff5c00]"
           :href="project.repoUrl"
           target="_blank"
           rel="noopener noreferrer"
-        >GitHub</a>
+        >{{ t('common.github') }}</a>
       </div>
     </nav>
 
@@ -30,13 +31,13 @@
           data-gsap-project-hero-el
           class="showcase-rotate-neg-2 mb-8 inline-block bg-[#9ef01a] px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] text-black"
         >
-          Discord · AI companion
+          {{ t('projectPages.tangerina.heroBadge') }}
         </div>
         <h1
           class="showcase-hero-title-tight font-headline relative z-0 mb-8 font-extrabold uppercase tracking-tighter md:mb-12"
         >
-          <span data-gsap-project-hero-el class="block">Tange-</span>
-          <span data-gsap-project-hero-el class="block">rina<span class="italic text-[#ff5c00]">.</span></span>
+          <span data-gsap-project-hero-el class="block">{{ t('projectPages.tangerina.heroTitle1') }}</span>
+          <span data-gsap-project-hero-el class="block">{{ t('projectPages.tangerina.heroTitle2') }}<span class="italic text-[#ff5c00]">{{ t('projectPages.tangerina.heroTitleAccent') }}</span></span>
         </h1>
         <div class="showcase-custom-grid relative z-10">
           <div class="relative z-10 col-span-12 md:col-span-6">
@@ -44,12 +45,12 @@
               data-gsap-project-hero-el
               class="mb-8 border-l-8 border-[#ff5c00] pl-6 text-2xl font-bold uppercase leading-[0.95] md:text-4xl"
             >
-              {{ project.description }}
+              {{ t(project.descriptionKey) }}
             </p>
             <div data-gsap-project-hero-el class="flex flex-wrap gap-3 text-[10px] font-bold uppercase tracking-widest">
-              <span class="border border-[#0a0a0a] px-3 py-1">Voice &amp; music</span>
-              <span class="border border-[#0a0a0a] px-3 py-1">Conversation</span>
-              <span class="border border-[#0a0a0a] px-3 py-1">Server actions</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">{{ t('projectPages.tangerina.tags.voiceMusic') }}</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">{{ t('projectPages.tangerina.tags.conversation') }}</span>
+              <span class="border border-[#0a0a0a] px-3 py-1">{{ t('projectPages.tangerina.tags.serverActions') }}</span>
             </div>
           </div>
         </div>
@@ -63,14 +64,14 @@
             data-gsap-project-hero-visual-img
             class="h-full w-full object-cover opacity-90 mix-blend-multiply contrast-125"
             :src="project.imageSrc"
-            :alt="project.imageAlt"
+            :alt="t(project.imageAltKey)"
             loading="eager"
             decoding="async"
           >
           <div
             class="showcase-outline-text absolute left-4 top-6 font-headline text-[clamp(3.5rem,min(14vw,15vh),9rem)] font-black text-white sm:left-10 sm:top-10"
           >
-            BOT
+            {{ t('projectPages.tangerina.visualWatermark') }}
           </div>
         </div>
       </div>
@@ -83,33 +84,33 @@
           class="mb-14 border-l-8 border-[#9ef01a] pl-6 md:pl-8"
         >
           <h2 class="font-headline text-4xl font-black uppercase leading-none md:text-5xl">
-            One member, the whole vibe
+            {{ t('projectPages.tangerina.section1.title') }}
           </h2>
           <p class="mt-6 max-w-2xl text-lg opacity-80">
-            Communities do not want a wall of prefixes—they want someone in the channel who can answer, queue a track, join voice, and use sensible tools when the moment calls for it. Tangerina is built for that kind of presence, not for ticking boxes on a feature list.
+            {{ t('projectPages.tangerina.section1.lead') }}
           </p>
         </div>
         <div class="showcase-custom-grid gap-y-16">
           <div class="showcase-rotate-neg-2 col-span-12 bg-[#0a0a0a] p-10 text-[#fffbf2] shadow-2xl md:col-span-6 md:p-16">
-            <span class="mb-6 block text-xs font-bold uppercase tracking-widest text-[#9ef01a]">Challenge</span>
+            <span class="mb-6 block text-xs font-bold uppercase tracking-widest text-[#9ef01a]">{{ t('projectPages.tangerina.challenge.label') }}</span>
             <h3 class="font-headline mb-6 text-3xl font-black uppercase md:text-4xl">
-              Everything in one conversation
+              {{ t('projectPages.tangerina.challenge.title') }}
             </h3>
             <p class="text-lg leading-relaxed opacity-85">
-              People ask for songs, help, and voice interaction in the same thread. The bot is structured so those behaviors live together: models you can swap, music and TTS paths that feel native to Discord, and voice flows that match how servers actually hang out—not a separate app for each job.
+              {{ t('projectPages.tangerina.challenge.body') }}
             </p>
           </div>
           <div class="col-span-12 flex flex-col gap-10 md:col-span-5 md:col-start-8">
             <div class="border-t-2 border-[#ff5c00] pt-6">
-              <h3 class="mb-4 text-xl font-bold uppercase">Beyond the chat box</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase">{{ t('projectPages.tangerina.aside1.title') }}</h3>
               <p class="opacity-75">
-                A small HTTP layer sits next to Discord so you can trigger health checks, voice and queue actions, TTS, and chat-style messages from automations or your own integrations—when you want the bot to speak to the world outside a single channel.
+                {{ t('projectPages.tangerina.aside1.body') }}
               </p>
             </div>
             <div class="border-t-2 border-[#9ef01a] pt-6">
-              <h3 class="mb-4 text-xl font-bold uppercase">Actions, not monologues</h3>
+              <h3 class="mb-4 text-xl font-bold uppercase">{{ t('projectPages.tangerina.aside2.title') }}</h3>
               <p class="opacity-75">
-                The assistant can pick structured actions—channels, voice, queues, playback, speech, search—so replies turn into outcomes. You stay in control of what gets posted where, including wiring outbound messages through tools or external flows when that fits your server.
+                {{ t('projectPages.tangerina.aside2.body') }}
               </p>
             </div>
           </div>
@@ -121,10 +122,10 @@
       <div
         class="pointer-events-none flex select-none whitespace-nowrap font-headline text-[clamp(4rem,18vw,15rem)] font-black uppercase italic leading-none opacity-90"
       >
-        <span class="mr-16 text-white/25">VOICE</span>
-        <span class="mr-16 text-black">MUSIC</span>
-        <span class="mr-16 text-white/25">SMART ACTIONS</span>
-        <span class="text-black">DISCORD</span>
+        <span class="mr-16 text-white/25">{{ t('projectPages.tangerina.marquee.voice') }}</span>
+        <span class="mr-16 text-black">{{ t('projectPages.tangerina.marquee.music') }}</span>
+        <span class="mr-16 text-white/25">{{ t('projectPages.tangerina.marquee.smartActions') }}</span>
+        <span class="text-black">{{ t('projectPages.tangerina.marquee.discord') }}</span>
       </div>
     </section>
 
@@ -138,31 +139,31 @@
             <h2
               class="font-headline max-w-full text-[clamp(2.25rem,6vw+0.5rem,5rem)] font-black uppercase leading-[0.9] tracking-tighter"
             >
-              Built to run <span class="text-[#2b9348]">for real</span>
+              {{ t('projectPages.tangerina.builtSection.titleBefore') }}<span class="text-[#2b9348]">{{ t('projectPages.tangerina.builtSection.titleHighlight') }}</span>
             </h2>
             <p class="mt-6 text-lg text-black/65">
-              Automated tests and coverage gates back the pieces members rely on—so refactors are less scary and regressions surface before your community does.
+              {{ t('projectPages.tangerina.builtSection.lead') }}
             </p>
           </div>
           <div class="max-w-sm font-editorial text-2xl italic text-black/70">
-            Docker-first deployment with optional voice and automation profiles when you want the full stack, not just the bot binary.
+            {{ t('projectPages.tangerina.builtSection.aside') }}
           </div>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-12 gap-6">
           <div class="col-span-12 border-4 border-[#0a0a0a] bg-[#fffbf2] p-8 md:col-span-5">
-            <span class="font-headline text-5xl font-black italic text-[#ff5c00]">Tools</span>
-            <p class="mt-2 font-bold uppercase tracking-widest text-sm">What the assistant can do</p>
+            <span class="font-headline text-5xl font-black italic text-[#ff5c00]">{{ t('projectPages.tangerina.toolsCard.title') }}</span>
+            <p class="mt-2 font-bold uppercase tracking-widest text-sm">{{ t('projectPages.tangerina.toolsCard.subtitle') }}</p>
             <p class="mt-4 text-sm leading-relaxed text-black/60">
-              A clear catalog of server-facing capabilities—channels, voice, queues, playback, speech, search—so the model chooses real steps instead of hand-waving.
+              {{ t('projectPages.tangerina.toolsCard.body') }}
             </p>
           </div>
           <div class="col-span-12 md:col-span-6 md:col-start-7">
             <div class="space-y-6 text-lg leading-relaxed">
               <p>
-                Personality and tone ship as editable text so the voice of the bot matches your community, with deployment notes for mounting that file in containers.
+                {{ t('projectPages.tangerina.toolsColumn.p1') }}
               </p>
               <p>
-                Optional long-term memory is toggled through environment settings—pick embeddings and limits that fit how much history you want the bot to carry.
+                {{ t('projectPages.tangerina.toolsColumn.p2') }}
               </p>
               <p>
                 <a
@@ -170,7 +171,7 @@
                   :href="project.repoUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                >Open repository</a>
+                >{{ t('common.openRepository') }}</a>
               </p>
             </div>
           </div>
@@ -184,14 +185,14 @@
           data-gsap-section-head
           class="font-headline mb-12 max-w-full text-[clamp(2.5rem,8vw+0.5rem,6rem)] font-black uppercase leading-[0.85] tracking-tighter"
         >
-          Outcome
+          {{ t('projectPages.tangerina.outcome.title') }}
         </h2>
         <p class="mb-12 text-lg leading-relaxed opacity-70">
-          You get a stack you can run, extend, and hand to a community: wake-style voice entry, automation-friendly webhooks, and practical notes for Discord intents and voice dependencies so setup matches how people actually host bots.
+          {{ t('projectPages.tangerina.outcome.body') }}
         </p>
         <div data-gsap-project-cta class="flex flex-col items-center justify-between gap-10 border-t border-white/20 pt-12 md:flex-row">
           <div class="font-headline text-3xl font-bold uppercase tracking-tighter text-center md:text-left">
-            Self-host or fork
+            {{ t('projectPages.tangerina.outcome.ctaLabel') }}
           </div>
           <a
             data-gsap-magnetic
@@ -200,7 +201,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span class="relative z-10">Clone on GitHub</span>
+            <span class="relative z-10">{{ t('common.cloneOnGitHub') }}</span>
             <div class="absolute inset-0 translate-x-full bg-[#9ef01a] transition-transform duration-300 group-hover:translate-x-0" />
           </a>
         </div>
@@ -209,11 +210,11 @@
 
     <footer class="flex flex-col items-center justify-between gap-8 border-t-2 border-[#0a0a0a] bg-[#fffbf2] p-10 md:flex-row">
       <div class="font-headline text-xl font-bold uppercase italic tracking-tighter">
-        Marcelo Barella — Tangerina
+        {{ t('projectPages.tangerina.footerBrand') }}
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
-        <NuxtLink class="transition-all hover:text-[#ff5c00] hover:opacity-100" to="/">Back to portfolio</NuxtLink>
-        <a class="transition-all hover:text-[#ff5c00] hover:opacity-100" :href="mailtoHref">Email</a>
+        <NuxtLink class="transition-all hover:text-[#ff5c00] hover:opacity-100" to="/">{{ t('common.backToPortfolio') }}</NuxtLink>
+        <a class="transition-all hover:text-[#ff5c00] hover:opacity-100" :href="mailtoHref">{{ t('common.email') }}</a>
       </div>
     </footer>
   </div>
@@ -223,6 +224,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { t } = useI18n()
 const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)

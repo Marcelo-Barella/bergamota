@@ -12,21 +12,22 @@
         class="font-headline flex items-center gap-2 text-xl font-extrabold uppercase italic tracking-tighter text-white md:text-2xl"
       >
         <span class="h-3 w-3 rounded-full bg-[#d97706]" />
-        M. BARELLA
+        {{ t('projectPages.orchestrator.navBrand') }}
       </NuxtLink>
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
       >
+        <LocaleSwitcher theme="showcase-dark-indigo" />
         <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" to="/">
-          <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
+          <span class="material-symbols-outlined text-sm">arrow_back</span> {{ t('common.backToWork') }}
         </NuxtLink>
-        <NuxtLink class="transition-colors hover:text-white" to="/#projects">Experiments</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-white" to="/#projects">{{ t('common.experiments') }}</NuxtLink>
         <a
           class="bg-[#312e81] px-6 py-2 text-white transition-all hover:bg-white hover:text-[#0f1115]"
           :href="project.repoUrl"
           target="_blank"
           rel="noopener noreferrer"
-        >GitHub</a>
+        >{{ t('common.github') }}</a>
       </div>
     </nav>
 
@@ -42,7 +43,7 @@
             data-gsap-project-hero-el
             class="border border-[#4c0519] bg-[#4c0519]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-red-400"
           >
-            Multi-repo agent runs
+            {{ t('projectPages.orchestrator.heroBadge') }}
           </span>
           <div class="h-px flex-grow bg-white/10" />
         </div>
@@ -51,21 +52,21 @@
             <h1
               class="showcase-hero-title-fit font-headline mb-8 font-extrabold uppercase tracking-tighter text-white md:mb-10"
             >
-              <span data-gsap-project-hero-el class="block">Cursor</span>
+              <span data-gsap-project-hero-el class="block">{{ t('projectPages.orchestrator.heroTitle1') }}</span>
               <span
                 data-gsap-project-hero-el
                 class="block text-transparent"
                 style="-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4)"
-              >Orchestrator</span>
+              >{{ t('projectPages.orchestrator.heroTitle2') }}</span>
             </h1>
             <p
               data-gsap-project-hero-el
               class="font-editorial mt-12 mb-6 max-w-2xl border-l-4 border-[#312e81] pl-8 text-2xl font-light italic leading-snug md:text-3xl"
             >
-              Describe the outcome once. The tool prepares a shared space on GitHub, opens a dedicated branch for the run, and coordinates an orchestrator with worker agents across the repos you name—so many hands stay on one plan instead of inventing twenty versions of it.
+              {{ t('projectPages.orchestrator.heroLead') }}
             </p>
             <p data-gsap-project-hero-el class="max-w-xl text-sm leading-relaxed text-white/50">
-              Shipped as a fast local CLI with a config-first workflow: interactive sessions, YAML runs, and the usual guardrails for tokens and environments.
+              {{ t('projectPages.orchestrator.heroSub') }}
             </p>
           </div>
         </div>
@@ -79,7 +80,7 @@
             data-gsap-project-hero-visual-img
             class="h-full w-full object-cover grayscale contrast-125"
             :src="project.imageSrc"
-            :alt="project.imageAlt"
+            :alt="t(project.imageAltKey)"
             loading="eager"
             decoding="async"
           >
@@ -95,10 +96,10 @@
           class="mb-12 border-l-8 border-[#d97706] pl-6 md:pl-8"
         >
           <h2 class="font-headline text-4xl font-black uppercase text-white md:text-5xl">
-            Why it exists
+            {{ t('projectPages.orchestrator.why.title') }}
           </h2>
           <p class="mt-4 max-w-2xl text-lg text-white/60">
-            Spinning up agents on different repositories is thrilling for five minutes and painful by day three without a single place that holds intent, assignments, and progress. This project treats GitHub as that shared surface so everyone reads the same run, not their own Slack thread.
+            {{ t('projectPages.orchestrator.why.lead') }}
           </p>
         </div>
         <div class="grid grid-cols-12 gap-8">
@@ -106,30 +107,30 @@
             class="relative col-span-12 self-start border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-10 md:p-12 lg:col-span-5"
           >
             <div class="absolute -left-4 -top-4 h-12 w-12 border-l-2 border-t-2 border-[#312e81]" />
-            <h3 class="font-headline mb-6 text-2xl font-bold uppercase text-white">What you get</h3>
+            <h3 class="font-headline mb-6 text-2xl font-bold uppercase text-white">{{ t('projectPages.orchestrator.whatYouGet.title') }}</h3>
             <p class="mb-6 text-lg leading-relaxed">
-              A CLI you can drive from an interactive session or from a checked-in config file, plus live commands to watch status, tail logs, and stop a run when the plan changes mid-flight.
+              {{ t('projectPages.orchestrator.whatYouGet.body') }}
             </p>
             <ul class="space-y-3 text-sm text-white/55">
-              <li>Sessions remember where you left off so iterative runs feel continuous, not a fresh guessing game each time.</li>
-              <li>A config doctor tells you early if tokens or precedence are wrong—before you burn an hour on a silent failure.</li>
-              <li>Shell autocomplete so frequent operators stay in flow instead of re-reading help text.</li>
+              <li>{{ t('projectPages.orchestrator.whatYouGet.li1') }}</li>
+              <li>{{ t('projectPages.orchestrator.whatYouGet.li2') }}</li>
+              <li>{{ t('projectPages.orchestrator.whatYouGet.li3') }}</li>
             </ul>
           </div>
           <div class="col-span-12 pt-4 lg:col-span-6 lg:col-start-7">
             <div class="space-y-12">
               <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#064e3b]">Architecture</span>
-                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Three moving parts</h3>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#064e3b]">{{ t('projectPages.orchestrator.architecture.label') }}</span>
+                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">{{ t('projectPages.orchestrator.architecture.title') }}</h3>
                 <p class="leading-relaxed text-[#94a3b8]/80">
-                  Your machine runs the CLI; a bootstrap repository carries the rules and runtime your cloud agents expect; workers land on each target repo while the orchestrator keeps the graph honest. Every run gets its own branch that holds configuration, state, and outputs in small files so collaboration stays orderly instead of a free-for-all.
+                  {{ t('projectPages.orchestrator.architecture.body') }}
                 </p>
               </div>
               <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">Guardrails</span>
-                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">Honest boundaries</h3>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#312e81]">{{ t('projectPages.orchestrator.guardrails.label') }}</span>
+                <h3 class="mt-2 mb-4 text-2xl font-bold text-white">{{ t('projectPages.orchestrator.guardrails.title') }}</h3>
                 <p class="leading-relaxed text-[#94a3b8]/80">
-                  Task counts, polling cadence, and per-task output caps keep cloud runs predictable. Workers stay focused on their repo; the orchestrator is the only coordinator, which avoids whisper networks and duplicate writes.
+                  {{ t('projectPages.orchestrator.guardrails.body') }}
                 </p>
               </div>
             </div>
@@ -156,8 +157,8 @@
                 class="showcase-rotate-pos-1 absolute bottom-0 right-0 z-20 h-3/5 w-3/5 border border-white/20 bg-[#064e3b]/20 p-2 backdrop-blur-md"
               >
                 <div class="flex h-full w-full flex-col items-center justify-center border border-white/5 bg-[#0f1115] p-4 text-center">
-                  <span class="font-headline text-2xl font-black text-[#064e3b] md:text-3xl">YAML + REPL</span>
-                  <span class="mt-2 text-[10px] uppercase tracking-widest text-white/40">Same CLI, two entry paths</span>
+                  <span class="font-headline text-2xl font-black text-[#064e3b] md:text-3xl">{{ t('projectPages.orchestrator.yamlCard.title') }}</span>
+                  <span class="mt-2 text-[10px] uppercase tracking-widest text-white/40">{{ t('projectPages.orchestrator.yamlCard.subtitle') }}</span>
                 </div>
               </div>
             </div>
@@ -169,14 +170,14 @@
                 <h2
                   class="showcase-skew-1 font-headline max-w-full text-[clamp(2.5rem,7vw+0.5rem,5.5rem)] font-black uppercase leading-[0.9] text-white"
                 >
-                  Single prompt,<br />many repos
+                  {{ t('projectPages.orchestrator.singlePrompt.titleLine1') }}<br />{{ t('projectPages.orchestrator.singlePrompt.titleLine2') }}
                 </h2>
               </div>
               <p class="font-editorial mb-8 text-xl italic leading-relaxed text-white/70">
-                In single-prompt mode you state the north star; the planner turns it into tasks and maps each task to a repo alias from your config—so you are not copy-pasting ten near-identical worker briefs.
+                {{ t('projectPages.orchestrator.singlePrompt.lead') }}
               </p>
               <p class="text-sm leading-relaxed text-[#94a3b8]/70">
-                Releases are automated from main when the version moves—ideal for teams that want the CLI to track the product without a manual publish ritual.
+                {{ t('projectPages.orchestrator.singlePrompt.sub') }}
               </p>
             </div>
           </div>
@@ -189,23 +190,23 @@
           class="mb-10"
         >
           <h2 class="font-headline text-3xl font-black uppercase text-white md:text-4xl">
-            Go deeper on GitHub
+            {{ t('projectPages.orchestrator.deeper.title') }}
           </h2>
           <p class="mt-4 max-w-2xl text-white/55">
-            Error semantics, recovery paths, and completion modes are documented alongside the changelog—this page sells the idea; the repository is where operators live.
+            {{ t('projectPages.orchestrator.deeper.lead') }}
           </p>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-1 gap-0 border border-white/10 md:grid-cols-2">
           <div class="group border-b border-white/10 p-10 transition-colors hover:bg-[#4c0519]/10 md:border-b-0 md:border-r">
-            <div class="mb-4 text-3xl font-black text-[#4c0519]">01</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Evidence</h4>
-            <p class="text-sm text-[#94a3b8]/60">Every command, environment variable, and architecture diagram ships in the open so you can verify before you bet a production run on it.</p>
+            <div class="mb-4 text-3xl font-black text-[#4c0519]">{{ t('projectPages.orchestrator.evidence.num') }}</div>
+            <h4 class="mb-2 font-bold uppercase text-white">{{ t('projectPages.orchestrator.evidence.title') }}</h4>
+            <p class="text-sm text-[#94a3b8]/60">{{ t('projectPages.orchestrator.evidence.body') }}</p>
           </div>
           <div class="group bg-white/5 p-10 transition-colors hover:bg-[#312e81]/20">
-            <div class="mb-4 text-3xl font-black text-[#312e81]">02</div>
-            <h4 class="mb-2 font-bold uppercase text-white">Next step</h4>
+            <div class="mb-4 text-3xl font-black text-[#312e81]">{{ t('projectPages.orchestrator.nextStep.num') }}</div>
+            <h4 class="mb-2 font-bold uppercase text-white">{{ t('projectPages.orchestrator.nextStep.title') }}</h4>
             <p class="text-sm text-[#94a3b8]/60">
-              Clone, copy the example environment, run the bootstrap script from the docs, then let the config doctor validate tokens before your first real orchestration.
+              {{ t('projectPages.orchestrator.nextStep.body') }}
             </p>
           </div>
         </div>
@@ -218,10 +219,10 @@
         <h2
           class="font-headline mb-12 max-w-full text-[clamp(2.75rem,8vw+0.5rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter text-white"
         >
-          Open the<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">source</span>
+          {{ t('projectPages.orchestrator.cta.titleLine1') }}<br /><span class="text-transparent" style="-webkit-text-stroke: 1px #d97706">{{ t('projectPages.orchestrator.cta.titleLine2') }}</span>
         </h2>
         <p class="mx-auto mb-16 max-w-xl text-xl text-[#94a3b8]/80">
-          Credentials, install order, and the exact limits of a run are all spelled out beside the code—no hidden behavior behind a landing page.
+          {{ t('projectPages.orchestrator.cta.lead') }}
         </p>
         <div class="flex flex-col items-center justify-center gap-12 md:flex-row">
           <a
@@ -231,15 +232,15 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span class="relative z-10">View on GitHub</span>
+            <span class="relative z-10">{{ t('common.viewOnGitHub') }}</span>
             <div class="absolute inset-0 translate-y-full bg-[#d97706] transition-transform duration-300 group-hover:translate-y-0" />
           </a>
           <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" to="/">Portfolio</NuxtLink>
+            <NuxtLink class="border-b-2 border-[#d97706] pb-1 text-white" to="/">{{ t('common.portfolio') }}</NuxtLink>
             <a
               class="transition-colors hover:text-white"
               :href="mailtoHref"
-            >Email</a>
+            >{{ t('common.email') }}</a>
           </div>
         </div>
       </div>
@@ -247,11 +248,11 @@
 
     <footer class="flex flex-col items-center justify-between gap-8 border-t border-white/10 bg-[#0f1115] p-10 md:flex-row">
       <div class="font-headline text-xl font-bold uppercase italic tracking-tighter text-white">
-        Marcelo Barella — <span class="text-[#94a3b8]/40">Cursor Ambassador</span>
+        {{ t('projectPages.orchestrator.footerBrandPrefix') }}<span class="text-[#94a3b8]/40">{{ t('projectPages.orchestrator.footerRoleMuted') }}</span>
       </div>
       <div class="flex gap-12 text-[9px] font-bold uppercase tracking-[0.3em] opacity-40 transition-opacity hover:opacity-100">
-        <span>Bergamota.dev</span>
-        <span>Cursor Orchestrator</span>
+        <span>{{ t('projectPages.orchestrator.footerMeta1') }}</span>
+        <span>{{ t('projectPages.orchestrator.footerMeta2') }}</span>
       </div>
     </footer>
   </div>
@@ -261,6 +262,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { t } = useI18n()
 const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)
