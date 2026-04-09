@@ -17,7 +17,7 @@
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
       >
-        <LocaleSwitcher theme="showcase-dark" />
+        <LocaleSwitcher theme="showcase-dark-indigo" />
         <NuxtLink class="flex items-center gap-1 transition-colors hover:text-white" to="/">
           <span class="material-symbols-outlined text-sm">arrow_back</span> {{ t('common.backToWork') }}
         </NuxtLink>
