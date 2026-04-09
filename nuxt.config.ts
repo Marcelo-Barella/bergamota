@@ -1,4 +1,10 @@
 import tailwindcss from "@tailwindcss/vite"
+import process from "node:process"
+
+const siteUrl =
+  process.env.NUXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+  "http://localhost:3027"
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -16,17 +22,10 @@ export default defineNuxtConfig({
       allowedHosts: ['bergamota.dev']
     }
   },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
-      title: 'Marcelo Barella — Bergamota',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Marcelo Barella (Bergamota): AI tools and workflows that ship—portfolio, projects, and how to get in touch.'
-        }
-      ],
+      meta: [],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'shortcut icon', href: '/favicon.svg' },
@@ -44,7 +43,39 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui'],
+  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
+  i18n: {
+    vueI18n: 'i18n.config.ts',
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en',
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        language: 'en-US',
+        file: 'en.json'
+      },
+      {
+        code: 'pt-BR',
+        name: 'Português (Brasil)',
+        language: 'pt-BR',
+        file: 'pt-BR.json'
+      }
+    ],
+    langDir: 'locales',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'bergamota_i18n_redirected',
+      cookieSecure: process.env.NODE_ENV === 'production',
+      redirectOn: 'root',
+      fallbackLocale: 'en'
+    },
+    baseUrl: siteUrl,
+    experimental: {
+      strictSeo: true,
+      localeDetector: 'locale-detector.ts'
+    }
+  },
   colorMode: {
     preference: 'dark'
   },

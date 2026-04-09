@@ -1,0 +1,17 @@
+{
+  "task_id": "bergamota-locale-ssr-hydration",
+  "status": "completed",
+  "summary": "Enabled SSR (ssr: true) so HTML is server-rendered. Added i18n/experimental.localeDetector pointing to i18n/locale-detector.ts: Nitro Intlify middleware now resolves locale as route prefix, then cookie bergamota_i18n_redirected (must match detectBrowserLanguage.cookieKey in nuxt.config.ts), then Accept-Language via findBrowserLocale, then fallback. Fixes prior mismatch where default detector read i18n_redirected. Build verified (nuxt build).",
+  "blocked_reason": null,
+  "outputs": {
+    "branch": "cursor-orch/cd7e2166-fe44-41a1-8b55-a113e0503074/main/run",
+    "commit": "a75171c",
+    "code_commit": "32735e8",
+    "files": [
+      "nuxt.config.ts",
+      "i18n/locale-detector.ts"
+    ],
+    "cookie_key": "bergamota_i18n_redirected",
+    "cookie_sync_note": "i18n/locale-detector.ts COOKIE_KEY must stay identical to i18n.detectBrowserLanguage.cookieKey in nuxt.config.ts"
+  }
+}
