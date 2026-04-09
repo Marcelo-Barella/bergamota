@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       allowedHosts: ['bergamota.dev']
     }
   },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       title: 'Marcelo Barella — Bergamota',
@@ -44,7 +44,28 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui'],
+  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
+  i18n: {
+    restructureDir: 'i18n',
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    langDir: 'locales',
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'pt-BR', language: 'pt-BR', name: 'Português (Brasil)', file: 'pt-BR.json' },
+    ],
+    lazy: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      alwaysRedirect: false,
+      fallbackLocale: 'en',
+    },
+    experimental: {
+      localeDetector: 'locale-detector.ts',
+    },
+  },
   colorMode: {
     preference: 'dark'
   },
