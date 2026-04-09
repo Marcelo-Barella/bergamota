@@ -2,7 +2,9 @@
   <header class="site-nav" role="banner">
     <nav class="site-nav-inner" :aria-label="t('common.navPrimary')">
       <NuxtLink to="/" class="site-nav-brand">{{ t('common.brand') }}</NuxtLink>
-      <ul class="site-nav-list">
+      <div class="site-nav-end">
+        <LocaleSwitcher />
+        <ul class="site-nav-list">
         <li>
           <NuxtLink
             to="/#hero"
@@ -31,6 +33,7 @@
           </NuxtLink>
         </li>
       </ul>
+      </div>
     </nav>
   </header>
 </template>
@@ -66,6 +69,13 @@ function isHashCurrent(hash: string) {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.site-nav-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.15rem;
 }
 
 .site-nav-brand {

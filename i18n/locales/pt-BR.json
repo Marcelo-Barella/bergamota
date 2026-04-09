@@ -34,7 +34,9 @@
   },
   "layout": {
     "footerNav": "Rodapé",
-    "attribution": "Marcelo Barella — Bergamota"
+    "attribution": "Marcelo Barella — Bergamota",
+    "language": "Idioma",
+    "languageMenu": "Escolher idioma do site"
   },
   "projectsData": {
     "cursor-ca-orchestrator": {

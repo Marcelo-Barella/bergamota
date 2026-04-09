@@ -34,7 +34,9 @@
   },
   "layout": {
     "footerNav": "Footer",
-    "attribution": "Marcelo Barella — Bergamota"
+    "attribution": "Marcelo Barella — Bergamota",
+    "language": "Language",
+    "languageMenu": "Choose site language"
   },
   "projectsData": {
     "cursor-ca-orchestrator": {

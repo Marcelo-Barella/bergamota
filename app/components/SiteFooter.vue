@@ -3,6 +3,7 @@
     <div class="site-footer-inner">
       <p class="site-footer-note">{{ t('layout.attribution') }}</p>
       <nav class="site-footer-nav" :aria-label="t('layout.footerNav')">
+        <LocaleSwitcher class="site-footer-locale" />
         <NuxtLink to="/" class="site-footer-link">{{ t('common.home') }}</NuxtLink>
         <a :href="mailtoHref" class="site-footer-link">{{ t('common.email') }}</a>
       </nav>
@@ -41,7 +42,13 @@ const { mailtoHref } = useContact()
 .site-footer-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem 1.25rem;
+}
+
+.site-footer-locale :deep(.locale-switcher__list) {
+  right: auto;
+  left: 0;
 }
 
 .site-footer-link {

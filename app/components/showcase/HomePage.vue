@@ -17,6 +17,7 @@
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-x-6 gap-y-2 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-8 md:text-[10px]"
       >
+        <LocaleSwitcher theme="showcase-light" />
         <a class="transition-colors hover:text-[#d97706]" href="#hero">{{ t('home.nav.manifesto') }}</a>
         <a class="transition-colors hover:text-[#d97706]" href="#projects">{{ t('home.nav.experiments') }}</a>
         <a class="transition-colors hover:text-[#d97706]" href="#meetup-photos">{{ t('home.nav.chaos') }}</a>

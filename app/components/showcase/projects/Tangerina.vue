@@ -9,6 +9,7 @@
     >
       <NuxtLink to="/" class="font-headline text-xl font-black uppercase italic tracking-tighter md:text-2xl">{{ t('home.brandInitials') }}</NuxtLink>
       <div class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-8 md:text-[10px]">
+        <LocaleSwitcher theme="showcase-light" />
         <NuxtLink class="transition-colors hover:text-[#ff5c00]" to="/">{{ t('common.backToWork') }}</NuxtLink>
         <span class="opacity-30">{{ t('common.slash') }}</span>
         <a
