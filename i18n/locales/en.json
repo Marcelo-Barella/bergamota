@@ -1,0 +1,8 @@
+{
+  "app": {
+    "title": "Bergamota"
+  },
+  "plural": {
+    "demo": "no items | one item | {count} items"
+  }
+}
