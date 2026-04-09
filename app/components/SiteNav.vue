@@ -5,34 +5,34 @@
       <div class="site-nav-end">
         <LocaleSwitcher />
         <ul class="site-nav-list">
-        <li>
-          <NuxtLink
-            to="/#hero"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
-          >
-            {{ t('common.home') }}
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/#projects"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
-          >
-            {{ t('common.projects') }}
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/#contact"
-            class="site-nav-link"
-            :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
-          >
-            {{ t('common.contact') }}
-          </NuxtLink>
-        </li>
-      </ul>
+          <li>
+            <NuxtLink
+              to="/#hero"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
+            >
+              {{ t('common.home') }}
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/#projects"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
+            >
+              {{ t('common.projects') }}
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/#contact"
+              class="site-nav-link"
+              :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
+            >
+              {{ t('common.contact') }}
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -75,7 +75,9 @@ function isHashCurrent(hash: string) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.75rem 1.15rem;
+  margin-left: auto;
 }
 
 .site-nav-brand {

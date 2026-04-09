@@ -14,7 +14,7 @@
       @keydown.up.prevent="openAndFocusFirst"
     >
       <span class="locale-switcher__flag" aria-hidden="true">{{ currentFlag }}</span>
-      <span class="locale-switcher__code" aria-hidden="true">{{ currentShort }}</span>
+      <span class="locale-switcher__code">{{ currentShort }}</span>
       <span class="sr-only">{{ currentLocaleName }}</span>
     </button>
     <ul
@@ -37,10 +37,12 @@
           class="locale-switcher__option locale-switcher__option--link"
           role="option"
           :aria-selected="false"
+          :lang="item.language"
+          :hreflang="item.language"
           @click="close"
         >
           <span class="locale-switcher__flag" aria-hidden="true">{{ item.flag }}</span>
-          <span class="locale-switcher__code" aria-hidden="true">{{ item.short }}</span>
+          <span class="locale-switcher__code">{{ item.short }}</span>
           <span class="sr-only">{{ item.name }}</span>
         </NuxtLink>
         <span
@@ -51,7 +53,7 @@
           aria-current="true"
         >
           <span class="locale-switcher__flag" aria-hidden="true">{{ item.flag }}</span>
-          <span class="locale-switcher__code" aria-hidden="true">{{ item.short }}</span>
+          <span class="locale-switcher__code">{{ item.short }}</span>
           <span class="sr-only">{{ item.name }}</span>
         </span>
       </li>
@@ -62,7 +64,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    theme?: 'default' | 'showcase-light' | 'showcase-dark'
+    theme?: 'default' | 'showcase-light' | 'showcase-dark' | 'showcase-dark-indigo'
   }>(),
   { theme: 'default' },
 )
@@ -81,17 +83,19 @@ const themeClass = computed(() => ({
   'locale-switcher--default': props.theme === 'default',
   'locale-switcher--showcase-light': props.theme === 'showcase-light',
   'locale-switcher--showcase-dark': props.theme === 'showcase-dark',
+  'locale-switcher--showcase-dark-indigo': props.theme === 'showcase-dark-indigo',
 }))
 
-type LocaleItem = { code: string; name: string; short: string; flag: string }
+type LocaleItem = { code: string; name: string; short: string; flag: string; language: string }
 
 const items = computed((): LocaleItem[] => {
-  const list = locales.value as { code: string; name?: string }[]
+  const list = locales.value as { code: string; name?: string; language?: string }[]
   return list.map((loc) => ({
     code: loc.code,
     name: loc.name || loc.code,
-    short: loc.code === 'pt-BR' ? 'PT-BR' : 'EN',
-    flag: loc.code === 'pt-BR' ? '🇧🇷' : '🇺🇸',
+    language: loc.language || (loc.code === 'pt-BR' ? 'pt-BR' : 'en-US'),
+    short: loc.code === 'pt-BR' ? 'BR' : 'EN',
+    flag: loc.code === 'pt-BR' ? '\u{1F1E7}\u{1F1F7}' : '\u{1F1FA}\u{1F1F8}',
   }))
 })
 
@@ -344,6 +348,36 @@ onMounted(() => {
 .locale-switcher--showcase-dark .locale-switcher__option--current {
   color: #fff;
   background: color-mix(in srgb, #00f2ff 22%, transparent);
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__trigger {
+  color: #cbd5e1;
+  border-color: color-mix(in srgb, #fff 14%, transparent);
+  --locale-focus: #a5b4fc;
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__trigger:hover,
+.locale-switcher--showcase-dark-indigo .locale-switcher__trigger[aria-expanded='true'] {
+  border-color: color-mix(in srgb, #312e81 65%, #fff 35%);
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__list {
+  background: #0f1115;
+  border-color: color-mix(in srgb, #fff 12%, transparent);
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__option--link {
+  color: #cbd5e1;
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__option--link:hover {
+  color: #fff;
+  background: color-mix(in srgb, #312e81 45%, transparent);
+}
+
+.locale-switcher--showcase-dark-indigo .locale-switcher__option--current {
+  color: #fff;
+  background: color-mix(in srgb, #312e81 55%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
