@@ -3,8 +3,8 @@ const STORAGE_KEY = 'bergamota_i18n_locale'
 export default defineNuxtPlugin({
   name: 'i18n-locale-persistence',
   dependsOn: ['i18n:plugin'],
-  async setup(nuxtApp) {
-    const { locale, setLocale } = nuxtApp.$i18n
+  setup(nuxtApp) {
+    const { locale } = nuxtApp.$i18n
 
     const readStored = (): string | null => {
       try {
@@ -26,7 +26,7 @@ export default defineNuxtPlugin({
 
     const stored = readStored()
     if (stored && supported.has(stored) && stored !== locale.value) {
-      await setLocale(stored)
+      nuxtApp.$i18n.setLocaleCookie(stored)
     }
 
     watch(
@@ -34,6 +34,7 @@ export default defineNuxtPlugin({
       (code) => {
         if (supported.has(code)) {
           writeStored(code)
+          nuxtApp.$i18n.setLocaleCookie(code)
         }
       },
       { immediate: true },

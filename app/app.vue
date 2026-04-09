@@ -12,6 +12,12 @@
 
 <script setup lang="ts">
 const showNoise = true
+const i18nHead = useLocaleHead({ seo: true })
+useHead(() => ({
+  htmlAttrs: i18nHead.value.htmlAttrs,
+  link: i18nHead.value.link,
+  meta: i18nHead.value.meta,
+}))
 </script>
 
 <style>

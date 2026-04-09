@@ -47,6 +47,7 @@ export default defineNuxtConfig({
   modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
   i18n: {
     restructureDir: 'i18n',
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://bergamota.dev',
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
     langDir: 'locales',

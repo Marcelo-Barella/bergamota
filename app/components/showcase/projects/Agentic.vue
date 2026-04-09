@@ -13,6 +13,7 @@
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-3 text-[9px] font-bold uppercase tracking-[0.2em] text-white md:gap-8 md:text-[10px]"
       >
+        <LocaleSwitcher theme="showcase-dark" />
         <NuxtLink class="transition-colors hover:text-[#00f2ff]" to="/">{{ t('common.backToWork') }}</NuxtLink>
         <NuxtLink class="transition-colors hover:text-[#00f2ff]" to="/#projects">{{ t('common.experiments') }}</NuxtLink>
         <a
