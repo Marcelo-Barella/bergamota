@@ -11,21 +11,21 @@
         to="/"
         class="font-headline text-xl font-extrabold uppercase italic tracking-tighter md:text-2xl"
       >
-        M. Barella
+        {{ t('home.brandInitials') }}
       </NuxtLink>
       <div
         class="flex max-w-full flex-wrap items-center justify-end gap-4 text-[9px] font-bold uppercase tracking-[0.2em] md:gap-10 md:text-[10px]"
       >
         <NuxtLink class="flex items-center gap-2 transition-colors hover:text-[#d97706]" to="/">
-          <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Work
+          <span class="material-symbols-outlined text-sm">arrow_back</span> {{ t('common.backToWork') }}
         </NuxtLink>
-        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/#projects">Projects</NuxtLink>
+        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/#projects">{{ t('common.projects') }}</NuxtLink>
         <a
           class="bg-[#1b1c1a] px-4 py-2 text-[#f8f6f3] transition-all hover:bg-[#2563eb]"
           :href="project.repoUrl"
           target="_blank"
           rel="noopener noreferrer"
-        >Repository</a>
+        >{{ t('common.repository') }}</a>
       </div>
     </nav>
 
@@ -40,35 +40,35 @@
             data-gsap-project-hero-el
             class="bg-[#2563eb] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-white"
           >
-            VS Code / Cursor extension
+            {{ t('projectPages.cursorSync.heroBadge') }}
           </span>
           <span data-gsap-project-hero-el class="text-xs font-bold uppercase tracking-[0.3em] text-[#1b1c1a]/50">
-            Your backup, your account
+            {{ t('projectPages.cursorSync.heroBadgeSub') }}
           </span>
         </div>
         <h1
           class="showcase-hero-title-fit font-headline relative z-0 mb-10 font-extrabold uppercase tracking-tighter md:mb-14"
         >
-          <span data-gsap-project-hero-el class="block">Cursor</span>
+          <span data-gsap-project-hero-el class="block">{{ t('projectPages.cursorSync.heroTitle1') }}</span>
           <span
             data-gsap-project-hero-el
             class="block text-transparent"
             style="-webkit-text-stroke: 1.5px #1b1c1a"
-          >Sync</span>
+          >{{ t('projectPages.cursorSync.heroTitle2') }}</span>
         </h1>
         <div class="showcase-custom-grid relative z-10 gap-12">
           <div class="relative z-10 col-span-12 md:col-span-5">
             <p data-gsap-project-hero-el class="mb-10 text-2xl font-medium leading-tight md:text-3xl">
-              {{ project.description }}
+              {{ t(project.descriptionKey) }}
             </p>
             <div class="flex flex-wrap gap-6">
               <div data-gsap-project-hero-el class="showcase-rotate-neg-1 border-2 border-[#1b1c1a] bg-white p-5">
-                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Stores</span>
-                <div class="font-headline text-lg font-bold text-[#2563eb]">Private gist snapshot</div>
+                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">{{ t('projectPages.cursorSync.storesLabel') }}</span>
+                <div class="font-headline text-lg font-bold text-[#2563eb]">{{ t('projectPages.cursorSync.storesValue') }}</div>
               </div>
               <div data-gsap-project-hero-el class="showcase-rotate-pos-1 border-2 border-[#d97706] bg-[#d97706]/10 p-5">
-                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">Feels like</span>
-                <div class="font-headline text-lg font-bold">Native editor commands</div>
+                <span class="mb-2 block text-[10px] font-bold uppercase tracking-widest text-[#1b1c1a]/50">{{ t('projectPages.cursorSync.feelsLabel') }}</span>
+                <div class="font-headline text-lg font-bold">{{ t('projectPages.cursorSync.feelsValue') }}</div>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
                 data-gsap-project-hero-visual-img
                 class="h-full w-full object-cover"
                 :src="project.imageSrc"
-                :alt="project.imageAlt"
+                :alt="t(project.imageAltKey)"
                 loading="eager"
                 decoding="async"
               >
@@ -97,37 +97,37 @@
           <h2
             class="font-headline max-w-full text-[clamp(2.25rem,6vw+0.5rem,4.5rem)] font-black uppercase leading-[0.95] tracking-tighter"
           >
-            Same editor.<br />Portable state.
+            {{ t('projectPages.cursorSync.portable.titleLine1') }}<br />{{ t('projectPages.cursorSync.portable.titleLine2') }}
           </h2>
           <p class="mt-6 max-w-2xl text-lg text-[#1b1c1a]/70">
-            The point is simple: your shortcuts, rules, snippets, and the Cursor-side files you care about should follow you to the next machine. Push a snapshot, pull when you land, schedule if you like, and recover when two copies disagree.
+            {{ t('projectPages.cursorSync.portable.lead') }}
           </p>
         </div>
         <div class="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
           <div class="md:sticky md:top-32">
             <div class="mb-8 h-2 w-20 bg-[#d97706]" />
-            <h3 class="font-headline mb-4 text-xl font-bold uppercase">What travels with you</h3>
+            <h3 class="font-headline mb-4 text-xl font-bold uppercase">{{ t('projectPages.cursorSync.whatTravels.title') }}</h3>
             <p class="max-w-md text-lg leading-relaxed text-[#1b1c1a]/75">
-              Editor settings, keymaps, snippets, and a generated picture of your extensions on push—plus the parts of your Cursor home that define how you work: skills, command docs, and rules. Noise like caches and sensitive paths stays out by design.
+              {{ t('projectPages.cursorSync.whatTravels.body') }}
             </p>
           </div>
           <div class="space-y-10">
             <div class="border-l-8 border-[#2563eb] bg-[#f8f6f3] p-10">
-              <h4 class="font-headline mb-4 text-2xl font-bold uppercase">The problem</h4>
+              <h4 class="font-headline mb-4 text-2xl font-bold uppercase">{{ t('projectPages.cursorSync.problem.title') }}</h4>
               <p class="text-lg leading-relaxed text-[#1b1c1a]/80">
-                Laptop and desktop diverge. The extension treats your gist as the shared truth: push when this machine wins, pull when you want to catch up, and confirm before anything destructive so you are never surprised by a silent overwrite.
+                {{ t('projectPages.cursorSync.problem.body') }}
               </p>
             </div>
             <div class="border-l-8 border-[#d97706] bg-[#f8f6f3] p-10">
-              <h4 class="font-headline mb-4 text-2xl font-bold uppercase">How it works</h4>
+              <h4 class="font-headline mb-4 text-2xl font-bold uppercase">{{ t('projectPages.cursorSync.howItWorks.title') }}</h4>
               <p class="text-lg leading-relaxed text-[#1b1c1a]/80">
-                You authorize once; credentials stay in the editor’s secure storage. Day to day you use familiar commands—sync, push, pull—from the palette or sidebar, the same way you already drive the rest of your tooling.
+                {{ t('projectPages.cursorSync.howItWorks.body') }}
               </p>
             </div>
             <div class="relative border-2 border-dashed border-[#1b1c1a]/20 p-8">
               <span
                 class="absolute -top-3 left-4 bg-white px-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#1b1c1a]/50"
-              >Preview</span>
+              >{{ t('common.preview') }}</span>
               <img
                 data-gsap-project-media-parallax
                 class="w-full opacity-90 grayscale transition-all hover:grayscale-0"
@@ -149,27 +149,27 @@
           class="mb-12 text-center"
         >
           <h3 class="font-headline text-3xl font-bold uppercase tracking-widest md:text-4xl">
-            Standout surfaces
+            {{ t('projectPages.cursorSync.standout.title') }}
           </h3>
           <p class="mx-auto mt-4 max-w-2xl text-[#1b1c1a]/65">
-            A sidebar that tells you where you stand, one-tap sync actions, a short history so you can trust what changed, and optional transcript export when you want agent sessions to travel with the rest of your setup.
+            {{ t('projectPages.cursorSync.standout.lead') }}
           </p>
         </div>
         <div data-gsap-project-stagger class="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#2563eb]">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#2563eb]">tune</span>
-            <h5 class="font-headline mb-3 text-xl font-bold uppercase">Conflicts &amp; recovery</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">When two sides disagree, you get a conflict flow—not silent corruption—and failed pulls can roll back from the last few automatic snapshots.</p>
+            <h5 class="font-headline mb-3 text-xl font-bold uppercase">{{ t('projectPages.cursorSync.card1.title') }}</h5>
+            <p class="leading-relaxed text-[#1b1c1a]/70">{{ t('projectPages.cursorSync.card1.body') }}</p>
           </div>
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#d97706] md:translate-y-8">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#d97706]">extension</span>
-            <h5 class="font-headline mb-3 text-xl font-bold uppercase">Extensions</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">Pushing captures what you have installed; on pull you can optionally fill in gaps so a fresh machine quickly matches your extension lineup.</p>
+            <h5 class="font-headline mb-3 text-xl font-bold uppercase">{{ t('projectPages.cursorSync.card2.title') }}</h5>
+            <p class="leading-relaxed text-[#1b1c1a]/70">{{ t('projectPages.cursorSync.card2.body') }}</p>
           </div>
           <div class="border-2 border-[#1b1c1a] bg-white p-8 transition-shadow hover:shadow-[8px_8px_0_0_#1b1c1a]">
             <span class="material-symbols-outlined mb-4 text-4xl text-[#1b1c1a]">history</span>
-            <h5 class="font-headline mb-3 text-xl font-bold uppercase">Transcripts</h5>
-            <p class="leading-relaxed text-[#1b1c1a]/70">Optional transcript bundles for people who want agent conversations to be portable too, with verification notes in the repo for the cautious.</p>
+            <h5 class="font-headline mb-3 text-xl font-bold uppercase">{{ t('projectPages.cursorSync.card3.title') }}</h5>
+            <p class="leading-relaxed text-[#1b1c1a]/70">{{ t('projectPages.cursorSync.card3.body') }}</p>
           </div>
         </div>
       </div>
@@ -178,12 +178,12 @@
     <section data-gsap-project-section class="border-t-2 border-[#1b1c1a] bg-[#1b1c1a] px-4 py-28 text-[#f8f6f3] md:px-10 md:py-36">
       <div data-gsap-project-cta class="showcase-custom-grid mx-auto min-w-0 max-w-7xl items-center gap-16">
         <div class="col-span-12 md:col-span-5">
-          <span class="text-xs font-bold uppercase tracking-[0.4em] text-[#d97706]">Details when you need them</span>
+          <span class="text-xs font-bold uppercase tracking-[0.4em] text-[#d97706]">{{ t('projectPages.cursorSync.cta.eyebrow') }}</span>
           <h2 class="font-headline mt-6 mb-8 text-[clamp(2rem,5vw+0.5rem,3.5rem)] font-black uppercase leading-[0.95]">
-            Install, configure,<br />and trust the flow.
+            {{ t('projectPages.cursorSync.cta.titleLine1') }}<br />{{ t('projectPages.cursorSync.cta.titleLine2') }}
           </h2>
           <p class="mb-10 text-xl font-light leading-relaxed text-white/75">
-            Full install paths, every command name, and security expectations live on GitHub and the marketplace listing—this page is the pitch; the repo is the manual.
+            {{ t('projectPages.cursorSync.cta.lead') }}
           </p>
           <div class="flex flex-wrap items-center gap-8">
             <a
@@ -192,11 +192,11 @@
               :href="project.repoUrl"
               target="_blank"
               rel="noopener noreferrer"
-            >View on GitHub</a>
+            >{{ t('common.viewOnGitHub') }}</a>
             <a
               class="border-b-2 border-white/40 pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
               :href="mailtoHref"
-            >Contact</a>
+            >{{ t('common.contact') }}</a>
           </div>
         </div>
         <div class="col-span-12 md:col-span-6 md:col-start-7">
@@ -205,7 +205,7 @@
               data-gsap-project-media-parallax
               class="h-full w-full object-cover brightness-90 contrast-105"
               :src="project.imageSrc"
-              :alt="project.imageAlt"
+              :alt="t(project.imageAltKey)"
               loading="lazy"
               decoding="async"
             >
@@ -216,11 +216,11 @@
 
     <footer class="flex flex-col items-center justify-between gap-8 border-t-2 border-[#1b1c1a] bg-[#f8f6f3] p-10 md:flex-row">
       <div class="font-headline text-xl font-bold uppercase italic tracking-tighter">
-        Marcelo Barella — Bergamota
+        {{ t('layout.attribution') }}
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-50 transition-opacity hover:opacity-100">
-        <span>Cursor Sync</span>
-        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/">Home</NuxtLink>
+        <span>{{ t('projectPages.cursorSync.footerMeta') }}</span>
+        <NuxtLink class="transition-colors hover:text-[#d97706]" to="/">{{ t('common.home') }}</NuxtLink>
       </div>
     </footer>
   </div>
@@ -230,6 +230,7 @@
 import type { PortfolioProject } from '~/types/portfolio-project'
 
 defineProps<{ project: PortfolioProject }>()
+const { t } = useI18n()
 const { mailtoHref } = useContact()
 const projectRoot = ref<HTMLElement | null>(null)
 useShowcaseProjectGsap(projectRoot)

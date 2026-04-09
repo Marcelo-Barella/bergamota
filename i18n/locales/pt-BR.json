@@ -4,5 +4,368 @@
   },
   "plural": {
     "demo": "nenhum item | um item | {count} itens"
+  },
+  "common": {
+    "navPrimary": "Principal",
+    "brand": "Bergamota",
+    "email": "E-mail",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "contact": "Contato",
+    "home": "Início",
+    "projects": "Projetos",
+    "experiments": "Experimentos",
+    "repository": "Repositório",
+    "backToWork": "Voltar ao trabalho",
+    "backToPortfolio": "Voltar ao portfólio",
+    "moreProjects": "Mais projetos",
+    "portfolio": "Portfólio",
+    "preview": "Prévia",
+    "seeTheStory": "Ver a história",
+    "openRepository": "Abrir repositório",
+    "cloneOnGitHub": "Clonar no GitHub",
+    "viewOnGitHub": "Ver no GitHub",
+    "openGitHub": "Abrir GitHub",
+    "slash": "/"
+  },
+  "errors": {
+    "projectNotFound": "Projeto não encontrado"
+  },
+  "layout": {
+    "footerNav": "Rodapé",
+    "attribution": "Marcelo Barella — Bergamota"
+  },
+  "projectsData": {
+    "cursor-ca-orchestrator": {
+      "title": "Cursor Orchestrator",
+      "description": "Execute um objetivo em vários repositórios GitHub de uma vez. Alinha os Cursor Cloud Agents, mantém o estado da execução visível e encaminha o trabalho para o repositório certo para que o trabalho paralelo dos agentes fique coordenado, não espalhado.",
+      "imageAlt": "Prévia do projeto Cursor Orchestrator"
+    },
+    "cursor-sync": {
+      "title": "Cursor Sync",
+      "description": "Leve sua configuração do Cursor com você. Sincronize ajustes, regras, snippets e o que importa do seu fluxo para um backup privado na nuvem—envie, puxe em uma máquina nova e resolva conflitos quando dois mundos divergem.",
+      "imageAlt": "Prévia do projeto Cursor Sync"
+    },
+    "tangerina": {
+      "title": "Tangerina",
+      "description": "Uma companheira Discord que conversa, toca música, fala em canais de voz e age no seu servidor com as ferramentas certas na hora certa—para que os membros tenham ajuda e clima num só lugar em vez de alternar entre uma dúzia de bots.",
+      "imageAlt": "Prévia do projeto Tangerina"
+    },
+    "agentic-browser-ai": {
+      "title": "Agentic Browser AI",
+      "description": "Dê ao seu assistente de IA olhos na web real: sessões de navegador reais, navegação, capturas de tela e interação com a página—para que respostas e ações se baseiem no que está na tela de fato, não num retrato desatualizado.",
+      "imageAlt": "Prévia do projeto Agentic Browser AI"
+    }
+  },
+  "home": {
+    "brandInitials": "M. Barella",
+    "nav": {
+      "manifesto": "Manifesto",
+      "experiments": "Experimentos",
+      "chaos": "Caos",
+      "talk": "Vamos falar?"
+    },
+    "hero": {
+      "badge": "Bergamota Embaixador Cursor",
+      "line1": "Quebrando",
+      "line2": "A Grade",
+      "lead": "Entrego ferramentas de IA e fluxos de agentes que transformam ideias ambiciosas em algo que as pessoas usam todo dia.",
+      "cta": "Ver o trabalho",
+      "photoAlt": "Bergamota em conversa em grupo no meetup Cursor",
+      "meLabel": "Sou eu",
+      "watermark": "M"
+    },
+    "meetup": {
+      "titleLine1": "Cursor",
+      "titleLine2": "Meetup",
+      "subtitle": "Quadros selecionados em que Bergamota aparece no meetup Cursor de 17/03/2026.",
+      "photos": {
+        "1": { "alt": "Bergamota em conversa em grupo no meetup Cursor" },
+        "2": { "alt": "Bergamota conversando com participantes durante o meetup" },
+        "3": { "alt": "Bergamota com a equipe Cursor no meetup" },
+        "4": { "alt": "Bergamota posando em frente ao banner Cursor Porto Alegre" },
+        "5": { "alt": "Bergamota e retrato da equipe no local do meetup" },
+        "6": { "alt": "Bergamota interagindo com participantes no meetup" }
+      }
+    },
+    "cafeCursor": {
+      "titleLine1": "Cafe Cursor",
+      "titleLine2": "Florianópolis",
+      "subtitle": "Quadros selecionados em que Bergamota aparece no Cafe Cursor Florianópolis.",
+      "photos": {
+        "1": { "alt": "Bergamota falando com participantes no Cafe Cursor Florianópolis" },
+        "2": { "alt": "Bergamota sorrindo durante uma conversa no Cafe Cursor Florianópolis" },
+        "3": { "alt": "Bergamota apresentando um ponto ao grupo no Cafe Cursor Florianópolis" },
+        "4": { "alt": "Bergamota ouvindo durante uma troca no meetup no Cafe Cursor Florianópolis" },
+        "5": { "alt": "Bergamota em discussão com outro participante no Cafe Cursor Florianópolis" },
+        "6": { "alt": "Bergamota acompanhando uma discussão ao vivo no Cafe Cursor Florianópolis" }
+      }
+    },
+    "projectsSection": {
+      "titleLine1": "Onde Minha",
+      "titleLine2": "Cabeça Vai",
+      "subtitle": "Para que serve cada um, o que faz por você e como merece lugar num fluxo de verdade.",
+      "flagshipLabel": "01 / Carro-chefe",
+      "cursorOrchestratorTitleLine1": "Cursor",
+      "cursorOrchestratorTitleLine2": "Orchestrator",
+      "cursorSyncLabel": "02 / Extensão",
+      "cursorSyncSubtitle": "Workspace portátil",
+      "tangerinaLabel": "03 / Discord e diversão",
+      "agenticLabel": "04 / Web ao vivo"
+    },
+    "how": {
+      "title": "O Como.",
+      "step1": {
+        "num": "01",
+        "title": "Ouvir o Ruído",
+        "body": "Começo onde outros param—no ruído. Procuro os casos estranhos e os \"e se\" que a maioria ignora. É aí que mora a mágica."
+      },
+      "step2": {
+        "num": "02",
+        "title": "Quebrar o Protótipo",
+        "body": "Se não quebra, não é inovador o bastante. Empurro código e design até desmontarem, depois remonto de um jeito que funciona de verdade para humanos."
+      },
+      "step3": {
+        "num": "03",
+        "title": "Manter Cru",
+        "body": "Perfeito é chato. Deixo as digitais. Quero que você sinta a intenção por trás de cada pixel e linha de código. Autenticidade em vez de polimento."
+      }
+    },
+    "contact": {
+      "titleLine1": "Pronto para",
+      "titleAccent": "Mexer o Caldo?",
+      "leadPrefix": "Fale em",
+      "leadSuffix": "para projetos que querem se destacar, não se misturar.",
+      "cta": "Vamos Conversar"
+    },
+    "footer": {
+      "attribution": "Marcelo Barella — Bergamota",
+      "builtWithCursor": "Feito com Cursor",
+      "builtForWeb": "Feito para a Web",
+      "stayWeird": "Continue Estranho"
+    },
+    "finePrint": "Feito com Cursor. Cada imagem deste site foi encontrada e escolhida pelo Cursor."
+  },
+  "projectPages": {
+    "tangerina": {
+      "heroBadge": "Discord · companheira de IA",
+      "heroTitle1": "Tange-",
+      "heroTitle2": "rina",
+      "heroTitleAccent": ".",
+      "tags": {
+        "voiceMusic": "Voz e música",
+        "conversation": "Conversa",
+        "serverActions": "Ações no servidor"
+      },
+      "visualWatermark": "BOT",
+      "section1": {
+        "title": "Um membro, o clima todo",
+        "lead": "Comunidades não querem um muro de prefixos—querem alguém no canal que responda, enfileire faixa, entre em voz e use ferramentas sensatas quando couber. Tangerina é feita para essa presença, não para marcar caixinhas de lista de recursos."
+      },
+      "challenge": {
+        "label": "Desafio",
+        "title": "Tudo numa conversa só",
+        "body": "Pedem música, ajuda e interação por voz no mesmo fio. O bot está estruturado para esses comportamentos conviverem: modelos que você troca, caminhos de música e TTS que parecem nativos no Discord, e fluxos de voz alinhados a como os servidores realmente convivem—não um app separado para cada tarefa."
+      },
+      "aside1": {
+        "title": "Além da caixa de chat",
+        "body": "Uma camada HTTP pequena fica ao lado do Discord para você disparar health checks, ações de voz e fila, TTS e mensagens estilo chat a partir de automações ou integrações suas—quando quiser que o bot fale com o mundo fora de um único canal."
+      },
+      "aside2": {
+        "title": "Ações, não monólogos",
+        "body": "A assistente pode escolher ações estruturadas—canais, voz, filas, reprodução, fala, busca—para que respostas virem resultado. Você controla o que é postado onde, incluindo ligar mensagens de saída a ferramentas ou fluxos externos quando couber ao seu servidor."
+      },
+      "marquee": {
+        "voice": "VOZ",
+        "music": "MÚSICA",
+        "smartActions": "AÇÕES INTELIGENTES",
+        "discord": "DISCORD"
+      },
+      "builtSection": {
+        "titleBefore": "Feita para rodar ",
+        "titleHighlight": "de verdade",
+        "lead": "Testes automatizados e gates de cobertura sustentam o que os membros usam—refactors ficam menos assustadores e regressões aparecem antes da comunidade sentir.",
+        "aside": "Deploy pensando em Docker com perfis opcionais de voz e automação quando você quer a pilha inteira, não só o binário do bot."
+      },
+      "toolsCard": {
+        "title": "Ferramentas",
+        "subtitle": "O que a assistente pode fazer",
+        "body": "Um catálogo claro de capacidades voltadas ao servidor—canais, voz, filas, reprodução, fala, busca—para o modelo escolher passos reais em vez de enrolar."
+      },
+      "toolsColumn": {
+        "p1": "Personalidade e tom vêm como texto editável para a voz do bot combinar com a comunidade, com notas de deploy para montar esse arquivo em containers.",
+        "p2": "Memória de longo prazo opcional via variáveis de ambiente—escolha embeddings e limites conforme quanto de histórico você quer que o bot carregue."
+      },
+      "outcome": {
+        "title": "Resultado",
+        "body": "Você leva uma pilha para rodar, estender e entregar a uma comunidade: entrada estilo wake, webhooks amigáveis a automação e notas práticas sobre intents do Discord e dependências de voz para o setup bater com como as pessoas hospedam bots.",
+        "ctaLabel": "Self-host ou fork"
+      },
+      "footerBrand": "Marcelo Barella — Tangerina"
+    },
+    "orchestrator": {
+      "navBrand": "M. BARELLA",
+      "heroBadge": "Execuções multi-repo com agentes",
+      "heroTitle1": "Cursor",
+      "heroTitle2": "Orchestrator",
+      "heroLead": "Descreva o resultado uma vez. A ferramenta prepara um espaço compartilhado no GitHub, abre um branch dedicado para a execução e coordena um orquestrador com agentes worker nos repositórios que você nomear—muitas mãos num único plano em vez de vinte versões inventadas.",
+      "heroSub": "Entregue como CLI local rápida com fluxo config-first: sessões interativas, runs em YAML e os guardrails usuais para tokens e ambientes.",
+      "why": {
+        "title": "Por que existe",
+        "lead": "Subir agentes em repositórios diferentes empolga por cinco minutos e dói no terceiro dia sem um lugar único que guarde intenção, tarefas e progresso. Este projeto trata o GitHub como essa superfície compartilhada para todos lerem a mesma execução, não cada um sua thread."
+      },
+      "whatYouGet": {
+        "title": "O que você ganha",
+        "body": "Uma CLI que você dirige numa sessão interativa ou num arquivo de config versionado, mais comandos ao vivo para ver status, acompanhar logs e parar uma execução quando o plano muda no meio do caminho.",
+        "li1": "Sessões lembram onde você parou para runs iterativas parecerem contínuas, não um jogo de adivinha novo toda vez.",
+        "li2": "Um médico de config avisa cedo se tokens ou precedência estão errados—antes de queimar uma hora numa falha silenciosa.",
+        "li3": "Autocomplete no shell para quem opera com frequência ficar no fluxo em vez de reler o help."
+      },
+      "architecture": {
+        "label": "Arquitetura",
+        "title": "Três partes em movimento",
+        "body": "Sua máquina roda a CLI; um repositório bootstrap carrega regras e runtime que os agentes na nuvem esperam; workers pousam em cada repo alvo enquanto o orquestrador mantém o grafo honesto. Cada run ganha seu branch com configuração, estado e saídas em arquivos pequenos para a colaboração ficar ordenada."
+      },
+      "guardrails": {
+        "label": "Guardrails",
+        "title": "Limites honestos",
+        "body": "Contagem de tarefas, cadência de polling e tetos por saída deixam runs na nuvem previsíveis. Workers focam no repo deles; só o orquestrador coordena, evitando redes de bisbilhotice e writes duplicados."
+      },
+      "yamlCard": {
+        "title": "YAML + REPL",
+        "subtitle": "Mesma CLI, duas entradas"
+      },
+      "singlePrompt": {
+        "titleLine1": "Um prompt,",
+        "titleLine2": "muitos repos",
+        "lead": "No modo single-prompt você diz a estrela do norte; o planejador vira tarefas e mapeia cada uma para um alias de repo da sua config—sem colar dez briefings quase iguais de worker.",
+        "sub": "Releases saem automatizadas da main quando a versão sobe—ideal para times que querem a CLI acompanhando o produto sem ritual manual de publish."
+      },
+      "deeper": {
+        "title": "Aprofunde no GitHub",
+        "lead": "Semântica de erro, caminhos de recuperação e modos de conclusão estão documentados junto do changelog—esta página vende a ideia; o repositório é onde operadores vivem."
+      },
+      "evidence": {
+        "num": "01",
+        "title": "Evidência",
+        "body": "Cada comando, variável de ambiente e diagrama de arquitetura está aberto para você verificar antes de apostar uma execução de produção nisso."
+      },
+      "nextStep": {
+        "num": "02",
+        "title": "Próximo passo",
+        "body": "Clone, copie o ambiente de exemplo, rode o script bootstrap dos docs e deixe o médico de config validar tokens antes da primeira orquestração de verdade."
+      },
+      "cta": {
+        "titleLine1": "Abra o",
+        "titleLine2": "código",
+        "lead": "Credenciais, ordem de instalação e os limites exatos de uma run estão escritos ao lado do código—sem comportamento escondido atrás de landing page."
+      },
+      "footerBrandPrefix": "Marcelo Barella — ",
+      "footerRoleMuted": "Embaixador Cursor",
+      "footerMeta1": "Bergamota.dev",
+      "footerMeta2": "Cursor Orchestrator"
+    },
+    "cursorSync": {
+      "heroBadge": "Extensão VS Code / Cursor",
+      "heroBadgeSub": "Seu backup, sua conta",
+      "heroTitle1": "Cursor",
+      "heroTitle2": "Sync",
+      "storesLabel": "Armazena",
+      "storesValue": "Snapshot privado em gist",
+      "feelsLabel": "Parece",
+      "feelsValue": "Comandos nativos do editor",
+      "portable": {
+        "titleLine1": "Mesmo editor.",
+        "titleLine2": "Estado portátil.",
+        "lead": "A ideia é simples: atalhos, regras, snippets e os arquivos do lado Cursor que importam devem te seguir para a próxima máquina. Envie um snapshot, puxe ao chegar, agende se quiser e recupere quando duas cópias discordam."
+      },
+      "whatTravels": {
+        "title": "O que viaja com você",
+        "body": "Ajustes do editor, keymaps, snippets e um retrato gerado das extensões no push—mais as partes do home Cursor que definem como você trabalha: skills, docs de comando e regras. Ruído como cache e caminhos sensíveis ficam de fora de propósito."
+      },
+      "problem": {
+        "title": "O problema",
+        "body": "Notebook e desktop divergem. A extensão trata seu gist como verdade compartilhada: push quando esta máquina ganha, pull para alcançar o outro lado e confirmação antes do destrutivo para nunca levar surpresa de sobrescrita silenciosa."
+      },
+      "howItWorks": {
+        "title": "Como funciona",
+        "body": "Você autoriza uma vez; credenciais ficam no armazenamento seguro do editor. No dia a dia usa comandos familiares—sync, push, pull—pela paleta ou barra lateral, como já faz com o resto da ferramenta."
+      },
+      "standout": {
+        "title": "Superfícies que se destacam",
+        "lead": "Uma barra lateral que mostra onde você está, ações de sync num toque, um histórico curto para confiar no que mudou e export opcional de transcript quando quer que sessões de agente viajem com o resto do setup."
+      },
+      "card1": {
+        "title": "Conflitos e recuperação",
+        "body": "Quando os lados discordam, você recebe um fluxo de conflito—não corrupção silenciosa—e pulls que falham podem voltar dos últimos snapshots automáticos."
+      },
+      "card2": {
+        "title": "Extensões",
+        "body": "O push captura o que está instalado; no pull você pode opcionalmente preencher lacunas para uma máquina nova alinhar rápido com sua linha de extensões."
+      },
+      "card3": {
+        "title": "Transcripts",
+        "body": "Bundles opcionais de transcript para quem quer conversas de agente portáteis também, com notas de verificação no repo para os cautelosos."
+      },
+      "cta": {
+        "eyebrow": "Detalhes quando precisar",
+        "titleLine1": "Instale, configure,",
+        "titleLine2": "e confie no fluxo.",
+        "lead": "Caminhos completos de instalação, cada nome de comando e expectativas de segurança estão no GitHub e na listagem da marketplace—esta página é o pitch; o repo é o manual."
+      },
+      "footerMeta": "Cursor Sync"
+    },
+    "agentic": {
+      "heroBadge": "Ponte do navegador para ferramentas de IA",
+      "heroTitle1": "Agentic",
+      "heroTitle2": "Browser AI",
+      "heroSub": "O projeto nasceu nos docs como InDOM; o nome do pacote no npm ainda pode refletir essa linhagem. O que importa para você: uma ponte em formato de padrões da IDE para uma sessão de navegador real.",
+      "heroTagline": "MCP · Navegador ao vivo",
+      "friction": {
+        "label": "Atrito",
+        "title": "Agentes da IDE precisam da página ao vivo",
+        "body": "Modelos leem texto; usuários vivem em páginas renderizadas. Este servidor fecha o circuito expondo sessões de browser a ferramentas que seu assistente já sabe chamar—então “confere o dashboard” significa abrir a aba, olhar e agir—não alucinar o DOM.",
+        "li1": "Rode como processo MCP clássico, servidor híbrido amigável a dev ou stream orientado a SSE—escolha o modo que combina com como o editor conecta.",
+        "li2": "Várias entradas existem no repo para ligar Cursor ou outros clientes MCP sem reinventar a camada de transporte."
+      },
+      "capabilities": {
+        "title": "O que você pode pedir que faça",
+        "lead": "Abrir sessões, mover entre URLs, capturar o que está na tela, clicar, digitar em campos e inspecionar saída do console—ferramentas nos verbos que você já usa ao depurar no browser. Trate o repositório como contrato para nomes e comportamento exatos."
+      },
+      "wireup": {
+        "title": "Ligação",
+        "body": "O README mostra como apontar o Cursor para o servidor buildado ou uma URL SSE em localhost. Combine a porta da config com o modo que você subiu—HTTP streamable versus processo local—para o handshake dar certo na primeira tentativa."
+      },
+      "quality": {
+        "title": "Qualidade e ops",
+        "body": "Testes automatizados e alvos de CI vêm no repo; helpers opcionais de gerenciamento de processo existem se quiser o servidor no ar como qualquer outro serviço de longa duração."
+      },
+      "reality": {
+        "label": "Check de realidade",
+        "title": "Promessa vs produto",
+        "lead": "Docs podem passar do código. Este site resume a história do produto; o repo mostra dependências, scripts e layout de módulo que você vai rodar. Trate claims estilo benchmark no README como direcionais a menos que reproduza você mesmo.",
+        "aside": "Notas de roadmap no repositório falam em evoluir o motor de automação—leia lá o que está vivo hoje versus o que vem depois."
+      },
+      "promise1": {
+        "title": "MCP + streaming",
+        "body": "Scripts de primeira classe para setups híbridos e streamable, com knobs de ambiente documentados ao lado do código para deploys estilo SSE."
+      },
+      "promise2": {
+        "title": "Navegador real",
+        "body": "Automação dirige uma sessão Chromium de verdade; helpers de imagem ficam ao lado para fluxos de screenshot e assets—veja dependências no repo pela pilha exata."
+      },
+      "promise3": {
+        "title": "Licenciamento",
+        "body": "Pensado para uso aberto; confirme o arquivo de licença e metadados no GitHub antes de embutir num fluxo comercial."
+      },
+      "bottomCta": {
+        "title": "Próximo passo",
+        "lead": "Clone, instale dependências, build uma vez, depois adicione o servidor ao cliente MCP com a config de exemplo—mantendo URL e porta alinhadas ao modo que você iniciou."
+      },
+      "footerBrand": "Bergamota × Embaixador Cursor",
+      "footerMeta1": "Web ao vivo",
+      "footerMeta2": "Código aberto"
+    }
   }
 }
