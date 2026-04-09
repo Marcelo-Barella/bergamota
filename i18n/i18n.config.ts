@@ -2,6 +2,12 @@ declare module 'vue-i18n' {
   export interface DefineLocaleMessage {
     app: { title: string }
     plural: { demo: string }
+    common: Record<string, string>
+    errors: Record<string, string>
+    layout: Record<string, string>
+    projectsData: Record<string, Record<string, string>>
+    home: Record<string, unknown>
+    projectPages: Record<string, Record<string, unknown>>
   }
 }
 

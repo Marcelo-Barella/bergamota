@@ -1,7 +1,7 @@
 <template>
   <header class="site-nav" role="banner">
-    <nav class="site-nav-inner" aria-label="Primary">
-      <NuxtLink to="/" class="site-nav-brand">Bergamota</NuxtLink>
+    <nav class="site-nav-inner" :aria-label="t('common.navPrimary')">
+      <NuxtLink to="/" class="site-nav-brand">{{ t('common.brand') }}</NuxtLink>
       <ul class="site-nav-list">
         <li>
           <NuxtLink
@@ -9,7 +9,7 @@
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#hero') }"
           >
-            Home
+            {{ t('common.home') }}
           </NuxtLink>
         </li>
         <li>
@@ -18,7 +18,7 @@
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#projects') }"
           >
-            Projects
+            {{ t('common.projects') }}
           </NuxtLink>
         </li>
         <li>
@@ -27,7 +27,7 @@
             class="site-nav-link"
             :class="{ 'site-nav-link--current': isHashCurrent('#contact') }"
           >
-            Contact
+            {{ t('common.contact') }}
           </NuxtLink>
         </li>
       </ul>
@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 const route = useRoute()
+const { t } = useI18n()
 
 function isHashCurrent(hash: string) {
   if (route.path !== '/') {

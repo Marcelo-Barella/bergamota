@@ -1,8 +1,8 @@
 export type PortfolioProject = {
   id: string
-  title: string
-  description: string
+  titleKey: string
+  descriptionKey: string
   repoUrl: string
   imageSrc: string
-  imageAlt: string
+  imageAltKey: string
 }
