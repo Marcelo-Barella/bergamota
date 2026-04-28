@@ -2,8 +2,13 @@
   "name": "bergamota",
   "type": "module",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "build": "nuxt build",
+    "build:subscription-shell": "npm run build --workspace=@bergamota/subscription-shell",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
