@@ -1,0 +1,64 @@
+@layer theme, base;
+
+@layer theme {
+  @theme inline {
+    /* Surfaces — cream family */
+    --color-surface-base: oklch(0.982 0.005 85);
+    --color-surface-muted: oklch(0.957 0.012 82);
+    --color-surface-elevated: oklch(0.925 0.018 76);
+    --color-surface-paper: oklch(0.993 0.012 92);
+
+    /* Text */
+    --color-ink-primary: oklch(0.278 0.018 45);
+    --color-ink-secondary: oklch(0.408 0.022 52);
+    --color-ink-muted: oklch(0.52 0.02 54);
+    --color-ink-subtle: oklch(0.628 0.018 62);
+
+    /* Terracotta — primary CTA & highlights only */
+    --color-accent: oklch(0.55 0.12 42);
+    --color-accent-hover: oklch(0.492 0.115 41);
+    --color-accent-foreground: oklch(0.992 0.005 92);
+
+    --color-border: oklch(0.868 0.018 74);
+    --color-ring: oklch(0.55 0.1 43);
+
+    /* 8px grid spacing scale */
+    --spacing-slot: 8px;
+    --spacing-gutter-xs: var(--spacing-slot);
+    --spacing-gutter-sm: calc(var(--spacing-slot) * 2);
+    --spacing-gutter-md: calc(var(--spacing-slot) * 3);
+    --spacing-gutter-lg: calc(var(--spacing-slot) * 4);
+    --spacing-gutter-xl: calc(var(--spacing-slot) * 5);
+    --spacing-gutter-2xl: calc(var(--spacing-slot) * 6);
+    --spacing-section: calc(var(--spacing-slot) * 12);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 9999px;
+
+    --font-size-display: clamp(2.5rem, 5vw + 1.5rem, 3.75rem);
+    --font-size-h1: clamp(2rem, 3vw + 1.25rem, 2.75rem);
+    --font-size-h2: clamp(1.5rem, 1.5vw + 1.1rem, 2rem);
+    --font-size-h3: clamp(1.2rem, 0.8vw + 1rem, 1.375rem);
+    --font-size-body: 1.0625rem;
+    --font-size-body-sm: 0.9375rem;
+    --line-height-tight: 1.15;
+    --line-height-snug: 1.35;
+    --line-height-body: 1.6;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-surface-base);
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
