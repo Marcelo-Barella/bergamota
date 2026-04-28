@@ -8,7 +8,6 @@ dist
 
 # Node dependencies
 node_modules
-package-lock.json
 
 # Logs
 logs
@@ -36,3 +35,5 @@ CLAUDE.md
 skills-lock.json
 
 .tooling/exports/
+
+cursor-orch-output.json

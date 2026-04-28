@@ -1,0 +1,19 @@
+{
+  "name": "@bergamota-kit/design-tokens",
+  "version": "0.1.0",
+  "description": "Bergamota design tokens, CSS variables, and Tailwind preset",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./preset": "./src/preset.js",
+    "./css/tokens.css": "./css/tokens.css"
+  },
+  "files": [
+    "css",
+    "src"
+  ],
+  "peerDependencies": {
+    "tailwindcss": ">=3.4.0"
+  }
+}
