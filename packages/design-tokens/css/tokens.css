@@ -1,0 +1,18 @@
+:root {
+  --color-cream-0: #fdfcfa;
+  --color-cream-50: #faf7f2;
+  --color-cream-100: #f3ede4;
+  --color-cream-200: #e8dfd1;
+  --color-charcoal-600: #5c5854;
+  --color-charcoal-700: #3f3c39;
+  --color-charcoal-800: #2c2926;
+  --color-charcoal-900: #1f1d1b;
+  --color-terra-accent: #b84d2e;
+  --color-terra-accent-hover: #a34428;
+  --color-terra-muted: #d4a08a;
+  --color-surface-elevated: #ffffff;
+  --color-border-subtle: rgba(44, 41, 38, 0.12);
+  --shadow-soft: 0 8px 24px rgba(31, 29, 27, 0.06);
+  --radius-card: 12px;
+  --grid-base: 8px;
+}
