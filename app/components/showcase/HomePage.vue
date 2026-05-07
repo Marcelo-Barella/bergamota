@@ -472,8 +472,19 @@
     <footer
       class="flex flex-col items-center justify-between gap-8 border-t-2 border-[#1b1c1a] bg-[#f8f6f3] p-10 md:flex-row"
     >
-      <div class="font-headline text-xl font-bold uppercase italic tracking-tighter">
-        Marcelo Barella — Bergamota
+      <div class="flex flex-col items-center gap-6 md:flex-row md:items-center md:gap-8">
+        <img
+          class="h-14 w-14 shrink-0 object-contain md:h-16 md:w-16"
+          src="/images/assets/tangerine.svg"
+          alt="Stylized tangerine illustration"
+          width="64"
+          height="64"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="text-center font-headline text-xl font-bold uppercase italic tracking-tighter md:text-left">
+          Marcelo Barella — Bergamota
+        </div>
       </div>
       <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60 transition-opacity hover:opacity-100">
         <span>Built with Cursor</span>
