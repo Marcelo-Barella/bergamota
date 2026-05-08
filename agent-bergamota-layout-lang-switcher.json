@@ -1,0 +1,23 @@
+{
+  "task_id": "bergamota-layout-lang-switcher",
+  "status": "completed",
+  "summary": "Added LanguageSwitcher.vue: accessible native select with visible label (i18n a11y.*), aria-describedby hint naming current locale, options from useI18n locales (English / Português Brasil). Change handler uses useSwitchLocalePath + router.push for prefix_except_default routing. Wired into SiteNav (default layout) and showcase HomePage + all four project navs. Locale strings in i18n/locales/en.json and pt-BR.json. Build verified (nuxt build).",
+  "blocked_reason": null,
+  "outputs": {
+    "branch": "cursor-orch/cd7e2166-fe44-41a1-8b55-a113e0503074/main/run",
+    "commit": "f8fafb7",
+    "component": "app/components/LanguageSwitcher.vue",
+    "integrated_files": [
+      "app/components/SiteNav.vue",
+      "app/components/showcase/HomePage.vue",
+      "app/components/showcase/projects/Tangerina.vue",
+      "app/components/showcase/projects/Orchestrator.vue",
+      "app/components/showcase/projects/CursorSync.vue",
+      "app/components/showcase/projects/Agentic.vue"
+    ],
+    "messages": [
+      "i18n/locales/en.json",
+      "i18n/locales/pt-BR.json"
+    ]
+  }
+}

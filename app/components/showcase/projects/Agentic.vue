@@ -21,6 +21,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >Repository</a>
+        <LanguageSwitcher variant="showcase" />
       </div>
     </nav>
 

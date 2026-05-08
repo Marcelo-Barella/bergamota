@@ -1,0 +1,17 @@
+{
+  "task_id": "bergamota-intl-dates-plurals-rtl",
+  "status": "completed",
+  "summary": "Added app/composables/useIntlLocale.ts: useIntlBcp47 (from localeProperties.language), useFormattedDateTime and useFormattedNumber wrapping Intl with active locale. Extended en.json and pt-BR.json with showcase.meetup_lead, showcase.photo_gallery_label (pipe pluralization for en vs pt-BR), and showcase.locale_number_sample. HomePage.vue Cursor Meetup section uses localized long date, plural gallery line, and formatted decimal sample. RTL skipped: only en and pt-BR (LTR). Build verified.",
+  "blocked_reason": null,
+  "outputs": {
+    "branch": "cursor-orch/cd7e2166-fe44-41a1-8b55-a113e0503074/main/run",
+    "files": [
+      "app/composables/useIntlLocale.ts",
+      "app/components/showcase/HomePage.vue",
+      "i18n/locales/en.json",
+      "i18n/locales/pt-BR.json"
+    ],
+    "composables": ["useIntlBcp47", "useFormattedDateTime", "useFormattedNumber"],
+    "rtl": "skipped_no_rtl_locale"
+  }
+}

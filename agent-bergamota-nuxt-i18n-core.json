@@ -1,0 +1,22 @@
+{
+  "task_id": "bergamota-nuxt-i18n-core",
+  "status": "completed",
+  "summary": "Added @nuxtjs/i18n (^10) to Nuxt 4: modules + i18n block with prefix_except_default, defaultLocale en, locales en (en-US) and pt-BR (pt-BR) with lazy JSON under i18n/locales, i18n/i18n.config.ts fallbackLocale en, detectBrowserLanguage (root redirect, cookie bergamota_i18n_redirected, secure in prod), baseUrl from NUXT_PUBLIC_SITE_URL or VERCEL_URL or localhost:3027, experimental.strictSeo for automatic hreflang/canonical. Moved title/description into locale JSON; app/plugins/i18n-seo.client.ts applies translated head on client. Build verified. Commit 73bca79 pushed to run branch.",
+  "blocked_reason": null,
+  "outputs": {
+    "branch": "cursor-orch/cd7e2166-fe44-41a1-8b55-a113e0503074/main/run",
+    "commit": "73bca79",
+    "files": [
+      "nuxt.config.ts",
+      "package.json",
+      "i18n/i18n.config.ts",
+      "i18n/locales/en.json",
+      "i18n/locales/pt-BR.json",
+      "app/plugins/i18n-seo.client.ts"
+    ],
+    "env": {
+      "NUXT_PUBLIC_SITE_URL": "Set in production for correct absolute hreflang/canonical URLs (falls back to VERCEL_URL or http://localhost:3027)"
+    },
+    "cookie_key": "bergamota_i18n_redirected"
+  }
+}
