@@ -1,0 +1,279 @@
+.token-opt-page {
+  --tok-bg: #0a0a0b;
+  --tok-surface: #141416;
+  --tok-border: #2a2a2e;
+  --tok-text: #ececec;
+  --tok-muted: #9b9ba3;
+  --tok-accent: #7c6cff;
+  --tok-accent-dim: color-mix(in srgb, var(--tok-accent) 35%, transparent);
+  --tok-success: #3dd68c;
+  --tok-warning: #f5a524;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  background: var(--tok-bg);
+  color: var(--tok-text);
+  min-height: 100vh;
+}
+
+.token-opt-page a {
+  color: var(--tok-accent);
+}
+
+.token-opt-hero {
+  padding: 1.25rem 1rem 0.5rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.token-opt-hero h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.token-opt-hero p {
+  color: var(--tok-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.token-opt-main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.token-opt-section {
+  margin-top: 1.5rem;
+  border: 1px solid var(--tok-border);
+  border-radius: 14px;
+  background: var(--tok-surface);
+  overflow: hidden;
+}
+
+.token-opt-section-header {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--tok-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.token-opt-section-header h2 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.token-opt-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--tok-border);
+  color: var(--tok-muted);
+}
+
+.token-opt-badge--live {
+  border-color: var(--tok-success);
+  color: var(--tok-success);
+}
+
+.token-opt-body {
+  padding: 1rem;
+}
+
+.token-opt-textarea {
+  width: 100%;
+  min-height: 7rem;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid var(--tok-border);
+  background: #0e0e10;
+  color: var(--tok-text);
+  padding: 0.75rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.token-opt-textarea:focus-visible {
+  outline: 2px solid var(--tok-accent);
+  outline-offset: 2px;
+}
+
+.token-opt-token-stream {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px dashed var(--tok-border);
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.token-opt-token {
+  border-radius: 4px;
+  padding: 0.05rem 0.15rem;
+  margin: 0 1px;
+}
+
+.token-opt-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--tok-muted);
+}
+
+.token-opt-stat strong {
+  color: var(--tok-text);
+}
+
+.token-opt-meter {
+  margin-top: 0.75rem;
+  height: 12px;
+  border-radius: 999px;
+  background: #0e0e10;
+  border: 1px solid var(--tok-border);
+  overflow: hidden;
+}
+
+.token-opt-meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tok-accent), #b794f6);
+  transition: width 0.35s ease;
+}
+
+.token-opt-meter-fill--danger {
+  background: linear-gradient(90deg, var(--tok-warning), #ef4444);
+}
+
+.token-opt-toggle-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .token-opt-toggle-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.token-opt-card {
+  border: 1px solid var(--tok-border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  background: #101012;
+}
+
+.token-opt-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.token-opt-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--tok-muted);
+  line-height: 1.4;
+}
+
+.token-opt-compare {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.token-opt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid var(--tok-border);
+  background: var(--tok-accent-dim);
+  color: var(--tok-text);
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.token-opt-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.token-opt-btn:focus-visible {
+  outline: 2px solid var(--tok-accent);
+  outline-offset: 2px;
+}
+
+.token-opt-status {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: #0e0e10;
+  border: 1px solid var(--tok-border);
+  font-size: 0.8rem;
+  color: var(--tok-muted);
+}
+
+.token-opt-output {
+  margin-top: 0.5rem;
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.token-opt-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--tok-bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--tok-border);
+  padding: 0.5rem 1rem;
+}
+
+.token-opt-nav-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.token-opt-steps {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.token-opt-step {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--tok-border);
+  color: var(--tok-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.token-opt-step[aria-current='step'] {
+  border-color: var(--tok-accent);
+  color: var(--tok-text);
+  background: var(--tok-accent-dim);
+}
+
+.token-opt-feed {
+  line-height: 1.45;
+}

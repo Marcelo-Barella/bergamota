@@ -1,9 +1,26 @@
 import tailwindcss from "@tailwindcss/vite"
 
+const nitroPreset = process.env.NITRO_PRESET || 'vercel'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  runtimeConfig: {
+    cursorApiKey: process.env.CURSOR_API_KEY || '',
+    tokenOptimizationPerIpLimit: 8,
+    tokenOptimizationGlobalLimit: 80,
+    tokenOptimizationMaxOutputChars: 600,
+    acpEnabled: process.env.ACP_ENABLED === 'true',
+    public: {
+      tokenOptimizationDefaultModel: 'composer-2.5',
+      tokenOptimizationContextWindow: 200000,
+      acpEnabled: process.env.ACP_ENABLED === 'true'
+    }
+  },
   nitro: {
-    preset: 'vercel'
+    preset: nitroPreset,
+    externals: {
+      traceInclude: ['@cursor/sdk/**', '@cursor/sdk--*/**']
+    }
   },
   devtools: { enabled: false },
   devServer: {

@@ -1,0 +1,11 @@
+# Example: bergamota.dev on Contabo VPS (TLS via Caddy automatic HTTPS)
+# Point DNS A/AAAA for bergamota.dev to the VPS public IP before enabling.
+
+bergamota.dev {
+	encode gzip zstd
+	reverse_proxy 127.0.0.1:3027
+}
+
+www.bergamota.dev {
+	redir https://bergamota.dev{uri} permanent
+}

@@ -4,16 +4,22 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "build:vercel": "NITRO_PRESET=vercel nuxt build",
+    "build:node": "NITRO_PRESET=node-server nuxt build",
+    "start:node": "node .output/server/index.mjs",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "verify:routes": "bash scripts/verify-routes.sh",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@cursor/sdk": "^1.0.40",
     "@hypernym/nuxt-anime": "^2.1.1",
     "@hypernym/nuxt-gsap": "^2.4.3",
     "@nuxt/ui": "^4.4.0",
     "@nuxtjs/i18n": "^10.2.4",
+    "gpt-tokenizer": "^4.1.0",
     "lenis": "^1.3.17",
     "nuxt": "^4.2.1",
     "tailwindcss": "^4.0.0",

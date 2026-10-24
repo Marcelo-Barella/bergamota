@@ -1,0 +1,20 @@
+services:
+  bergamota:
+    build: .
+    container_name: bergamota-web
+    restart: unless-stopped
+    ports:
+      - "${BERGAMOTA_PORT:-3027}:3027"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3027
+      NITRO_PRESET: node-server
+      ACP_ENABLED: "true"
+      CURSOR_API_KEY: ${CURSOR_API_KEY}
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:3027/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
