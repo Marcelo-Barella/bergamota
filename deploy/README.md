@@ -29,6 +29,28 @@ Vercel preview builds keep `NITRO_PRESET=vercel` (default) and typically run wit
 - Caddy: `deploy/Caddyfile.example`
 - nginx: `deploy/nginx.conf.example`
 
+SDK/ACP doc verification: `deploy/CURSOR-SDK-ACP.md`
+
+## Container route check
+
+```bash
+export CURSOR_API_KEY=...   # optional for fallback demos
+bash scripts/verify-docker.sh
+```
+
+Same checks without Docker (node-server artifact): `bash scripts/verify-routes.sh http://127.0.0.1:3027`
+
+Routes exercised:
+
+- `/`
+- `/token-optimization`
+- `/projects/tangerina`
+- `/projects/cursor-sync`
+- `/projects/cursor-ca-orchestrator`
+- `/projects/agentic-browser-ai`
+- `GET /api/token-optimization/config`
+- `POST /api/token-optimization/run` (smoke)
+
 ## Vercel build (unchanged workflow)
 
 ```bash

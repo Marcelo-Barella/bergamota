@@ -25,6 +25,18 @@ export function getFallbackAcpEvents(prompt: string): AcpPublicEvent[] {
     },
     {
       type: 'session_update',
+      at: base + 200,
+      payload: {
+        update: {
+          sessionUpdate: 'file_edit',
+          path: 'src/exemplo.ts',
+          operation: 'replace_range',
+          preview: '-  for (let i = 0; i < len - 1; i++)\n+  for (let i = 0; i < len; i++)'
+        }
+      }
+    },
+    {
+      type: 'session_update',
       at: base + 240,
       payload: {
         update: {

@@ -56,24 +56,64 @@ function pushLine(type: string, text: string) {
   })
 }
 
+function lineTypeFor(data: Record<string, unknown>): string {
+  if (data.type === 'token_usage') {
+    return 'usage'
+  }
+  if (data.type !== 'session_update') {
+    return String(data.type ?? 'event')
+  }
+  const payload = data.payload as { update?: Record<string, unknown> }
+  const update = payload?.update ?? {}
+  const kind = String(update.sessionUpdate ?? update.type ?? '')
+  if (kind.includes('think')) {
+    return 'thinking'
+  }
+  if (kind === 'tool_call' || update.name) {
+    return 'tool'
+  }
+  if (kind.includes('edit') || kind.includes('write') || update.path) {
+    return 'edit'
+  }
+  if (kind === 'agent_message_chunk') {
+    return 'text'
+  }
+  return 'session'
+}
+
 function formatEvent(data: Record<string, unknown>) {
   if (data.type === 'meta') {
-    return `meta — ACP ${data.acpEnabled ? 'on' : 'off'}, CLI ${data.agentCliFound ? 'ok' : 'ausente'}`
+    return `ACP ${data.acpEnabled ? 'on' : 'off'}, CLI ${data.agentCliFound ? 'ok' : 'ausente'}, key ${data.hasApiKey ? 'sim' : 'não'}`
   }
   if (data.type === 'token_usage') {
-    const p = data.payload as Record<string, number | string | boolean>
+    const p = (data.payload ?? data) as Record<string, number | string | boolean>
     lastUsage.value = `${p.totalTokens} tokens (${p.source}${p.unconfirmed ? ', não confirmado' : ''})`
     return lastUsage.value
   }
   if (data.type === 'session_update') {
     const payload = data.payload as { update?: Record<string, unknown> }
-    const update = payload.update ?? {}
-    const kind = String(update.sessionUpdate ?? 'update')
+    const update = payload?.update ?? {}
+    const kind = String(update.sessionUpdate ?? update.type ?? 'update')
+    if (kind.includes('think') || kind === 'agent_thinking') {
+      return String(update.text ?? update.content ?? JSON.stringify(update)).slice(0, 400)
+    }
     if (kind === 'agent_message_chunk') {
       const content = update.content as { text?: string }
       return content?.text ?? '(chunk)'
     }
-    return `${kind}: ${JSON.stringify(update).slice(0, 240)}`
+    if (kind === 'tool_call' || update.name) {
+      const args = JSON.stringify(update.args ?? {}).slice(0, 160)
+      const result = update.result ? ` → ${JSON.stringify(update.result).slice(0, 120)}` : ''
+      return `${update.name} [${update.status ?? 'running'}] ${args}${result}`
+    }
+    if (kind.includes('edit') || kind.includes('write') || update.path) {
+      return `${update.path ?? 'arquivo'}: ${String(update.preview ?? update.operation ?? kind).slice(0, 320)}`
+    }
+    return `${kind}: ${JSON.stringify(update).slice(0, 280)}`
+  }
+  if (data.type === 'cursor_extension') {
+    const p = data.payload as { method?: string }
+    return `ext ${p.method ?? ''}`
   }
   return JSON.stringify(data).slice(0, 280)
 }
@@ -86,7 +126,7 @@ onMounted(() => {
   source.onmessage = (message) => {
     try {
       const data = JSON.parse(message.data) as Record<string, unknown>
-      pushLine(String(data.type ?? 'event'), formatEvent(data))
+      pushLine(lineTypeFor(data), formatEvent(data))
     } catch {
       pushLine('raw', message.data)
     }
