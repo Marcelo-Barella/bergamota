@@ -70,7 +70,7 @@
           </span>
         </div>
         <div class="token-opt-body">
-          <TokenOptimizationOptimizationLab :config="config" />
+          <TokenOptimizationLab :config="config" />
         </div>
       </section>
 
