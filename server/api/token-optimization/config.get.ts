@@ -12,7 +12,8 @@ export default defineEventHandler(async () => {
     contextWindowTokens: config.public.tokenOptimizationContextWindow,
     rateLimits: {
       perIpPerMinute: config.tokenOptimizationPerIpLimit,
-      globalPerMinute: config.tokenOptimizationGlobalLimit
+      globalPerMinute: config.tokenOptimizationGlobalLimit,
+      globalDailyCap: config.tokenLabDailyCap
     },
     sdk: {
       package: '@cursor/sdk',

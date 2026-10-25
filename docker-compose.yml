@@ -12,6 +12,9 @@ services:
       NITRO_PRESET: node-server
       ACP_ENABLED: "true"
       CURSOR_API_KEY: ${CURSOR_API_KEY}
+      TOKEN_LAB_PER_IP_PER_MIN: ${TOKEN_LAB_PER_IP_PER_MIN:-8}
+      TOKEN_LAB_GLOBAL_PER_MIN: ${TOKEN_LAB_GLOBAL_PER_MIN:-80}
+      TOKEN_LAB_DAILY_CAP: ${TOKEN_LAB_DAILY_CAP:-200}
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://127.0.0.1:3027/"]
       interval: 30s

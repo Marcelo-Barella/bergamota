@@ -1,7 +1,7 @@
 import { cacheKey, getCached, setCached } from '../../../utils/token-optimization/cache'
 import { getAcpManager } from '../../../utils/token-optimization/acp/manager'
 import { broadcastAcp } from '../../../utils/token-optimization/acp/subscribers'
-import { checkRateLimit, getClientIp } from '../../../utils/token-optimization/rateLimit'
+import { enforceTokenLabLimits } from '../../../utils/token-optimization/enforceLabLimits'
 
 type Body = {
   prompt?: string
@@ -16,19 +16,13 @@ export default defineEventHandler(async (event) => {
     'Em uma frase, explique por que Rules e Skills economizam tokens no Cursor.'
   const model = body.model ?? config.public.tokenOptimizationDefaultModel
 
-  const ip = getClientIp(event)
-  const rate = checkRateLimit(ip, {
-    perIpLimit: config.tokenOptimizationPerIpLimit,
-    perIpWindowMs: 60_000,
-    globalLimit: config.tokenOptimizationGlobalLimit,
-    globalWindowMs: 60_000
-  })
-
   const cacheId = cacheKey({ kind: 'acp', prompt, model })
   const cached = getCached<Record<string, unknown>>(cacheId)
   if (cached) {
     return { ...cached, cached: true }
   }
+
+  const rate = enforceTokenLabLimits(event, true)
 
   if (!rate.allowed) {
     const payload = { ok: false, throttled: true, reason: rate.reason }

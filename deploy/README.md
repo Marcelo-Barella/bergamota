@@ -21,6 +21,9 @@ Health: `curl -fsS http://127.0.0.1:3027/`
 | `NITRO_PRESET` | Build + runtime (`node-server`) | Node server instead of Vercel functions |
 | `BERGAMOTA_PORT` | Host port mapping | Published port (default `3027`) |
 | `PORT` | Container | Internal listen port (`3027`) |
+| `TOKEN_LAB_PER_IP_PER_MIN` | Docker | SDK/ACP calls per IP per minute |
+| `TOKEN_LAB_GLOBAL_PER_MIN` | Docker | Global SDK/ACP calls per minute |
+| `TOKEN_LAB_DAILY_CAP` | Docker | Global daily cap on billed lab routes (`0` = unlimited) |
 
 Vercel preview builds keep `NITRO_PRESET=vercel` (default) and typically run with `ACP_ENABLED` unset.
 

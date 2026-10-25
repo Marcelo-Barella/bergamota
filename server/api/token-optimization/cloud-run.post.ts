@@ -1,6 +1,6 @@
 import { cacheKey, getCached, setCached } from '../../utils/token-optimization/cache'
 import { getFallbackRun } from '../../utils/token-optimization/fallback'
-import { checkRateLimit, getClientIp } from '../../utils/token-optimization/rateLimit'
+import { enforceTokenLabLimits } from '../../utils/token-optimization/enforceLabLimits'
 import { runCloudAgentPrompt } from '../../utils/token-optimization/sdkCloudRun'
 import { estimateCostUsd } from '../../utils/token-optimization/usage'
 
@@ -23,13 +23,7 @@ export default defineEventHandler(async (event) => {
     return { ...cached, cached: true }
   }
 
-  const ip = getClientIp(event)
-  const rate = checkRateLimit(ip, {
-    perIpLimit: config.tokenOptimizationPerIpLimit,
-    perIpWindowMs: 60_000,
-    globalLimit: config.tokenOptimizationGlobalLimit,
-    globalWindowMs: 60_000
-  })
+  const rate = enforceTokenLabLimits(event, true)
 
   if (!config.cursorApiKey || !rate.allowed) {
     const fallback = getFallbackRun(scenarioId, model)
@@ -37,6 +31,7 @@ export default defineEventHandler(async (event) => {
       ...fallback,
       runtime: 'fallback',
       throttled: !rate.allowed,
+      throttleReason: rate.reason,
       cost: estimateCostUsd(fallback.usage.totalTokens)
     }
     setCached(cacheId, payload, 10 * 60_000)

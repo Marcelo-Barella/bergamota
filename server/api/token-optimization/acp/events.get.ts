@@ -1,10 +1,12 @@
 import { getAcpManager } from '../../../utils/token-optimization/acp/manager'
 import { subscribeAcp } from '../../../utils/token-optimization/acp/subscribers'
+import { enforceTokenLabLimits } from '../../../utils/token-optimization/enforceLabLimits'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const manager = getAcpManager()
   const binary = await manager.resolveAgentBinary()
+  const rate = enforceTokenLabLimits(event, false)
 
   setResponseHeaders(event, {
     'Content-Type': 'text/event-stream',
@@ -22,10 +24,12 @@ export default defineEventHandler(async (event) => {
     type: 'meta',
     acpEnabled: manager.isEnabled(),
     agentCliFound: Boolean(binary),
-    hasApiKey: Boolean(config.cursorApiKey)
+    hasApiKey: Boolean(config.cursorApiKey),
+    throttled: !rate.allowed,
+    throttleReason: rate.reason
   })
 
-  if (config.cursorApiKey && manager.isEnabled()) {
+  if (config.cursorApiKey && manager.isEnabled() && rate.allowed) {
     void manager.ensureStarted(config.cursorApiKey)
   }
 
