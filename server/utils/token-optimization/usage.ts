@@ -7,7 +7,6 @@ type TokenUsage = {
   reasoningTokens?: number
 }
 
-/** SDK run.usage may double-count cache in totalTokens; prefer input+output for display. */
 export function normalizeRunUsage(usage: TokenUsage | undefined) {
   if (!usage) {
     return undefined

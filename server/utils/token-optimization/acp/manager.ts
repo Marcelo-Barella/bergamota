@@ -57,7 +57,6 @@ class AcpManager extends EventEmitter {
         return resolved
       }
     } catch {
-      // not on PATH
     }
     return null
   }
@@ -266,14 +265,12 @@ class AcpManager extends EventEmitter {
           value: model
         })
       } catch {
-        // Model override may be unavailable on some builds — continue with default.
       }
     }
 
     try {
       await this.request('session/set_mode', { sessionId: this.sessionId, mode: 'ask' })
     } catch {
-      // ask mode keeps tools read-only; ignore if unsupported.
     }
 
     const result = await this.request('session/prompt', {
