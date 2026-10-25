@@ -1,131 +1,183 @@
 <template>
-  <div class="token-opt-page">
-    <header class="token-opt-nav">
-      <div class="token-opt-nav-inner">
-        <NuxtLink to="/" style="color: var(--tok-text); text-decoration: none; font-weight: 600">Bergamota</NuxtLink>
-        <nav class="token-opt-steps" aria-label="Níveis do workshop">
-          <button
-            v-for="step in steps"
-            :key="step.id"
-            type="button"
-            class="token-opt-step"
-            :aria-current="activeStep === step.id ? 'step' : undefined"
-            @click="activeStep = step.id"
-          >
-            {{ step.label }}
-          </button>
-        </nav>
+  <div class="token-workshop">
+    <TokenOptimizationWorkshopStaircase
+      :levels="WORKSHOP_LEVELS"
+      :active="activeLevel"
+      :visited="visited"
+      :progress="progressPercent()"
+      @select="setLevel"
+    />
+
+    <TokenOptimizationWorkshopContextBar
+      :fill-percent="fillPercent"
+      :tokens="simulatedFillTokens"
+      :context-window="contextWindow"
+      :thresholds="thresholds"
+    />
+
+    <div class="ws-center">
+      <div class="ws-hero-mini">
+        <h1>Otimização de tokens — níveis 0 a 10</h1>
+        <p>Workshop UPF · Cursor, Composer-2.5, Rules, MCP, Subagents, Cloud Agents, ACP</p>
       </div>
-    </header>
 
-    <header class="token-opt-hero">
-      <h1>Otimização de tokens no Cursor</h1>
-      <p>
-        Playground interativo — workshop UPF, 29 out 2026. Texto em português; nomes de produto em English (Cursor,
-        Composer, Rules, Skills, MCP, Subagents).
-      </p>
-    </header>
-
-    <main class="token-opt-main">
-      <section v-show="activeStep === 'tokens'" class="token-opt-section" aria-labelledby="sec-tokens">
-        <div class="token-opt-section-header">
-          <h2 id="sec-tokens">1. O que é um token?</h2>
-          <span class="token-opt-badge">Básico</span>
-        </div>
-        <div class="token-opt-body">
-          <TokenOptimizationTokenVisualizer />
-        </div>
+      <div class="ws-main">
+      <section class="ws-pane" aria-label="Entradas e toggles">
+        <TokenOptimizationWorkshopControls
+          v-model:prompt-text="promptText"
+          v-model:concise-prompt="concisePrompt"
+          v-model:multiple-choice="multipleChoice"
+          v-model:use-rules="useRules"
+          v-model:use-at-mention="useAtMention"
+          v-model:confirm-before-tools="confirmBeforeTools"
+          v-model:route-cheap-first="routeCheapFirst"
+          v-model:block-risky-tools="blockRiskyTools"
+          v-model:return-summary-not-file="returnSummaryNotFile"
+          v-model:parallel-filter="parallelFilter"
+          v-model:thresholds="thresholds"
+          :level="level"
+          :tokenizer-count="tokenizerCount"
+          :fill-percent="fillPercent"
+          :measuring="measuring"
+          :live-run="liveRun"
+          @measure="onMeasure"
+        />
       </section>
 
-      <section v-show="activeStep === 'context'" class="token-opt-section" aria-labelledby="sec-context">
-        <div class="token-opt-section-header">
-          <h2 id="sec-context">2. Modelo e janela de contexto</h2>
-          <span class="token-opt-badge">Intermediário</span>
-        </div>
-        <div class="token-opt-body">
-          <TokenOptimizationContextWindow
-            :context-window="contextWindow"
-            :model-label="defaultModel"
-          />
-        </div>
+      <section class="ws-pane" aria-label="Snippet SDK ou ACP">
+        <h2 class="ws-pane-title">Código (atualiza com toggles)</h2>
+        <TokenOptimizationWorkshopSnippet
+          :level="activeLevel"
+          :model-id="modelId"
+          :block-tools="blockRiskyTools"
+          :use-cloud="activeLevel === 10"
+          :confirm-before="confirmBeforeTools"
+        />
       </section>
 
-      <section v-show="activeStep === 'acp'" class="token-opt-section" aria-labelledby="sec-acp">
-        <div class="token-opt-section-header">
-          <h2 id="sec-acp">4. Ao vivo com ACP + Cloud Agents</h2>
-          <span class="token-opt-badge" :class="{ 'token-opt-badge--live': config?.acp?.enabled }">
-            {{ config?.acp?.enabled ? 'ACP VPS' : 'ACP off' }}
-          </span>
-        </div>
-        <div class="token-opt-body">
-          <TokenOptimizationAcpLiveFeed />
-        </div>
+      <section class="ws-pane" aria-label="Fluxo e JSON">
+        <TokenOptimizationWorkshopFlowPanel
+          :nodes="level.flowNodes"
+          :payload="jsonPayload"
+          :latency-ms="latencyMs"
+          :source-label="dataSourceLabel"
+        />
       </section>
+      </div>
+    </div>
 
-      <section v-show="activeStep === 'optimize'" class="token-opt-section" aria-labelledby="sec-opt">
-        <div class="token-opt-section-header">
-          <h2 id="sec-opt">3+. Estratégias de otimização</h2>
-          <span class="token-opt-badge" :class="{ 'token-opt-badge--live': config?.hasApiKey }">
-            {{ config?.hasApiKey ? 'SDK live' : 'Fallback' }}
-          </span>
-        </div>
-        <div class="token-opt-body">
-          <TokenOptimizationLab :config="config" />
-        </div>
-      </section>
-
-      <section class="token-opt-section" aria-labelledby="sec-sdk">
-        <div class="token-opt-section-header">
-          <h2 id="sec-sdk">Cursor SDK (servidor)</h2>
-        </div>
-        <div class="token-opt-body token-opt-stats" style="flex-direction: column; align-items: flex-start">
-          <p style="margin: 0; line-height: 1.5; color: var(--tok-muted)">
-            Pacote <strong>@cursor/sdk</strong> (TypeScript). Autenticação via variável de ambiente
-            <code>CURSOR_API_KEY</code> apenas no servidor (VPS Docker / Nitro) — nunca no bundle do cliente.
-          </p>
-          <p v-if="sdkNote" style="margin: 0.5rem 0 0; line-height: 1.5; color: var(--tok-muted)">{{ sdkNote }}</p>
-          <p style="margin: 0.5rem 0 0">
-            Modelo padrão das execuções: <strong>{{ defaultModel }}</strong>. Limites:
-            {{ config?.rateLimits.perIpPerMinute }} req/IP/min, {{ config?.rateLimits.globalPerMinute }} global/min.
-          </p>
-        </div>
-      </section>
-    </main>
+    <TokenOptimizationWorkshopCompareTable :rows="compareRows" :active-level="activeLevel" />
   </div>
 </template>
 
 <script setup lang="ts">
 import '~/assets/css/token-optimization.css'
+import { useTokenWorkshop } from '~/composables/useTokenWorkshop'
+import { useTokenOptimization } from '~/composables/useTokenOptimization'
 
-definePageMeta({
-  layout: false
-})
+definePageMeta({ layout: false })
 
 useHead({
   title: 'Otimização de tokens — Bergamota',
   meta: [
     {
       name: 'description',
-      content: 'Playground interativo sobre tokens, contexto e otimização no Cursor (workshop UPF).'
+      content: 'Playground em 10 níveis: tokens, contexto, SDK e ACP no Cursor (workshop UPF).'
     }
   ],
   htmlAttrs: { class: 'dark' }
 })
 
-const { config, loadConfig } = useTokenOptimization()
-
+const { config, loadConfig, runDemo } = useTokenOptimization()
 await loadConfig()
 
-const defaultModel = computed(() => config.value?.defaultModel ?? 'composer-2.5')
-const contextWindow = computed(() => config.value?.contextWindowTokens ?? 200000)
-const sdkNote = computed(() => config.value?.sdk.usageNote ?? '')
+const {
+  WORKSHOP_LEVELS,
+  contextWindow,
+  activeLevel,
+  visited,
+  thresholds,
+  promptText,
+  concisePrompt,
+  multipleChoice,
+  useRules,
+  useAtMention,
+  confirmBeforeTools,
+  routeCheapFirst,
+  blockRiskyTools,
+  returnSummaryNotFile,
+  parallelFilter,
+  modelId,
+  level,
+  liveRun,
+  measuring,
+  latencyMs,
+  tokenizerCount,
+  simulatedFillTokens,
+  fillPercent,
+  effectiveAfterTokens,
+  effectiveBeforeTokens,
+  dataSourceLabel,
+  setLevel,
+  progressPercent,
+  levelRows,
+  measureWithSdk,
+  estimateCostUsd
+} = useTokenWorkshop()
 
-const steps = [
-  { id: 'tokens', label: 'Tokens' },
-  { id: 'context', label: 'Contexto' },
-  { id: 'optimize', label: 'Otimizar' },
-  { id: 'acp', label: 'ACP ao vivo' }
-] as const
+if (config.value?.contextWindowTokens) {
+  contextWindow.value = config.value.contextWindowTokens
+}
+if (config.value?.defaultModel) {
+  modelId.value = config.value.defaultModel
+}
 
-const activeStep = ref<(typeof steps)[number]['id']>('tokens')
+const jsonPayload = computed(() => ({
+  level: activeLevel.value,
+  model: modelId.value,
+  tokens: {
+    fill: simulatedFillTokens.value,
+    before: effectiveBeforeTokens.value,
+    after: effectiveAfterTokens.value,
+    contextWindow: contextWindow.value,
+    fillPercent: fillPercent.value
+  },
+  thresholds: thresholds.value,
+  toggles: {
+    multipleChoice: multipleChoice.value,
+    useRules: useRules.value,
+    useAtMention: useAtMention.value,
+    confirmBeforeTools: confirmBeforeTools.value,
+    routeCheapFirst: routeCheapFirst.value,
+    blockRiskyTools: blockRiskyTools.value,
+    returnSummaryNotFile: returnSummaryNotFile.value,
+    parallelFilter: parallelFilter.value
+  },
+  liveRun: liveRun.value
+    ? {
+        mode: liveRun.value.mode,
+        usage: liveRun.value.usage,
+        cached: liveRun.value.cached,
+        throttled: liveRun.value.throttled
+      }
+    : null,
+  source: dataSourceLabel.value
+}))
+
+const compareRows = computed(() => {
+  const rows = levelRows()
+  if (activeLevel.value === 1 && liveRun.value?.usage && liveRun.value.mode === 'live') {
+    const row = rows.find((r) => r.level.id === 1)
+    if (row) {
+      row.after = liveRun.value.usage.totalTokens
+      row.costAfter = estimateCostUsd(row.after)
+      row.source = 'real (SDK)'
+    }
+  }
+  return rows
+})
+
+async function onMeasure() {
+  await measureWithSdk(runDemo)
+}
 </script>
