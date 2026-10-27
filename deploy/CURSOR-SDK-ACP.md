@@ -1,6 +1,6 @@
 # Cursor SDK & ACP — docs verification (workshop reference)
 
-Last reviewed against Cursor public docs (Oct 2026). Use this in the UPF workshop; re-check URLs before teaching billing/usage edge cases.
+Last reviewed against Cursor public docs (Oct 2026). Re-check URLs before teaching billing/usage edge cases.
 
 ## Cursor TypeScript SDK (`@cursor/sdk`)
 

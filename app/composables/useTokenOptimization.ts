@@ -73,5 +73,16 @@ export function useTokenOptimization() {
     })
   }
 
-  return { config, loadConfig, runDemo }
+  async function sendChat(
+    levelId: number,
+    userMessage: string,
+    messages: Array<{ role: 'user' | 'assistant'; content: string }>
+  ) {
+    return $fetch<RunResponse>('/api/token-optimization/chat', {
+      method: 'POST',
+      body: { levelId, userMessage, messages }
+    })
+  }
+
+  return { config, loadConfig, runDemo, sendChat }
 }

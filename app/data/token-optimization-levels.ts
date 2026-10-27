@@ -15,7 +15,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 0,
     title: 'Base',
-    subtitle: 'Tokens, janela de contexto e Composer-2.5',
+    subtitle: 'Digite e veja tokens na janela.',
     tier: 'basic',
     beforeTokens: 1200,
     afterTokens: 1200,
@@ -25,7 +25,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 1,
     title: 'Decisão simples',
-    subtitle: 'Uma ação clara por mensagem — menos tokens no prompt',
+    subtitle: 'Compare verboso vs uma ação.',
     tier: 'basic',
     beforeTokens: 1842,
     afterTokens: 412,
@@ -35,7 +35,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 2,
     title: 'Múltipla escolha',
-    subtitle: 'Opções A/B/C no prompt em vez de narrativa longa',
+    subtitle: 'A/B/C vs parágrafo aberto.',
     tier: 'basic',
     beforeTokens: 2100,
     afterTokens: 680,
@@ -45,7 +45,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 3,
     title: 'Critérios fixos',
-    subtitle: 'Rules e critérios persistentes — não repetir a cada turno',
+    subtitle: 'Rules estáveis; system prompt enxuto.',
     tier: 'intermediate',
     beforeTokens: 6200,
     afterTokens: 1400,
@@ -55,7 +55,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 4,
     title: 'Confirmar antes',
-    subtitle: 'Confirmar antes de tools caras poluirem o contexto',
+    subtitle: 'Tools raras no dia a dia.',
     tier: 'intermediate',
     beforeTokens: 8800,
     afterTokens: 5200,
@@ -65,7 +65,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 5,
     title: 'Roteamento de modelo',
-    subtitle: 'Modelo mais barato primeiro; escala se necessário',
+    subtitle: 'MCP só quando precisa.',
     tier: 'intermediate',
     beforeTokens: 8000,
     afterTokens: 3200,
@@ -75,7 +75,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 6,
     title: 'Guardrails',
-    subtitle: 'Bloquear shell/MCP arriscados antes de poluir contexto',
+    subtitle: 'Defs de tool fora do estático.',
     tier: 'advanced',
     beforeTokens: 9500,
     afterTokens: 4100,
@@ -85,7 +85,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 7,
     title: 'Hora de compactar',
-    subtitle: 'Thresholds notice / recommend / compact na barra',
+    subtitle: 'Prefixo estável + cache.',
     tier: 'advanced',
     beforeTokens: 150000,
     afterTokens: 72000,
@@ -95,7 +95,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 8,
     title: 'Leitura barata',
-    subtitle: 'Devolver resposta/diff, não o arquivo inteiro (~4k economizados)',
+    subtitle: 'Read com linhas comprimidas.',
     tier: 'advanced',
     beforeTokens: 12000,
     afterTokens: 8000,
@@ -105,7 +105,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 9,
     title: 'Arquivos em escala',
-    subtitle: 'Filtrar arquivos em paralelo antes do agent ler',
+    subtitle: 'Filtrar antes do Read.',
     tier: 'advanced',
     beforeTokens: 22000,
     afterTokens: 6800,
@@ -115,7 +115,7 @@ export const WORKSHOP_LEVELS: WorkshopLevel[] = [
   {
     id: 10,
     title: 'Agêntico',
-    subtitle: 'Subagents, Cloud Agents (SDK) e stream ACP ao vivo',
+    subtitle: 'Subagents + ACP ao vivo.',
     tier: 'agentic',
     beforeTokens: 28000,
     afterTokens: 9000,

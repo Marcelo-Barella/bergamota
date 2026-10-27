@@ -6,6 +6,9 @@ import {
   type WorkshopLevelId
 } from '~/data/token-optimization-levels'
 import type { RunResponse } from '~/composables/useTokenOptimization'
+import { estimateMcpTurnTokens } from '~/data/token-optimization-mcp'
+import { ILLUSTRATIVE_TOKENS_PER_MESSAGE, type RuleApplyType } from '~/data/token-optimization-rules'
+import { SKILL_DESC_ONLY_TOKENS, SKILL_FULL_TOKENS } from '~/data/token-optimization-skills'
 
 export function useTokenWorkshop() {
   const contextWindow = ref(200_000)
@@ -27,6 +30,18 @@ export function useTokenWorkshop() {
   const parallelFilter = ref(true)
   const modelId = ref('composer-2.5')
 
+  const ruleType = ref<RuleApplyType>('glob')
+  const rulesTokensPerMessage = ref(ILLUSTRATIVE_TOKENS_PER_MESSAGE.glob)
+  const mcpServerCount = ref(10)
+  const mcpNamesOnly = ref(true)
+  const mcpTurnTokens = ref(estimateMcpTurnTokens(10, true))
+  const skillExpanded = ref(false)
+  const skillContextTokens = ref(SKILL_DESC_ONLY_TOKENS)
+  const subagentIsolated = ref(true)
+  const subagentParallel = ref(1)
+  const subagentParentTokens = ref(10_200)
+  const subagentTotalTokens = ref(28_200)
+
   const liveRun = ref<RunResponse | null>(null)
   const measuring = ref(false)
   const latencyMs = ref<number | null>(null)
@@ -41,7 +56,7 @@ export function useTokenWorkshop() {
     }
   })
 
-  const simulatedFillTokens = computed(() => {
+  const levelBaseTokens = computed(() => {
     const lv = level.value
     let base = lv.beforeTokens || 4000
 
@@ -69,13 +84,8 @@ export function useTokenWorkshop() {
     if (activeLevel.value >= 6 && blockRiskyTools.value) {
       base = Math.round(base * 0.7)
     }
-    if (activeLevel.value >= 7) {
-      const pct = fillPercent.value
-      if (pct >= thresholds.value.compact) {
-        base = Math.round(base * 0.45)
-      } else if (pct >= thresholds.value.recommend) {
-        base = Math.round(base * 0.65)
-      }
+    if (activeLevel.value >= 7 && lv.beforeTokens > 100_000) {
+      base = Math.round(base * 0.5)
     }
     if (activeLevel.value >= 8 && returnSummaryNotFile.value) {
       base = Math.max(0, base - 4000)
@@ -83,11 +93,34 @@ export function useTokenWorkshop() {
     if (activeLevel.value >= 9 && parallelFilter.value) {
       base = Math.round(base * 0.42)
     }
-    return Math.min(contextWindow.value, base)
+    return base
   })
 
+  const simulatedFillTokens = computed(() => {
+    let tokens = levelBaseTokens.value
+
+    if (activeLevel.value === 3) {
+      tokens = Math.max(tokens, rulesTokensPerMessage.value)
+    }
+    if (activeLevel.value === 4) {
+      tokens = Math.max(tokens, skillContextTokens.value + 1200)
+    }
+    if (activeLevel.value === 5) {
+      tokens = mcpTurnTokens.value
+    }
+    if (activeLevel.value === 10) {
+      tokens = subagentParentTokens.value
+    }
+
+    return Math.min(contextWindow.value, tokens)
+  })
+
+  const contextOverflow = computed(() => simulatedFillTokens.value > contextWindow.value)
+
   const fillPercent = computed(() =>
-    contextWindow.value ? Math.min(100, Math.round((simulatedFillTokens.value / contextWindow.value) * 100)) : 0
+    contextWindow.value
+      ? Math.min(100, Math.round((simulatedFillTokens.value / contextWindow.value) * 100))
+      : 0
   )
 
   const effectiveAfterTokens = computed(() => {
@@ -184,12 +217,24 @@ export function useTokenWorkshop() {
     returnSummaryNotFile,
     parallelFilter,
     modelId,
+    ruleType,
+    rulesTokensPerMessage,
+    mcpServerCount,
+    mcpNamesOnly,
+    mcpTurnTokens,
+    skillExpanded,
+    skillContextTokens,
+    subagentIsolated,
+    subagentParallel,
+    subagentParentTokens,
+    subagentTotalTokens,
     level,
     liveRun,
     measuring,
     latencyMs,
     tokenizerCount,
     simulatedFillTokens,
+    contextOverflow,
     fillPercent,
     effectiveAfterTokens,
     effectiveBeforeTokens,

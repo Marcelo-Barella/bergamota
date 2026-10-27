@@ -26,7 +26,7 @@
           <span class="ws-stair-num">{{ lv.id }}</span>
           <span class="ws-stair-text">
             <span class="ws-stair-title">{{ lv.title }}</span>
-            <span class="ws-stair-sub">{{ lv.subtitle }}</span>
+            <span v-if="lv.id === active" class="ws-stair-sub">{{ lv.subtitle }}</span>
           </span>
         </button>
       </li>
