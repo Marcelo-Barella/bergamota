@@ -32,7 +32,7 @@
       <p class="ws-reveal-line">Blog: planejador caro + implementador barato (ex. composer-2).</p>
     </TokenOptimizationWorkshopClickReveal>
 
-    <p class="ws-lab-prompt">Anti-padrão — toque o que é OK:</p>
+    <p class="ws-lab-prompt">Anti-padrão. Toque o que é OK:</p>
     <div class="ws-quiz">
       <button
         v-for="c in SUBAGENT_QUIZ"

@@ -62,7 +62,7 @@ async function send() {
       usage: res.usage?.totalTokens
     })
   } catch {
-    status.value = 'Erro de rede — tente de novo.'
+    status.value = 'Erro de rede. Tente de novo.'
   } finally {
     sending.value = false
     await nextTick()
@@ -72,11 +72,11 @@ async function send() {
 
 function applyStatus(res: RunResponse) {
   if (res.throttled) {
-    status.value = 'Limite do lab — resposta simulada.'
+    status.value = 'Limite do lab: resposta simulada.'
   } else if (res.mode === 'fallback') {
-    status.value = 'Sem chave ou limite — modo demonstração.'
+    status.value = 'Sem chave ou limite: modo demonstração.'
   } else if (res.sdkError) {
-    status.value = 'SDK indisponível — fallback.'
+    status.value = 'SDK indisponível: fallback.'
   } else {
     status.value = ''
   }

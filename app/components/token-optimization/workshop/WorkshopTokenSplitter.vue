@@ -17,7 +17,7 @@
       <span class="ws-splitter-total">~${{ cost.total.toFixed(4) }}</span>
     </div>
     <p class="ws-lab-note">
-      Saída costuma custar mais que entrada —
+      Saída costuma custar mais que entrada.
       <a :href="COMPOSER_25_RATES.source" target="_blank" rel="noopener">Composer 2.5</a>
       (${{ COMPOSER_25_RATES.inputPerM }}/M in · ${{ COMPOSER_25_RATES.outputPerM }}/M out).
     </p>

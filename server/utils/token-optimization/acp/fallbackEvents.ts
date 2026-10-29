@@ -9,7 +9,7 @@ export function getFallbackAcpEvents(prompt: string): AcpPublicEvent[] {
       payload: {
         update: {
           sessionUpdate: 'agent_thinking',
-          text: 'Analisando o prompt do workshop (simulação local — instale o Cursor CLI no VPS para ACP real).'
+          text: 'Analisando o prompt do workshop (simulação local: instale o Cursor CLI no VPS para ACP real).'
         }
       }
     },

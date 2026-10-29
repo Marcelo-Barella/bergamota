@@ -28,7 +28,7 @@
     </TokenOptimizationWorkshopClickReveal>
 
     <template v-if="showExtra">
-    <p class="ws-lab-prompt">Monte `.cursor/skills/&lt;name&gt;/SKILL.md` — toque as peças:</p>
+    <p class="ws-lab-prompt">Monte `.cursor/skills/&lt;name&gt;/SKILL.md`. Toque as peças:</p>
     <div class="ws-build-pieces">
       <button
         v-for="p in SKILL_BUILD_PIECES"

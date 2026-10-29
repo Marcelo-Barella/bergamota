@@ -37,12 +37,12 @@ export default defineNuxtConfig({
   ssr: true,
   app: {
     head: {
-      title: 'Marcelo Barella — Bergamota',
+      title: 'Marcelo Barella: Bergamota',
       meta: [
         {
           name: 'description',
           content:
-            'Marcelo Barella (Bergamota): AI tools and workflows that ship—portfolio, projects, and how to get in touch.'
+            'Marcelo Barella (Bergamota): AI tools and workflows that ship: portfolio, projects, and how to get in touch.'
         }
       ],
       link: [

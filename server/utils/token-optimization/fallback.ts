@@ -37,7 +37,7 @@ const FALLBACK_RUNS: Record<string, DemoRunResult> = {
   'context-focused|composer-2.5': {
     mode: 'fallback',
     model: 'composer-2.5',
-    output: 'A condição `i < len - 1` deveria ser `i < len` — off-by-one no loop.',
+    output: 'A condição `i < len - 1` deveria ser `i < len`: off-by-one no loop.',
     usage: { inputTokens: 890, outputTokens: 42, totalTokens: 932, source: 'estimate' },
     note: 'Resposta pré-computada (sem CURSOR_API_KEY ou limite atingido).'
   }
