@@ -4,16 +4,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>M. Barella — Bergamota Workshop | A Janela é Uma Sala</title>
-<!-- Google Fonts: Syne, Space Grotesk, Newsreader -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&amp;family=Public+Sans:wght@300;400;600;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Syne:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols Outlined -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Tailwind Theme Configuration -->
 <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -49,7 +45,6 @@
     }
   </script>
 <style>
-    /* Editorial outline stroke utility */
     .stroke-headline {
       color: transparent;
       -webkit-text-stroke: 1.5px #18181b;
@@ -63,7 +58,6 @@
       color: transparent;
       -webkit-text-stroke: 1.5px #f8f6f3;
     }
-    /* Architectural floor grid pattern */
     .iso-grid {
       background-size: 32px 32px;
       background-image: 
@@ -76,7 +70,6 @@
         linear-gradient(to right, rgba(248, 246, 243, 0.07) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(248, 246, 243, 0.07) 1px, transparent 1px);
     }
-    /* Hard offset shadows */
     .hard-shadow {
       box-shadow: 6px 6px 0px 0px #18181b;
     }
@@ -122,21 +115,17 @@
   </style>
 </head>
 <body class="bg-paper text-ink font-body selection:bg-amber selection:text-paper antialiased">
-<!-- ================= 1. HEADER (TopAppBar Anchor) ================= -->
 <header class="bg-paper border-b border-borderline sticky top-0 z-50">
 <div class="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-7xl mx-auto">
-<!-- Brand Anchor -->
 <a class="font-label italic uppercase tracking-wider text-lg md:text-xl font-bold text-ink hover:opacity-75 transition-opacity" href="#">
         M. BARELLA
       </a>
-<!-- Desktop Navigation Cluster -->
 <nav class="hidden md:flex items-center space-x-8 font-headline uppercase tracking-tighter text-sm">
 <a class="font-normal opacity-70 hover:opacity-100 transition-opacity" href="#inicio">Início</a>
 <a class="underline underline-offset-4 decoration-1 font-bold text-ink" href="#sala">Sala</a>
 <a class="font-normal opacity-70 hover:opacity-100 transition-opacity" href="#o-que-entra">O que entra</a>
 <a class="font-normal opacity-70 hover:opacity-100 transition-opacity" href="#compactar">Compactar</a>
 </nav>
-<!-- Trailing Identity Tag -->
 <div class="flex items-center space-x-3">
 <span class="inline-block border border-ink px-2.5 py-1 font-body text-xs uppercase tracking-widest bg-paper font-semibold">
           SALA · AULA 02
@@ -148,25 +137,19 @@
 </div>
 </header>
 <main>
-<!-- ================= 2. HERO (Asymmetric Editorial Room) ================= -->
 <section class="lesson-section max-w-7xl mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-20 border-b border-borderline" id="inicio"><button type="button" class="agent-pull" data-section-id="inicio" data-section-title="A janela é uma sala"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-<!-- Left Column (Massive Typography & CTA) -->
 <div class="lg:col-span-6 flex flex-col items-start pt-2">
-<!-- Angled Workshop Badge -->
 <div class="inline-block bg-amber text-paper font-headline uppercase text-xs tracking-widest font-bold px-3 py-1.5 mb-8 -rotate-2 border border-ink hard-shadow-sm">
             Workshop UPF
           </div>
-<!-- Headline Stack -->
 <h1 class="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[5.75rem] leading-[0.82] tracking-tighter uppercase mb-6">
 <span class="block text-ink">A JANELA</span>
 <span class="block stroke-headline tracking-tighter">É UMA SALA</span>
 </h1>
-<!-- Caption -->
 <p class="font-label italic text-2xl md:text-3xl text-ink leading-snug mb-10 max-w-lg">
             O modelo não tem memória infinita. Tem um chão.
           </p>
-<!-- Action Button -->
 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
 <a class="inline-block bg-ink text-paper font-headline uppercase tracking-wider text-sm px-8 py-4 font-bold border border-ink hover:bg-amber hover:text-paper transition-colors duration-150" href="#o-que-entra">
               Ver o que entra
@@ -175,7 +158,6 @@
               Lição 02: Limites físicos do contexto computacional.
             </span>
 </div>
-<!-- Editorial Metaphor Callout -->
 <div class="mt-14 pt-8 border-t border-borderline max-w-md">
 <span class="font-body text-[11px] uppercase tracking-widest text-amber font-semibold block mb-2">Conceito fundamental</span>
 <p class="font-body text-sm text-ink/80 leading-relaxed">
@@ -183,10 +165,8 @@
             </p>
 </div>
 </div>
-<!-- Right Column (Isometric Vector Room Stage) -->
 <div class="lg:col-span-6">
 <div class="relative bg-white border-2 border-ink p-5 md:p-7 rotate-[1.5deg] hard-shadow transition-transform hover:rotate-0 duration-300">
-<!-- Stage Header -->
 <div class="flex justify-between items-center pb-4 mb-4 border-b border-borderline">
 <span class="font-body uppercase text-xs tracking-widest font-bold text-ink flex items-center gap-2">
 <span class="w-2 h-2 bg-amber inline-block"></span>
@@ -196,19 +176,13 @@
                 Lotação: 84% de capacidade
               </span>
 </div>
-<!-- Architectural Isometric Diagram Graphic -->
 <div class="relative w-full h-[360px] md:h-[420px] bg-paper-light border border-borderline overflow-hidden flex items-center justify-center">
-<!-- Isometric Floor Grid Vector Layer -->
 <svg class="absolute inset-0 w-full h-full opacity-60" fill="none" viewbox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
-<!-- Vanishing Point Guides -->
 <path d="M0 80 L300 160 L600 80" stroke="#18181b" stroke-dasharray="3 3" stroke-width="1"></path>
 <path d="M300 160 L300 450" stroke="#18181b" stroke-width="1.5"></path>
-<!-- Walls -->
 <polygon fill="#f2efe9" points="0,0 300,80 300,160 0,80"></polygon>
 <polygon fill="#eae6dc" points="600,0 300,80 300,160 600,80"></polygon>
-<!-- Floor Isometric Grid Tiles -->
 <g opacity="0.35" stroke="#18181b" stroke-width="0.8">
-<!-- Transverse & Orthogonal Grid Lines -->
 <line x1="300" x2="50" y1="160" y2="350"></line>
 <line x1="300" x2="110" y1="160" y2="410"></line>
 <line x1="300" x2="190" y1="160" y2="450"></line>
@@ -220,28 +194,22 @@
 <ellipse cx="300" cy="360" rx="280" ry="110" stroke-dasharray="2 4"></ellipse>
 </g>
 </svg>
-<!-- Rendered Isometric Cubes (Tokens & Furniture) -->
 <div class="relative z-10 w-full h-full">
-<!-- Wall rules frame -->
 <div class="absolute top-6 left-12 bg-ink text-paper p-2.5 border border-borderline hard-shadow-sm text-[10px] font-body tracking-wider uppercase">
 <span class="text-amber block font-bold">PAREDE MESTRA</span>
                   PROMPT DE SISTEMA
                 </div>
-<!-- Cube 1 (Página solta) -->
 <div class="absolute top-[180px] left-[120px] w-12 h-10 border border-ink bg-white flex flex-col justify-center items-center shadow-[3px_3px_0px_#18181b]">
 <span class="text-[9px] font-bold text-ink uppercase">PDF 01</span>
 </div>
-<!-- Cube 2 (Pilha pesada) -->
 <div class="absolute top-[220px] left-[170px] w-16 h-14 border border-ink bg-amber text-paper flex flex-col justify-center items-center shadow-[4px_4px_0px_#18181b]">
 <span class="text-[9px] font-bold uppercase tracking-tight">JSON 50K</span>
 <span class="text-[7px] font-mono">14.200 tk</span>
 </div>
-<!-- Cube 3 (Caixa central) -->
 <div class="absolute top-[260px] left-[290px] w-20 h-16 border-2 border-ink bg-paper flex flex-col justify-center items-center shadow-[4px_4px_0px_#18181b]">
 <span class="text-[10px] font-bold uppercase text-ink">Histórico</span>
 <span class="text-[8px] font-mono opacity-60">Turno #07</span>
 </div>
-<!-- Cube 4 & 5 (Empilhamento) -->
 <div class="absolute top-[190px] right-[130px] w-14 h-12 border border-ink bg-white flex items-center justify-center shadow-[3px_3px_0px_#18181b]">
 <span class="text-[8px] font-bold uppercase">Memória</span>
 </div>
@@ -249,14 +217,12 @@
 <span class="text-[9px] font-bold uppercase text-amber">Tool Call</span>
 <span class="text-[7px] font-mono text-ink">Retorno API</span>
 </div>
-<!-- Floor perimeter boundary warning -->
 <div class="absolute bottom-4 left-6 right-6 flex justify-between items-center border border-dashed border-ink/40 px-3 py-1 bg-paper/80 backdrop-blur-sm">
 <span class="font-mono text-[9px] uppercase tracking-wider text-ink font-semibold">Chão disponível: 16%</span>
 <span class="font-mono text-[9px] uppercase tracking-wider text-amber font-bold">Risco de saturação</span>
 </div>
 </div>
 </div>
-<!-- Stage Caption Requirement -->
 <div class="mt-4 pt-3 border-t border-borderline flex items-center justify-between">
 
 <span class="font-label italic text-xs text-ink/60">Fig. 1.0 — Diagrama de ocupação</span>
@@ -265,9 +231,7 @@
 </div>
 </div>
 </section>
-<!-- ================= 3. O CONCEITO DE TOKEN ================= -->
 <section class="lesson-section max-w-7xl mx-auto px-6 md:px-12 py-20"><button type="button" class="agent-pull" data-section-id="um-token-nao-e-uma-palavra" data-section-title="Um token não é uma palavra"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-<!-- Thick left rule marker requirement -->
 <div class="border-l-8 border-amber pl-8 py-3 my-4">
 <span class="font-headline uppercase tracking-widest text-xs font-bold text-amber block mb-2">Fundamentação Técnica</span>
 <h2 class="font-display font-black text-4xl sm:text-5xl md:text-6xl uppercase tracking-tighter text-ink leading-none">
@@ -275,7 +239,6 @@
         </h2>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-10 items-start">
-<!-- Body description paragraph -->
 <div class="lg:col-span-6 font-body text-base md:text-lg text-ink/90 leading-relaxed space-y-6">
 <p>
             Um token não corresponde a uma palavra completa. Trata-se de um pedaço semântico, um fragmento estatístico ou uma sílaba que o modelo converte em vetores numéricos. Na metáfora da arquitetura, <strong>cada token é um tijolo físico</strong> colocado sobre os ladrilhos da sala.
@@ -284,19 +247,15 @@
             Quando você envia pontuações soltas, espaços em branco duplicados ou payloads serializados com chaves repetidas, você não está apenas gastando processamento: você está preenchendo o chão com pequenos entulhos que reduzem o campo de visão dos mecanismos de atenção.
           </p>
 </div>
-<!-- Token Breakdown Chips Area -->
 <div class="lg:col-span-6 bg-white border-2 border-ink p-8 hard-shadow">
 <div class="flex items-center justify-between pb-3 mb-6 border-b border-borderline">
 <span class="font-body text-xs uppercase tracking-widest font-bold text-ink">Sentença decomposta em fatias</span>
 <span class="font-mono text-xs text-amber font-semibold">16 tokens gerados</span>
 </div>
-<!-- Sentence text preview -->
 <p class="font-label italic text-lg text-ink mb-6 pb-4 border-b border-dashed border-borderline">
             “O modelo processa fragmentos com pesos calculados.”
           </p>
-<!-- Interactive / Visual token chips -->
 <div class="flex flex-wrap gap-2.5 items-center">
-<!-- Chips array with uneven split boundaries and subtle alternating amber/ink tint -->
 <span class="inline-flex flex-col border border-ink bg-paper px-2.5 py-1 text-xs font-mono font-bold hover:bg-amber hover:text-white transition-colors">
 <span class="text-ink">O</span>
 <span class="text-[8px] opacity-40 font-normal">tk_01</span>
@@ -362,7 +321,6 @@
 <span class="text-[8px] opacity-40 font-normal">tk_16</span>
 </span>
 </div>
-<!-- Italic aside requirement -->
 <div class="mt-8 pt-4 border-t border-borderline">
 <p class="font-label italic text-sm text-ink/80">
               Alguns pedaços são menores que uma palavra; outros englobam pontuação e espaços em branco.
@@ -371,12 +329,9 @@
 </div>
 </div>
 </section>
-<!-- ================= 4. QUATRO FAIXAS DE LIÇÃO (Asymmetric Bands) ================= -->
 <section class="border-t border-borderline" id="o-que-entra">
-<!-- BANDA 1: REGRAS NA PAREDE (Paper Background) -->
 <article class="lesson-section bg-paper py-20 px-6 md:px-12 border-b border-borderline"><button type="button" class="agent-pull" data-section-id="regras-na-parede" data-section-title="Regras na parede"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Left Text -->
 <div class="lg:col-span-5 order-2 lg:order-1">
 <span class="font-mono text-xs uppercase tracking-widest text-amber font-bold block mb-3">Lição 01 · Fundamento</span>
 <h3 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-ink mb-6">
@@ -392,7 +347,6 @@
               </p>
 </div>
 </div>
-<!-- Right Bespoke Diagram: Cadeira fora da porta + Placa na parede -->
 <div class="lg:col-span-7 order-1 lg:order-2">
 <div class="bg-white border-2 border-ink p-6 hard-shadow">
 <div class="flex justify-between items-center mb-4 border-b border-borderline pb-2">
@@ -400,18 +354,14 @@
 <span class="font-label italic text-xs text-ink/60">Parede vs. Tráfego</span>
 </div>
 <div class="h-64 bg-paper-light border border-borderline relative flex items-center justify-center p-6 overflow-hidden">
-<!-- Doorway Boundary -->
 <div class="absolute left-6 top-8 bottom-8 w-24 border-r-2 border-dashed border-ink/40 flex flex-col justify-between p-2">
 <span class="font-mono text-[9px] uppercase tracking-wider text-ink/50 rotate-90 origin-top-left translate-y-8">Vão da Porta</span>
-<!-- Cadeira deixada fora -->
 <div class="w-12 h-14 border-2 border-ink bg-white p-1 hard-shadow-sm flex flex-col justify-center items-center">
 <span class="material-symbols-outlined text-lg text-amber">chair</span>
 <span class="text-[8px] font-mono uppercase text-ink">Fora</span>
 </div>
 </div>
-<!-- Back Room Wall with Metal Plaque -->
 <div class="w-72 h-44 bg-paper border-2 border-ink relative p-5 flex flex-col items-center justify-center hard-shadow-sm">
-<!-- Metallic Riveted Plaque -->
 <div class="w-full bg-ink text-paper p-3 border border-ink text-center hard-shadow-amber">
 <div class="flex items-center justify-between text-[8px] font-mono text-amber border-b border-white/20 pb-1 mb-1">
 <span>PLACA METÁLICA</span>
@@ -422,7 +372,6 @@
                     </p>
 <span class="text-[8px] font-mono text-white/60 block mt-1">Gravado na argamassa da sala</span>
 </div>
-<!-- Floor Clear Label -->
 <div class="mt-4 flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-green-700"></span>
 <span class="font-mono text-[10px] uppercase tracking-wider text-ink/80 font-bold">Chão livre para o diálogo</span>
@@ -437,19 +386,15 @@
 </div>
 </div>
 </article>
-<!-- BANDA 2: CAIXA FECHADA (Pure White Background) -->
 <article class="lesson-section bg-white py-20 px-6 md:px-12 border-b border-borderline"><button type="button" class="agent-pull" data-section-id="caixa-fechada" data-section-title="Caixa fechada"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Left Diagram: Caixa selada (1 ladrilho) vs 30 páginas no chão -->
 <div class="lg:col-span-7">
 <div class="bg-paper border-2 border-ink p-6 hard-shadow">
 <div class="flex justify-between items-center mb-4 border-b border-borderline pb-2">
 <span class="font-mono text-xs text-ink uppercase font-bold">Esquema 02 · Densidade de Armazenamento</span>
 <span class="font-label italic text-xs text-ink/60">Rótulo vs. Despejo Bruto</span>
 </div>
-<!-- Side by side comparison -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-72">
-<!-- State A: Caixa Fechada -->
 <div class="bg-white border border-borderline p-4 flex flex-col justify-between relative overflow-hidden">
 <div class="flex items-center justify-between border-b border-borderline pb-2">
 <span class="font-mono text-[10px] font-bold text-ink uppercase">Rótulo &amp; Sumário</span>
@@ -472,13 +417,11 @@
                     O modelo inspeciona a caixa sob demanda.
                   </p>
 </div>
-<!-- State B: Despejo Desordenado -->
 <div class="bg-white border border-borderline p-4 flex flex-col justify-between relative overflow-hidden">
 <div class="flex items-center justify-between border-b border-borderline pb-2">
 <span class="font-mono text-[10px] font-bold text-red-700 uppercase">Documento Despejado</span>
 <span class="text-[9px] bg-red-100 text-red-700 font-mono px-1.5 py-0.5">30 LADRILHOS</span>
 </div>
-<!-- Scattered paper pages representing entulho -->
 <div class="relative w-full h-32 flex items-center justify-center iso-grid">
 <span class="absolute w-12 h-14 bg-paper-light border border-ink/40 text-[7px] font-mono p-1 -rotate-12 top-2 left-4 shadow-sm">p.01</span>
 <span class="absolute w-12 h-14 bg-paper-light border border-ink/40 text-[7px] font-mono p-1 rotate-6 top-4 left-16 shadow-sm">p.02</span>
@@ -498,7 +441,6 @@
 </div>
 </div>
 </div>
-<!-- Right Text -->
 <div class="lg:col-span-5">
 <span class="font-mono text-xs uppercase tracking-widest text-amber font-bold block mb-3">Lição 02 · Estruturação</span>
 <h3 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-ink mb-6">
@@ -513,10 +455,8 @@
 </div>
 </div>
 </article>
-<!-- BANDA 3: O QUE A FERRAMENTA TRAZ (Paper Background) -->
 <article class="lesson-section bg-paper py-20 px-6 md:px-12 border-b border-borderline"><button type="button" class="agent-pull" data-section-id="o-que-a-ferramenta-traz" data-section-title="O que a ferramenta traz"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Left Text -->
 <div class="lg:col-span-5 order-2 lg:order-1">
 <span class="font-mono text-xs uppercase tracking-widest text-amber font-bold block mb-3">Lição 03 · Sobrecarga</span>
 <h3 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-ink mb-6">
@@ -530,16 +470,13 @@
 <span>{ "status": 200, "debug_log": [940 linhas], "raw_headers": {...}, "corpo": "informação útil" }</span>
 </div>
 </div>
-<!-- Right Bespoke Diagram: Objeto volumoso entalado na porta -->
 <div class="lg:col-span-7 order-1 lg:order-2">
 <div class="bg-white border-2 border-ink p-6 hard-shadow">
 <div class="flex justify-between items-center mb-4 border-b border-borderline pb-2">
 <span class="font-mono text-xs text-ink uppercase font-bold">Esquema 03 · Bloqueio de Circulação</span>
 <span class="font-label italic text-xs text-amber font-bold">Payload desnecessário</span>
 </div>
-<!-- Graphic: Objeto volumoso entalado na porta -->
 <div class="h-64 bg-paper-light border border-borderline relative flex items-center justify-center p-6 overflow-hidden">
-<!-- Room doorway frames -->
 <div class="absolute left-1/3 top-0 bottom-0 w-2 bg-ink"></div>
 <div class="absolute left-1/3 top-0 h-16 w-32 border-b-2 border-ink bg-paper flex items-center px-3">
 <span class="font-mono text-[9px] uppercase tracking-wider text-ink/60">Batente da Porta</span>
@@ -547,7 +484,6 @@
 <div class="absolute left-1/3 bottom-0 h-16 w-32 border-t-2 border-ink bg-paper flex items-center px-3">
 <span class="font-mono text-[9px] uppercase tracking-wider text-ink/60">Soleira</span>
 </div>
-<!-- Objeto Desajeitado Entalado na Porta -->
 <div class="relative z-10 w-72 h-36 bg-amber/20 border-2 border-mark-orange p-3 flex flex-col justify-between hard-shadow-sm rotate-3">
 <div class="flex justify-between items-center bg-mark-orange text-white px-2 py-1">
 <span class="font-mono text-[10px] uppercase font-bold tracking-widest">OBJETO ENTALADO (JSON 50KB)</span>
@@ -566,7 +502,6 @@
 <span class="text-red-700 font-bold">Entregue: 51.200 bytes</span>
 </div>
 </div>
-<!-- Floor circulation indicator blocked -->
 <div class="absolute right-6 top-8 bottom-8 flex flex-col justify-center items-center">
 <span class="font-mono text-[10px] text-red-700 font-bold uppercase rotate-90 tracking-widest">Circulação Trancada</span>
 </div>
@@ -579,28 +514,21 @@
 </div>
 </div>
 </article>
-<!-- BANDA 4: COMPACTAR (Pure White Background) -->
 <article class="lesson-section bg-white py-20 px-6 md:px-12 border-b border-borderline" id="compactar"><button type="button" class="agent-pull" data-section-id="compactar" data-section-title="Compactar"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Left Diagram: Sala quase vazia iluminada, mesa e bilhete síntese -->
 <div class="lg:col-span-7">
 <div class="bg-paper border-2 border-ink p-6 hard-shadow">
 <div class="flex justify-between items-center mb-4 border-b border-borderline pb-2">
 <span class="font-mono text-xs text-ink uppercase font-bold">Esquema 04 · Estado Sintetizado</span>
 <span class="font-label italic text-xs text-ink/60">A Sala Limpa</span>
 </div>
-<!-- Graphic: Minimalist room with only table and folded note -->
 <div class="h-64 bg-paper-light border border-borderline relative flex items-center justify-center p-6 iso-grid">
-<!-- Depósito indicator arrow outside -->
 <div class="absolute top-4 left-4 border border-ink bg-white px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-ink/70">
                   Depósito externo (10 caixas arquivadas)
                 </div>
-<!-- Sunlit floor highlighting the clean space -->
 <div class="w-64 h-48 border border-dashed border-amber/40 flex flex-col items-center justify-center relative">
-<!-- The Table (A Mesa) -->
 <div class="w-48 h-24 border-2 border-ink bg-white p-3 flex flex-col justify-between items-center hard-shadow-sm">
 <span class="font-mono text-[9px] uppercase tracking-widest text-ink/50">Mesa Central</span>
-<!-- Folded Note (O Bilhete Síntese) -->
 <div class="w-32 h-10 border border-ink bg-paper p-1.5 flex items-center justify-between -rotate-2 shadow-sm">
 <div class="flex flex-col">
 <span class="font-headline uppercase text-[8px] font-black text-amber">BILHETE SÍNTESE</span>
@@ -611,7 +539,6 @@
 <span class="font-label italic text-[9px] text-ink/70">Substitui 10 caixas do passado</span>
 </div>
 </div>
-<!-- Clean floor indicator -->
 <div class="absolute bottom-4 right-4 bg-ink text-paper px-2.5 py-1 text-[9px] font-mono uppercase tracking-wider">
                   Chão ocupado: 4%
                 </div>
@@ -622,7 +549,6 @@
 </div>
 </div>
 </div>
-<!-- Right Text -->
 <div class="lg:col-span-5">
 <span class="font-mono text-xs uppercase tracking-widest text-amber font-bold block mb-3">Lição 04 · Síntese</span>
 <h3 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-ink mb-6">
@@ -651,7 +577,6 @@
 <p class="lg:col-span-5 font-body text-base md:text-lg text-paper/80 leading-relaxed">A mobília descartável sai pelas bordas. No chão ficam a placa na parede e o bilhete. O que não serve o turno seguinte não divide o espaço com o raciocínio.</p>
 </div>
 </section>
-<!-- ================= 6. CLOSING EDITORIAL STATEMENT ================= -->
 <section class="lesson-section max-w-7xl mx-auto px-6 md:px-12 py-28 text-center"><button type="button" class="agent-pull" data-section-id="conclusao-da-aula" data-section-title="Conclusão da aula"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
 <div class="max-w-3xl mx-auto">
 <span class="font-headline uppercase tracking-widest text-xs font-bold text-amber block mb-4">
@@ -666,16 +591,13 @@
 </div>
 </section>
 </main>
-<!-- ================= 7. FOOTER (Shared Components Spec) ================= -->
 <footer class="bg-paper border-t border-borderline">
 <div class="flex flex-col md:flex-row justify-between items-center w-full px-6 md:px-12 py-8 max-w-7xl mx-auto gap-4">
-<!-- Left Attribution -->
 <div class="flex items-center space-x-2">
 <span class="font-label italic uppercase font-bold text-sm text-ink">
           Marcelo Barella — Bergamota
         </span>
 </div>
-<!-- Center / Right Links -->
 <div class="flex items-center space-x-6 font-body text-xs tracking-normal text-ink">
 <a class="underline hover:opacity-100 transition-opacity" href="#inicio">Início</a>
 <a class="opacity-60 hover:underline transition-all" href="#">Manifesto</a>
@@ -683,13 +605,11 @@
 <a class="opacity-60 hover:underline transition-all" href="#">Privacidade</a>
 <a class="opacity-60 hover:underline transition-all" href="#">Contato</a>
 </div>
-<!-- Legal / Copyright Anchor -->
 <div class="font-body text-xs tracking-normal text-ink opacity-60">
         © 2025 M. Barella. Bergamota Workshop. Todos os direitos reservados.
       </div>
 </div>
 </footer>
-<!-- Micro-interactions Script -->
 <script>
 document.addEventListener('click',function(e){var t=e.target.closest('.agent-pull');if(!t)return;var id=t.getAttribute('data-section-id');var title=t.getAttribute('data-section-title');parent.postMessage({type:'section-agent-open',id:id,title:title},location.origin);});
 </script>
