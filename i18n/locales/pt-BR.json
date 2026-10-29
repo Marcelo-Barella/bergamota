@@ -463,7 +463,7 @@
       },
       "arroba": {
         "title": "Referencie, não cole",
-        "preset": "Eu sei o arquivo. Escreva o prompt com @ para o arquivo anexado, perguntando o que a página ensina. Depois escreva o prompt pior, que cola o arquivo inteiro. Diga qual deixa o caminho de fora e qual permite ler só o trecho.",
+        "preset": "Eu sei o arquivo. Escreva o prompt com {'@'} para o arquivo anexado, perguntando o que a página ensina. Depois escreva o prompt pior, que cola o arquivo inteiro. Diga qual deixa o caminho de fora e qual permite ler só o trecho.",
         "chat": "Referencie, não cole"
       },
       "rules": {

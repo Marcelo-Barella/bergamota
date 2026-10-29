@@ -463,7 +463,7 @@
       },
       "arroba": {
         "title": "Reference, do not paste",
-        "preset": "I know the file. Write the @ prompt for the attached file, asking what the page teaches. Then write the worse prompt that pastes the whole file. Say which one drops the path and which one lets you read only the needed span.",
+        "preset": "I know the file. Write the {'@'} prompt for the attached file, asking what the page teaches. Then write the worse prompt that pastes the whole file. Say which one drops the path and which one lets you read only the needed span.",
         "chat": "Reference, do not paste"
       },
       "rules": {
