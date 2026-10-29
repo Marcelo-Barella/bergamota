@@ -13,8 +13,6 @@ export type SendPhase = 'idle' | 'sending' | 'failed'
 
 const sectionIds = [
   'inicio',
-  'hoje',
-  'cursor',
   'agente',
   'token',
   'tipos',

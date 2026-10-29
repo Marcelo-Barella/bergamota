@@ -101,7 +101,7 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-block">
             <span class="inline-block transform -rotate-2 bg-[#d97706] text-[#f8f6f2] text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 font-semibold">
-              Workshop UPF
+              A finite window
             </span>
           </div>
           <div class="space-y-1">
@@ -172,45 +172,11 @@
       </div>
     </section>
 
-    <section id="hoje" class="lesson-section space-y-6">
-      <button type="button" class="agent-pull" data-section-id="hoje" data-section-title="What we will do today"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-      <div class="space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// WORKSHOP</span>
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">What we will do today</h2>
-      </div>
-      <p class="font-serif-italic text-2xl max-w-2xl">Agents spend tokens, and bad context costs more and misses more.</p>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Four parts, from the editor to what fills the window. A personal finance app threads the examples: landing page, statement import, local backend. The ideas hold for Cursor and for any other agent tool.</p>
-      <ol class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl text-sm">
-        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">01</span> What Cursor is</li>
-        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">02</span> Agentic development</li>
-        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">03</span> What a token is</li>
-        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">04</span> Context, and how to manage it</li>
-      </ol>
-    </section>
-
-    <section id="cursor" class="lesson-section space-y-6">
-      <button type="button" class="agent-pull" data-section-id="cursor" data-section-title="The Cursor ecosystem"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-      <div class="space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">// 01</span>
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">The Cursor ecosystem</h2>
-      </div>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Cursor is a code editor with AI for agentic development. It gives you several models, with the context of your codebase. You can shape it with rules, skills, MCPs, and subagents.</p>
-      <ul class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl text-xs font-mono uppercase tracking-widest">
-        <li class="border border-[#1b1c1a] p-3">IDE</li>
-        <li class="border border-[#1b1c1a] p-3">Terminal/CLI</li>
-        <li class="border border-[#1b1c1a] p-3">Agent API</li>
-        <li class="border border-[#1b1c1a] p-3">Cloud Agents</li>
-        <li class="border border-[#1b1c1a] p-3">Browser Mode</li>
-        <li class="border border-[#1b1c1a] p-3">Skills and subagents</li>
-      </ul>
-    </section>
-
     <section id="agente" class="lesson-section space-y-6">
       <button type="button" class="agent-pull" data-section-id="agente" data-section-title="From chat to agent"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-      <div class="space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">// 02</span>
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">From chat to agent</h2>
-      </div>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">From chat to agent</h2>
+      <p class="font-serif-italic text-2xl max-w-2xl">Agents spend tokens, and bad context costs more and misses more.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A personal finance app carries the examples: a landing page, a statement import, and a local SQLite backend.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
         <div class="bg-[#f2efe9] border border-[#e3ded5] p-5 space-y-2">
           <h3 class="font-mono text-xs uppercase tracking-widest text-[#5e605a]">The problem</h3>
@@ -229,15 +195,12 @@
         <li>4. Test and review</li>
         <li>5. Turn the lesson into a rule</li>
       </ol>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Try it: an empty folder and a new chat. Before the first message the ring already shows the system prompt, tools, rules, skills, and MCP. A short prompt asks for the landing page (hero, features, a call to import the statement). After the reply the ring climbs, because all of that became context.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Before the first message, the ring already holds the system prompt, tools, rules, skills, and MCP. A short prompt for the finance landing (hero, features, a call to import the statement) makes the ring climb, because all of that became context.</p>
     </section>
 
     <section id="token" class="lesson-section space-y-6">
       <button type="button" class="agent-pull" data-section-id="token" data-section-title="What a token is"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-      <div class="space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// 03</span>
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">What a token is</h2>
-      </div>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">What a token is</h2>
       <p class="font-serif-italic text-2xl max-w-2xl">The model's unit of text. The currency of the AI. It is what you pay.</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl">
         <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">3/4</p><p class="text-xs text-[#5e605a] mt-2">of an English word, per token, as a rough measure</p></div>
@@ -300,15 +263,12 @@
         </table>
         <p class="text-sm">106.2M tokens. Total $117.69. Cache read and cache write dominate the bill.</p>
       </div>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Try it: open Usage and look at input, output, and cache read for the landing page. Ask for a short copy change with Composer 2.5. Ask again in the same chat and watch cache read grow. Each tool call resends the context.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">On the landing page, Usage shows input, output, and cache read. A short copy change on Composer 2.5, asked again in the same chat, makes cache read grow. Each tool call resends the context.</p>
     </section>
 
     <section id="conversa" class="lesson-section space-y-6">
       <button type="button" class="agent-pull" data-section-id="conversa" data-section-title="A chat that only grows"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
-      <div class="space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// 04</span>
-        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">A chat that only grows</h2>
-      </div>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">A chat that only grows</h2>
       <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">You ask for a feature. The agent reads files, runs tests, you ask for a tweak. Every turn resends everything, and the chat only grows. Every call resends the history, and you pay for it again.</p>
       <p class="font-serif-italic text-2xl max-w-2xl">Small, right context: only what the task needs, and a new chat when the task changes.</p>
     </section>
@@ -361,7 +321,7 @@
       </div>
       <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">@src/components/ for a folder. @Terminals for the terminal output. @Chats to bring in another conversation. Use @ when you know which files matter. Ask for the answer, not the file: "@auth.ts, where does the token expire?" Skip @ when you do not know where to start: the agent searches on its own.</p>
       <p class="font-serif-italic text-2xl">Reference. Never copy and paste.</p>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Try it: write the landing brief in a file and ask for the update with @ on both paths. In another chat, paste the whole brief and compare the ring. If the dev server fails, ask with @Terminals.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A landing brief that lives in a file, then an update asked with @ on both paths, keeps the path and can read only the span that matters. The same brief pasted into another chat enters whole, with no path. When the dev server fails, @Terminals brings the output without a paste.</p>
     </section>
 
     <section id="rules" class="lesson-section space-y-6">
@@ -407,7 +367,7 @@
       <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Send a scout</h2>
       <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A wide search in the main chat leaves every file it read in the history. Delegate the exploration to a subagent and bring back only the summary. The scout returns with the map.</p>
       <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">An automatic summary is a lossy compression. Before the next chat: ask for a short handoff note, open a new chat, use @ on the note, and @Chats only if something is still missing.</p>
-      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Try it: the note says the landing page is ready, with the category rule and the statement skill. The new chat reads the note and creates a SQLite backend for imported transactions. A subagent can map the landing page and return only the fields the API needs. If it errors, use @Terminals. Compare that chat's ring and Usage with the long landing chat.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">The handoff note says the landing page is ready, with the category rule and the statement skill. A new chat reads the note and creates a SQLite backend for imported transactions. A subagent can map the landing page and return only the fields the API needs. On an error, @Terminals is enough. That chat's ring and Usage stay smaller than the long landing chat.</p>
     </section>
 
     <section id="ensaio" class="lesson-section space-y-8 pt-4">

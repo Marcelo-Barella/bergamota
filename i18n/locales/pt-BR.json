@@ -403,28 +403,18 @@
       "label": "01 / Lição",
       "kicker": "Eficiência de tokens",
       "title": "A porta tem tranca",
-      "body": "A tranca numa janela finita, e a oficina por trás: agentes, tokens e os gestos que mantêm o chat pequeno.",
+      "body": "A tranca numa janela finita: agentes, tokens e os gestos que mantêm o chat pequeno.",
       "imageAlt": "Uma porta fechada com tranca âmbar, caixas esperando do lado de fora e um bilhete do lado de dentro"
     },
     "lesson": {
       "metaTitle": "Otimização de tokens: Bergamota",
-      "metaDescription": "Uma oficina sobre agentes, tokens e uma janela de contexto finita: o que entra, o que custa, e como a tranca mantém o próximo chat pequeno."
+      "metaDescription": "Agentes, tokens e uma janela de contexto finita: o que entra, o que custa, e como a tranca mantém o próximo chat pequeno."
     },
     "prompts": {
       "inicio": {
         "title": "A porta tem tranca",
-        "preset": "Abra com a frase da porta: o que não entra não gasta a janela. Depois nomeie as quatro partes da oficina, nesta ordem.",
+        "preset": "Abra com a frase da porta: o que não entra não gasta a janela. Depois nomeie uma coisa que já está neste chat e que eu não digitei.",
         "chat": "A porta tem tranca"
-      },
-      "hoje": {
-        "title": "O que vamos fazer hoje",
-        "preset": "Um app de finanças pessoais entra ao vivo: landing, importação de extrato, SQLite local. Diga em qual das quatro partes cada pedaço aparece.",
-        "chat": "O que vamos fazer hoje"
-      },
-      "cursor": {
-        "title": "O ecossistema Cursor",
-        "preset": "Liste as seis superfícies (IDE, terminal, Agent API, cloud agents, browser, skills e subagents). Diga em qual esta conversa está, e uma tarefa que pertence a outra superfície.",
-        "chat": "O ecossistema Cursor"
       },
       "agente": {
         "title": "Do chat ao agente",

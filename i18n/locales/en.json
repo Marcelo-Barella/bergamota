@@ -403,28 +403,18 @@
       "label": "01 / Lesson",
       "kicker": "Token efficiency",
       "title": "The door has a lock",
-      "body": "The lock on a finite window, then the workshop behind it: agents, tokens, and the moves that keep a chat small.",
+      "body": "The lock on a finite window: agents, tokens, and the moves that keep a chat small.",
       "imageAlt": "A shut door with an amber latch, boxes waiting outside, and one slip of paper inside"
     },
     "lesson": {
       "metaTitle": "Token optimization: Bergamota",
-      "metaDescription": "A workshop on agents, tokens, and a finite context window: what enters, what it costs, and how the lock keeps the next chat small."
+      "metaDescription": "Agents, tokens, and a finite context window: what enters, what it costs, and how the lock keeps the next chat small."
     },
     "prompts": {
       "inicio": {
         "title": "The door has a lock",
-        "preset": "Open with the sentence on the door: what does not enter does not spend the window. Then name the four parts of the workshop, in order.",
+        "preset": "Open with the sentence on the door: what does not enter does not spend the window. Then name one thing already in this chat that I did not type.",
         "chat": "The door has a lock"
-      },
-      "hoje": {
-        "title": "What we will do today",
-        "preset": "A personal finance app is built live: landing page, statement import, local SQLite. Say which of the four parts each piece belongs to.",
-        "chat": "What we will do today"
-      },
-      "cursor": {
-        "title": "The Cursor ecosystem",
-        "preset": "List the six surfaces (IDE, terminal, Agent API, cloud agents, browser, skills and subagents). Say which one this chat is, and name one task that belongs on another surface.",
-        "chat": "The Cursor ecosystem"
       },
       "agente": {
         "title": "From chat to agent",
