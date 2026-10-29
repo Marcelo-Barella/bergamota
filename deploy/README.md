@@ -19,7 +19,8 @@ Health: `curl -fsS http://127.0.0.1:3027/`
 | `CURSOR_API_KEY` | VPS / `docker-compose` env | Cursor SDK + `agent acp` auth |
 | `ACP_ENABLED` | Container (`true` on VPS) | Long-lived ACP bridge |
 | `NITRO_PRESET` | Build + runtime (`node-server`) | Node server instead of Vercel functions |
-| `BERGAMOTA_PORT` | Host port mapping | Published port (default `3027`) |
+| `BERGAMOTA_PORT` | Host / `.env` | Published host port (see `.env.example`; required for `verify-docker.sh`) |
+| `COMPOSE_PROJECT_NAME` | Host / `.env` | Optional Docker Compose project name (isolates stacks on shared VPS) |
 | `PORT` | Container | Internal listen port (`3027`) |
 | `TOKEN_LAB_PER_IP_PER_MIN` | Docker | SDK/ACP calls per IP per minute |
 | `TOKEN_LAB_GLOBAL_PER_MIN` | Docker | Global SDK/ACP calls per minute |
@@ -36,12 +37,26 @@ SDK/ACP doc verification: `deploy/CURSOR-SDK-ACP.md`
 
 ## Container route check
 
+`scripts/verify-docker.sh` reads **`BERGAMOTA_PORT`** and **`COMPOSE_PROJECT_NAME`** from the process environment first, then from **`.env`** in the repo root (existing env vars win). It prints which project name and port it uses, runs `docker compose build` / `up -d`, and hits the same routes as `verify-routes.sh`.
+
 ```bash
+cp .env.example .env
+# edit .env: BERGAMOTA_PORT=3027, optional COMPOSE_PROJECT_NAME=my-stack
 export CURSOR_API_KEY=...   # optional for fallback demos
 bash scripts/verify-docker.sh
 ```
 
-Same checks without Docker (node-server artifact): `bash scripts/verify-routes.sh http://127.0.0.1:3027`
+Example output:
+
+```text
+verify-docker: COMPOSE_PROJECT_NAME=my-stack  BERGAMOTA_PORT=3027  base=http://127.0.0.1:3027
+```
+
+Same checks without Docker (node-server artifact), using your port:
+
+```bash
+bash scripts/verify-routes.sh "http://127.0.0.1:${BERGAMOTA_PORT}"
+```
 
 Routes exercised:
 

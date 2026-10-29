@@ -20,7 +20,10 @@
         <span>compact</span>
       </div>
     </div>
-    <p class="ws-ctx-label">{{ formatNumber(tokens) }} / {{ formatNumber(contextWindow) }}</p>
+    <p class="ws-ctx-label">
+      {{ formatNumber(tokens) }} / {{ formatNumber(contextWindow) }}
+      <span v-if="overflow" class="ws-ctx-overflow">overflow</span>
+    </p>
   </div>
 </template>
 
@@ -30,6 +33,7 @@ defineProps<{
   tokens: number
   contextWindow: number
   thresholds: { notice: number; recommend: number; compact: number }
+  overflow?: boolean
 }>()
 
 function formatNumber(n: number) {
