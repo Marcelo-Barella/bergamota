@@ -11,52 +11,71 @@ export type SectionAgentPrompt = {
 export type DrawerPhase = 'closed' | 'opening' | 'open'
 export type SendPhase = 'idle' | 'sending' | 'failed'
 
-export const sectionAgentPrompts: SectionAgentPrompt[] = [
-  {
-    id: 'inicio',
-    title: 'A porta tem tranca',
-    preset:
-      'Explique em uma frase por que o que não entra não gasta a janela, sem copiar o texto da página.',
-    chat: 'A porta tem tranca'
-  },
-  {
-    id: 'ensaio',
-    title: 'O ensaio da contenção',
-    preset:
-      'Explique em uma frase a passagem da porta fechada até o bilhete na fresta, sem copiar o texto da página.',
-    chat: 'O ensaio da contenção'
-  },
-  {
-    id: 'confirmar',
-    title: 'Confirmar antes',
-    preset:
-      'Explique em uma frase por que uma ferramenta cara pede confirmação antes de escrever no chat, sem copiar o texto da página.',
-    chat: 'Confirmar antes'
-  },
-  {
-    id: 'bloquear',
-    title: 'Bloquear o que é arriscado',
-    preset:
-      'Explique em uma frase por que o shell local e a ferramenta remota ficam com ferrolho duplo, sem copiar o texto da página.',
-    file: 'app/data/token-optimization-mcp.ts',
-    chat: 'Bloquear o que é arriscado'
-  },
-  {
-    id: 'sala-quieta',
-    title: 'Sala quieta',
-    preset:
-      'Explique em uma frase por que uma bandeja de ferramentas vazia deixa a resposta do modelo curta, sem copiar o texto da página.',
-    chat: 'Sala quieta'
-  },
-  {
-    id: 'epilogo',
-    title: 'A tranca é parte da frase',
-    preset:
-      'Explique em uma frase por que saber fechar a porta faz parte da frase, sem copiar o texto da página.',
-    chat: 'A tranca é parte da frase'
-  }
-]
+const sectionIds = [
+  'inicio',
+  'hoje',
+  'cursor',
+  'agente',
+  'token',
+  'tipos',
+  'preco',
+  'conversa',
+  'contexto',
+  'anel',
+  'arroba',
+  'rules',
+  'ignore',
+  'skills',
+  'mcp',
+  'batedor',
+  'ensaio',
+  'confirmar',
+  'bloquear',
+  'sala-quieta',
+  'epilogo'
+] as const
 
-export function sectionPromptById(id: string): SectionAgentPrompt | undefined {
-  return sectionAgentPrompts.find((entry) => entry.id === id)
+const sectionFiles: Partial<Record<(typeof sectionIds)[number], string>> = {
+  arroba: 'app/pages/thoughts/token-efficiency.vue',
+  bloquear: 'app/data/token-optimization-mcp.ts',
+  mcp: 'app/data/token-optimization-mcp.ts'
+}
+
+const sectionRuleIds = new Set<(typeof sectionIds)[number]>(['rules'])
+const sectionSkillIds = new Set<(typeof sectionIds)[number]>(['skills'])
+
+export function warmSectionPromptKeys(translate: (key: string) => string) {
+  for (const id of sectionIds) {
+    translate(`thoughts.prompts.${id}.title`)
+    translate(`thoughts.prompts.${id}.preset`)
+    translate(`thoughts.prompts.${id}.chat`)
+    if (sectionRuleIds.has(id)) {
+      translate(`thoughts.prompts.${id}.rule`)
+    }
+    if (sectionSkillIds.has(id)) {
+      translate(`thoughts.prompts.${id}.skill`)
+    }
+  }
+}
+
+export function sectionPromptById(
+  id: string,
+  translate: (key: string) => string
+): SectionAgentPrompt | undefined {
+  if (!sectionIds.includes(id as (typeof sectionIds)[number])) {
+    return undefined
+  }
+  const key = id as (typeof sectionIds)[number]
+  const file = sectionFiles[key]
+  const rule = sectionRuleIds.has(key) ? translate(`thoughts.prompts.${id}.rule`) : undefined
+  const skill = sectionSkillIds.has(key) ? translate(`thoughts.prompts.${id}.skill`) : undefined
+  return {
+    id,
+    title: translate(`thoughts.prompts.${id}.title`),
+    preset: translate(`thoughts.prompts.${id}.preset`),
+    chat: translate(`thoughts.prompts.${id}.chat`),
+    ...(file ? { file } : {}),
+    ...(rule ? { rule } : {}),
+    ...(skill ? { skill } : {})
+  }
 }

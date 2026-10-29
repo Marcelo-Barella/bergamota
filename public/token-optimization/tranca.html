@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tranca — Bergamota Workshop</title>
+  <title>Otimização de tokens: Bergamota</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,9 +83,9 @@
       </div>
       <nav class="flex items-center gap-8 text-xs uppercase tracking-widest font-mono">
         <a href="#hero" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Início</a>
-        <a href="#hero" class="text-[#d97706] font-semibold underline underline-offset-4 decoration-1">Tranca</a>
-        <a href="#confirmar" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Confirmar</a>
-        <a href="#bloquear" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Bloquear</a>
+        <a href="#ensaio" class="text-[#d97706] font-semibold underline underline-offset-4 decoration-1">Tranca</a>
+        <a href="#token" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Tokens</a>
+        <a href="#contexto" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Contexto</a>
       </nav>
       <div>
         <a href="#inscricao" class="hidden md:inline-block px-3.5 py-1.5 bg-[#1b1c1a] text-[#f8f6f2] text-xs font-mono uppercase tracking-wider hover:bg-[#d97706] transition-colors">Caderno</a>
@@ -170,6 +170,244 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="hoje" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="hoje" data-section-title="O que vamos fazer hoje"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// OFICINA</span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O que vamos fazer hoje</h2>
+      </div>
+      <p class="font-serif-italic text-2xl max-w-2xl">Agentes gastam tokens, e contexto ruim custa mais e erra mais.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Quatro partes, do editor ao que enche a janela. Um app de finanças pessoais costura os exemplos: landing, extrato, backend local. Vale para o Cursor e para qualquer outra ferramenta agêntica.</p>
+      <ol class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl text-sm">
+        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">01</span> O que é o Cursor</li>
+        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">02</span> Desenvolvimento agêntico</li>
+        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">03</span> O que é um token</li>
+        <li class="border border-[#1b1c1a] p-4"><span class="font-mono text-[#d97706]">04</span> Contexto e como geri-lo</li>
+      </ol>
+    </section>
+
+    <section id="cursor" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="cursor" data-section-title="O ecossistema Cursor"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">// 01</span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O ecossistema Cursor</h2>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Cursor é um editor de código com IA para desenvolvimento agêntico. Dá acesso a vários modelos, com o contexto da sua base. Dá para personalizar com Rules, Skills, MCPs e subagents.</p>
+      <ul class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl text-xs font-mono uppercase tracking-widest">
+        <li class="border border-[#1b1c1a] p-3">IDE</li>
+        <li class="border border-[#1b1c1a] p-3">Terminal/CLI</li>
+        <li class="border border-[#1b1c1a] p-3">Agent API</li>
+        <li class="border border-[#1b1c1a] p-3">Cloud Agents</li>
+        <li class="border border-[#1b1c1a] p-3">Browser Mode</li>
+        <li class="border border-[#1b1c1a] p-3">Skills e subagents</li>
+      </ul>
+    </section>
+
+    <section id="agente" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="agente" data-section-title="Do chat ao agente"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">// 02</span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Do chat ao agente</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#e3ded5] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase tracking-widest text-[#5e605a]">O problema</h3>
+          <p class="text-sm leading-relaxed">Sem tools, o modelo só vê o que você cola. E você vira o copia e cola dele.</p>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase tracking-widest text-[#d97706]">A virada</h3>
+          <p class="text-sm leading-relaxed">Com tool calling ele lê e escreve arquivos, busca no código, roda comandos e checa erros. Várias tools em sequência formam um agente.</p>
+        </div>
+      </div>
+      <p class="font-serif-italic text-xl max-w-2xl">Quem dirige é você. O agente executa. Entender, planejar, testar e revisar continua sendo seu trabalho.</p>
+      <ol class="max-w-2xl text-sm space-y-2 font-mono">
+        <li>1. Explore o código</li>
+        <li>2. Planeje no Plan Mode</li>
+        <li>3. Revise o plano e clique em Build</li>
+        <li>4. Teste e revise</li>
+        <li>5. Vire o aprendizado numa Rule</li>
+      </ol>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Na prática: pasta vazia, chat novo. Antes da primeira mensagem o anel já mostra system prompt, tools, rules, skills e MCP. Um prompt curto pede a landing (hero, recursos, chamada para importar o extrato). Depois da resposta o anel sobe, porque tudo virou contexto.</p>
+    </section>
+
+    <section id="token" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="token" data-section-title="O que é um token"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// 03</span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O que é um token</h2>
+      </div>
+      <p class="font-serif-italic text-2xl max-w-2xl">A unidade de texto do modelo. A moeda da IA. É o que você paga.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">3/4</p><p class="text-xs text-[#5e605a] mt-2">de uma palavra em inglês, por token, como referência</p></div>
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">128 mil</p><p class="text-xs text-[#5e605a] mt-2">tokens cabem de uma vez, cerca de 96 mil palavras</p></div>
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">300</p><p class="text-xs text-[#5e605a] mt-2">páginas, o livro que essa janela equivale</p></div>
+      </div>
+    </section>
+
+    <section id="tipos" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="tipos" data-section-title="Tipos de tokens"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Tipos de tokens</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Input</h3>
+          <p class="text-sm text-[#5e605a]">Tudo o que você envia: system prompt, prompt do usuário, contexto.</p>
+        </div>
+        <div class="bg-[#f2efe9] border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Output</h3>
+          <p class="text-sm text-[#5e605a]">Tudo o que o modelo gera: texto, código, tool calls. Costuma custar 2 a 4 vezes o input.</p>
+        </div>
+        <div class="bg-[#1b1c1a] text-[#f8f6f2] p-5 space-y-2">
+          <h3 class="font-bold uppercase text-[#d97706]">Cache read</h3>
+          <p class="text-sm">Cerca de 10 vezes mais barato, a cada turno da mesma conversa. No Opus, $0,50 contra $5 do input, por 1M.</p>
+        </div>
+        <div class="bg-[#1b1c1a] text-[#f8f6f2] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Cache write</h3>
+          <p class="text-sm">Caro. Acontece no início da conversa ou quando entra conteúdo novo. Escreve o cache.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Mantenha o começo estável: Rules entram no início do contexto. Cada tool call reenvia o contexto e aparece como cache read.</p>
+    </section>
+
+    <section id="preco" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="preco" data-section-title="Qual modelo para a tarefa"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Qual modelo para a tarefa</h2>
+      <p class="font-serif-italic text-xl max-w-2xl">Modelo maior não é sempre melhor. Pergunta simples em modelo caro é desperdício.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5">
+          <p class="font-mono text-xs uppercase text-[#5e605a]">Raciocínio</p>
+          <h3 class="text-2xl font-black mt-1">Claude 4.7 Opus</h3>
+          <p class="text-sm mt-3">Input $5 por 1M. Output $25 por 1M.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 shadow-[4px_4px_0px_#d97706]">
+          <p class="font-mono text-xs uppercase text-[#d97706]">Rápido</p>
+          <h3 class="text-2xl font-black mt-1">Composer 2.5</h3>
+          <p class="text-sm mt-3">Input $0,50 por 1M. Output $2,50 por 1M. 10 vezes menos por token.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl">Modelos rápidos para edições simples. Modelos mais capazes para raciocínio e refactors grandes. Dá para trocar no meio da conversa.</p>
+      <div class="max-w-4xl space-y-3">
+        <p class="font-mono text-xs uppercase tracking-widest">Conta real, Opus 4.7 Thinking High. Não é preço de tabela.</p>
+        <table class="w-full text-left text-xs font-mono border border-[#1b1c1a]">
+          <thead class="bg-[#1b1c1a] text-[#f8f6f2]"><tr><th class="p-3">Tipo</th><th class="p-3">Tokens</th><th class="p-3">Preço</th><th class="p-3">Custo</th></tr></thead>
+          <tbody>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Input</td><td class="p-3">152.279</td><td class="p-3">$5,00</td><td class="p-3">$0,76</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Output</td><td class="p-3">877.966</td><td class="p-3">$25,00</td><td class="p-3">$21,95</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Cache read</td><td class="p-3">97.748.796</td><td class="p-3">$0,50</td><td class="p-3">$48,87</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Cache write</td><td class="p-3">7.377.211</td><td class="p-3">$6,25</td><td class="p-3">$46,11</td></tr>
+          </tbody>
+        </table>
+        <p class="text-sm">106,2M tokens. Total $117,69. A leitura e a gravação de cache dominam a conta.</p>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Na prática: abra Usage e veja input, output e cache read da landing. Peça um ajuste curto com Composer 2.5. Peça de novo no mesmo chat e veja o cache read crescer. Cada tool call reenvia o contexto.</p>
+    </section>
+
+    <section id="conversa" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="conversa" data-section-title="Uma conversa que só cresce"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">// 04</span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Uma conversa que só cresce</h2>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Você pede uma feature. O agente lê arquivos, roda testes, você pede um ajuste. Cada turno reenvia tudo, e a conversa só cresce. Cada chamada reenvia o histórico e você paga de novo.</p>
+      <p class="font-serif-italic text-2xl max-w-2xl">Contexto pequeno e certo: só o que a tarefa precisa, e chat novo quando a tarefa muda.</p>
+    </section>
+
+    <section id="contexto" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="contexto" data-section-title="O que é contexto"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O que é contexto</h2>
+      <p class="font-serif-italic text-2xl max-w-2xl">Não é a memória inteira do modelo. É como a RAM: tem limite e é limpa a cada sessão.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl">Tudo o que a IA faz entra aqui, não só o seu prompt.</p>
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-4xl text-xs font-mono uppercase">
+        <li class="border border-[#e3ded5] p-2">System prompt</li>
+        <li class="border border-[#e3ded5] p-2">Prompt do usuário</li>
+        <li class="border border-[#e3ded5] p-2">Resposta</li>
+        <li class="border border-[#e3ded5] p-2">Lista de tools</li>
+        <li class="border border-[#e3ded5] p-2">Chamada de tools</li>
+        <li class="border border-[#e3ded5] p-2">Rules</li>
+        <li class="border border-[#e3ded5] p-2">Skills</li>
+        <li class="border border-[#e3ded5] p-2">MCPs</li>
+        <li class="border border-[#e3ded5] p-2">Arquivos</li>
+        <li class="border border-[#e3ded5] p-2">Index</li>
+        <li class="border border-[#e3ded5] p-2">Imagens</li>
+        <li class="border border-[#e3ded5] p-2">Erros de linter</li>
+        <li class="border border-[#e3ded5] p-2">Terminal</li>
+        <li class="border border-[#e3ded5] p-2">Plugins</li>
+        <li class="border border-[#e3ded5] p-2">Mode prompt</li>
+        <li class="border border-[#e3ded5] p-2">Arquivo aberto</li>
+        <li class="border border-[#e3ded5] p-2">Workspace</li>
+        <li class="border border-[#e3ded5] p-2">Data atual</li>
+      </ul>
+    </section>
+
+    <section id="anel" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="anel" data-section-title="O anel de contexto"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O anel de contexto</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">128 mil tokens é o que cabe de uma vez. Quando enche, o Cursor resume a conversa e detalhes se perdem. Olhe o anel ao lado do prompt. Clique nele para ver o que ocupa espaço: system prompt, tools, rules, skills, MCP e a conversa.</p>
+    </section>
+
+    <section id="arroba" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="arroba" data-section-title="Referencie, não cole"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Referencie, não cole</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="border border-[#e3ded5] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase">Antes: colar</h3>
+          <p class="text-sm text-[#5e605a]">O código vira texto solto, sem o caminho do arquivo, e entra inteiro no contexto.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase text-[#d97706]">Depois: @</h3>
+          <p class="text-sm">O agente sabe onde o arquivo está e pode ler só o trecho que importa.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">@src/components/ para uma pasta. @Terminals para a saída do terminal. @Chats para trazer outra conversa. Use @ quando souber quais arquivos importam. Peça a resposta, não o arquivo: "@auth.ts, onde o token expira?" Sem @ quando não souber por onde começar: o agente busca sozinho.</p>
+      <p class="font-serif-italic text-2xl">Referencie. Nunca copie e cole.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Na prática: escreva o briefing da landing num arquivo e peça a atualização com @ nos dois caminhos. Noutro chat, cole o briefing inteiro e compare o anel. Se o servidor falhar, pergunte com @Terminals.</p>
+    </section>
+
+    <section id="rules" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="rules" data-section-title="Rules com menos de 500 linhas"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Rules com menos de 500 linhas</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Critério repetido em todo prompt vira input novo toda vez. Escreva numa Rule em .cursor/rules, com escopo por globs ou por descrição. Menos de 500 linhas. Rules entram no início do contexto.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">No app de finanças, a rule de categorias (mercado, transporte, moradia, lazer) aponta para os arquivos de categorias. Ela aparece no anel, na categoria Rules.</p>
+    </section>
+
+    <section id="ignore" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="ignore" data-section-title="O arquivo que o agente não viu"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O arquivo que o agente não viu</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">.gitignore</h3>
+          <p class="text-sm text-[#5e605a]">Oculta da indexação. node_modules/, logs/. O agente ainda pode ler o .env.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">.cursorignore</h3>
+          <p class="text-sm">Bloqueia o acesso do Agent, do Tab e do @. .env, package-lock.json, logs, builds.</p>
+        </div>
+      </div>
+      <p class="font-serif-italic text-xl max-w-2xl">O que não entra não custa token e não vaza.</p>
+    </section>
+
+    <section id="skills" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="skills" data-section-title="O manual na prateleira"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">O manual na prateleira</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Instruções longas numa Rule sempre ativa ocupam contexto em todo turno. Numa Skill, só nome e descrição ficam fixos. O conteúdo entra quando a tarefa pede. O agente vê a lombada e só abre o manual na hora.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A skill de importar extrato CSV fica assim até você invocá-la pelo menu / com um extrato de exemplo. O corpo entra nesse momento, não antes.</p>
+    </section>
+
+    <section id="mcp" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="mcp" data-section-title="Toda tool tem preço"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Toda tool tem preço</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A definição entra no input, com algumas centenas de tokens por tool, e o resultado entra no contexto. Prompt preciso, menos exploração: diga o arquivo e o objetivo para o agente chamar menos tools.</p>
+      <p class="font-serif-italic text-2xl max-w-2xl">Carregar só os MCPs necessários reduziu 46,9% dos tokens nas execuções com MCP.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">O ganho varia com quantos servidores você instalou. Ative só os que a tarefa usa e desligue o resto. Saídas longas e o terminal podem virar arquivos que o agente lê por partes. Depois de um resumo, ele consulta o histórico em vez de guardar tudo na janela.</p>
+    </section>
+
+    <section id="batedor" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="batedor" data-section-title="Mande um batedor"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Mande um batedor</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Uma varredura grande no chat principal deixa cada arquivo lido no histórico. Delegue a exploração a um subagent e traga só o resumo. O batedor volta com o mapa.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">O resumo automático é uma compressão com perdas. Antes do próximo chat: peça uma nota de handoff curta, abra um chat novo, use @ na nota, e @Chats só se faltar algo.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Na prática: a nota diz que a landing está pronta, com a rule de categorias e a skill de extrato. O chat novo lê a nota e cria um backend SQLite para as transações importadas. Um subagent pode mapear a landing e devolver só os campos que a API precisa. Se der erro, @Terminals. Compare o anel e o Usage desse chat com o chat longo da landing.</p>
     </section>
 
     <section id="ensaio" class="lesson-section space-y-8 pt-4">
@@ -455,12 +693,12 @@
     </div>
     <div class="border-t border-[#1b1c1a] pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/70">
       <div>
-        Marcelo Barella — Bergamota
+        Marcelo Barella, Bergamota
       </div>
       <div class="flex items-center gap-6">
         <a href="#hero" class="hover:text-[#d97706] transition-colors">Voltar ao Topo</a>
         <span>·</span>
-        <span class="text-[#5e605a]">Workshop 2025</span>
+        <span class="text-[#5e605a]">UPF, 29 out 2026</span>
       </div>
     </div>
   </section>

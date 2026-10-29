@@ -396,11 +396,128 @@
     }
   },
   "thoughts": {
+    "titleLine1": "Lessons",
+    "titleLine2": "That teach",
+    "description": "Educational notes on a finite context window. Each lesson names one mechanism, shows what it costs, and leaves a practice you can use.",
     "tokenEfficiency": {
       "label": "01 / Lesson",
       "kicker": "Token efficiency",
-      "title": "A porta tem tranca",
-      "body": "What does not enter does not spend the window."
+      "title": "The door has a lock",
+      "body": "The lock on a finite window, then the workshop behind it: agents, tokens, and the moves that keep a chat small.",
+      "imageAlt": "A shut door with an amber latch, boxes waiting outside, and one slip of paper inside"
+    },
+    "lesson": {
+      "metaTitle": "Token optimization: Bergamota",
+      "metaDescription": "A workshop on agents, tokens, and a finite context window: what enters, what it costs, and how the lock keeps the next chat small."
+    },
+    "prompts": {
+      "inicio": {
+        "title": "The door has a lock",
+        "preset": "Open with the sentence on the door: what does not enter does not spend the window. Then name the four parts of the workshop, in order.",
+        "chat": "The door has a lock"
+      },
+      "hoje": {
+        "title": "What we will do today",
+        "preset": "A personal finance app is built live: landing page, statement import, local SQLite. Say which of the four parts each piece belongs to.",
+        "chat": "What we will do today"
+      },
+      "cursor": {
+        "title": "The Cursor ecosystem",
+        "preset": "List the six surfaces (IDE, terminal, Agent API, cloud agents, browser, skills and subagents). Say which one this chat is, and name one task that belongs on another surface.",
+        "chat": "The Cursor ecosystem"
+      },
+      "agente": {
+        "title": "From chat to agent",
+        "preset": "Without tools you only see what I paste. With tools you read, write, search, run, and check errors. Show a sequence of three tool calls for the finance landing page (hero, features, a call to import the statement), then stop.",
+        "chat": "From chat to agent"
+      },
+      "token": {
+        "title": "What a token is",
+        "preset": "Split this sentence into rough tokens and count them: 'What does not enter does not spend the window.' Then say what 128,000 tokens is in words and in pages.",
+        "chat": "What a token is"
+      },
+      "tipos": {
+        "title": "Kinds of tokens",
+        "preset": "One reply reads a file and edits it. Separate system prompt, user prompt, tool call, and the written code. Mark input, output, what is a cache read on the next turn, and which new line is a cache write.",
+        "chat": "Kinds of tokens"
+      },
+      "preco": {
+        "title": "Which model for the task",
+        "preset": "The task is a one-line copy change. Pick Composer 2.5 or Claude Opus 4.7 and show input and output price per 1M. Then, on this real bill (input 152,279 at $5 = $0.76; output 877,966 at $25 = $21.95; cache read 97,748,796 at $0.50 = $48.87; cache write 7,377,211 at $6.25 = $46.11), say which line dominated the $117.69.",
+        "chat": "Which model for the task"
+      },
+      "conversa": {
+        "title": "A chat that only grows",
+        "preset": "Turn 1 asked for a feature. Turn 2 read files and ran tests. Turn 3 asks for a short tweak. Show that turn 3 resends turns 1 and 2, and say when to open a new chat.",
+        "chat": "A chat that only grows"
+      },
+      "contexto": {
+        "title": "What context is",
+        "preset": "List twelve things already in this chat's context that I did not type in the last message. Each item is a name, not a definition.",
+        "chat": "What context is"
+      },
+      "anel": {
+        "title": "The context ring",
+        "preset": "The window holds about 128,000 tokens. Describe what the ring beside the prompt shows when it is half full, and what is lost when the window fills and the chat is summarized.",
+        "chat": "The context ring"
+      },
+      "arroba": {
+        "title": "Reference, do not paste",
+        "preset": "I know the file. Write the @ prompt for the attached file, asking what the page teaches. Then write the worse prompt that pastes the whole file. Say which one drops the path and which one lets you read only the needed span.",
+        "chat": "Reference, do not paste"
+      },
+      "rules": {
+        "title": "Rules under 500 lines",
+        "preset": "Write a rule under 12 lines: expensive tools ask before they run. Scope it with a glob for tool config. Say why it sits at the start of context instead of being pasted into every prompt.",
+        "chat": "Rules under 500 lines",
+        "rule": ".cursor/rules"
+      },
+      "ignore": {
+        "title": "The file the agent never saw",
+        "preset": "The repo has .env, package-lock.json, node_modules, and src/app.ts. Put each in gitignore, cursorignore, or neither. Then say what happens if .env is only in gitignore.",
+        "chat": "The file the agent never saw"
+      },
+      "skills": {
+        "title": "The manual on the shelf",
+        "preset": "Importing a bank statement takes 40 lines of steps. Write only the skill name and the one-line description that stay on every turn. Then write the first step that stays on the shelf until the task asks for the import.",
+        "chat": "The manual on the shelf",
+        "skill": "statement import"
+      },
+      "mcp": {
+        "title": "Every tool has a price",
+        "preset": "Twelve MCP tools are installed and this task needs one: read a balance. Say what to turn off, and why each idle tool description costs tokens before any call. If the attached file has numbers, use one of them.",
+        "chat": "Every tool has a price"
+      },
+      "batedor": {
+        "title": "Send a scout",
+        "preset": "The main chat must not keep every file from the landing page. Write the scout's task (return only the fields the API needs) and a four-line handoff note for a new chat that will add SQLite.",
+        "chat": "Send a scout"
+      },
+      "ensaio": {
+        "title": "The containment drill",
+        "preset": "Walk three moments: door shut with no call, hand on the lock while an expensive tool waits, then four lines crossing while the logs stay outside. One sentence per moment.",
+        "chat": "The containment drill"
+      },
+      "confirmar": {
+        "title": "Confirm first",
+        "preset": "A scan tool wants to dump 4,892 files. Write the one question you ask before it runs, then the two outcomes: yes, a short receipt; no, nothing enters.",
+        "chat": "Confirm first"
+      },
+      "bloquear": {
+        "title": "Block what is risky",
+        "preset": "Two doors: a local shell and a remote tool. For each, say what stays outside and what one line is allowed through.",
+        "chat": "Block what is risky"
+      },
+      "sala-quieta": {
+        "title": "Quiet room",
+        "preset": "The tool tray is empty. Answer as the model would with nothing else in the window: why did schema validation fail on tenant_id? One sentence.",
+        "chat": "Quiet room"
+      },
+      "epilogo": {
+        "title": "The lock is part of the sentence",
+        "preset": "Close with the sentence the architect signs: the lock is part of the sentence. Then name one moment in this chat when you would shut the door.",
+        "chat": "The lock is part of the sentence"
+      }
     }
   }
 }

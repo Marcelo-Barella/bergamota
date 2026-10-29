@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img">
+  <rect width="1600" height="900" fill="#f4f1ea"/>
+  <g transform="translate(430 80) scale(2.15)">
+    <line x1="20" y1="280" x2="320" y2="280" stroke="#e3ded5" stroke-width="1"/>
+    <line x1="80" y1="280" x2="20" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="200" y1="280" x2="160" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="290" y1="280" x2="270" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+    <rect x="50" y="40" width="16" height="240" fill="#1b1c1a"/>
+    <rect x="50" y="32" width="190" height="12" fill="#1b1c1a"/>
+    <rect x="226" y="40" width="14" height="240" fill="#1b1c1a"/>
+    <rect x="50" y="278" width="190" height="4" fill="#1b1c1a"/>
+    <polygon points="66,44 195,58 195,274 66,278" fill="#1b1c1a"/>
+    <polygon points="76,60 185,72 185,260 76,264" fill="#2b2d28"/>
+    <polygon points="195,58 226,44 226,278 195,274" fill="#e9e4da" opacity="0.6"/>
+    <rect x="175" y="152" width="56" height="12" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+    <rect x="170" y="148" width="8" height="20" fill="#1b1c1a"/>
+    <rect x="224" y="148" width="8" height="20" fill="#1b1c1a"/>
+    <polygon points="18,170 48,162 48,220 18,228" fill="#3a3c36" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="18,170 34,156 64,150 48,162" fill="#4d5047" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="48,162 64,150 64,208 48,220" fill="#262723" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="8,220 38,212 38,272 8,280" fill="#2d2e2a" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="8,220 24,206 54,198 38,212" fill="#40423b" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="38,212 54,198 54,258 38,272" fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="234,190 262,182 262,240 234,248" fill="#363832" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="234,190 250,176 278,170 262,182" fill="#4a4c44" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="262,182 278,170 278,228 262,240" fill="#21221e" stroke="#1b1c1a" stroke-width="1.5"/>
+    <polygon points="170,286 215,282 230,296 185,300" fill="#ffffff" stroke="#1b1c1a" stroke-width="1.5"/>
+    <line x1="180" y1="287" x2="210" y2="284" stroke="#1b1c1a" stroke-width="1"/>
+    <line x1="182" y1="291" x2="218" y2="288" stroke="#1b1c1a" stroke-width="1"/>
+    <line x1="185" y1="295" x2="212" y2="293" stroke="#d97706" stroke-width="1"/>
+  </g>
+</svg>

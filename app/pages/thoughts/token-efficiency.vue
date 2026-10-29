@@ -1,6 +1,9 @@
 <template>
   <div class="token-opt-sala-page">
-    <iframe class="token-opt-sala-frame" src="/token-optimization/tranca.html" title="Lição" />
+    <div class="token-opt-locale">
+      <LocaleSwitcher theme="showcase-light" />
+    </div>
+    <iframe class="token-opt-sala-frame" :src="lessonFrameSrc" :title="t('thoughts.tokenEfficiency.title')" />
     <SectionAgentDrawer
       :phase="drawerPhase"
       :title="drawerTitle"
@@ -19,7 +22,8 @@
 import {
   type DrawerPhase,
   type SendPhase,
-  sectionPromptById
+  sectionPromptById,
+  warmSectionPromptKeys
 } from '~/data/token-optimization-section-prompts'
 import SectionAgentDrawer from '~/components/token-optimization/SectionAgentDrawer.vue'
 import type {
@@ -29,16 +33,23 @@ import type {
 
 definePageMeta({ layout: false })
 
+const { t, locale } = useI18n()
+warmSectionPromptKeys(t)
+
 useHead({
-  title: 'Otimização de tokens — Bergamota',
+  title: () => t('thoughts.lesson.metaTitle'),
   meta: [
     {
       name: 'description',
-      content: 'Lab interativo: contexto, tokens e eficiência no Cursor (Composer-2.5).'
+      content: () => t('thoughts.lesson.metaDescription')
     }
   ],
   htmlAttrs: { class: 'dark' }
 })
+
+const lessonFrameSrc = computed(() =>
+  locale.value === 'pt-BR' ? '/token-optimization/tranca.html' : '/token-optimization/tranca.en.html'
+)
 
 const drawerPhase = ref<DrawerPhase>('closed')
 const sendPhase = ref<SendPhase>('idle')
@@ -52,7 +63,7 @@ const drawerTitle = computed(() => {
   if (!activeSectionId.value) {
     return ''
   }
-  return sectionPromptById(activeSectionId.value)?.title ?? activeSectionId.value
+  return sectionPromptById(activeSectionId.value, t)?.title ?? activeSectionId.value
 })
 
 const activeDraft = computed(() => {
@@ -76,7 +87,7 @@ const drawerChips = computed((): SectionAgentChip[] => {
   if (!id) {
     return []
   }
-  const entry = sectionPromptById(id)
+  const entry = sectionPromptById(id, t)
   if (!entry) {
     return []
   }
@@ -98,7 +109,7 @@ function ensureDraft(id: string) {
   if (drafts.value[id] != null && drafts.value[id] !== '') {
     return
   }
-  const preset = sectionPromptById(id)?.preset ?? ''
+  const preset = sectionPromptById(id, t)?.preset ?? ''
   drafts.value = { ...drafts.value, [id]: preset }
 }
 
@@ -142,7 +153,7 @@ function onDraftUpdate(value: string) {
 }
 
 function buildPromptLines(id: string, body: string): string {
-  const entry = sectionPromptById(id)
+  const entry = sectionPromptById(id, t)
   const lines: string[] = [`Section: ${entry?.title ?? id}`]
   if (entry?.file) {
     lines.push(`File: ${entry.file}`)
@@ -312,5 +323,12 @@ onBeforeUnmount(() => {
   height: 100%;
   border: none;
   display: block;
+}
+
+.token-opt-locale {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 80;
 }
 </style>
