@@ -2,11 +2,11 @@
   <section class="ws-context-intro" aria-label="Contexto">
     <h2 class="ws-context-intro-title">Contexto</h2>
     <p class="ws-context-intro-lead">
-      Tudo que o modelo vê — system prompt, Rules, histórico, arquivos, resultados de tools — vira tokens numa
+      Tudo que o modelo vê (system prompt, Rules, histórico, arquivos, resultados de tools) vira tokens numa
       janela limitada. Passou do limite, perde precisão; os níveis 0–10 ajudam a caber mais em menos espaço.
     </p>
     <p class="ws-context-intro-lead">
-      Cada turno no mesmo chat empilha contexto. Um chat novo com um pedido costuma bem menos que vários turnos —
+      Cada turno no mesmo chat empilha contexto. Um chat novo com um pedido costuma bem menos que vários turnos:
       recomeçar já é otimização.
     </p>
 

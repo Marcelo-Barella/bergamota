@@ -47,6 +47,6 @@ export async function runWithCursorSdk(apiKey: string, prompt: string, modelId: 
     requestId: result.requestId,
     note: result.usage
       ? 'Contagem reportada pelo Cursor SDK (input+output; ver docs sobre cache).'
-      : 'O SDK não retornou usage nesta execução — valores ausentes.'
+      : 'O SDK não retornou usage nesta execução. Valores ausentes.'
   } satisfies LiveRunResult
 }

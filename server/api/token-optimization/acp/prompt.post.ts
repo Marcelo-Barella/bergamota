@@ -42,8 +42,8 @@ export default defineEventHandler(async (event) => {
       ok: true,
       mode: 'fallback',
       note: agentCli
-        ? 'ACP não iniciou a tempo — eventos simulados enviados ao feed.'
-        : 'Cursor CLI (`agent`) ausente no servidor — eventos simulados enviados ao feed.'
+        ? 'ACP não iniciou a tempo. Eventos simulados enviados ao feed.'
+        : 'Cursor CLI (`agent`) ausente no servidor. Eventos simulados enviados ao feed.'
     }
     setCached(cacheId, payload, 5 * 60_000)
     return payload

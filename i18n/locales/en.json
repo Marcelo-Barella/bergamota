@@ -34,7 +34,7 @@
   },
   "layout": {
     "footerNav": "Footer",
-    "attribution": "Marcelo Barella — Bergamota",
+    "attribution": "Marcelo Barella: Bergamota",
     "language": "Language",
     "languageMenu": "Choose site language"
   },
@@ -46,17 +46,17 @@
     },
     "cursor-sync": {
       "title": "Cursor Sync",
-      "description": "Carry your Cursor setup with you. Sync settings, rules, snippets, and the pieces of your workflow you care about to a private cloud backup—push, pull on a new machine, and sort out conflicts when two worlds diverge.",
+      "description": "Carry your Cursor setup with you. Sync settings, rules, snippets, and the pieces of your workflow you care about to a private cloud backup: push, pull on a new machine, and sort out conflicts when two worlds diverge.",
       "imageAlt": "Cursor Sync project preview"
     },
     "tangerina": {
       "title": "Tangerina",
-      "description": "A Discord companion that chats, plays music, speaks in voice channels, and acts on your server with the right tools at the right time—so members get help and atmosphere from one place instead of juggling a dozen bots.",
+      "description": "A Discord companion that chats, plays music, speaks in voice channels, and acts on your server with the right tools at the right time, so members get help and atmosphere from one place instead of juggling a dozen bots.",
       "imageAlt": "Tangerina project preview"
     },
     "agentic-browser-ai": {
       "title": "Agentic Browser AI",
-      "description": "Give your AI assistant eyes on the real web: real browser sessions, navigation, screenshots, and interaction with the page—so answers and actions are grounded in what is actually on screen, not a stale snapshot.",
+      "description": "Give your AI assistant eyes on the real web: real browser sessions, navigation, screenshots, and interaction with the page, so answers and actions are grounded in what is actually on screen, not a stale snapshot.",
       "imageAlt": "Agentic Browser AI project preview"
     }
   },
@@ -145,7 +145,7 @@
       "step1": {
         "num": "01",
         "title": "Listen to the Static",
-        "body": "I start where others stop—in the noise. I look for the weird edge cases and the \"what if\" scenarios that most people ignore. That's where the magic lives."
+        "body": "I start where others stop: in the noise. I look for the weird edge cases and the \"what if\" scenarios that most people ignore. That's where the magic lives."
       },
       "step2": {
         "num": "02",
@@ -166,7 +166,7 @@
       "cta": "Let's Talk Shop"
     },
     "footer": {
-      "attribution": "Marcelo Barella — Bergamota",
+      "attribution": "Marcelo Barella: Bergamota",
       "builtWithCursor": "Built with Cursor",
       "builtForWeb": "Built for the Web",
       "stayWeird": "Stay Weird",
@@ -188,20 +188,20 @@
       "visualWatermark": "BOT",
       "section1": {
         "title": "One member, the whole vibe",
-        "lead": "Communities do not want a wall of prefixes—they want someone in the channel who can answer, queue a track, join voice, and use sensible tools when the moment calls for it. Tangerina is built for that kind of presence, not for ticking boxes on a feature list."
+        "lead": "Communities do not want a wall of prefixes. They want someone in the channel who can answer, queue a track, join voice, and use sensible tools when the moment calls for it. Tangerina is built for that kind of presence, not for ticking boxes on a feature list."
       },
       "challenge": {
         "label": "Challenge",
         "title": "Everything in one conversation",
-        "body": "People ask for songs, help, and voice interaction in the same thread. The bot is structured so those behaviors live together: models you can swap, music and TTS paths that feel native to Discord, and voice flows that match how servers actually hang out—not a separate app for each job."
+        "body": "People ask for songs, help, and voice interaction in the same thread. The bot is structured so those behaviors live together: models you can swap, music and TTS paths that feel native to Discord, and voice flows that match how servers actually hang out, not a separate app for each job."
       },
       "aside1": {
         "title": "Beyond the chat box",
-        "body": "A small HTTP layer sits next to Discord so you can trigger health checks, voice and queue actions, TTS, and chat-style messages from automations or your own integrations—when you want the bot to speak to the world outside a single channel."
+        "body": "A small HTTP layer sits next to Discord so you can trigger health checks, voice and queue actions, TTS, and chat-style messages from automations or your own integrations, when you want the bot to speak to the world outside a single channel."
       },
       "aside2": {
         "title": "Actions, not monologues",
-        "body": "The assistant can pick structured actions—channels, voice, queues, playback, speech, search—so replies turn into outcomes. You stay in control of what gets posted where, including wiring outbound messages through tools or external flows when that fits your server."
+        "body": "The assistant can pick structured actions (channels, voice, queues, playback, speech, search), so replies turn into outcomes. You stay in control of what gets posted where, including wiring outbound messages through tools or external flows when that fits your server."
       },
       "marquee": {
         "voice": "VOICE",
@@ -212,31 +212,31 @@
       "builtSection": {
         "titleBefore": "Built to run ",
         "titleHighlight": "for real",
-        "lead": "Automated tests and coverage gates back the pieces members rely on—so refactors are less scary and regressions surface before your community does.",
+        "lead": "Automated tests and coverage gates back the pieces members rely on, so refactors are less scary and regressions surface before your community does.",
         "aside": "Docker-first deployment with optional voice and automation profiles when you want the full stack, not just the bot binary."
       },
       "toolsCard": {
         "title": "Tools",
         "subtitle": "What the assistant can do",
-        "body": "A clear catalog of server-facing capabilities—channels, voice, queues, playback, speech, search—so the model chooses real steps instead of hand-waving."
+        "body": "A clear catalog of server-facing capabilities (channels, voice, queues, playback, speech, search), so the model chooses real steps instead of hand-waving."
       },
       "toolsColumn": {
         "p1": "Personality and tone ship as editable text so the voice of the bot matches your community, with deployment notes for mounting that file in containers.",
-        "p2": "Optional long-term memory is toggled through environment settings—pick embeddings and limits that fit how much history you want the bot to carry."
+        "p2": "Optional long-term memory is toggled through environment settings. Pick embeddings and limits that fit how much history you want the bot to carry."
       },
       "outcome": {
         "title": "Outcome",
         "body": "You get a stack you can run, extend, and hand to a community: wake-style voice entry, automation-friendly webhooks, and practical notes for Discord intents and voice dependencies so setup matches how people actually host bots.",
         "ctaLabel": "Self-host or fork"
       },
-      "footerBrand": "Marcelo Barella — Tangerina"
+      "footerBrand": "Marcelo Barella: Tangerina"
     },
     "orchestrator": {
       "navBrand": "M. BARELLA",
       "heroBadge": "Multi-repo agent runs",
       "heroTitle1": "Cursor",
       "heroTitle2": "Orchestrator",
-      "heroLead": "Describe the outcome once. The tool prepares a shared space on GitHub, opens a dedicated branch for the run, and coordinates an orchestrator with worker agents across the repos you name—so many hands stay on one plan instead of inventing twenty versions of it.",
+      "heroLead": "Describe the outcome once. The tool prepares a shared space on GitHub, opens a dedicated branch for the run, and coordinates an orchestrator with worker agents across the repos you name, so many hands stay on one plan instead of inventing twenty versions of it.",
       "heroSub": "Shipped as a fast local CLI with a config-first workflow: interactive sessions, YAML runs, and the usual guardrails for tokens and environments.",
       "why": {
         "title": "Why it exists",
@@ -246,7 +246,7 @@
         "title": "What you get",
         "body": "A CLI you can drive from an interactive session or from a checked-in config file, plus live commands to watch status, tail logs, and stop a run when the plan changes mid-flight.",
         "li1": "Sessions remember where you left off so iterative runs feel continuous, not a fresh guessing game each time.",
-        "li2": "A config doctor tells you early if tokens or precedence are wrong—before you burn an hour on a silent failure.",
+        "li2": "A config doctor tells you early if tokens or precedence are wrong, before you burn an hour on a silent failure.",
         "li3": "Shell autocomplete so frequent operators stay in flow instead of re-reading help text."
       },
       "architecture": {
@@ -266,12 +266,12 @@
       "singlePrompt": {
         "titleLine1": "Single prompt,",
         "titleLine2": "many repos",
-        "lead": "In single-prompt mode you state the north star; the planner turns it into tasks and maps each task to a repo alias from your config—so you are not copy-pasting ten near-identical worker briefs.",
-        "sub": "Releases are automated from main when the version moves—ideal for teams that want the CLI to track the product without a manual publish ritual."
+        "lead": "In single-prompt mode you state the north star; the planner turns it into tasks and maps each task to a repo alias from your config, so you are not copy-pasting ten near-identical worker briefs.",
+        "sub": "Releases are automated from main when the version moves: ideal for teams that want the CLI to track the product without a manual publish ritual."
       },
       "deeper": {
         "title": "Go deeper on GitHub",
-        "lead": "Error semantics, recovery paths, and completion modes are documented alongside the changelog—this page sells the idea; the repository is where operators live."
+        "lead": "Error semantics, recovery paths, and completion modes are documented alongside the changelog. This page sells the idea; the repository is where operators live."
       },
       "evidence": {
         "num": "01",
@@ -286,9 +286,9 @@
       "cta": {
         "titleLine1": "Open the",
         "titleLine2": "source",
-        "lead": "Credentials, install order, and the exact limits of a run are all spelled out beside the code—no hidden behavior behind a landing page."
+        "lead": "Credentials, install order, and the exact limits of a run are all spelled out beside the code: no hidden behavior behind a landing page."
       },
-      "footerBrandPrefix": "Marcelo Barella — ",
+      "footerBrandPrefix": "Marcelo Barella: ",
       "footerRoleMuted": "Cursor Ambassador",
       "footerMeta1": "Bergamota.dev",
       "footerMeta2": "Cursor Orchestrator"
@@ -309,7 +309,7 @@
       },
       "whatTravels": {
         "title": "What travels with you",
-        "body": "Editor settings, keymaps, snippets, and a generated picture of your extensions on push—plus the parts of your Cursor home that define how you work: skills, command docs, and rules. Noise like caches and sensitive paths stays out by design."
+        "body": "Editor settings, keymaps, snippets, and a generated picture of your extensions on push, plus the parts of your Cursor home that define how you work: skills, command docs, and rules. Noise like caches and sensitive paths stays out by design."
       },
       "problem": {
         "title": "The problem",
@@ -317,7 +317,7 @@
       },
       "howItWorks": {
         "title": "How it works",
-        "body": "You authorize once; credentials stay in the editor’s secure storage. Day to day you use familiar commands—sync, push, pull—from the palette or sidebar, the same way you already drive the rest of your tooling."
+        "body": "You authorize once; credentials stay in the editor’s secure storage. Day to day you use familiar commands (sync, push, pull) from the palette or sidebar, the same way you already drive the rest of your tooling."
       },
       "standout": {
         "title": "Standout surfaces",
@@ -325,7 +325,7 @@
       },
       "card1": {
         "title": "Conflicts & recovery",
-        "body": "When two sides disagree, you get a conflict flow—not silent corruption—and failed pulls can roll back from the last few automatic snapshots."
+        "body": "When two sides disagree, you get a conflict flow, not silent corruption, and failed pulls can roll back from the last few automatic snapshots."
       },
       "card2": {
         "title": "Extensions",
@@ -339,7 +339,7 @@
         "eyebrow": "Details when you need them",
         "titleLine1": "Install, configure,",
         "titleLine2": "and trust the flow.",
-        "lead": "Full install paths, every command name, and security expectations live on GitHub and the marketplace listing—this page is the pitch; the repo is the manual."
+        "lead": "Full install paths, every command name, and security expectations live on GitHub and the marketplace listing. This page is the pitch; the repo is the manual."
       },
       "footerMeta": "Cursor Sync"
     },
@@ -352,17 +352,17 @@
       "friction": {
         "label": "Friction",
         "title": "IDE agents need the live page",
-        "body": "Models read text; users live in rendered pages. This server closes the loop by exposing browser sessions to tools your assistant already knows how to call—so “check the dashboard” means open the tab, look, and act—not hallucinate the DOM.",
-        "li1": "Run it as a classic MCP process, a dev-friendly hybrid server, or an SSE-oriented stream—pick the mode that matches how your editor connects.",
+        "body": "Models read text; users live in rendered pages. This server closes the loop by exposing browser sessions to tools your assistant already knows how to call, so “check the dashboard” means open the tab, look, and act, not hallucinate the DOM.",
+        "li1": "Run it as a classic MCP process, a dev-friendly hybrid server, or an SSE-oriented stream. Pick the mode that matches how your editor connects.",
         "li2": "Multiple entry paths exist in the repo so you can wire Cursor or other MCP clients without reinventing the transport layer."
       },
       "capabilities": {
         "title": "What you can ask it to do",
-        "lead": "Open sessions, move between URLs, capture what is on screen, click, type into fields, and inspect console output—tooling shaped like the verbs you already use when you debug in a browser. Treat the repository as the contract for exact names and behavior."
+        "lead": "Open sessions, move between URLs, capture what is on screen, click, type into fields, and inspect console output: tooling shaped like the verbs you already use when you debug in a browser. Treat the repository as the contract for exact names and behavior."
       },
       "wireup": {
         "title": "Wire-up",
-        "body": "README shows how to point Cursor at the built server or at an SSE URL on localhost. Match the port in your config to whichever mode you start—streamable HTTP versus a local process—so the handshake succeeds on the first try."
+        "body": "README shows how to point Cursor at the built server or at an SSE URL on localhost. Match the port in your config to whichever mode you start (streamable HTTP versus a local process), so the handshake succeeds on the first try."
       },
       "quality": {
         "title": "Quality & ops",
@@ -372,7 +372,7 @@
         "label": "Reality check",
         "title": "Promise vs product",
         "lead": "Docs can outpace code. This site summarizes the product story; the repo shows the exact dependencies, scripts, and module layout you will run. Treat benchmark-style claims in README as directional unless you reproduce them yourself.",
-        "aside": "Roadmap notes in the repository discuss evolving the automation engine—read there for what is live today versus what is next."
+        "aside": "Roadmap notes in the repository discuss evolving the automation engine. Read there for what is live today versus what is next."
       },
       "promise1": {
         "title": "MCP + streaming",
@@ -380,7 +380,7 @@
       },
       "promise2": {
         "title": "Real browser",
-        "body": "Automation drives an actual Chromium session; image helpers sit alongside for screenshot and asset workflows—see dependencies in the repo for the exact stack."
+        "body": "Automation drives an actual Chromium session; image helpers sit alongside for screenshot and asset workflows. See dependencies in the repo for the exact stack."
       },
       "promise3": {
         "title": "Licensing",
@@ -388,7 +388,7 @@
       },
       "bottomCta": {
         "title": "Next step",
-        "lead": "Clone, install dependencies, build once, then add the server to your MCP client using the sample config—keeping the URL and port aligned with the mode you started."
+        "lead": "Clone, install dependencies, build once, then add the server to your MCP client using the sample config, keeping the URL and port aligned with the mode you started."
       },
       "footerBrand": "Bergamota × Cursor Ambassador",
       "footerMeta1": "Live web",

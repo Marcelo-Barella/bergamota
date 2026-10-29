@@ -54,6 +54,6 @@ export const RULE_SKILL_QUIZ: RuleSkillCase[] = [
     id: 'changelog',
     prompt: 'Gerar changelog de um release',
     answer: 'skill',
-    hint: 'Tarefa pontual — docs sugerem skill, não subagent.'
+    hint: 'Tarefa pontual: docs sugerem skill, não subagent.'
   }
 ]

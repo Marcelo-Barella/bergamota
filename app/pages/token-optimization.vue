@@ -4,10 +4,20 @@ definePageMeta({
 })
 
 const localePath = useLocalePath()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 useHead({
-  title: () => t('thoughts.lesson.metaTitle')
+  title: () =>
+    locale.value === 'pt-BR'
+      ? 'Otimização de tokens: Bergamota'
+      : 'Token optimization: Bergamota',
+  meta: [
+    {
+      name: 'description',
+      content: () => t('thoughts.lesson.metaDescription')
+    }
+  ],
+  htmlAttrs: { class: 'dark' }
 })
 
 await navigateTo(localePath('/thoughts/token-efficiency'), { redirectCode: 301 })

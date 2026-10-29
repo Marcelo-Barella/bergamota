@@ -9,7 +9,7 @@
     </div>
 
     <TokenOptimizationWorkshopClickReveal summary="USB-C para IA">
-      <p class="ws-reveal-line">Porta universal — plugue só o que usa.</p>
+      <p class="ws-reveal-line">Porta universal: plugue só o que usa.</p>
     </TokenOptimizationWorkshopClickReveal>
 
     <ul v-if="showExtra" class="ws-sourced-list">

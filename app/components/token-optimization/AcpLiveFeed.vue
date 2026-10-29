@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="token-opt-stats">
-      Feed <strong>ACP</strong> (Agent Client Protocol) via <code>agent acp</code> — stdio JSON-RPC. Eventos em tempo real
+      Feed <strong>ACP</strong> (Agent Client Protocol) via <code>agent acp</code>: stdio JSON-RPC. Eventos em tempo real
       para a sala (thinking, tools, texto). Token usage: repassado quando o payload incluir campos
       <code>usage</code> (não confirmado na doc pública do Cursor).
     </p>
@@ -133,7 +133,7 @@ onMounted(() => {
   }
   source.onerror = () => {
     connected.value = false
-    pushLine('error', 'SSE desconectado — recarregue a página se o feed parar.')
+    pushLine('error', 'SSE desconectado. Recarregue a página se o feed parar.')
   }
   onBeforeUnmount(() => source.close())
 })

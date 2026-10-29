@@ -22,7 +22,7 @@ export default defineEventHandler(async () => {
       cloudDocs: 'https://cursor.com/docs/sdk/typescript',
       supportsUsage: true,
       usageNote:
-        'TokenUsage em run.wait()/result.usage e eventos stream type usage; agent.getUsage() para custo faturado (pode atrasar). totalTokens no run pode incluir cache de forma inconsistente — usamos inputTokens+outputTokens.'
+        'TokenUsage em run.wait()/result.usage e eventos stream type usage; agent.getUsage() para custo faturado (pode atrasar). totalTokens no run pode incluir cache de forma inconsistente. Usamos inputTokens+outputTokens.'
     },
     acp: {
       enabled: manager.isEnabled(),

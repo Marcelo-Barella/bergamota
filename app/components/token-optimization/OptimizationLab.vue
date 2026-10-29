@@ -32,7 +32,7 @@
     <div v-if="lastRun" class="token-opt-status" aria-live="polite">
       <p>
         <strong>{{ lastRun.mode === 'live' ? 'SDK (live)' : 'Fallback / estimativa' }}</strong>
-        — {{ lastRun.note }}
+        : {{ lastRun.note }}
         <span v-if="lastRun.throttled"> (limite: {{ lastRun.throttleReason }})</span>
         <span v-if="lastRun.sdkError"> Erro SDK: {{ lastRun.sdkError }}</span>
       </p>

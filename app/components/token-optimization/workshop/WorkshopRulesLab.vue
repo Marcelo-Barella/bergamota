@@ -28,13 +28,13 @@
     <p class="ws-lab-note">dedução nossa, não está na doc</p>
 
     <TokenOptimizationWorkshopClickReveal summary="Quando criar?">
-      <p class="ws-reveal-line">Só depois do mesmo erro repetir — <a :href="RULES_DOCS" target="_blank" rel="noopener">docs</a>.</p>
+      <p class="ws-reveal-line">Só depois do mesmo erro repetir: <a :href="RULES_DOCS" target="_blank" rel="noopener">docs</a>.</p>
       <p class="ws-reveal-line">&lt;500 linhas, @file, sem ensinar o óbvio.</p>
       <p class="ws-reveal-line">Team Rules + AGENTS.md → comece mínimo.</p>
       <p class="ws-reveal-line">Custom Mode com skill fixa ≈ custo de rule.</p>
     </TokenOptimizationWorkshopClickReveal>
 
-    <p class="ws-lab-prompt">Boa vs ruim — toque para classificar:</p>
+    <p class="ws-lab-prompt">Boa vs ruim. Toque para classificar:</p>
     <ul class="ws-sort-list">
       <li v-for="card in cards" :key="card.id">
         <button

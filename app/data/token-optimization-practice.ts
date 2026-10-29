@@ -22,7 +22,7 @@ export const PRACTICE_BY_LEVEL: Partial<Record<WorkshopLevelId, PracticeTask>> =
   5: {
     levelId: 5,
     starter: 'Lab · roteamento',
-    task: 'Classifique: "renomear variável local" vs "desenhar arquitetura multi-tenant" — qual vai no modelo mais barato primeiro?'
+    task: 'Classifique: "renomear variável local" vs "desenhar arquitetura multi-tenant". Qual vai no modelo mais barato primeiro?'
   },
   6: {
     levelId: 6,
