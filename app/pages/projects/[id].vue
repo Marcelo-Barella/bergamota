@@ -17,8 +17,10 @@ const route = useRoute()
 const id = route.params.id as string
 const found = projectsData.find((p) => p.id === id)
 
+const { t } = useI18n()
+
 if (!found) {
-  throw createError({ statusCode: 404, statusMessage: 'Project not found' })
+  throw createError({ statusCode: 404, statusMessage: t('errors.projectNotFound') })
 }
 
 const project = found as PortfolioProject

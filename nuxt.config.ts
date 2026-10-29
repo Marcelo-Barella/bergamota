@@ -1,9 +1,27 @@
 import tailwindcss from "@tailwindcss/vite"
 
+const nitroPreset = process.env.NITRO_PRESET || 'vercel'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  runtimeConfig: {
+    cursorApiKey: process.env.CURSOR_API_KEY || '',
+    tokenOptimizationPerIpLimit: Number(process.env.TOKEN_LAB_PER_IP_PER_MIN || 8),
+    tokenOptimizationGlobalLimit: Number(process.env.TOKEN_LAB_GLOBAL_PER_MIN || 80),
+    tokenLabDailyCap: Number(process.env.TOKEN_LAB_DAILY_CAP || 200),
+    tokenOptimizationMaxOutputChars: 600,
+    acpEnabled: process.env.ACP_ENABLED === 'true',
+    public: {
+      tokenOptimizationDefaultModel: 'composer-2.5',
+      tokenOptimizationContextWindow: 200000,
+      acpEnabled: process.env.ACP_ENABLED === 'true'
+    }
+  },
   nitro: {
-    preset: 'vercel'
+    preset: nitroPreset,
+    externals: {
+      traceInclude: ['@cursor/sdk/**', '@cursor/sdk--*/**']
+    }
   },
   devtools: { enabled: false },
   devServer: {
@@ -16,7 +34,7 @@ export default defineNuxtConfig({
       allowedHosts: ['bergamota.dev']
     }
   },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       title: 'Marcelo Barella — Bergamota',
@@ -44,7 +62,29 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
-  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui'],
+  modules: ['@hypernym/nuxt-gsap', '@hypernym/nuxt-anime', '@nuxt/ui', '@nuxtjs/i18n'],
+  i18n: {
+    restructureDir: 'i18n',
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://bergamota.dev',
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    langDir: 'locales',
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'pt-BR', language: 'pt-BR', name: 'Português (Brasil)', file: 'pt-BR.json' },
+    ],
+    lazy: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      alwaysRedirect: false,
+      fallbackLocale: 'en',
+    },
+    experimental: {
+      localeDetector: 'locale-detector.ts',
+    },
+  },
   colorMode: {
     preference: 'dark'
   },
