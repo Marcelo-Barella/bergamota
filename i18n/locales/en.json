@@ -394,5 +394,13 @@
       "footerMeta1": "Live web",
       "footerMeta2": "Open source"
     }
+  },
+  "thoughts": {
+    "tokenEfficiency": {
+      "label": "01 / Lesson",
+      "kicker": "Token efficiency",
+      "title": "A porta tem tranca",
+      "body": "What does not enter does not spend the window."
+    }
   }
 }

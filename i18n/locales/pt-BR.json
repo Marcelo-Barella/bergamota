@@ -394,5 +394,13 @@
       "footerMeta1": "Web ao vivo",
       "footerMeta2": "Código aberto"
     }
+  },
+  "thoughts": {
+    "tokenEfficiency": {
+      "label": "01 / Lição",
+      "kicker": "Eficiência de tokens",
+      "title": "A porta tem tranca",
+      "body": "O que não entra não gasta janela."
+    }
   }
 }
