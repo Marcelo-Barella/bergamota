@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Token optimization: Bergamota</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f6f2;
+      --paper-card: #f2efe9;
+      --paper-border: #e3ded5;
+      --ink: #1b1c1a;
+      --ink-muted: #5e605a;
+      --amber: #d97706;
+      --amber-dark: #b45309;
+      --night: #141513;
+      --night-card: #1d1e1c;
+      --night-border: #2d2e2b;
+    }
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif-italic {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+    }
+    .text-stroke-ink {
+      -webkit-text-stroke: 1.5px var(--ink);
+      color: transparent;
+    }
+    .text-stroke-paper {
+      -webkit-text-stroke: 1.5px var(--paper);
+      color: transparent;
+    }
+    .lesson-section { position: relative; }
+    main .lesson-section { padding-right: 40px; }
+    .agent-pull {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 40;
+      width: 36px;
+      min-height: 96px;
+      padding: 10px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #f8f6f2;
+      color: #1b1c1a;
+      border: 1px solid #e3ded5;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      cursor: pointer;
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: -2px 0 8px rgba(27, 28, 26, 0.08);
+    }
+    .agent-pull:hover { background: #f2efe9; border-color: #1b1c1a; }
+    .agent-pull-label { writing-mode: vertical-rl; transform: rotate(180deg); }
+    .agent-pull-chevron { font-size: 14px; line-height: 1; opacity: 0.7; }
+  </style>
+</head>
+<body class="selection:bg-amber-500/20 selection:text-amber-900">
+
+  <header class="sticky top-0 z-50 bg-[#f8f6f2]/95 backdrop-blur-sm border-b border-[#e3ded5]">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="font-serif-italic text-lg tracking-tight font-medium text-[#1b1c1a]">M. Barella</a>
+        <span class="text-xs uppercase tracking-widest text-[#1b1c1a]/40 font-mono hidden sm:inline">// LESSON 05</span>
+      </div>
+      <nav class="flex items-center gap-8 text-xs uppercase tracking-widest font-mono">
+        <a href="#hero" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Start</a>
+        <a href="#ensaio" class="text-[#d97706] font-semibold underline underline-offset-4 decoration-1">Lock</a>
+        <a href="#token" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Tokens</a>
+        <a href="#contexto" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Context</a>
+      </nav>
+      <div>
+        <a href="#inscricao" class="hidden md:inline-block px-3.5 py-1.5 bg-[#1b1c1a] text-[#f8f6f2] text-xs font-mono uppercase tracking-wider hover:bg-[#d97706] transition-colors">Notebook</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-16 pb-24 space-y-28">
+
+    <section id="hero" class="lesson-section pt-6">
+      <button type="button" class="agent-pull" data-section-id="inicio" data-section-title="The door has a lock"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-block">
+            <span class="inline-block transform -rotate-2 bg-[#d97706] text-[#f8f6f2] text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 font-semibold">
+              A finite window
+            </span>
+          </div>
+          <div class="space-y-1">
+            <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-[#1b1c1a]">
+              THE DOOR
+            </h1>
+            <div class="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-stroke-ink">
+              HAS A LOCK
+            </div>
+          </div>
+          <p class="font-serif-italic text-2xl sm:text-3xl text-[#1b1c1a]/85 leading-snug pt-2">
+            “What does not enter does not spend the window.”
+          </p>
+          <p class="text-sm sm:text-base text-[#5e605a] max-w-xl leading-relaxed">
+            A tool does not need loose reins. Protecting the model's context is a mechanical discipline: catch heavy traffic before it is injected, stop blind volumes on the threshold, and let only the essential slip through.
+          </p>
+          <div class="pt-2 flex items-center gap-6">
+            <a href="#confirmar" class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#1b1c1a] text-[#f8f6f2] text-xs font-mono uppercase tracking-widest hover:bg-[#d97706] transition-colors group">
+              <span>See the lock</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#1b1c1a]/50">
+              Mechanical containment
+            </span>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-[420px] transform rotate-1 hover:rotate-0 transition-transform duration-300 bg-[#f2efe9] p-4 border border-[#1b1c1a] shadow-[6px_6px_0px_#1b1c1a]">
+            <div class="aspect-square w-full bg-[#fcfbf9] border border-[#e3ded5] p-3 flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 340 340" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <line x1="20" y1="280" x2="320" y2="280" stroke="#e3ded5" stroke-width="1"/>
+                <line x1="80" y1="280" x2="20" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="200" y1="280" x2="160" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="290" y1="280" x2="270" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <rect x="50" y="40" width="16" height="240" fill="#1b1c1a"/>
+                <rect x="50" y="32" width="190" height="12" fill="#1b1c1a"/>
+                <rect x="226" y="40" width="14" height="240" fill="#1b1c1a"/>
+                <rect x="50" y="278" width="190" height="4" fill="#1b1c1a"/>
+                <polygon points="66,44 195,58 195,274 66,278" fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="76,60 185,72 185,260 76,264" fill="#2b2d28" stroke="#1b1c1a" stroke-width="1"/>
+                <polygon points="195,58 226,44 226,278 195,274" fill="#e9e4da" opacity="0.6"/>
+                <rect x="175" y="152" width="56" height="12" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+                <rect x="170" y="148" width="8" height="20" fill="#1b1c1a"/>
+                <rect x="224" y="148" width="8" height="20" fill="#1b1c1a"/>
+                <circle cx="174" cy="153" r="1.5" fill="#f8f6f2"/>
+                <circle cx="174" cy="163" r="1.5" fill="#f8f6f2"/>
+                <circle cx="228" cy="153" r="1.5" fill="#f8f6f2"/>
+                <circle cx="228" cy="163" r="1.5" fill="#f8f6f2"/>
+                <polygon points="18,170 48,162 48,220 18,228" fill="#3a3c36" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="18,170 34,156 64,150 48,162" fill="#4d5047" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="48,162 64,150 64,208 48,220" fill="#262723" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="8,220 38,212 38,272 8,280" fill="#2d2e2a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="8,220 24,206 54,198 38,212" fill="#40423b" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="38,212 54,198 54,258 38,272" fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="234,190 262,182 262,240 234,248" fill="#363832" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="234,190 250,176 278,170 262,182" fill="#4a4c44" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="262,182 278,170 278,228 262,240" fill="#21221e" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="170,286 215,282 230,296 185,300" fill="#ffffff" stroke="#1b1c1a" stroke-width="1.5"/>
+                <line x1="180" y1="287" x2="210" y2="284" stroke="#1b1c1a" stroke-width="1"/>
+                <line x1="182" y1="291" x2="218" y2="288" stroke="#1b1c1a" stroke-width="1"/>
+                <line x1="185" y1="295" x2="212" y2="293" stroke="#d97706" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="agente" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="agente" data-section-title="From chat to agent"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">From chat to agent</h2>
+      <p class="font-serif-italic text-2xl max-w-2xl">Agents spend tokens, and bad context costs more and misses more.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A personal finance app carries the examples: a landing page, a statement import, and a local SQLite backend.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#e3ded5] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase tracking-widest text-[#5e605a]">The problem</h3>
+          <p class="text-sm leading-relaxed">Without tools, the model only sees what you paste. You become its copy and paste.</p>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase tracking-widest text-[#d97706]">The turn</h3>
+          <p class="text-sm leading-relaxed">With tool calling it reads and writes files, searches the code, runs commands, and checks errors. Several tools in a row make an agent.</p>
+        </div>
+      </div>
+      <p class="font-serif-italic text-xl max-w-2xl">You still drive. The agent executes. Understanding, planning, testing, and review stay your work.</p>
+      <ol class="max-w-2xl text-sm space-y-2 font-mono">
+        <li>1. Explore the code</li>
+        <li>2. Plan in Plan Mode</li>
+        <li>3. Review the plan and click Build</li>
+        <li>4. Test and review</li>
+        <li>5. Turn the lesson into a rule</li>
+      </ol>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Before the first message, the ring already holds the system prompt, tools, rules, skills, and MCP. A short prompt for the finance landing (hero, features, a call to import the statement) makes the ring climb, because all of that became context.</p>
+    </section>
+
+    <section id="token" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="token" data-section-title="What a token is"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">What a token is</h2>
+      <p class="font-serif-italic text-2xl max-w-2xl">The model's unit of text. The currency of the AI. It is what you pay.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">3/4</p><p class="text-xs text-[#5e605a] mt-2">of an English word, per token, as a rough measure</p></div>
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">128k</p><p class="text-xs text-[#5e605a] mt-2">tokens fit at once, about 96,000 words</p></div>
+        <div class="border border-[#1b1c1a] p-5"><p class="font-black text-3xl">300</p><p class="text-xs text-[#5e605a] mt-2">pages, the book that window is roughly worth</p></div>
+      </div>
+    </section>
+
+    <section id="tipos" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="tipos" data-section-title="Kinds of tokens"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Kinds of tokens</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Input</h3>
+          <p class="text-sm text-[#5e605a]">Everything you send: system prompt, user prompt, context.</p>
+        </div>
+        <div class="bg-[#f2efe9] border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Output</h3>
+          <p class="text-sm text-[#5e605a]">Everything the model generates: text, code, tool calls. Output often costs 2 to 4 times the input.</p>
+        </div>
+        <div class="bg-[#1b1c1a] text-[#f8f6f2] p-5 space-y-2">
+          <h3 class="font-bold uppercase text-[#d97706]">Cache read</h3>
+          <p class="text-sm">About 10 times cheaper, on every turn of the same chat. On Opus, $0.50 against $5 of input, per 1M.</p>
+        </div>
+        <div class="bg-[#1b1c1a] text-[#f8f6f2] p-5 space-y-2">
+          <h3 class="font-bold uppercase">Cache write</h3>
+          <p class="text-sm">Expensive. It happens at the start of a chat, or when new content arrives. It writes the cache.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Keep the start of the chat stable: rules sit at the front of the context. Each tool call resends the context and shows up as a cache read.</p>
+    </section>
+
+    <section id="preco" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="preco" data-section-title="Which model for the task"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Which model for the task</h2>
+      <p class="font-serif-italic text-xl max-w-2xl">A larger model is not always better. A simple question on an expensive model is waste.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5">
+          <p class="font-mono text-xs uppercase text-[#5e605a]">Reasoning</p>
+          <h3 class="text-2xl font-black mt-1">Claude 4.7 Opus</h3>
+          <p class="text-sm mt-3">Input $5 per 1M. Output $25 per 1M.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 shadow-[4px_4px_0px_#d97706]">
+          <p class="font-mono text-xs uppercase text-[#d97706]">Fast</p>
+          <h3 class="text-2xl font-black mt-1">Composer 2.5</h3>
+          <p class="text-sm mt-3">Input $0.50 per 1M. Output $2.50 per 1M. 10 times less per token.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl">Fast models for simple edits. More capable models for reasoning and large refactors. You can switch in the middle of a chat.</p>
+      <div class="max-w-4xl space-y-3">
+        <p class="font-mono text-xs uppercase tracking-widest">A real bill, Opus 4.7 Thinking High. Not the list price.</p>
+        <table class="w-full text-left text-xs font-mono border border-[#1b1c1a]">
+          <thead class="bg-[#1b1c1a] text-[#f8f6f2]"><tr><th class="p-3">Kind</th><th class="p-3">Tokens</th><th class="p-3">Price</th><th class="p-3">Cost</th></tr></thead>
+          <tbody>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Input</td><td class="p-3">152,279</td><td class="p-3">$5.00</td><td class="p-3">$0.76</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Output</td><td class="p-3">877,966</td><td class="p-3">$25.00</td><td class="p-3">$21.95</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Cache read</td><td class="p-3">97,748,796</td><td class="p-3">$0.50</td><td class="p-3">$48.87</td></tr>
+            <tr class="border-t border-[#e3ded5]"><td class="p-3">Cache write</td><td class="p-3">7,377,211</td><td class="p-3">$6.25</td><td class="p-3">$46.11</td></tr>
+          </tbody>
+        </table>
+        <p class="text-sm">106.2M tokens. Total $117.69. Cache read and cache write dominate the bill.</p>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">On the landing page, Usage shows input, output, and cache read. A short copy change on Composer 2.5, asked again in the same chat, makes cache read grow. Each tool call resends the context.</p>
+    </section>
+
+    <section id="conversa" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="conversa" data-section-title="A chat that only grows"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">A chat that only grows</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">You ask for a feature. The agent reads files, runs tests, you ask for a tweak. Every turn resends everything, and the chat only grows. Every call resends the history, and you pay for it again.</p>
+      <p class="font-serif-italic text-2xl max-w-2xl">Small, right context: only what the task needs, and a new chat when the task changes.</p>
+    </section>
+
+    <section id="contexto" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="contexto" data-section-title="What context is"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">What context is</h2>
+      <p class="font-serif-italic text-2xl max-w-2xl">It is not the model's whole memory. It is like RAM: it has a limit, and it is cleared each session.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl">Everything the AI does lands here, not only your prompt.</p>
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-4xl text-xs font-mono uppercase">
+        <li class="border border-[#e3ded5] p-2">System prompt</li>
+        <li class="border border-[#e3ded5] p-2">User prompt</li>
+        <li class="border border-[#e3ded5] p-2">Reply</li>
+        <li class="border border-[#e3ded5] p-2">Tool list</li>
+        <li class="border border-[#e3ded5] p-2">Tool call</li>
+        <li class="border border-[#e3ded5] p-2">Rules</li>
+        <li class="border border-[#e3ded5] p-2">Skills</li>
+        <li class="border border-[#e3ded5] p-2">MCPs</li>
+        <li class="border border-[#e3ded5] p-2">Files</li>
+        <li class="border border-[#e3ded5] p-2">Index</li>
+        <li class="border border-[#e3ded5] p-2">Images</li>
+        <li class="border border-[#e3ded5] p-2">Linter errors</li>
+        <li class="border border-[#e3ded5] p-2">Terminal</li>
+        <li class="border border-[#e3ded5] p-2">Plugins</li>
+        <li class="border border-[#e3ded5] p-2">Mode prompt</li>
+        <li class="border border-[#e3ded5] p-2">Open file</li>
+        <li class="border border-[#e3ded5] p-2">Workspace</li>
+        <li class="border border-[#e3ded5] p-2">Current date</li>
+      </ul>
+    </section>
+
+    <section id="anel" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="anel" data-section-title="The context ring"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">The context ring</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">128 thousand tokens is what fits at once. When it fills, Cursor summarizes the chat and details drop out. Look at the ring beside the prompt. Click it to see what takes space: system prompt, tools, rules, skills, MCP, and the conversation.</p>
+    </section>
+
+    <section id="arroba" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="arroba" data-section-title="Reference, do not paste"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Reference, do not paste</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="border border-[#e3ded5] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase">Before: paste</h3>
+          <p class="text-sm text-[#5e605a]">The code becomes loose text, with no file path, and the whole thing enters the context.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-mono text-xs uppercase text-[#d97706]">After: @</h3>
+          <p class="text-sm">The agent knows where the file is and can read only the span that matters.</p>
+        </div>
+      </div>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">@src/components/ for a folder. @Terminals for the terminal output. @Chats to bring in another conversation. Use @ when you know which files matter. Ask for the answer, not the file: "@auth.ts, where does the token expire?" Skip @ when you do not know where to start: the agent searches on its own.</p>
+      <p class="font-serif-italic text-2xl">Reference. Never copy and paste.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A landing brief that lives in a file, then an update asked with @ on both paths, keeps the path and can read only the span that matters. The same brief pasted into another chat enters whole, with no path. When the dev server fails, @Terminals brings the output without a paste.</p>
+    </section>
+
+    <section id="rules" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="rules" data-section-title="Rules under 500 lines"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Rules under 500 lines</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A criterion you repeat in every prompt becomes fresh input every time. Write it as a rule in .cursor/rules, scoped by globs or by description. Under 500 lines. Rules sit at the start of the context.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">On the finance app, the category rule (groceries, transport, housing, leisure) points at the category files. It shows up on the ring, under Rules.</p>
+    </section>
+
+    <section id="ignore" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="ignore" data-section-title="The file the agent never saw"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">The file the agent never saw</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="border border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">.gitignore</h3>
+          <p class="text-sm text-[#5e605a]">Hides files from indexing. node_modules/, logs/. The agent can still read .env.</p>
+        </div>
+        <div class="border-2 border-[#1b1c1a] p-5 space-y-2">
+          <h3 class="font-bold uppercase">.cursorignore</h3>
+          <p class="text-sm">Blocks Agent, Tab, and @. .env, package-lock.json, logs, builds.</p>
+        </div>
+      </div>
+      <p class="font-serif-italic text-xl max-w-2xl">What does not enter does not cost a token, and it does not leak.</p>
+    </section>
+
+    <section id="skills" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="skills" data-section-title="The manual on the shelf"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">The manual on the shelf</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">Long instructions in an always-on rule take context on every turn. In a skill, only the name and the description stay fixed. The body enters when the task asks. The agent sees the spine and opens the manual then.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">The bank-statement CSV skill stays that way until you invoke it from the / menu with a sample statement. The body enters at that moment, not before.</p>
+    </section>
+
+    <section id="mcp" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="mcp" data-section-title="Every tool has a price"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Every tool has a price</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">The definition enters the input, a few hundred tokens per tool, and the result enters the context. A precise prompt means less wandering: name the file and the goal so the agent calls fewer tools.</p>
+      <p class="font-serif-italic text-2xl max-w-2xl">Loading only the MCPs a task needs cut 46.9% of the tokens on runs that used MCP.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">The gain varies with how many servers you have installed. Turn on only the ones this task uses and switch the rest off. Long outputs and the terminal can become files the agent reads in parts. After a summary, it looks back at the history instead of keeping everything in the window.</p>
+    </section>
+
+    <section id="batedor" class="lesson-section space-y-6">
+      <button type="button" class="agent-pull" data-section-id="batedor" data-section-title="Send a scout"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight">Send a scout</h2>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">A wide search in the main chat leaves every file it read in the history. Delegate the exploration to a subagent and bring back only the summary. The scout returns with the map.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">An automatic summary is a lossy compression. Before the next chat: ask for a short handoff note, open a new chat, use @ on the note, and @Chats only if something is still missing.</p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">The handoff note says the landing page is ready, with the category rule and the statement skill. A new chat reads the note and creates a SQLite backend for imported transactions. A subagent can map the landing page and return only the fields the API needs. On an error, @Terminals is enough. That chat's ring and Usage stay smaller than the long landing chat.</p>
+    </section>
+
+    <section id="ensaio" class="lesson-section space-y-8 pt-4">
+      <button type="button" class="agent-pull" data-section-id="ensaio" data-section-title="The containment drill"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="border-b border-[#1b1c1a] pb-3 flex items-baseline justify-between">
+        <h2 class="text-xs uppercase tracking-widest font-mono text-[#1b1c1a]">
+          // THE CONTAINMENT DRILL
+        </h2>
+        <span class="font-serif-italic text-sm text-[#5e605a]">Three mechanical moments at the threshold.</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+        <div class="md:col-span-4 bg-[#f2efe9] border border-[#1b1c1a] p-5 flex flex-col justify-between">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#5e605a]">Step 01</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">Door shut, hallway empty</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="150" x2="200" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="25" width="80" height="125" fill="#1b1c1a"/>
+              <rect x="74" y="29" width="72" height="121" fill="#2b2d28"/>
+              <rect x="80" y="38" width="60" height="102" fill="#353731" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="130" y="85" width="22" height="6" fill="#d97706"/>
+              <rect x="126" y="83" width="5" height="10" fill="#1b1c1a"/>
+              <rect x="150" y="83" width="5" height="10" fill="#1b1c1a"/>
+              <circle cx="35" cy="158" r="1.5" fill="#e3ded5"/>
+              <circle cx="50" cy="165" r="1.5" fill="#e3ded5"/>
+              <circle cx="175" cy="158" r="1.5" fill="#e3ded5"/>
+              <circle cx="190" cy="165" r="1.5" fill="#e3ded5"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed pt-3 border-t border-[#e3ded5]">
+            No call fires without permission. The context window sleeps without side noise.
+          </p>
+        </div>
+        <div class="md:col-span-4 bg-[#f2efe9] border border-[#1b1c1a] p-5 flex flex-col justify-between">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#d97706] font-semibold">Step 02</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">Hand on the lock, still shut</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="150" x2="200" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="65" y="25" width="85" height="125" fill="#1b1c1a"/>
+              <rect x="69" y="29" width="77" height="121" fill="#2b2d28"/>
+              <rect x="120" y="82" width="30" height="8" fill="#d97706" stroke="#b45309" stroke-width="1"/>
+              <g fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1">
+                <path d="M 195 98 L 155 90 L 152 78 L 195 84 Z" fill="#1b1c1a"/>
+                <rect x="135" y="74" width="16" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="133" y="80" width="18" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="133" y="86" width="18" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="136" y="92" width="15" height="5" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+              </g>
+              <circle cx="135" cy="62" r="3" fill="#d97706"/>
+              <line x1="135" y1="52" x2="135" y2="56" stroke="#d97706" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed pt-3 border-t border-[#e3ded5]">
+            An expensive tool asked to run. The trigger freezes: the operator must authorize it before a single token is spent.
+          </p>
+        </div>
+        <div class="md:col-span-4 bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 flex flex-col justify-between shadow-[4px_4px_0px_#1b1c1a]">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#1b1c1a] font-semibold">Step 03</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">A crack open: the slip passes</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="150" x2="210" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="14" y="95" width="28" height="26" fill="#353731" stroke="#1b1c1a" stroke-width="1.2"/>
+              <rect x="22" y="121" width="30" height="29" fill="#222320" stroke="#1b1c1a" stroke-width="1.2"/>
+              <rect x="58" y="25" width="10" height="125" fill="#1b1c1a"/>
+              <rect x="156" y="25" width="10" height="125" fill="#1b1c1a"/>
+              <polygon points="68,27 142,38 142,148 68,150" fill="#1b1c1a"/>
+              <polygon points="142,38 156,27 156,150 142,148" fill="#e9e4da"/>
+              <line x1="135" y1="88" x2="158" y2="88" stroke="#d97706" stroke-width="3"/>
+              <polygon points="135,152 170,147 185,160 150,165" fill="#ffffff" stroke="#1b1c1a" stroke-width="1.2"/>
+              <line x1="145" y1="153" x2="168" y2="150" stroke="#1b1c1a" stroke-width="0.8"/>
+              <line x1="152" y1="158" x2="175" y2="155" stroke="#d97706" stroke-width="0.8"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#1b1c1a] font-medium leading-relaxed pt-3 border-t border-[#1b1c1a]/20">
+            Only four lines of a surgical finding cross the threshold. The log boxes stay in the hallway.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="confirmar" class="lesson-section border-l-4 border-[#1b1c1a] pl-8 py-2 space-y-6">
+      <button type="button" class="agent-pull" data-section-id="confirmar" data-section-title="Confirm first"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+          // EXECUTION RULE
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#1b1c1a]">
+          CONFIRM FIRST
+        </h2>
+      </div>
+      <p class="font-serif-italic text-2xl text-[#1b1c1a]/85 max-w-2xl leading-snug">
+        “An expensive tool writes an encyclopedia into the chat. Ask first. If the answer is no, nothing enters.”
+      </p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">
+        Loose models call scan tools that dump three thousand lines, a recursive directory tree, and useless headers. That dust smothers the reasoning. The lock protocol forces a short consent exchange: the action is summarized, the cost is forecast, and a no aborts the spend before the damage.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#e3ded5] p-5 space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-[#5e605a] uppercase">Without confirmation</span>
+            <span class="text-red-700 uppercase font-semibold">Waste</span>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed">
+            The tool fires blind. A raw terminal payload and its metadata fill the memory. The model loses the central thread trying to ignore the dumped junk.
+          </p>
+          <div class="font-mono text-[11px] bg-[#1b1c1a]/5 p-3 text-[#1b1c1a]/70 border-l-2 border-red-700">
+            $ scan_full_repo --all<br/>
+            &gt; 4,892 files mapped (32,000 tokens injected)
+          </div>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 space-y-3 shadow-[3px_3px_0px_#1b1c1a]">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-[#1b1c1a] uppercase font-bold">With the lock on</span>
+            <span class="text-[#d97706] uppercase font-bold">Surgical</span>
+          </div>
+          <p class="text-xs text-[#1b1c1a] leading-relaxed">
+            One line asks the operator: "Inspect file X?". A refusal or a narrower scope lets zero unwanted tokens into the conversation.
+          </p>
+          <div class="font-mono text-[11px] bg-[#1b1c1a] text-[#f8f6f2] p-3 border-l-2 border-[#d97706]">
+            [LOCK] Run a deep read? [Y/N]<br/>
+            &gt; N // Clean room kept
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bloquear" class="lesson-section space-y-8 pt-4">
+      <button type="button" class="agent-pull" data-section-id="bloquear" data-section-title="Block what is risky"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">
+          // DANGEROUS SURFACES
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#1b1c1a]">
+          BLOCK WHAT IS RISKY
+        </h2>
+        <p class="font-serif-italic text-xl text-[#5e605a]">
+          Two exits that need a permanent double bolt.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-[#1b1c1a]/20 pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#1b1c1a] font-bold">Door 01</span>
+            <span class="bg-[#1b1c1a] text-[#f8f6f2] font-mono text-[10px] uppercase tracking-wider px-2 py-0.5">Isolated</span>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-4 flex items-center justify-center">
+            <svg viewBox="0 0 280 200" class="w-full h-44" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="175" x2="260" y2="175" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="20" width="140" height="155" fill="#1b1c1a"/>
+              <rect x="76" y="26" width="128" height="149" fill="#2b2d28"/>
+              <rect x="86" y="38" width="108" height="52" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="86" y="98" width="108" height="66" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="100" y="54" width="80" height="22" fill="#1b1c1a" stroke="#e3ded5" stroke-width="1"/>
+              <text x="140" y="69" text-anchor="middle" fill="#f8f6f2" font-family="'Space Grotesk', monospace" font-size="12" font-weight="700" letter-spacing="2">SHELL</text>
+              <rect x="62" y="112" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="62" y="132" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="58" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="58" y="128" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="128" width="8" height="18" fill="#1b1c1a"/>
+            </svg>
+          </div>
+          <div class="space-y-1 pt-1">
+            <h3 class="font-bold text-lg uppercase tracking-tight text-[#1b1c1a]">Local subshell</h3>
+            <p class="text-xs text-[#5e605a] leading-relaxed">
+              A full lock on unpredictable terminal commands or compiles that wander. The agent writes the change as a text diff and never runs the command without a strict barrier.
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-[#1b1c1a]/20 pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#1b1c1a] font-bold">Door 02</span>
+            <span class="bg-[#1b1c1a] text-[#f8f6f2] font-mono text-[10px] uppercase tracking-wider px-2 py-0.5">Isolated</span>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-4 flex items-center justify-center">
+            <svg viewBox="0 0 280 200" class="w-full h-44" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="175" x2="260" y2="175" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="20" width="140" height="155" fill="#1b1c1a"/>
+              <rect x="76" y="26" width="128" height="149" fill="#2b2d28"/>
+              <rect x="86" y="38" width="108" height="52" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="86" y="98" width="108" height="66" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="88" y="54" width="104" height="22" fill="#1b1c1a" stroke="#e3ded5" stroke-width="1"/>
+              <text x="140" y="69" text-anchor="middle" fill="#f8f6f2" font-family="'Space Grotesk', monospace" font-size="9" font-weight="700" letter-spacing="1">REMOTE TOOL</text>
+              <rect x="62" y="112" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="62" y="132" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="58" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="58" y="128" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="128" width="8" height="18" fill="#1b1c1a"/>
+            </svg>
+          </div>
+          <div class="space-y-1 pt-1">
+            <h3 class="font-bold text-lg uppercase tracking-tight text-[#1b1c1a]">Opaque external API</h3>
+            <p class="text-xs text-[#5e605a] leading-relaxed">
+              The lock stays down for unfiltered network calls. No external API pours raw data into the context. Answers are summarized outside the room and delivered as a short receipt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section id="sala-quieta" class="lesson-section w-full bg-[#141513] text-[#f8f6f2] py-20 px-6 border-y-2 border-[#1b1c1a]">
+    <button type="button" class="agent-pull" data-section-id="sala-quieta" data-section-title="Quiet room"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+          // PEAK CONCENTRATION
+        </span>
+        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-[#f8f6f2]">
+          QUIET ROOM
+        </h2>
+        <p class="font-serif-italic text-2xl text-[#f8f6f2]/80 max-w-xl">
+          When nothing enters without a need, the model's intelligence stays clean.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="lg:col-span-6 bg-[#1d1e1c] border border-[#2d2e2b] p-6 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between border-b border-[#2d2e2b] pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#f8f6f2]/60">Tool tray</span>
+            <span class="font-mono text-xs uppercase text-[#d97706] font-semibold">Empty</span>
+          </div>
+          <div class="bg-[#141513] border border-[#2d2e2b] p-6 flex items-center justify-center min-h-[180px]">
+            <svg viewBox="0 0 300 140" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="20" width="260" height="100" fill="#181917" stroke="#2d2e2b" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M 30 40 L 30 30 L 40 30" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 270 40 L 270 30 L 260 30" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 30 100 L 30 110 L 40 110" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 270 100 L 270 110 L 260 110" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <text x="150" y="66" text-anchor="middle" fill="#5e605a" font-family="'Space Grotesk', monospace" font-size="11" font-weight="500" letter-spacing="2">NO ACTIVE CALLS</text>
+              <text x="150" y="86" text-anchor="middle" fill="#d97706" font-family="'Newsreader', Georgia, serif" font-style="italic" font-size="13">No tool on the work table.</text>
+            </svg>
+          </div>
+          <p class="text-xs font-mono text-[#5e605a] leading-relaxed">
+            Without dozens of function schemas taking slices of attention. The working space stays fully available for the problem.
+          </p>
+        </div>
+        <div class="lg:col-span-6 bg-[#1d1e1c] border-2 border-[#d97706]/60 p-6 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between border-b border-[#2d2e2b] pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#f8f6f2]">Direct answer</span>
+            <span class="font-mono text-xs uppercase text-[#d97706] font-semibold">Autonomous</span>
+          </div>
+          <div class="bg-[#141513] border border-[#2d2e2b] p-6 flex flex-col justify-center min-h-[180px] space-y-4">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-[#5e605a]">// PURE MODEL OUTPUT</span>
+            <div class="border-l-2 border-[#d97706] pl-4 py-1">
+              <p class="font-serif-italic text-2xl sm:text-3xl text-[#f8f6f2] leading-snug">
+                “Schema validation failed on tenant_id: string is required.”
+              </p>
+            </div>
+            <span class="font-mono text-[11px] text-[#d97706] pt-1">
+              One precise sentence. No preamble, no stack-trace dump.
+            </span>
+          </div>
+          <p class="text-xs font-mono text-[#f8f6f2]/60 leading-relaxed">
+            It answers with atomic clarity because it did not have to dig an answer out of five hundred kilobytes of needless log.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="epilogo" class="lesson-section max-w-6xl mx-auto px-6 pt-20 pb-12 space-y-16">
+    <button type="button" class="agent-pull" data-section-id="epilogo" data-section-title="The lock is part of the sentence"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
+      <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+        // CONTAINMENT EPILOGUE
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1b1c1a]">
+        THE LOCK IS PART OF THE SENTENCE.
+      </h2>
+      <p class="font-serif-italic text-2xl text-[#5e605a]">
+        Not an obstacle. Knowing when to shut the door is the architect's signature.
+      </p>
+    </div>
+    <div class="border-t border-[#1b1c1a] pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/70">
+      <div>
+        Marcelo Barella, Bergamota
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-[#d97706] transition-colors">Back to top</a>
+        <span>·</span>
+        <span class="text-[#5e605a]">UPF, 29 Oct 2026</span>
+      </div>
+    </div>
+  </section>
+
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.agent-pull');if(!t)return;var id=t.getAttribute('data-section-id');var title=t.getAttribute('data-section-title');parent.postMessage({type:'section-agent-open',id:id,title:title},location.origin);});
+</script>
+</body>
+</html>

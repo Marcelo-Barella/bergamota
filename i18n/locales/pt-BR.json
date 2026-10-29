@@ -394,5 +394,120 @@
       "footerMeta1": "Web ao vivo",
       "footerMeta2": "Código aberto"
     }
+  },
+  "thoughts": {
+    "titleLine1": "Lições",
+    "titleLine2": "Que ensinam",
+    "description": "Notas educativas sobre uma janela de contexto finita. Cada lição nomeia um mecanismo, mostra o custo e deixa uma prática que dá para usar.",
+    "tokenEfficiency": {
+      "label": "01 / Lição",
+      "kicker": "Eficiência de tokens",
+      "title": "A porta tem tranca",
+      "body": "A tranca numa janela finita: agentes, tokens e os gestos que mantêm o chat pequeno.",
+      "imageAlt": "Uma porta fechada com tranca âmbar, caixas esperando do lado de fora e um bilhete do lado de dentro"
+    },
+    "lesson": {
+      "metaTitle": "Otimização de tokens: Bergamota",
+      "metaDescription": "Agentes, tokens e uma janela de contexto finita: o que entra, o que custa, e como a tranca mantém o próximo chat pequeno."
+    },
+    "prompts": {
+      "inicio": {
+        "title": "A porta tem tranca",
+        "preset": "Abra com a frase da porta: o que não entra não gasta a janela. Depois nomeie uma coisa que já está neste chat e que eu não digitei.",
+        "chat": "A porta tem tranca"
+      },
+      "agente": {
+        "title": "Do chat ao agente",
+        "preset": "Sem tools você só vê o que eu colo. Com tools você lê, escreve, busca, roda e checa erros. Mostre uma sequência de três tool calls para a landing do app de finanças (hero, recursos, chamada para importar o extrato) e pare.",
+        "chat": "Do chat ao agente"
+      },
+      "token": {
+        "title": "O que é um token",
+        "preset": "Separe em tokens aproximados e conte: 'O que não entra não gasta a janela.' Depois diga o que 128.000 tokens representam em palavras e em páginas.",
+        "chat": "O que é um token"
+      },
+      "tipos": {
+        "title": "Tipos de tokens",
+        "preset": "Uma resposta lê um arquivo e edita. Separe system prompt, prompt do usuário, tool call e o código escrito. Marque input, output, o que no turno seguinte é cache read, e qual linha nova é cache write.",
+        "chat": "Tipos de tokens"
+      },
+      "preco": {
+        "title": "Qual modelo para a tarefa",
+        "preset": "A tarefa é trocar uma linha de texto. Escolha Composer 2.5 ou Claude Opus 4.7 e mostre o preço de input e de output por 1M. Depois, nesta conta real (input 152.279 a $5 = $0,76; output 877.966 a $25 = $21,95; cache read 97.748.796 a $0,50 = $48,87; cache write 7.377.211 a $6,25 = $46,11), diga qual linha dominou os $117,69.",
+        "chat": "Qual modelo para a tarefa"
+      },
+      "conversa": {
+        "title": "Uma conversa que só cresce",
+        "preset": "O turno 1 pediu uma feature. O turno 2 leu arquivos e rodou testes. O turno 3 pede um ajuste curto. Mostre que o turno 3 reenvia os turnos 1 e 2, e diga quando abrir um chat novo.",
+        "chat": "Uma conversa que só cresce"
+      },
+      "contexto": {
+        "title": "O que é contexto",
+        "preset": "Liste doze coisas que já estão no contexto deste chat e que eu não digitei na última mensagem. Cada item é um nome, sem definição.",
+        "chat": "O que é contexto"
+      },
+      "anel": {
+        "title": "O anel de contexto",
+        "preset": "A janela cabe cerca de 128.000 tokens. Descreva o que o anel ao lado do prompt mostra quando está pela metade, e o que se perde quando a janela enche e o chat é resumido.",
+        "chat": "O anel de contexto"
+      },
+      "arroba": {
+        "title": "Referencie, não cole",
+        "preset": "Eu sei o arquivo. Escreva o prompt com {'@'} para o arquivo anexado, perguntando o que a página ensina. Depois escreva o prompt pior, que cola o arquivo inteiro. Diga qual deixa o caminho de fora e qual permite ler só o trecho.",
+        "chat": "Referencie, não cole"
+      },
+      "rules": {
+        "title": "Rules com menos de 500 linhas",
+        "preset": "Escreva uma rule com menos de 12 linhas: ferramentas caras pedem licença antes de rodar. Escopo por glob nos arquivos de configuração de tools. Diga por que isso fica no início do contexto, e não colado em todo prompt.",
+        "chat": "Rules com menos de 500 linhas",
+        "rule": ".cursor/rules"
+      },
+      "ignore": {
+        "title": "O arquivo que o agente não viu",
+        "preset": "O repositório tem .env, package-lock.json, node_modules e src/app.ts. Ponha cada um em gitignore, cursorignore, ou em nenhum. Depois diga o que acontece se o .env estiver só no gitignore.",
+        "chat": "O arquivo que o agente não viu"
+      },
+      "skills": {
+        "title": "O manual na prateleira",
+        "preset": "Importar um extrato leva 40 linhas de passos. Escreva só o nome da skill e a descrição de uma linha que ficam em todo turno. Depois escreva o primeiro passo que fica na prateleira até a tarefa pedir a importação.",
+        "chat": "O manual na prateleira",
+        "skill": "importar extrato"
+      },
+      "mcp": {
+        "title": "Toda tool tem preço",
+        "preset": "Há doze tools de MCP instaladas e a tarefa precisa de uma: ler um saldo. Diga o que desligar, e por que a descrição de cada tool ociosa custa tokens antes de qualquer chamada. Se o arquivo anexado tiver números, use um deles.",
+        "chat": "Toda tool tem preço"
+      },
+      "batedor": {
+        "title": "Mande um batedor",
+        "preset": "O chat principal não pode guardar cada arquivo da landing. Escreva a tarefa do batedor (devolver só os campos que a API precisa) e a nota de handoff, em quatro linhas, para um chat novo que vai criar o SQLite.",
+        "chat": "Mande um batedor"
+      },
+      "ensaio": {
+        "title": "O ensaio da contenção",
+        "preset": "Percorra três momentos: porta fechada sem chamada, mão na tranca enquanto uma ferramenta cara espera, depois quatro linhas que passam e os logs que ficam fora. Uma frase por momento.",
+        "chat": "O ensaio da contenção"
+      },
+      "confirmar": {
+        "title": "Confirmar antes",
+        "preset": "Uma ferramenta de varredura quer despejar 4.892 arquivos. Escreva a pergunta única antes de ela rodar, e os dois desfechos: sim, um recibo curto; não, nada entra.",
+        "chat": "Confirmar antes"
+      },
+      "bloquear": {
+        "title": "Bloquear o que é arriscado",
+        "preset": "Duas portas: um shell local e uma ferramenta remota. Para cada uma, diga o que fica fora e qual linha única pode passar.",
+        "chat": "Bloquear o que é arriscado"
+      },
+      "sala-quieta": {
+        "title": "Sala quieta",
+        "preset": "A bandeja de ferramentas está vazia. Responda como o modelo responderia sem mais nada na janela: por que a validação do schema falhou em tenant_id? Uma frase.",
+        "chat": "Sala quieta"
+      },
+      "epilogo": {
+        "title": "A tranca é parte da frase",
+        "preset": "Feche com a frase que o arquiteto assina: a tranca é parte da frase. Depois nomeie um momento deste chat em que você fecharia a porta.",
+        "chat": "A tranca é parte da frase"
+      }
+    }
   }
 }
