@@ -1,0 +1,13 @@
+{
+  "name": "@bergamota/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./tokens.mjs",
+    "./tokens.mjs": "./tokens.mjs",
+    "./preset.mjs": "./preset.mjs",
+    "./theme.css": "./theme.css"
+  },
+  "sideEffects": ["./theme.css"]
+}

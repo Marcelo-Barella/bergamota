@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+.next
 
 # Node dependencies
 node_modules
@@ -33,5 +34,7 @@ CLAUDE.md
 .agents/
 .stitch/
 skills-lock.json
+
+cursor-orch-output.json
 
 .tooling/exports/
