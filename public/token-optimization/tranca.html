@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tranca — Bergamota Workshop</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f6f2;
+      --paper-card: #f2efe9;
+      --paper-border: #e3ded5;
+      --ink: #1b1c1a;
+      --ink-muted: #5e605a;
+      --amber: #d97706;
+      --amber-dark: #b45309;
+      --night: #141513;
+      --night-card: #1d1e1c;
+      --night-border: #2d2e2b;
+    }
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif-italic {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+    }
+    .text-stroke-ink {
+      -webkit-text-stroke: 1.5px var(--ink);
+      color: transparent;
+    }
+    .text-stroke-paper {
+      -webkit-text-stroke: 1.5px var(--paper);
+      color: transparent;
+    }
+    .lesson-section { position: relative; }
+    main .lesson-section { padding-right: 40px; }
+    .agent-pull {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 40;
+      width: 36px;
+      min-height: 96px;
+      padding: 10px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #f8f6f2;
+      color: #1b1c1a;
+      border: 1px solid #e3ded5;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      cursor: pointer;
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: -2px 0 8px rgba(27, 28, 26, 0.08);
+    }
+    .agent-pull:hover { background: #f2efe9; border-color: #1b1c1a; }
+    .agent-pull-label { writing-mode: vertical-rl; transform: rotate(180deg); }
+    .agent-pull-chevron { font-size: 14px; line-height: 1; opacity: 0.7; }
+  </style>
+</head>
+<body class="selection:bg-amber-500/20 selection:text-amber-900">
+
+  <header class="sticky top-0 z-50 bg-[#f8f6f2]/95 backdrop-blur-sm border-b border-[#e3ded5]">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="font-serif-italic text-lg tracking-tight font-medium text-[#1b1c1a]">M. Barella</a>
+        <span class="text-xs uppercase tracking-widest text-[#1b1c1a]/40 font-mono hidden sm:inline">// LIÇÃO 05</span>
+      </div>
+      <nav class="flex items-center gap-8 text-xs uppercase tracking-widest font-mono">
+        <a href="#hero" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Início</a>
+        <a href="#hero" class="text-[#d97706] font-semibold underline underline-offset-4 decoration-1">Tranca</a>
+        <a href="#confirmar" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Confirmar</a>
+        <a href="#bloquear" class="text-[#1b1c1a]/60 hover:text-[#1b1c1a] transition-colors">Bloquear</a>
+      </nav>
+      <div>
+        <a href="#inscricao" class="hidden md:inline-block px-3.5 py-1.5 bg-[#1b1c1a] text-[#f8f6f2] text-xs font-mono uppercase tracking-wider hover:bg-[#d97706] transition-colors">Caderno</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-16 pb-24 space-y-28">
+
+    <section id="hero" class="lesson-section pt-6">
+      <button type="button" class="agent-pull" data-section-id="inicio" data-section-title="A porta tem tranca"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-block">
+            <span class="inline-block transform -rotate-2 bg-[#d97706] text-[#f8f6f2] text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 font-semibold">
+              Workshop UPF
+            </span>
+          </div>
+          <div class="space-y-1">
+            <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-[#1b1c1a]">
+              A PORTA
+            </h1>
+            <div class="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-stroke-ink">
+              TEM TRANCA
+            </div>
+          </div>
+          <p class="font-serif-italic text-2xl sm:text-3xl text-[#1b1c1a]/85 leading-snug pt-2">
+            “O que não entra não gasta janela.”
+          </p>
+          <p class="text-sm sm:text-base text-[#5e605a] max-w-xl leading-relaxed">
+            Uma ferramenta não precisa de rédeas frouxas. Proteger o contexto do modelo é uma disciplina mecânica: interceptar o tráfego pesado antes da injeção, barrar volumes cegos na soleira e deixar passar apenas o bilhete essencial.
+          </p>
+          <div class="pt-2 flex items-center gap-6">
+            <a href="#confirmar" class="inline-flex items-center gap-3 px-6 py-3.5 bg-[#1b1c1a] text-[#f8f6f2] text-xs font-mono uppercase tracking-widest hover:bg-[#d97706] transition-colors group">
+              <span>Ver a tranca</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <span class="text-xs font-mono uppercase tracking-wider text-[#1b1c1a]/50">
+              Contenção mecânica
+            </span>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-[420px] transform rotate-1 hover:rotate-0 transition-transform duration-300 bg-[#f2efe9] p-4 border border-[#1b1c1a] shadow-[6px_6px_0px_#1b1c1a]">
+            <div class="aspect-square w-full bg-[#fcfbf9] border border-[#e3ded5] p-3 flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 340 340" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <line x1="20" y1="280" x2="320" y2="280" stroke="#e3ded5" stroke-width="1"/>
+                <line x1="80" y1="280" x2="20" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="200" y1="280" x2="160" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="290" y1="280" x2="270" y2="330" stroke="#e3ded5" stroke-width="1" stroke-dasharray="3 3"/>
+                <rect x="50" y="40" width="16" height="240" fill="#1b1c1a"/>
+                <rect x="50" y="32" width="190" height="12" fill="#1b1c1a"/>
+                <rect x="226" y="40" width="14" height="240" fill="#1b1c1a"/>
+                <rect x="50" y="278" width="190" height="4" fill="#1b1c1a"/>
+                <polygon points="66,44 195,58 195,274 66,278" fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="76,60 185,72 185,260 76,264" fill="#2b2d28" stroke="#1b1c1a" stroke-width="1"/>
+                <polygon points="195,58 226,44 226,278 195,274" fill="#e9e4da" opacity="0.6"/>
+                <rect x="175" y="152" width="56" height="12" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+                <rect x="170" y="148" width="8" height="20" fill="#1b1c1a"/>
+                <rect x="224" y="148" width="8" height="20" fill="#1b1c1a"/>
+                <circle cx="174" cy="153" r="1.5" fill="#f8f6f2"/>
+                <circle cx="174" cy="163" r="1.5" fill="#f8f6f2"/>
+                <circle cx="228" cy="153" r="1.5" fill="#f8f6f2"/>
+                <circle cx="228" cy="163" r="1.5" fill="#f8f6f2"/>
+                <polygon points="18,170 48,162 48,220 18,228" fill="#3a3c36" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="18,170 34,156 64,150 48,162" fill="#4d5047" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="48,162 64,150 64,208 48,220" fill="#262723" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="8,220 38,212 38,272 8,280" fill="#2d2e2a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="8,220 24,206 54,198 38,212" fill="#40423b" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="38,212 54,198 54,258 38,272" fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="234,190 262,182 262,240 234,248" fill="#363832" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="234,190 250,176 278,170 262,182" fill="#4a4c44" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="262,182 278,170 278,228 262,240" fill="#21221e" stroke="#1b1c1a" stroke-width="1.5"/>
+                <polygon points="170,286 215,282 230,296 185,300" fill="#ffffff" stroke="#1b1c1a" stroke-width="1.5"/>
+                <line x1="180" y1="287" x2="210" y2="284" stroke="#1b1c1a" stroke-width="1"/>
+                <line x1="182" y1="291" x2="218" y2="288" stroke="#1b1c1a" stroke-width="1"/>
+                <line x1="185" y1="295" x2="212" y2="293" stroke="#d97706" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ensaio" class="lesson-section space-y-8 pt-4">
+      <button type="button" class="agent-pull" data-section-id="ensaio" data-section-title="O ensaio da contenção"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="border-b border-[#1b1c1a] pb-3 flex items-baseline justify-between">
+        <h2 class="text-xs uppercase tracking-widest font-mono text-[#1b1c1a]">
+          // O ENSAIO DA CONTENÇÃO
+        </h2>
+        <span class="font-serif-italic text-sm text-[#5e605a]">Três momentos mecânicos na passagem.</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+        <div class="md:col-span-4 bg-[#f2efe9] border border-[#1b1c1a] p-5 flex flex-col justify-between">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#5e605a]">Passo 01</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">Porta fechada, corredor vazio</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="150" x2="200" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="25" width="80" height="125" fill="#1b1c1a"/>
+              <rect x="74" y="29" width="72" height="121" fill="#2b2d28"/>
+              <rect x="80" y="38" width="60" height="102" fill="#353731" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="130" y="85" width="22" height="6" fill="#d97706"/>
+              <rect x="126" y="83" width="5" height="10" fill="#1b1c1a"/>
+              <rect x="150" y="83" width="5" height="10" fill="#1b1c1a"/>
+              <circle cx="35" cy="158" r="1.5" fill="#e3ded5"/>
+              <circle cx="50" cy="165" r="1.5" fill="#e3ded5"/>
+              <circle cx="175" cy="158" r="1.5" fill="#e3ded5"/>
+              <circle cx="190" cy="165" r="1.5" fill="#e3ded5"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed pt-3 border-t border-[#e3ded5]">
+            Nenhuma chamada disparada sem permissão. A janela de contexto dorme sem ruído lateral.
+          </p>
+        </div>
+        <div class="md:col-span-4 bg-[#f2efe9] border border-[#1b1c1a] p-5 flex flex-col justify-between">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#d97706] font-semibold">Passo 02</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">Mão na tranca, ainda fechada</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="150" x2="200" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="65" y="25" width="85" height="125" fill="#1b1c1a"/>
+              <rect x="69" y="29" width="77" height="121" fill="#2b2d28"/>
+              <rect x="120" y="82" width="30" height="8" fill="#d97706" stroke="#b45309" stroke-width="1"/>
+              <g fill="#1b1c1a" stroke="#1b1c1a" stroke-width="1">
+                <path d="M 195 98 L 155 90 L 152 78 L 195 84 Z" fill="#1b1c1a"/>
+                <rect x="135" y="74" width="16" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="133" y="80" width="18" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="133" y="86" width="18" height="6" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+                <rect x="136" y="92" width="15" height="5" rx="2" fill="#f2efe9" stroke="#1b1c1a"/>
+              </g>
+              <circle cx="135" cy="62" r="3" fill="#d97706"/>
+              <line x1="135" y1="52" x2="135" y2="56" stroke="#d97706" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed pt-3 border-t border-[#e3ded5]">
+            Uma ferramenta cara solicitou execução. O gatilho congela: o operador precisa autorizar antes de gastar um único token.
+          </p>
+        </div>
+        <div class="md:col-span-4 bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 flex flex-col justify-between shadow-[4px_4px_0px_#1b1c1a]">
+          <div class="space-y-2 pb-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#1b1c1a] font-semibold">Passo 03</span>
+            <h3 class="text-base font-bold uppercase tracking-tight text-[#1b1c1a]">Fresta aberta: o bilhete passa</h3>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-3 my-2 flex items-center justify-center">
+            <svg viewBox="0 0 220 180" class="w-full h-36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="150" x2="210" y2="150" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="14" y="95" width="28" height="26" fill="#353731" stroke="#1b1c1a" stroke-width="1.2"/>
+              <rect x="22" y="121" width="30" height="29" fill="#222320" stroke="#1b1c1a" stroke-width="1.2"/>
+              <rect x="58" y="25" width="10" height="125" fill="#1b1c1a"/>
+              <rect x="156" y="25" width="10" height="125" fill="#1b1c1a"/>
+              <polygon points="68,27 142,38 142,148 68,150" fill="#1b1c1a"/>
+              <polygon points="142,38 156,27 156,150 142,148" fill="#e9e4da"/>
+              <line x1="135" y1="88" x2="158" y2="88" stroke="#d97706" stroke-width="3"/>
+              <polygon points="135,152 170,147 185,160 150,165" fill="#ffffff" stroke="#1b1c1a" stroke-width="1.2"/>
+              <line x1="145" y1="153" x2="168" y2="150" stroke="#1b1c1a" stroke-width="0.8"/>
+              <line x1="152" y1="158" x2="175" y2="155" stroke="#d97706" stroke-width="0.8"/>
+            </svg>
+          </div>
+          <p class="text-xs text-[#1b1c1a] font-medium leading-relaxed pt-3 border-t border-[#1b1c1a]/20">
+            Apenas quatro linhas de constatação cirúrgica transpõem a soleira. As caixas de log permanecem no corredor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="confirmar" class="lesson-section border-l-4 border-[#1b1c1a] pl-8 py-2 space-y-6">
+      <button type="button" class="agent-pull" data-section-id="confirmar" data-section-title="Confirmar antes"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+          // DIRETRIZ DE EXECUÇÃO
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#1b1c1a]">
+          CONFIRMAR ANTES
+        </h2>
+      </div>
+      <p class="font-serif-italic text-2xl text-[#1b1c1a]/85 max-w-2xl leading-snug">
+        “Uma ferramenta cara escreve uma enciclopédia no chat. Pergunte primeiro. Se a resposta for não, nada entra.”
+      </p>
+      <p class="text-sm text-[#5e605a] max-w-2xl leading-relaxed">
+        Modelos soltos chamam ferramentas de varredura que cospem três mil linhas de dump, árvore recursiva de diretórios e cabeçalhos inúteis. Essa poeira sufoca o raciocínio. O protocolo de tranca impõe um diálogo breve de consentimento: a ação é resumida, o custo é previsto e a resposta negativa aborta o consumo antes do estrago.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 max-w-4xl">
+        <div class="bg-[#f2efe9] border border-[#e3ded5] p-5 space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-[#5e605a] uppercase">Sem confirmação</span>
+            <span class="text-red-700 uppercase font-semibold">Desperdício</span>
+          </div>
+          <p class="text-xs text-[#5e605a] leading-relaxed">
+            A ferramenta é acionada às cegas. Um payload cru de terminal e metadados enche a memória. O modelo perde o foco central tentando ignorar o lixo despejado.
+          </p>
+          <div class="font-mono text-[11px] bg-[#1b1c1a]/5 p-3 text-[#1b1c1a]/70 border-l-2 border-red-700">
+            $ scan_full_repo --all<br/>
+            &gt; 4.892 arquivos mapeados (32.000 tokens injetados)
+          </div>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-5 space-y-3 shadow-[3px_3px_0px_#1b1c1a]">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-[#1b1c1a] uppercase font-bold">Com tranca ativa</span>
+            <span class="text-[#d97706] uppercase font-bold">Cirúrgico</span>
+          </div>
+          <p class="text-xs text-[#1b1c1a] leading-relaxed">
+            Uma linha interroga o operador: "Deseja inspecionar o arquivo X?". Ao recusar ou restringir, zero tokens indesejados entram na conversa.
+          </p>
+          <div class="font-mono text-[11px] bg-[#1b1c1a] text-[#f8f6f2] p-3 border-l-2 border-[#d97706]">
+            [TRANCA] Executar leitura profunda? [S/N]<br/>
+            &gt; N // Sala limpa preservada
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bloquear" class="lesson-section space-y-8 pt-4">
+      <button type="button" class="agent-pull" data-section-id="bloquear" data-section-title="Bloquear o que é arriscado"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/50">
+          // SUPERFÍCIES PERIGOSAS
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#1b1c1a]">
+          BLOQUEAR O QUE É ARRISCADO
+        </h2>
+        <p class="font-serif-italic text-xl text-[#5e605a]">
+          Duas saídas que precisam de ferrolho duplo permanente.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-[#1b1c1a]/20 pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#1b1c1a] font-bold">Porta 01</span>
+            <span class="bg-[#1b1c1a] text-[#f8f6f2] font-mono text-[10px] uppercase tracking-wider px-2 py-0.5">Isolado</span>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-4 flex items-center justify-center">
+            <svg viewBox="0 0 280 200" class="w-full h-44" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="175" x2="260" y2="175" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="20" width="140" height="155" fill="#1b1c1a"/>
+              <rect x="76" y="26" width="128" height="149" fill="#2b2d28"/>
+              <rect x="86" y="38" width="108" height="52" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="86" y="98" width="108" height="66" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="100" y="54" width="80" height="22" fill="#1b1c1a" stroke="#e3ded5" stroke-width="1"/>
+              <text x="140" y="69" text-anchor="middle" fill="#f8f6f2" font-family="'Space Grotesk', monospace" font-size="12" font-weight="700" letter-spacing="2">SHELL</text>
+              <rect x="62" y="112" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="62" y="132" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="58" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="58" y="128" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="128" width="8" height="18" fill="#1b1c1a"/>
+            </svg>
+          </div>
+          <div class="space-y-1 pt-1">
+            <h3 class="font-bold text-lg uppercase tracking-tight text-[#1b1c1a]">Subshell Local</h3>
+            <p class="text-xs text-[#5e605a] leading-relaxed">
+              Tranca total para comandos imprevisíveis de terminal ou compilações que vagam sem rumo. O agente formula a modificação como diff de texto e jamais roda o comando sem barreira estrita.
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f2efe9] border-2 border-[#1b1c1a] p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-[#1b1c1a]/20 pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#1b1c1a] font-bold">Porta 02</span>
+            <span class="bg-[#1b1c1a] text-[#f8f6f2] font-mono text-[10px] uppercase tracking-wider px-2 py-0.5">Isolado</span>
+          </div>
+          <div class="bg-[#fcfbf9] border border-[#e3ded5] p-4 flex items-center justify-center">
+            <svg viewBox="0 0 280 200" class="w-full h-44" xmlns="http://www.w3.org/2000/svg">
+              <line x1="20" y1="175" x2="260" y2="175" stroke="#1b1c1a" stroke-width="1.5"/>
+              <rect x="70" y="20" width="140" height="155" fill="#1b1c1a"/>
+              <rect x="76" y="26" width="128" height="149" fill="#2b2d28"/>
+              <rect x="86" y="38" width="108" height="52" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="86" y="98" width="108" height="66" fill="#222320" stroke="#1b1c1a" stroke-width="1"/>
+              <rect x="88" y="54" width="104" height="22" fill="#1b1c1a" stroke="#e3ded5" stroke-width="1"/>
+              <text x="140" y="69" text-anchor="middle" fill="#f8f6f2" font-family="'Space Grotesk', monospace" font-size="9" font-weight="700" letter-spacing="1">FERRAMENTA REMOTA</text>
+              <rect x="62" y="112" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="62" y="132" width="156" height="10" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+              <rect x="58" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="108" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="58" y="128" width="8" height="18" fill="#1b1c1a"/>
+              <rect x="214" y="128" width="8" height="18" fill="#1b1c1a"/>
+            </svg>
+          </div>
+          <div class="space-y-1 pt-1">
+            <h3 class="font-bold text-lg uppercase tracking-tight text-[#1b1c1a]">API Opaca e Externa</h3>
+            <p class="text-xs text-[#5e605a] leading-relaxed">
+              Tranca baixada para conexões de rede sem filtro estrito. Nenhuma API externa jorra dados crus no contexto. As respostas precisam ser resumidas fora da sala e entregues como recibo enxuto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section id="sala-quieta" class="lesson-section w-full bg-[#141513] text-[#f8f6f2] py-20 px-6 border-y-2 border-[#1b1c1a]">
+    <button type="button" class="agent-pull" data-section-id="sala-quieta" data-section-title="Sala quieta"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+          // ESTADO DE CONCENTRAÇÃO MÁXIMA
+        </span>
+        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-[#f8f6f2]">
+          SALA QUIETA
+        </h2>
+        <p class="font-serif-italic text-2xl text-[#f8f6f2]/80 max-w-xl">
+          Quando nada entra sem necessidade, a inteligência do modelo fica pura.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="lg:col-span-6 bg-[#1d1e1c] border border-[#2d2e2b] p-6 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between border-b border-[#2d2e2b] pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#f8f6f2]/60">Bandeja de Ferramentas</span>
+            <span class="font-mono text-xs uppercase text-[#d97706] font-semibold">Vazia</span>
+          </div>
+          <div class="bg-[#141513] border border-[#2d2e2b] p-6 flex items-center justify-center min-h-[180px]">
+            <svg viewBox="0 0 300 140" class="w-full h-32" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="20" width="260" height="100" fill="#181917" stroke="#2d2e2b" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M 30 40 L 30 30 L 40 30" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 270 40 L 270 30 L 260 30" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 30 100 L 30 110 L 40 110" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <path d="M 270 100 L 270 110 L 260 110" fill="none" stroke="#d97706" stroke-width="1.5"/>
+              <text x="150" y="66" text-anchor="middle" fill="#5e605a" font-family="'Space Grotesk', monospace" font-size="11" font-weight="500" letter-spacing="2">ZERO CHAMADAS ATIVAS</text>
+              <text x="150" y="86" text-anchor="middle" fill="#d97706" font-family="'Newsreader', Georgia, serif" font-style="italic" font-size="13">Nenhuma ferramenta na mesa de trabalho.</text>
+            </svg>
+          </div>
+          <p class="text-xs font-mono text-[#5e605a] leading-relaxed">
+            Sem dezenas de esquemas de funções consumindo fatias de atenção. O espaço operacional permanece 100% disponível para o problema.
+          </p>
+        </div>
+        <div class="lg:col-span-6 bg-[#1d1e1c] border-2 border-[#d97706]/60 p-6 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between border-b border-[#2d2e2b] pb-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-[#f8f6f2]">Resposta Direta</span>
+            <span class="font-mono text-xs uppercase text-[#d97706] font-semibold">Autônomo</span>
+          </div>
+          <div class="bg-[#141513] border border-[#2d2e2b] p-6 flex flex-col justify-center min-h-[180px] space-y-4">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-[#5e605a]">// SAÍDA PURA DO MODELO</span>
+            <div class="border-l-2 border-[#d97706] pl-4 py-1">
+              <p class="font-serif-italic text-2xl sm:text-3xl text-[#f8f6f2] leading-snug">
+                “A validação do schema falhou no campo tenant_id: string obrigatória.”
+              </p>
+            </div>
+            <span class="font-mono text-[11px] text-[#d97706] pt-1">
+              Uma única frase precisa. Sem preâmbulos, sem despejo de stacktrace.
+            </span>
+          </div>
+          <p class="text-xs font-mono text-[#f8f6f2]/60 leading-relaxed">
+            Ele responde com clareza atômica porque não precisou cavar uma resposta em quinhentos kilobytes de log desnecessário.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="epilogo" class="lesson-section max-w-6xl mx-auto px-6 pt-20 pb-12 space-y-16">
+    <button type="button" class="agent-pull" data-section-id="epilogo" data-section-title="A tranca é parte da frase"><span class="agent-pull-chevron" aria-hidden="true">‹</span><span class="agent-pull-label">Agent</span></button>
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
+      <span class="text-xs font-mono uppercase tracking-widest text-[#d97706] font-semibold">
+        // EPÍLOGO DA CONTENÇÃO
+      </span>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1b1c1a]">
+        A TRANCA É PARTE DA FRASE.
+      </h2>
+      <p class="font-serif-italic text-2xl text-[#5e605a]">
+        Não um impedimento. Saber fechar a porta é a assinatura do arquiteto.
+      </p>
+    </div>
+    <div class="border-t border-[#1b1c1a] pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono uppercase tracking-widest text-[#1b1c1a]/70">
+      <div>
+        Marcelo Barella — Bergamota
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-[#d97706] transition-colors">Voltar ao Topo</a>
+        <span>·</span>
+        <span class="text-[#5e605a]">Workshop 2025</span>
+      </div>
+    </div>
+  </section>
+
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.agent-pull');if(!t)return;var id=t.getAttribute('data-section-id');var title=t.getAttribute('data-section-title');parent.postMessage({type:'section-agent-open',id:id,title:title},location.origin);});
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 <template>
   <div class="token-opt-sala-page">
-    <iframe class="token-opt-sala-frame" src="/token-optimization/sala.html" title="Lição" />
+    <iframe class="token-opt-sala-frame" src="/token-optimization/tranca.html" title="Lição" />
     <SectionAgentDrawer
       :phase="drawerPhase"
       :title="drawerTitle"

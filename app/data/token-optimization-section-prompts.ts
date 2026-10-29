@@ -14,62 +14,46 @@ export type SendPhase = 'idle' | 'sending' | 'failed'
 export const sectionAgentPrompts: SectionAgentPrompt[] = [
   {
     id: 'inicio',
-    title: 'A janela é uma sala',
+    title: 'A porta tem tranca',
     preset:
-      'Explique em uma frase o que significa tratar a janela de contexto como uma sala finita, sem copiar o texto da página.',
-    chat: 'A janela é uma sala'
+      'Explique em uma frase por que o que não entra não gasta a janela, sem copiar o texto da página.',
+    chat: 'A porta tem tranca'
   },
   {
-    id: 'um-token-nao-e-uma-palavra',
-    title: 'Um token não é uma palavra',
+    id: 'ensaio',
+    title: 'O ensaio da contenção',
     preset:
-      'Explique em uma frase por que token não equivale a palavra inteira, sem copiar o texto da página.',
-    chat: 'Um token não é uma palavra'
+      'Explique em uma frase a passagem da porta fechada até o bilhete na fresta, sem copiar o texto da página.',
+    chat: 'O ensaio da contenção'
   },
   {
-    id: 'regras-na-parede',
-    title: 'Regras na parede',
+    id: 'confirmar',
+    title: 'Confirmar antes',
     preset:
-      'Explique em uma frase por que regras fixas devem ficar na parede do system prompt, sem copiar o texto da página.',
-    file: 'app/data/token-optimization-rules.ts',
-    chat: 'Regras na parede',
-    rule: 'token-optimization-rules'
+      'Explique em uma frase por que uma ferramenta cara pede confirmação antes de escrever no chat, sem copiar o texto da página.',
+    chat: 'Confirmar antes'
   },
   {
-    id: 'caixa-fechada',
-    title: 'Caixa fechada',
+    id: 'bloquear',
+    title: 'Bloquear o que é arriscado',
     preset:
-      'Explique em uma frase a metáfora da caixa fechada versus despejar páginas no chão, sem copiar o texto da página.',
-    chat: 'Caixa fechada'
-  },
-  {
-    id: 'o-que-a-ferramenta-traz',
-    title: 'O que a ferramenta traz',
-    preset:
-      'Explique em uma frase como tool calls podem inflar o contexto com payload desnecessário, sem copiar o texto da página.',
+      'Explique em uma frase por que o shell local e a ferramenta remota ficam com ferrolho duplo, sem copiar o texto da página.',
     file: 'app/data/token-optimization-mcp.ts',
-    chat: 'O que a ferramenta traz'
+    chat: 'Bloquear o que é arriscado'
   },
   {
-    id: 'o-scroll-esvazia-a-sala',
-    title: 'O scroll esvazia a sala',
+    id: 'sala-quieta',
+    title: 'Sala quieta',
     preset:
-      'Explique em uma frase por que o scroll tira a mobília descartável e deixa a placa e o bilhete, sem copiar o texto da página.',
-    chat: 'O scroll esvazia a sala'
+      'Explique em uma frase por que uma bandeja de ferramentas vazia deixa a resposta do modelo curta, sem copiar o texto da página.',
+    chat: 'Sala quieta'
   },
   {
-    id: 'compactar',
-    title: 'Compactar',
+    id: 'epilogo',
+    title: 'A tranca é parte da frase',
     preset:
-      'Explique em uma frase por que sintetizar turnos antigos libera chão na sala, sem copiar o texto da página.',
-    chat: 'Compactar'
-  },
-  {
-    id: 'conclusao-da-aula',
-    title: 'Conclusão da aula',
-    preset:
-      'Explique em uma frase a ideia de mobiliar uma sala finita com prompts, sem copiar o texto da página.',
-    chat: 'Conclusão da aula'
+      'Explique em uma frase por que saber fechar a porta faz parte da frase, sem copiar o texto da página.',
+    chat: 'A tranca é parte da frase'
   }
 ]
 
