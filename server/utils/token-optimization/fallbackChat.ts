@@ -3,8 +3,8 @@ import type { DemoRunResult } from './fallback'
 export function getFallbackChat(levelId: number, userMessage: string, model: string): DemoRunResult {
   const snippet = userMessage.slice(0, 120)
   const outputs: Record<number, string> = {
-    3: `Critério fixo em Rules: "${snippet}…" — economiza repetir no chat.`,
-    4: `Plano: (1) mapear API (2) refatorar com teste — aguardo sua confirmação antes de tools.`,
+    3: `Critério fixo em Rules: "${snippet}…". Economiza repetir no chat.`,
+    4: `Plano: (1) mapear API (2) refatorar com teste. Aguardo sua confirmação antes de tools.`,
     5: `Tarefa mecânica → tier barato; arquitetura → escalar para Composer-2.5 se precisar.`,
     6: 'Sem tools neste lab: resposta só em texto, sem dumps de shell/MCP.',
     7: 'Sinais: barra acima do threshold recommend/compact; histórico longo; latência sobe.',

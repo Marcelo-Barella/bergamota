@@ -18,12 +18,12 @@ const code = computed(() => {
     return `import { encode } from 'gpt-tokenizer'
 
 const ids = encode(textoBase)
-// Nível 0 Base — estimativa cl100k_base
+// Nível 0 Base: estimativa cl100k_base
 const model = { id: "${props.modelId}" } // Composer-2.5
 const contextWindow = 200_000`
   }
   if (props.level === 10 || props.useCloud) {
-    return `// Nível 10 Agêntico — @cursor/sdk Cloud Agent
+    return `// Nível 10 Agêntico: @cursor/sdk Cloud Agent
 const result = await Agent.prompt(prompt, {
   apiKey: process.env.CURSOR_API_KEY,
   model: { id: "${props.modelId}" },
@@ -39,10 +39,10 @@ await send("session/prompt", { sessionId, prompt: [{ type: "text", text }] })
   id: "auto-smart",
   params: [{ id: "optimize_for", value: "cost" }]
 }
-// Roteamento de modelo — depois Composer-2.5 se precisar`
+// Roteamento de modelo: depois Composer-2.5 se precisar`
   }
   if (props.level === 4 && props.confirmBefore) {
-    return `// Confirmar antes — modes plan / ask
+    return `// Confirmar antes: modes plan / ask
 const run = await agent.send(prompt, { mode: "plan" })
 // session/request_permission no ACP`
   }

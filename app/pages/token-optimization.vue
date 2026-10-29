@@ -237,7 +237,7 @@ import { useTokenOptimization } from '~/composables/useTokenOptimization'
 definePageMeta({ layout: false })
 
 useHead({
-  title: 'Otimização de tokens — Bergamota',
+  title: 'Otimização de tokens: Bergamota',
   meta: [
     {
       name: 'description',

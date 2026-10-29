@@ -6,9 +6,9 @@ export type ProseBlock = {
 
 export const INTRO_CONTEXT_PROSE: ProseBlock = {
   paragraphs: [
-    'Contexto é tudo o que o modelo enxerga num turno: instruções do sistema, Rules, histórico, arquivos anexados e saídas de tools — tudo virando tokens dentro de uma janela finita (no Cursor, pense na janela do <strong>Composer-2.5</strong>).',
+    'Contexto é tudo o que o modelo enxerga num turno: instruções do sistema, Rules, histórico, arquivos anexados e saídas de tools, tudo virando tokens dentro de uma janela finita (no Cursor, pense na janela do <strong>Composer-2.5</strong>).',
     'Quando a janela enche, o produto precisa resumir ou compactar; detalhes somem e a qualidade cai. Por isso cada nível abaixo é uma tática para caber mais trabalho em menos tokens.',
-    'Abrir um <strong>chat novo</strong> zera o histórico: um pedido isolado costuma gastar muito menos do que vários turnos no mesmo fio — isso já é otimização, antes de qualquer truque avançado.',
+    'Abrir um <strong>chat novo</strong> zera o histórico: um pedido isolado costuma gastar muito menos do que vários turnos no mesmo fio. Isso já é otimização, antes de qualquer truque avançado.',
     'Referência: <a href="https://cursor.com/learn" target="_blank" rel="noopener">Cursor Learn</a> e <a href="https://cursor.com/learn/tool-calling" target="_blank" rel="noopener">tool calling</a>.'
   ]
 }
@@ -31,7 +31,7 @@ export const PRICING_PROSE: ProseBlock = {
 export const LEARN_CUSTOM_PROSE: ProseBlock = {
   paragraphs: [
     '<strong>Tool calling</strong> (<a href="https://cursor.com/learn/tool-calling" target="_blank" rel="noopener">learn</a>): cada definição de tool ocupa centenas de tokens no input; cada resultado de tool volta para o contexto.',
-    '<strong>Agents</strong> (<a href="https://cursor.com/learn/agents" target="_blank" rel="noopener">learn</a>): agente = tools em loop — muito mais tokens que uma pergunta única, porque o contexto é reenviado a cada passo.',
+    '<strong>Agents</strong> (<a href="https://cursor.com/learn/agents" target="_blank" rel="noopener">learn</a>): agente = tools em loop: muito mais tokens que uma pergunta única, porque o contexto é reenviado a cada passo.',
     '<strong>Customizing</strong> (<a href="https://cursor.com/learn/customizing-agents" target="_blank" rel="noopener">learn</a>): Rules entram como contexto estático em toda conversa; Skills carregam só a descrição até serem relevantes ou invocadas.',
     '<table class="ws-prose-table"><thead><tr><th></th><th>Rules</th><th>Skills</th></tr></thead><tbody><tr><td>Quando carrega</td><td>Toda conversa (tipos variam)</td><td>Sob demanda</td></tr><tr><td>Melhor para</td><td>Convenções fixas</td><td>Fluxos especializados</td></tr><tr><td>Custo de contexto</td><td>Sempre presente se aplicada</td><td>Descrição leve; corpo sob demanda</td></tr></tbody></table>'
   ]
@@ -41,7 +41,7 @@ export const RULES_PROSE: ProseBlock = {
   paragraphs: [
     'Rules vivem em <code>.cursor/rules</code> (<a href="https://cursor.com/docs/rules" target="_blank" rel="noopener">docs</a>). Comece simples: adicione regra só quando o agente repetir o mesmo erro (<a href="https://cursor.com/blog/agent-best-practices" target="_blank" rel="noopener">agent best practices</a>).',
     'Mantenha focadas, com menos de 500 linhas, apontando <code>@arquivo</code> em vez de colar conteúdo. Evite “escreva código limpo” ou style guide inteiro em Always Apply.',
-    'Team Rules e <code>AGENTS.md</code> existem — comece mínimo e cresça com erros reais. A ordem de custo por tipo (Always &gt; Glob &gt; Apply Intelligently &gt; Manual @) é <em>dedução nossa</em>, não documentada assim na Cursor.'
+    'Team Rules e <code>AGENTS.md</code> existem. Comece mínimo e cresça com erros reais. A ordem de custo por tipo (Always &gt; Glob &gt; Apply Intelligently &gt; Manual @) é <em>dedução nossa</em>, não documentada assim na Cursor.'
   ]
 }
 
@@ -56,7 +56,7 @@ export const SKILLS_PROSE: ProseBlock = {
 export const MCP_PROSE: ProseBlock = {
   paragraphs: [
     'MCP conecta o agente a sistemas externos (protocolo aberto em <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a>). Muitas tools com descrições longas incham o contexto; a Cursor passou a carregar só nomes e buscar o resto sob demanda (<a href="https://cursor.com/blog/dynamic-context-discovery" target="_blank" rel="noopener">−46,9% tokens em runs que chamaram MCP</a>, não economia geral).',
-    'Desligue servidores ociosos, use <code>.cursor/mcp.json</code> por projeto e prefira tools que filtram/paginam. Servidor parado hoje custa ~10 tokens por nome vs ~800 por definição completa (<em>estimativa nossa</em>) — o motivo para manter só o necessário mudou de tokens para ruído, processos e escolha errada de tool.',
+    'Desligue servidores ociosos, use <code>.cursor/mcp.json</code> por projeto e prefira tools que filtram/paginam. Servidor parado hoje custa ~10 tokens por nome vs ~800 por definição completa (<em>estimativa nossa</em>). O motivo para manter só o necessário mudou de tokens para ruído, processos e escolha errada de tool.',
     'Medições Anthropic em setups grandes: ~55K tokens só em defs de 58 tools (<a href="https://www.anthropic.com/engineering/advanced-tool-use" target="_blank" rel="noopener">advanced tool use</a>); code execution com MCP reporta 150K→2K tokens (<a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener">post</a>).'
   ]
 }
@@ -79,7 +79,7 @@ export const LEVEL_PROSE: Record<WorkshopLevelId, ProseBlock> = {
   },
   1: {
     paragraphs: [
-      '<strong>Decisão simples</strong>: um pedido, uma ação verificável — menos narrativa no prompt.',
+      '<strong>Decisão simples</strong>: um pedido, uma ação verificável: menos narrativa no prompt.',
       'Compare verboso vs conciso e, se houver chave no servidor, meça com o SDK no painel.'
     ]
   },
