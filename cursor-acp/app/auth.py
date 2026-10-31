@@ -1,9 +1,7 @@
+import hashlib
 import hmac
-import secrets
-from starlette.requests import Request
-from starlette.responses import JSONResponse
 
-from app.config import Settings
+from starlette.requests import Request
 
 
 def extract_bearer_token(authorization: str | None) -> str | None:
@@ -20,28 +18,25 @@ def tokens_equal(expected: str, provided: str) -> bool:
     return hmac.compare_digest(expected.encode("utf-8"), provided.encode("utf-8"))
 
 
-def origin_allowed(origin: str | None, settings: Settings) -> bool:
-    if not origin:
-        return True
-    return origin in settings.allowed_origin_set
-
-
-def check_bridge_auth(request: Request, settings: Settings) -> JSONResponse | None:
-    origin = request.headers.get("origin")
-    if not origin_allowed(origin, settings):
-        return JSONResponse(status_code=403, content={"detail": "Origin not allowed"})
-
-    token = extract_bearer_token(request.headers.get("authorization"))
-    if not token or not tokens_equal(settings.acp_bridge_token, token):
-        return JSONResponse(status_code=401, content={"detail": "Unauthorized"})
-
-    return None
-
-
-def check_websocket_auth(origin: str | None, authorization: str | None, settings: Settings) -> tuple[int, str] | None:
-    if not origin_allowed(origin, settings):
-        return 403, "Origin not allowed"
+def bearer_valid(authorization: str | None, expected_token: str) -> bool:
     token = extract_bearer_token(authorization)
-    if not token or not tokens_equal(settings.acp_bridge_token, token):
-        return 401, "Unauthorized"
+    if not token:
+        return False
+    return tokens_equal(expected_token, token)
+
+
+def bearer_fingerprint(authorization: str | None) -> str | None:
+    token = extract_bearer_token(authorization)
+    if not token:
+        return None
+    return hashlib.sha256(token.encode("utf-8")).hexdigest()[:32]
+
+
+def authorization_from_websocket_headers(headers) -> str | None:
+    auth_header = headers.get("authorization")
+    if auth_header:
+        return auth_header
+    proto = headers.get("sec-websocket-protocol")
+    if proto and proto.startswith("bearer."):
+        return f"Bearer {proto.removeprefix('bearer.')}"
     return None

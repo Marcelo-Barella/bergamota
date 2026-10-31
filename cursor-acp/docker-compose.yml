@@ -2,20 +2,27 @@ services:
   cursor-acp:
     build: .
     restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cpus: 1.0
+    mem_limit: 512m
     ports:
       - "127.0.0.1:${ACP_BRIDGE_PORT:-8000}:8000"
     environment:
-      ACP_BRIDGE_TOKEN: ${ACP_BRIDGE_TOKEN:?set ACP_BRIDGE_TOKEN}
+      ACP_BEARER_TOKEN: ${ACP_BEARER_TOKEN:?set ACP_BEARER_TOKEN}
       CURSOR_API_KEY: ${CURSOR_API_KEY:?set CURSOR_API_KEY}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://bergamota.dev,https://www.bergamota.dev}
+      ACP_BRIDGE_HOST: 127.0.0.1
       SESSION_IDLE_TIMEOUT_SEC: ${SESSION_IDLE_TIMEOUT_SEC:-900}
       SESSION_MAX_LIFETIME_SEC: ${SESSION_MAX_LIFETIME_SEC:-3600}
       MAX_CONCURRENT_SESSIONS: ${MAX_CONCURRENT_SESSIONS:-10}
       RATE_LIMIT_IP_PER_MINUTE: ${RATE_LIMIT_IP_PER_MINUTE:-60}
+      RATE_LIMIT_TOKEN_PER_MINUTE: ${RATE_LIMIT_TOKEN_PER_MINUTE:-120}
       RATE_LIMIT_SESSION_PER_MINUTE: ${RATE_LIMIT_SESSION_PER_MINUTE:-30}
       RATE_LIMIT_GLOBAL_DAILY: ${RATE_LIMIT_GLOBAL_DAILY:-10000}
-    volumes:
-      - cursor-acp-workdir:/var/lib/cursor-acp/sessions
-
-volumes:
-  cursor-acp-workdir:
+      SESSION_WORKDIR_ROOT: /var/lib/cursor-acp/sessions
+    tmpfs:
+      - /tmp
+      - /var/lib/cursor-acp/sessions

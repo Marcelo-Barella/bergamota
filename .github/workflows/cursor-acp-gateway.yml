@@ -1,0 +1,59 @@
+name: cursor-acp-gateway
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cursor-acp/**'
+      - 'server/api/token-optimization/acp/gateway/**'
+      - 'server/utils/token-optimization/acp/gatewayClient.ts'
+      - 'nuxt.config.ts'
+      - 'scripts/verify-acp-bearer-not-in-client-bundle.sh'
+      - '.github/workflows/cursor-acp-gateway.yml'
+  pull_request:
+    paths:
+      - 'cursor-acp/**'
+      - 'server/api/token-optimization/acp/gateway/**'
+      - 'server/utils/token-optimization/acp/gatewayClient.ts'
+      - 'nuxt.config.ts'
+      - 'scripts/verify-acp-bearer-not-in-client-bundle.sh'
+      - '.github/workflows/cursor-acp-gateway.yml'
+
+jobs:
+  cursor-acp-pytest:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cursor-acp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and test
+        run: |
+          pip install -e ".[dev]"
+          pytest -q
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  acp-bearer-not-in-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Verify bearer token not in build output
+        run: bash scripts/verify-acp-bearer-not-in-client-bundle.sh

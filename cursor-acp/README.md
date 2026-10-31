@@ -1,100 +1,77 @@
-# Cursor ACP Bridge
+# Cursor ACP Gateway (Contabo / production)
 
-HTTP and WebSocket bridge from bergamota.dev server-side code to Cursor CLI ACP (`agent acp`, JSON-RPC 2.0 over newline-delimited stdio).
+HTTP and WebSocket bridge to Cursor CLI ACP (`agent acp`, JSON-RPC 2.0 over newline-delimited stdio). Bind **127.0.0.1 only**; terminate TLS and reverse-proxy with nginx on the host.
 
 ## Environment variables
 
 | Variable | Description |
 | --- | --- |
-| `ACP_BRIDGE_TOKEN` | Shared bearer secret (held by the Nuxt server only, never in browser code) |
-| `CURSOR_API_KEY` | Cursor API key passed to the `agent` subprocess |
-| `ACP_BRIDGE_HOST` | Bind address (`127.0.0.1` for local/dev; container uses `0.0.0.0` internally) |
-| `ACP_BRIDGE_PORT` | Host port published by Docker Compose (default `8000`) |
-| `ALLOWED_ORIGINS` | Comma-separated Origin allowlist (default bergamota.dev hosts) |
-| `SESSION_IDLE_TIMEOUT_SEC` | Idle reaper threshold |
-| `SESSION_MAX_LIFETIME_SEC` | Max session age before reaper |
-| `MAX_CONCURRENT_SESSIONS` | Cap on concurrent ACP subprocesses |
-| `SESSION_WORKDIR_ROOT` | Per-session working directories |
-| `RATE_LIMIT_IP_PER_MINUTE` | Per-IP limit (authenticated routes) |
-| `RATE_LIMIT_SESSION_PER_MINUTE` | Per-bridge-session limit |
-| `RATE_LIMIT_GLOBAL_DAILY` | Global daily cap |
-| `ACP_AGENT_COMMAND` / `ACP_AGENT_ARGS` | Override ACP command (tests use a fake script) |
+| `ACP_BEARER_TOKEN` | Shared bearer secret (Nitro server env only) |
+| `CURSOR_API_KEY` | Cursor API key for the `agent acp` subprocess |
+| `ACP_BRIDGE_HOST` | Must stay `127.0.0.1` |
+| `ACP_BRIDGE_PORT` | Host port published by Compose (default `8000`) |
+| `SESSION_IDLE_TIMEOUT_SEC` / `SESSION_MAX_LIFETIME_SEC` | Reaper thresholds |
+| `MAX_CONCURRENT_SESSIONS` | Global concurrency cap (`429` when full) |
+| `SESSION_WORKDIR_ROOT` | Session scratch directory (tmpfs in Compose) |
+| `RATE_LIMIT_*` | Per-IP, per-token, per-session, and daily caps |
+| `ACP_AGENT_COMMAND` / `ACP_AGENT_ARGS` | Override ACP command (tests use fake script) |
 
-Copy `.env.example` to `.env` and fill placeholders. `.env` is gitignored.
+Copy `.env.example` to `.env` locally. Never log or echo `ACP_BEARER_TOKEN` or `CURSOR_API_KEY`.
 
-## Run locally (uvicorn)
+## Run locally
 
 ```bash
 cd cursor-acp
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-cp .env.example .env   # edit tokens
+cp .env.example .env
 export $(grep -v '^#' .env | xargs)
 uvicorn app.main:app --host 127.0.0.1 --port "${ACP_BRIDGE_PORT:-8000}"
 ```
 
-## Run with Docker Compose
+## Docker Compose (hardened)
 
 ```bash
 cd cursor-acp
-export ACP_BRIDGE_TOKEN=... CURSOR_API_KEY=...
+export ACP_BEARER_TOKEN=... CURSOR_API_KEY=...
 docker compose up --build
 ```
 
-Published as `127.0.0.1:${ACP_BRIDGE_PORT:-8000}:8000` (localhost only on the host).
+- `read_only` root filesystem
+- `tmpfs` for `/tmp` and session workdir
+- `cap_drop: [ALL]`, `security_opt: no-new-privileges`
+- `cpus: 1.0`, `mem_limit: 512m`
+- Ports: `127.0.0.1:${ACP_BRIDGE_PORT:-8000}:8000`
+
+## API
+
+- `GET /health` — no auth; `{ "status": "ok" }` only
+- All other routes require `Authorization: Bearer <ACP_BEARER_TOKEN>`
+- `POST /sessions`, `POST /sessions/{id}/prompt`, `WS /sessions/{id}/ws`, `DELETE /sessions/{id}`
+
+WebSocket disconnect destroys the session and ACP child process.
+
+## Bergamota (Nuxt / Nitro)
+
+Server-only proxy routes (token from `runtimeConfig.acpBearerToken`, never `public`):
+
+- `POST /api/token-optimization/acp/gateway/sessions`
+- `POST /api/token-optimization/acp/gateway/sessions/:id/prompt`
+
+Nitro env:
+
+- `CURSOR_ACP_GATEWAY_URL` (e.g. `http://127.0.0.1:8000`)
+- `ACP_BEARER_TOKEN`
+
+Verify the bearer never ships to client bundles:
+
+```bash
+bash scripts/verify-acp-bearer-not-in-client-bundle.sh
+```
 
 ## Tests
 
 ```bash
-cd cursor-acp
-pip install -e ".[dev]"
-pytest -q
+cd cursor-acp && pip install -e ".[dev]" && pytest -q
+bash scripts/test-auth.sh   # against a running instance
 ```
-
-Against a running instance (uvicorn or compose):
-
-```bash
-export ACP_BRIDGE_TOKEN=... BASE_URL=http://127.0.0.1:8000
-bash scripts/test-auth.sh
-```
-
-## HTTP API
-
-- `GET /health` — no auth; `{ status, active_sessions, version }`
-- `POST /sessions` — create bridge session (spawns one `agent acp`); returns `{ id, acp_session_id }`
-- `POST /sessions/{id}/prompt` — JSON `{ "prompt": "...", "stream": false }` or `stream: true` for SSE `session/update` events
-- `DELETE /sessions/{id}` — tear down subprocess and workdir
-- `WS /sessions/{id}/ws` — JSON events (`session/update`, `session/closed`); send `Authorization: Bearer …` header or `Sec-WebSocket-Protocol: bearer.<token>`
-
-Auth: `Authorization: Bearer <ACP_BRIDGE_TOKEN>`. If `Origin` is sent, it must match `ALLOWED_ORIGINS` (403 otherwise). Missing `Origin` is allowed for server-side calls. Invalid/missing token → 401.
-
-Rate limits return `429` with `Retry-After`.
-
-## Nuxt server integration
-
-Call the bridge only from Nitro/server routes (never expose `ACP_BRIDGE_TOKEN` to the client):
-
-```ts
-const bridgeBase = process.env.CURSOR_ACP_BRIDGE_URL ?? 'http://127.0.0.1:8000'
-const token = process.env.ACP_BRIDGE_TOKEN!
-
-const session = await $fetch(`${bridgeBase}/sessions`, {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-})
-
-await $fetch(`${bridgeBase}/sessions/${session.id}/prompt`, {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-  body: { prompt: userText, stream: false },
-})
-```
-
-For live token streaming, open a WebSocket from the server (or proxy SSE from `stream: true`) and forward `session/update` payloads to the UI.
-
-Planned production host: `cursor-acp.bergamota.dev` terminating TLS in front of this service bound on localhost.

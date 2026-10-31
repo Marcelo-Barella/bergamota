@@ -7,6 +7,7 @@ from threading import Lock
 @dataclass
 class RateLimitState:
     ip_windows: dict[str, list[float]] = field(default_factory=lambda: defaultdict(list))
+    token_windows: dict[str, list[float]] = field(default_factory=lambda: defaultdict(list))
     session_windows: dict[str, list[float]] = field(default_factory=lambda: defaultdict(list))
     global_daily: list[float] = field(default_factory=list)
     global_day_start: float = field(default_factory=time.time)
@@ -17,10 +18,12 @@ class RateLimiter:
     def __init__(
         self,
         ip_per_minute: int,
+        token_per_minute: int,
         session_per_minute: int,
         global_daily: int,
     ) -> None:
         self.ip_per_minute = ip_per_minute
+        self.token_per_minute = token_per_minute
         self.session_per_minute = session_per_minute
         self.global_daily = global_daily
         self._state = RateLimitState()
@@ -34,7 +37,18 @@ class RateLimiter:
             self._state.global_daily.clear()
             self._state.global_day_start = now
 
-    def check(self, ip: str, session_id: str | None = None) -> int | None:
+    def _window_retry(self, timestamps: list[float], limit: int, now: float) -> int | None:
+        if len(timestamps) >= limit:
+            oldest = min(timestamps)
+            return max(1, int(60 - (now - oldest)))
+        return None
+
+    def check(
+        self,
+        ip: str,
+        session_id: str | None = None,
+        token_fingerprint: str | None = None,
+    ) -> int | None:
         now = time.time()
         with self._state.lock:
             self._prune_daily(now)
@@ -45,19 +59,28 @@ class RateLimiter:
             ip_key = ip or "unknown"
             ip_ts = self._prune_window(self._state.ip_windows[ip_key], 60, now)
             self._state.ip_windows[ip_key] = ip_ts
-            if len(ip_ts) >= self.ip_per_minute:
-                oldest = min(ip_ts)
-                return max(1, int(60 - (now - oldest)))
+            retry = self._window_retry(ip_ts, self.ip_per_minute, now)
+            if retry is not None:
+                return retry
+
+            if token_fingerprint:
+                t_ts = self._prune_window(self._state.token_windows[token_fingerprint], 60, now)
+                self._state.token_windows[token_fingerprint] = t_ts
+                retry = self._window_retry(t_ts, self.token_per_minute, now)
+                if retry is not None:
+                    return retry
 
             if session_id:
                 s_ts = self._prune_window(self._state.session_windows[session_id], 60, now)
                 self._state.session_windows[session_id] = s_ts
-                if len(s_ts) >= self.session_per_minute:
-                    oldest = min(s_ts)
-                    return max(1, int(60 - (now - oldest)))
+                retry = self._window_retry(s_ts, self.session_per_minute, now)
+                if retry is not None:
+                    return retry
 
             self._state.global_daily.append(now)
             self._state.ip_windows[ip_key].append(now)
+            if token_fingerprint:
+                self._state.token_windows[token_fingerprint].append(now)
             if session_id:
                 self._state.session_windows[session_id].append(now)
             return None
