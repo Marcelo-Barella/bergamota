@@ -4,27 +4,24 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-PROBE_VALUE="${VERIFY_ACP_BEARER_PROBE:-cursor-acp-bearer-probe-do-not-ship-9f3a2b1c}"
-export ACP_BEARER_TOKEN="$PROBE_VALUE"
+SENTINEL="${NUXT_ACP_BEARER_SENTINEL:-SENTINEL_DO_NOT_SHIP_123}"
+
+unset ACP_BEARER_TOKEN || true
+export NUXT_ACP_BEARER_TOKEN="$SENTINEL"
 export CURSOR_API_KEY="probe-cursor-key-not-real"
 export NITRO_PRESET=node-server
 
 npm run build:node
 
-CLIENT_PATHS=(
-  ".output/public"
-)
-
-for path in "${CLIENT_PATHS[@]}"; do
-  if [[ -d "$path" ]] && rg -F --quiet "$PROBE_VALUE" "$path"; then
-    echo "FAIL: ACP_BEARER_TOKEN probe value appears in client bundle path: $path" >&2
-    exit 1
-  fi
-done
-
-if [[ -d ".nuxt/dist/client" ]] && rg -F --quiet "$PROBE_VALUE" ".nuxt/dist/client"; then
-  echo "FAIL: ACP_BEARER_TOKEN probe value appears in .nuxt/dist/client" >&2
+if [[ ! -d .output ]]; then
+  echo "FAIL: .output directory missing after build" >&2
   exit 1
 fi
 
-echo "PASS: ACP bearer token not found in client bundle artifacts (.output/public)"
+if rg -F --quiet "$SENTINEL" .output/; then
+  echo "FAIL: NUXT_ACP_BEARER_TOKEN sentinel appears under .output/ (token must be runtime-only)" >&2
+  rg -F --files-with-matches "$SENTINEL" .output/ >&2 || true
+  exit 1
+fi
+
+echo "PASS: sentinel not found anywhere under .output/ (runtime-only acpBearerToken)"

@@ -55,5 +55,7 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Verify bearer token not in build output
+      - name: Verify ACP bearer is runtime-only (not in .output)
+        env:
+          NUXT_ACP_BEARER_SENTINEL: SENTINEL_DO_NOT_SHIP_123
         run: bash scripts/verify-acp-bearer-not-in-client-bundle.sh

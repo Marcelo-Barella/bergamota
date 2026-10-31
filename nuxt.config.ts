@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     cursorApiKey: process.env.CURSOR_API_KEY || '',
     acpGatewayUrl: process.env.CURSOR_ACP_GATEWAY_URL || 'http://127.0.0.1:8000',
-    acpBearerToken: process.env.ACP_BEARER_TOKEN || '',
+    acpBearerToken: '',
     tokenOptimizationPerIpLimit: Number(process.env.TOKEN_LAB_PER_IP_PER_MIN || 8),
     tokenOptimizationGlobalLimit: Number(process.env.TOKEN_LAB_GLOBAL_PER_MIN || 80),
     tokenLabDailyCap: Number(process.env.TOKEN_LAB_DAILY_CAP || 200),

@@ -58,12 +58,14 @@ Server-only proxy routes (token from `runtimeConfig.acpBearerToken`, never `publ
 - `POST /api/token-optimization/acp/gateway/sessions`
 - `POST /api/token-optimization/acp/gateway/sessions/:id/prompt`
 
-Nitro env:
+Nitro env (runtime process environment on Contabo — **not** Vercel build env, Docker build args, or `nuxt.config`):
 
+- `NUXT_ACP_BEARER_TOKEN` — maps to private `runtimeConfig.acpBearerToken` at runtime only
 - `CURSOR_ACP_GATEWAY_URL` (e.g. `http://127.0.0.1:8000`)
-- `ACP_BEARER_TOKEN`
 
-Verify the bearer never ships to client bundles:
+The gateway container still uses `ACP_BEARER_TOKEN` (same secret value, server-side only).
+
+Verify the bearer is not baked into Nitro output at build time:
 
 ```bash
 bash scripts/verify-acp-bearer-not-in-client-bundle.sh
