@@ -1,7 +1,6 @@
 <template>
   <nav
-    data-gsap-nav
-    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#1b1c1a]/10 bg-[#f8f6f3]/95 px-4 py-4 text-[#1b1c1a] backdrop-blur-sm will-change-transform sm:px-6 md:flex-nowrap md:px-10 md:py-6"
+    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between gap-y-3 border-b border-[#1b1c1a]/10 bg-[#f8f6f3]/95 px-4 py-4 text-[#1b1c1a] backdrop-blur-sm sm:px-6 md:flex-nowrap md:px-10 md:py-6"
     :aria-label="t('common.navPrimary')"
   >
     <NuxtLink
