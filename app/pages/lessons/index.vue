@@ -1,9 +1,7 @@
 <template>
   <div class="min-h-screen bg-[#f8f6f3] font-showcase text-[#1b1c1a] selection:bg-[#d97706] selection:text-white">
-    <div class="fixed top-6 right-4 z-50 sm:right-6 md:right-10">
-      <LocaleSwitcher theme="showcase-light" />
-    </div>
-    <section class="relative bg-white px-4 py-24 sm:px-6 md:px-10 md:py-32">
+    <ShowcaseFrame>
+    <section class="relative bg-white px-4 pb-24 pt-28 sm:px-6 md:px-10 md:pb-32 md:pt-36">
       <div class="mx-auto min-w-0 max-w-7xl">
         <div
           class="mb-16 grid grid-cols-1 gap-6 border-l-8 border-[#d97706] pl-6 md:mb-24 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
@@ -67,6 +65,7 @@
         </div>
       </div>
     </section>
+    </ShowcaseFrame>
   </div>
 </template>
 

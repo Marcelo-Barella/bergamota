@@ -1,8 +1,5 @@
 <template>
   <div class="app-root">
-    <div class="theme-toggle">
-      <UColorModeButton />
-    </div>
     <div v-if="showNoise" class="noise-overlay" aria-hidden="true" />
     <NuxtLayout>
       <NuxtPage />
@@ -14,7 +11,10 @@
 const showNoise = true
 const i18nHead = useLocaleHead({ dir: true, lang: true, seo: true })
 useHead(() => ({
-  htmlAttrs: i18nHead.value.htmlAttrs,
+  htmlAttrs: {
+    ...i18nHead.value.htmlAttrs,
+    'data-color-mode-forced': 'light'
+  },
   link: i18nHead.value.link,
   meta: i18nHead.value.meta,
 }))
@@ -33,24 +33,6 @@ body {
   width: 100%;
   min-width: 0;
   overflow-x: clip;
-}
-
-.theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 30;
-  transition: opacity var(--motion-duration-fast, 0.18s) var(--motion-ease-standard, ease);
-}
-
-.theme-toggle:focus-within {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-toggle {
-    transition: none;
-  }
 }
 
 .noise-overlay {

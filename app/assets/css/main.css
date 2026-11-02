@@ -4,6 +4,7 @@
 
 html {
   overflow-x: clip;
+  color-scheme: light;
 }
 
 :root {
@@ -37,19 +38,6 @@ html {
   --ui-border-muted: #e0dbd4;
   --ui-border-accented: #d1cbc2;
   --ui-radius: 12px;
-}
-
-:root.dark {
-  --color-bg: #1c1917;
-  --color-text: #e7e5e4;
-  --color-accent: #d97706;
-  --color-muted: #a8a29e;
-  --ui-bg-muted: #292524;
-  --ui-bg-elevated: #44403c;
-  --ui-bg-accented: #57534e;
-  --ui-border: #44403c;
-  --ui-border-muted: #57534e;
-  --ui-border-accented: #78716c;
 }
 
 @theme {
