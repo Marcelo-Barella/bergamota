@@ -34,7 +34,7 @@ const sectionIds = [
 ] as const
 
 const sectionFiles: Partial<Record<(typeof sectionIds)[number], string>> = {
-  arroba: 'app/pages/thoughts/token-efficiency.vue',
+  arroba: 'app/pages/lessons/token-efficiency.vue',
   bloquear: 'app/data/token-optimization-mcp.ts',
   mcp: 'app/data/token-optimization-mcp.ts'
 }
@@ -44,14 +44,14 @@ const sectionSkillIds = new Set<(typeof sectionIds)[number]>(['skills'])
 
 export function warmSectionPromptKeys(translate: (key: string) => string) {
   for (const id of sectionIds) {
-    translate(`thoughts.prompts.${id}.title`)
-    translate(`thoughts.prompts.${id}.preset`)
-    translate(`thoughts.prompts.${id}.chat`)
+    translate(`lessons.prompts.${id}.title`)
+    translate(`lessons.prompts.${id}.preset`)
+    translate(`lessons.prompts.${id}.chat`)
     if (sectionRuleIds.has(id)) {
-      translate(`thoughts.prompts.${id}.rule`)
+      translate(`lessons.prompts.${id}.rule`)
     }
     if (sectionSkillIds.has(id)) {
-      translate(`thoughts.prompts.${id}.skill`)
+      translate(`lessons.prompts.${id}.skill`)
     }
   }
 }
@@ -65,13 +65,13 @@ export function sectionPromptById(
   }
   const key = id as (typeof sectionIds)[number]
   const file = sectionFiles[key]
-  const rule = sectionRuleIds.has(key) ? translate(`thoughts.prompts.${id}.rule`) : undefined
-  const skill = sectionSkillIds.has(key) ? translate(`thoughts.prompts.${id}.skill`) : undefined
+  const rule = sectionRuleIds.has(key) ? translate(`lessons.prompts.${id}.rule`) : undefined
+  const skill = sectionSkillIds.has(key) ? translate(`lessons.prompts.${id}.skill`) : undefined
   return {
     id,
-    title: translate(`thoughts.prompts.${id}.title`),
-    preset: translate(`thoughts.prompts.${id}.preset`),
-    chat: translate(`thoughts.prompts.${id}.chat`),
+    title: translate(`lessons.prompts.${id}.title`),
+    preset: translate(`lessons.prompts.${id}.preset`),
+    chat: translate(`lessons.prompts.${id}.chat`),
     ...(file ? { file } : {}),
     ...(rule ? { rule } : {}),
     ...(skill ? { skill } : {})

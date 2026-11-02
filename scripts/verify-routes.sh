@@ -4,7 +4,10 @@ BASE="${1:-http://127.0.0.1:3027}"
 
 routes=(
   "/"
-  "/token-optimization"
+  "/lessons"
+  "/lessons/token-efficiency"
+  "/pt-BR/lessons"
+  "/pt-BR/lessons/token-efficiency"
   "/projects/tangerina"
   "/projects/cursor-sync"
   "/projects/cursor-ca-orchestrator"

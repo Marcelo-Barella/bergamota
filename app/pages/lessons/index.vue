@@ -11,10 +11,10 @@
           <h1
             class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
           >
-            {{ t('thoughts.titleLine1') }}<br />{{ t('thoughts.titleLine2') }}
+            {{ t('lessons.titleLine1') }}<br />{{ t('lessons.titleLine2') }}
           </h1>
           <p class="font-editorial mt-8 max-w-sm text-3xl italic md:mt-0">
-            {{ t('thoughts.description') }}
+            {{ t('lessons.description') }}
           </p>
         </div>
         <div class="space-y-32 md:space-y-40">
@@ -76,21 +76,22 @@ definePageMeta({
 })
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const lessons = [
   {
     id: 'token-efficiency',
-    to: '/thoughts/token-efficiency',
-    image: '/images/thoughts/token-efficiency.svg',
-    labelKey: 'thoughts.tokenEfficiency.label',
-    kickerKey: 'thoughts.tokenEfficiency.kicker',
-    titleKey: 'thoughts.tokenEfficiency.title',
-    bodyKey: 'thoughts.tokenEfficiency.body',
-    altKey: 'thoughts.tokenEfficiency.imageAlt'
+    to: localePath('/lessons/token-efficiency'),
+    image: '/images/lessons/token-efficiency.svg',
+    labelKey: 'lessons.tokenEfficiency.label',
+    kickerKey: 'lessons.tokenEfficiency.kicker',
+    titleKey: 'lessons.tokenEfficiency.title',
+    bodyKey: 'lessons.tokenEfficiency.body',
+    altKey: 'lessons.tokenEfficiency.imageAlt'
   }
 ]
 
 useHead({
-  title: `${t('thoughts.titleLine1')} ${t('thoughts.titleLine2')}`
+  title: `${t('lessons.titleLine1')} ${t('lessons.titleLine2')}`
 })
 </script>
