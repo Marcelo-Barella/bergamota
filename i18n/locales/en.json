@@ -128,6 +128,12 @@
         }
       }
     },
+    "events": {
+      "sectionLabel": "Events",
+      "moreLabel": "More events",
+      "solanaHackathon": "Cursor+\u200bSolana Hackathon",
+      "onlineMeetups": "Online Meetups"
+    },
     "projectsSection": {
       "titleLine1": "Where My",
       "titleLine2": "Brain Goes",
