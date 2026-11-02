@@ -61,7 +61,10 @@ bash scripts/verify-routes.sh "http://127.0.0.1:${BERGAMOTA_PORT}"
 Routes exercised:
 
 - `/`
-- `/token-optimization`
+- `/lessons`
+- `/lessons/token-efficiency`
+- `/pt-BR/lessons`
+- `/pt-BR/lessons/token-efficiency`
 - `/projects/tangerina`
 - `/projects/cursor-sync`
 - `/projects/cursor-ca-orchestrator`

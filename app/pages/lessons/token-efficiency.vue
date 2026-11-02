@@ -3,7 +3,7 @@
     <div class="token-opt-locale">
       <LocaleSwitcher theme="showcase-light" />
     </div>
-    <iframe class="token-opt-sala-frame" :src="lessonFrameSrc" :title="t('thoughts.tokenEfficiency.title')" />
+    <iframe class="token-opt-sala-frame" :srcdoc="lessonFrameDoc" :title="t('lessons.tokenEfficiency.title')" />
     <SectionAgentDrawer
       :phase="drawerPhase"
       :title="drawerTitle"
@@ -19,6 +19,8 @@
 </template>
 
 <script setup lang="ts">
+import lessonEn from '~/assets/lessons/token-efficiency.en.html?raw'
+import lessonPt from '~/assets/lessons/token-efficiency.pt-BR.html?raw'
 import {
   type DrawerPhase,
   type SendPhase,
@@ -37,18 +39,18 @@ const { t, locale } = useI18n()
 warmSectionPromptKeys(t)
 
 useHead({
-  title: () => t('thoughts.lesson.metaTitle'),
+  title: () => t('lessons.lesson.metaTitle'),
   meta: [
     {
       name: 'description',
-      content: () => t('thoughts.lesson.metaDescription')
+      content: () => t('lessons.lesson.metaDescription')
     }
   ],
   htmlAttrs: { class: 'dark' }
 })
 
-const lessonFrameSrc = computed(() =>
-  locale.value === 'pt-BR' ? '/token-optimization/tranca.html' : '/token-optimization/tranca.en.html'
+const lessonFrameDoc = computed(() =>
+  locale.value === 'pt-BR' ? lessonPt : lessonEn
 )
 
 const drawerPhase = ref<DrawerPhase>('closed')

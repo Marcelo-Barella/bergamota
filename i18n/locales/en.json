@@ -395,7 +395,7 @@
       "footerMeta2": "Open source"
     }
   },
-  "thoughts": {
+  "lessons": {
     "titleLine1": "Lessons",
     "titleLine2": "That teach",
     "description": "Educational notes on a finite context window. Each lesson names one mechanism, shows what it costs, and leaves a practice you can use.",
