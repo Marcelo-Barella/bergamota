@@ -29,6 +29,8 @@ class Settings(BaseSettings):
 
     acp_agent_command: str = Field(default="agent", alias="ACP_AGENT_COMMAND")
     acp_agent_args: str = Field(default="acp", alias="ACP_AGENT_ARGS")
+    acp_session_mode: str = Field(default="ask", alias="ACP_SESSION_MODE")
+    acp_auto_allow_permissions: bool = Field(default=False, alias="ACP_AUTO_ALLOW_PERMISSIONS")
 
     @property
     def acp_agent_argv(self) -> list[str]:

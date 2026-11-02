@@ -18,9 +18,12 @@ if [[ ! -d .output ]]; then
   exit 1
 fi
 
-if rg -F --quiet "$SENTINEL" .output/; then
+if rg -F --quiet "$SENTINEL" .output/ 2>/dev/null; then
   echo "FAIL: NUXT_ACP_BEARER_TOKEN sentinel appears under .output/ (token must be runtime-only)" >&2
   rg -F --files-with-matches "$SENTINEL" .output/ >&2 || true
+  exit 1
+elif grep -rqF "$SENTINEL" .output/ 2>/dev/null; then
+  echo "FAIL: NUXT_ACP_BEARER_TOKEN sentinel appears under .output/ (token must be runtime-only)" >&2
   exit 1
 fi
 

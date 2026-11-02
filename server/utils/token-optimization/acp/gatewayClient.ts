@@ -1,5 +1,12 @@
 type GatewayJson = Record<string, unknown>
 
+export function isAcpGatewayConfigured(config: {
+  acpBearerToken?: string
+  acpGatewayUrl?: string
+}): boolean {
+  return Boolean(String(config.acpGatewayUrl || '').trim() && String(config.acpBearerToken || '').trim())
+}
+
 export async function callAcpGateway(path: string, init: RequestInit = {}): Promise<GatewayJson> {
   const config = useRuntimeConfig()
   const base = String(config.acpGatewayUrl || '').replace(/\/$/, '')
@@ -28,7 +35,11 @@ export async function callAcpGateway(path: string, init: RequestInit = {}): Prom
     try {
       data = JSON.parse(text) as GatewayJson
     } catch {
-      data = { raw: text }
+      throw createError({
+        statusCode: 502,
+        statusMessage: 'ACP gateway returned non-JSON response',
+        data: { contentType: response.headers.get('content-type') }
+      })
     }
   }
 
@@ -50,15 +61,26 @@ export async function createAcpGatewaySession(): Promise<{ id: string; acp_sessi
 
 export async function promptAcpGatewaySession(
   sessionId: string,
-  prompt: string,
-  stream = false
+  prompt: string
 ): Promise<GatewayJson> {
   return callAcpGateway(`/sessions/${encodeURIComponent(sessionId)}/prompt`, {
     method: 'POST',
-    body: JSON.stringify({ prompt, stream })
+    body: JSON.stringify({ prompt, stream: false })
   })
 }
 
 export async function deleteAcpGatewaySession(sessionId: string): Promise<void> {
   await callAcpGateway(`/sessions/${encodeURIComponent(sessionId)}`, { method: 'DELETE' })
+}
+
+export async function runGatewayLabPromptOneShot(prompt: string): Promise<GatewayJson> {
+  const session = await createAcpGatewaySession()
+  try {
+    return await promptAcpGatewaySession(session.id, prompt)
+  } finally {
+    try {
+      await deleteAcpGatewaySession(session.id)
+    } catch {
+    }
+  }
 }

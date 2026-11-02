@@ -24,9 +24,9 @@ RUN pip install --upgrade pip && pip install . \
 
 USER appuser
 
-ENV ACP_BRIDGE_HOST=127.0.0.1 \
+ENV ACP_BRIDGE_HOST=0.0.0.0 \
     SESSION_WORKDIR_ROOT=/var/lib/cursor-acp/sessions
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

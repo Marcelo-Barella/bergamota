@@ -30,6 +30,9 @@ def main() -> None:
         if method == "session/new" and req_id is not None:
             write({"jsonrpc": "2.0", "id": req_id, "result": {"sessionId": "fake-acp-session-1"}})
             continue
+        if method == "session/set_mode" and req_id is not None:
+            write({"jsonrpc": "2.0", "id": req_id, "result": {}})
+            continue
         if method == "session/prompt" and req_id is not None:
             write(
                 {

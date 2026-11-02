@@ -1,6 +1,6 @@
 # Cursor ACP Gateway (Contabo / production)
 
-HTTP and WebSocket bridge to Cursor CLI ACP (`agent acp`, JSON-RPC 2.0 over newline-delimited stdio). Bind **127.0.0.1 only**; terminate TLS and reverse-proxy with nginx on the host.
+HTTP and WebSocket bridge to Cursor CLI ACP (`agent acp`, JSON-RPC 2.0 over newline-delimited stdio). Bind **127.0.0.1 on the host** via Compose port mapping. Inside the container, uvicorn listens on `0.0.0.0:8000` so Docker can forward traffic from the published localhost port.
 
 ## Environment variables
 
@@ -8,7 +8,7 @@ HTTP and WebSocket bridge to Cursor CLI ACP (`agent acp`, JSON-RPC 2.0 over newl
 | --- | --- |
 | `ACP_BEARER_TOKEN` | Shared bearer secret (Nitro server env only) |
 | `CURSOR_API_KEY` | Cursor API key for the `agent acp` subprocess |
-| `ACP_BRIDGE_HOST` | Must stay `127.0.0.1` |
+| `ACP_BRIDGE_HOST` | Host-side bind is via Compose (`127.0.0.1`); container listens on `0.0.0.0` |
 | `ACP_BRIDGE_PORT` | Host port published by Compose (default `8000`) |
 | `SESSION_IDLE_TIMEOUT_SEC` / `SESSION_MAX_LIFETIME_SEC` | Reaper thresholds |
 | `MAX_CONCURRENT_SESSIONS` | Global concurrency cap (`429` when full) |
@@ -53,12 +53,9 @@ WebSocket disconnect destroys the session and ACP child process.
 
 ## Bergamota (Nuxt / Nitro)
 
-Server-only proxy routes (token from `runtimeConfig.acpBearerToken`, never `public`):
+The gateway is **not** exposed as its own public Nitro routes. When `NUXT_ACP_BEARER_TOKEN` and `CURSOR_ACP_GATEWAY_URL` are set at **runtime** on the VPS, the existing lab handler `POST /api/token-optimization/acp/prompt` calls the gateway internally (`gatewayClient.ts`): one ephemeral session per prompt, **ask mode**, tool permissions **rejected**, lab rate limits unchanged.
 
-- `POST /api/token-optimization/acp/gateway/sessions`
-- `POST /api/token-optimization/acp/gateway/sessions/:id/prompt`
-
-Nitro env (runtime process environment on Contabo — **not** Vercel build env, Docker build args, or `nuxt.config`):
+Nitro env (runtime process on Contabo — not Vercel build env):
 
 - `NUXT_ACP_BEARER_TOKEN` — maps to private `runtimeConfig.acpBearerToken` at runtime only
 - `CURSOR_ACP_GATEWAY_URL` (e.g. `http://127.0.0.1:8000`)

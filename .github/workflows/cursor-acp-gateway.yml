@@ -5,16 +5,16 @@ on:
     branches: [main]
     paths:
       - 'cursor-acp/**'
-      - 'server/api/token-optimization/acp/gateway/**'
-      - 'server/utils/token-optimization/acp/gatewayClient.ts'
+      - 'server/api/token-optimization/acp/**'
+      - 'server/utils/token-optimization/acp/**'
       - 'nuxt.config.ts'
       - 'scripts/verify-acp-bearer-not-in-client-bundle.sh'
       - '.github/workflows/cursor-acp-gateway.yml'
   pull_request:
     paths:
       - 'cursor-acp/**'
-      - 'server/api/token-optimization/acp/gateway/**'
-      - 'server/utils/token-optimization/acp/gatewayClient.ts'
+      - 'server/api/token-optimization/acp/**'
+      - 'server/utils/token-optimization/acp/**'
       - 'nuxt.config.ts'
       - 'scripts/verify-acp-bearer-not-in-client-bundle.sh'
       - '.github/workflows/cursor-acp-gateway.yml'
@@ -53,6 +53,8 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - name: Install ripgrep
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
       - name: Install dependencies
         run: npm ci
       - name: Verify ACP bearer is runtime-only (not in .output)
