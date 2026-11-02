@@ -1,9 +1,8 @@
 <template>
-  <div class="token-opt-sala-page">
-    <div class="token-opt-locale">
-      <LocaleSwitcher theme="showcase-light" />
-    </div>
-    <iframe class="token-opt-sala-frame" :srcdoc="lessonFrameDoc" :title="t('lessons.tokenEfficiency.title')" />
+  <div class="min-h-screen bg-[#f8f6f3] font-showcase text-[#1b1c1a] selection:bg-[#d97706] selection:text-white">
+    <ShowcaseFrame>
+      <ShowcasePilhaLesson @open-section="openDrawerForSection" />
+    </ShowcaseFrame>
     <SectionAgentDrawer
       :phase="drawerPhase"
       :title="drawerTitle"
@@ -19,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import lessonEn from '~/assets/lessons/token-efficiency.en.html?raw'
-import lessonPt from '~/assets/lessons/token-efficiency.pt-BR.html?raw'
 import {
   type DrawerPhase,
   type SendPhase,
@@ -33,9 +30,9 @@ import type {
   SectionAgentTranscriptEntry
 } from '~/components/token-optimization/SectionAgentDrawer.vue'
 
-definePageMeta({ layout: false })
+definePageMeta({ layout: 'showcase' })
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 warmSectionPromptKeys(t)
 
 useHead({
@@ -46,12 +43,7 @@ useHead({
       content: () => t('lessons.lesson.metaDescription')
     }
   ],
-  htmlAttrs: { class: 'dark' }
 })
-
-const lessonFrameDoc = computed(() =>
-  locale.value === 'pt-BR' ? lessonPt : lessonEn
-)
 
 const drawerPhase = ref<DrawerPhase>('closed')
 const sendPhase = ref<SendPhase>('idle')
@@ -313,24 +305,3 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style scoped>
-.token-opt-sala-page {
-  position: fixed;
-  inset: 0;
-  background: #f8f6f3;
-}
-
-.token-opt-sala-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-.token-opt-locale {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 80;
-}
-</style>

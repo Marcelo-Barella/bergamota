@@ -66,6 +66,7 @@
       "manifesto": "Manifesto",
       "experiments": "Experimentos",
       "chaos": "Caos",
+      "lessons": "Lições",
       "talk": "Vamos falar?"
     },
     "hero": {
@@ -402,13 +403,150 @@
     "tokenEfficiency": {
       "label": "01 / Lição",
       "kicker": "Eficiência de tokens",
-      "title": "A porta tem tranca",
-      "body": "A tranca numa janela finita: agentes, tokens e os gestos que mantêm o chat pequeno.",
-      "imageAlt": "Uma porta fechada com tranca âmbar, caixas esperando do lado de fora e um bilhete do lado de dentro"
+      "title": "A pilha",
+      "body": "Um token é uma placa. A pilha é o contexto, e cada placa tem um preço.",
+      "imageAlt": "Uma pilha de placas finas de papel, as duas de cima marcadas con e texto"
     },
     "lesson": {
       "metaTitle": "Otimização de tokens: Bergamota",
-      "metaDescription": "Agentes, tokens e uma janela de contexto finita: o que entra, o que custa, e como a tranca mantém o próximo chat pequeno."
+      "metaDescription": "O que é um token, quanto cada tipo custa, e como a pilha de contexto fica pequena: cache, escolha de modelo, {'@'}, rules, skills e MCP."
+    },
+    "pilha": {
+      "token": {
+        "eyebrow": "O que é um token",
+        "title": "Pilha",
+        "stroke": "de placas",
+        "caption": "contexto, partido em dois. Ilustrativo. O corte depende do modelo.",
+        "lead": "O modelo não lê a palavra inteira. Ele lê pedaços. Cada pedaço é uma placa nesta pilha, e cada placa é o que você paga.",
+        "aside": "Um token dá cerca de 3/4 de uma palavra em inglês. A janela comporta centenas de milhares de tokens. O número depende do modelo."
+      },
+      "tipos": {
+        "eyebrow": "Tipos de tokens",
+        "title": "Quatro preços",
+        "lead": "Token não tem um preço só. Na tabela do Opus 5.5, por 1M: entrada $4, saída $20, escrita no cache $5, leitura do cache $0,20.",
+        "aside": "A saída costuma custar de 2 a 4 vezes a entrada. Neste modelo, cinco vezes. A leitura do cache sai cerca de 20 vezes mais barata que a entrada de $4. A escrita no cache é a escrita cara, no começo da conversa ou quando entra conteúdo novo.",
+        "p1": "Entrada",
+        "p1m": "$4",
+        "p2": "Saída",
+        "p2m": "$20",
+        "p3": "Escrita no cache",
+        "p3m": "$5",
+        "p4": "Leitura do cache",
+        "p4m": "$0,20"
+      },
+      "cache": {
+        "eyebrow": "Cache",
+        "title": "As mesmas placas, mais finas",
+        "lead": "Se o começo da conversa continua estável, o turno seguinte lê essas placas do cache. Rules ficam na frente. Cada tool call reenvia o contexto e aparece como cache read.",
+        "aside": "Uma referência {'@'} estável volta pelo preço do cache, cerca de 20 vezes mais barata que a entrada."
+      },
+      "preco": {
+        "eyebrow": "Qual modelo",
+        "title": "Escolha a placa",
+        "lead": "Modelo maior não é sempre melhor. Pergunta simples em modelo caro é desperdício. Dá para trocar no meio da conversa.",
+        "aside": "Modelos rápidos para uma edição curta. Modelos mais capazes para raciocínio e refactors grandes.",
+        "opus": "Opus 5.5",
+        "opusm": "Entrada $4. Saída $20.",
+        "composer": "Composer 2.5",
+        "composerm": "Entrada $0,50. Saída $2,50. 8 vezes menos por token.",
+        "fast": "Composer 2.5 Fast",
+        "fastm": "Entrada $3. Leitura do cache $0,50. Saída $15.",
+        "bill": "Uma conta real, Opus 4.7 Thinking High. Não é o preço de tabela.",
+        "total": "106,2M tokens. Total $117,69. Cache read e cache write dominam a conta.",
+        "usage": "No Usage, um ajuste curto com Composer 2.5 no mesmo chat faz o cache read crescer, porque cada tool call reenvia o contexto.",
+        "kind": "Tipo",
+        "tokens": "Tokens",
+        "rate": "Preço",
+        "cost": "Custo",
+        "input": "Entrada",
+        "output": "Saída",
+        "read": "Cache read",
+        "write": "Cache write",
+        "r1t": "152.279",
+        "r1r": "$5,00",
+        "r1c": "$0,76",
+        "r2t": "877.966",
+        "r2r": "$25,00",
+        "r2c": "$21,95",
+        "r3t": "97.748.796",
+        "r3r": "$0,50",
+        "r3c": "$48,87",
+        "r4t": "7.377.211",
+        "r4r": "$6,25",
+        "r4c": "$46,11"
+      },
+      "conversa": {
+        "eyebrow": "Uma conversa que só cresce",
+        "title": "Altura não é virtude",
+        "lead": "Você pede uma feature. O agente lê arquivos, roda testes, você pede um ajuste. Cada turno reenvia a pilha inteira, e você paga o histórico de novo.",
+        "aside": "Contexto pequeno e certo: só o que a tarefa precisa, e chat novo quando a tarefa muda.",
+        "nolima": "O NoLiMa (arXiv 2502.05167, Tabela 3) mediu a precisão de 1K a 32K tokens. Em 32K, 10 dos 12 modelos ficaram abaixo da metade da própria pontuação com contexto curto. Comprimento efetivo nesse teste: 8K para o GPT-4o, 4K para o Claude 3.5 Sonnet, 2K para o Llama 3.3 70B e o Gemini 1.5 Pro. Modelos do início de 2025, num teste de agulha sem correspondência literal de palavra. Um padrão, não dado do Cursor.",
+        "tall": "Este chat",
+        "short": "Chat novo"
+      },
+      "contexto": {
+        "eyebrow": "O que é contexto",
+        "title": "A pilha é a RAM",
+        "lead": "Tem limite, e é limpa a cada sessão. Não é a memória inteira do modelo. Tudo o que o agente faz cai aqui, não só o seu prompt.",
+        "chips": "System prompt, prompt do usuário, resposta, lista de ferramentas, chamada de ferramenta, rules, skills, MCPs, arquivos, index, imagens, erros de linter, terminal, plugins, mode prompt, arquivo aberto, workspace, data atual"
+      },
+      "anel": {
+        "eyebrow": "O anel de contexto",
+        "title": "Olhe o anel",
+        "lead": "A janela comporta centenas de milhares de tokens, e o número depende do modelo. Quando enche, o Cursor resume a conversa e detalhes se perdem.",
+        "aside": "O anel ao lado do prompt mostra o que ocupa espaço: system prompt, tools, rules, skills, MCP e a conversa."
+      },
+      "arroba": {
+        "eyebrow": "Referencie, não cole",
+        "title": "Um caminho, não um manuscrito",
+        "lead": "Colar transforma o arquivo em texto solto, sem caminho, e o arquivo inteiro entra na pilha. O {'@'} diz onde o arquivo está, e o agente pode ler só o trecho que importa.",
+        "aside": "{'@'}src/components/ para uma pasta, {'@'}Terminals para a saída do terminal, {'@'}Chats para outra conversa. Quando você sabe o arquivo: {'@'}auth.ts, onde o token expira? Quando não sabe por onde começar, pule o {'@'}. O agente busca.",
+        "paste": "Arquivo colado",
+        "ref": "{'@'}auth.ts"
+      },
+      "rules": {
+        "eyebrow": "Rules",
+        "title": "Uma placa na frente",
+        "lead": "Critério repetido vira entrada nova toda vez. Escreva uma vez em .cursor/rules, com escopo por globs ou por descrição, com menos de 500 linhas. Rules ficam na frente da pilha.",
+        "aside": "formato-reais: valores em R$ 1.234,56, negativos em vermelho com sinal de menos. A prova é um chat novo que só diz: cria um card no dashboard com o total gasto em outubro. Você não repete o formato.",
+        "plate": "formato-reais"
+      },
+      "ignore": {
+        "eyebrow": ".cursorignore",
+        "title": "Placas que ficam fora",
+        "lead": ".gitignore tira node_modules/ e logs da indexação. O agente ainda pode ler o .env.",
+        "aside": "Liste .env, package-lock.json, logs e builds no .cursorignore. Isso bloqueia Agent, Tab e {'@'}. O que não entra não custa token e não vaza.",
+        "git": ".gitignore",
+        "cursor": ".cursorignore"
+      },
+      "skills": {
+        "eyebrow": "Skills",
+        "title": "A lombada fica fechada",
+        "lead": "Uma rule sempre ativa gasta contexto em todo turno. Uma skill deixa só o nome e a descrição fixos, e carrega o corpo quando a tarefa pede.",
+        "aside": "importar-extrato lê um extrato CSV ou OFX, normaliza datas e valores, tira duplicadas e salva as transações. \"Importa o extrato de outubro\" basta para o agente achar a skill. exportar-csv grava exports/transacoes-AAAA-MM.csv. \"Exporta as transações de outubro pra eu mandar pro meu contador\" não precisa do nome da skill.",
+        "spine": "importar-extrato",
+        "body": "O corpo, só quando a tarefa pede"
+      },
+      "mcp": {
+        "eyebrow": "MCP",
+        "title": "Toda tool é uma placa",
+        "lead": "A definição de uma tool custa algumas centenas de tokens, e o resultado entra na pilha. Prompt preciso, menos tools. Diga o arquivo e o objetivo.",
+        "aside": "Num A/B do Cursor, carregar só os MCPs que a tarefa precisava cortou 46,9% dos tokens nas execuções com MCP. O ganho depende de quantos servidores estão instalados. Desligue o resto. Saída longa e o terminal podem virar arquivos que o agente lê por partes. Depois do resumo, ele consulta o histórico."
+      },
+      "batedor": {
+        "eyebrow": "Subagents",
+        "title": "Mande um batedor",
+        "lead": "Uma varredura grande deixa cada arquivo no chat principal. Delegue a exploração e traga só o resumo. Subagents aparecem como categoria própria no anel.",
+        "aside": "Antes do próximo chat: peça uma nota de handoff curta, abra um chat novo, use {'@'} na nota, e {'@'}Chats só se faltar algo. O resumo automático perde detalhe.",
+        "slip": "Bilhete de quatro linhas"
+      },
+      "epilogo": {
+        "eyebrow": "Documentação",
+        "title": "Escreva uma vez",
+        "lead": "Não há ordem obrigatória. Quando você se pega explicando o projeto de novo, escreva um README, um ARCHITECTURE.md ou uma pasta docs, e referencie. Escreva você.",
+        "aside": "Um estudo da ETH Zurich deste ano comparou documentação escrita por gente e por IA. A escrita humana se saiu melhor. A gerada por IA deixou o agente cerca de 20% mais caro, sem ganho.",
+        "recap": "{'@'}, rules, skills, MCPs e documentação. É assim que a pilha fica feita das placas que você escolheu."
+      }
     },
     "prompts": {
       "inicio": {
@@ -423,7 +561,7 @@
       },
       "token": {
         "title": "O que é um token",
-        "preset": "Separe em tokens aproximados e conte: 'O que não entra não gasta a janela.' Depois diga o que 128.000 tokens representam em palavras e em páginas.",
+        "preset": "Parta a palavra contexto em pedaços e diga que o corte depende do modelo. Um token dá cerca de 3/4 de uma palavra em inglês. A janela comporta centenas de milhares de tokens, conforme o modelo. Não fixe um número.",
         "chat": "O que é um token"
       },
       "tipos": {
@@ -448,7 +586,7 @@
       },
       "anel": {
         "title": "O anel de contexto",
-        "preset": "A janela cabe cerca de 128.000 tokens. Descreva o que o anel ao lado do prompt mostra quando está pela metade, e o que se perde quando a janela enche e o chat é resumido.",
+        "preset": "A janela comporta centenas de milhares de tokens, conforme o modelo. Descreva o que o anel ao lado do prompt mostra, e o que se perde quando o Cursor resume uma janela cheia.",
         "chat": "O anel de contexto"
       },
       "arroba": {
@@ -504,9 +642,9 @@
         "chat": "Sala quieta"
       },
       "epilogo": {
-        "title": "A tranca é parte da frase",
-        "preset": "Feche com a frase que o arquiteto assina: a tranca é parte da frase. Depois nomeie um momento deste chat em que você fecharia a porta.",
-        "chat": "A tranca é parte da frase"
+        "title": "Escreva uma vez",
+        "preset": "Nomeie as cinco práticas que mantêm a pilha pequena: {'@'}, rules, skills, MCPs e documentação. Uma linha cada, e pare.",
+        "chat": "Escreva uma vez"
       }
     }
   }

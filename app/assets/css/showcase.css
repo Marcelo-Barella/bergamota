@@ -256,3 +256,51 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
+
+.pilha { padding-top: 5.5rem; }
+.pilha .band { position: relative; padding: 4.5rem 3.5rem 4.5rem 1.25rem; }
+.pilha .band-white { background: #fff; }
+.pilha .band-paper { background: #f8f6f3; }
+.pilha .inner { max-width: 72rem; margin: 0 auto; display: grid; gap: 2rem; }
+.pilha .eyebrow { margin: 0 0 0.75rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #d97706; }
+.pilha .title { margin: 0; font-family: Syne, ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.86; letter-spacing: -0.04em; text-transform: uppercase; }
+.pilha .stroke { display: block; margin-top: 0.2rem; color: transparent; -webkit-text-stroke: 1.5px #1b1c1a; }
+.pilha .lead { margin: 1.25rem 0 0; max-width: 38rem; font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; font-size: 1.2rem; line-height: 1.45; }
+.pilha .aside, .pilha .caption { margin: 1rem 0 0; max-width: 40rem; color: #5e605a; line-height: 1.55; font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+.pilha .caption { font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 1.15rem; }
+.pilha .stack { display: flex; flex-direction: column; gap: 0.45rem; max-width: 26rem; }
+.pilha .plate { border: 1.5px solid #1b1c1a; background: #fff; padding: 0.7rem 0.85rem; box-shadow: 3px 3px 0 #1b1c1a; display: flex; flex-direction: column; gap: 0.15rem; transform-origin: top center; }
+.pilha .kicker, .pilha .meta { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #5e605a; }
+.pilha .plate[data-role="read"], .pilha .plate[data-role="front"], .pilha .plate[data-role="slip"] { background: #1b1c1a; color: #f8f6f3; }
+.pilha .plate[data-role="read"] .meta, .pilha .plate[data-role="read"] .kicker, .pilha .plate[data-role="front"] .meta { color: #f8f6f3; }
+.pilha .plate[data-role="fat"] { min-height: 7.5rem; }
+.pilha .plate[data-role="thin"], .pilha .plate[data-role="spine"] { min-height: 2.4rem; }
+.pilha .plate[data-role="off"], .pilha .plate[data-role="out"] { opacity: 0.38; }
+.pilha .plate[data-role="blocked"] { background: #f8f6f3; border-style: dashed; }
+.pilha .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.pilha .chips li { border: 1px solid #e3ded5; padding: 0.35rem 0.5rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.pilha .bill { width: 100%; max-width: 40rem; margin-top: 1.5rem; border-collapse: collapse; font-size: 0.78rem; }
+.pilha .bill caption { caption-side: top; text-align: left; font-weight: 700; padding-bottom: 0.6rem; }
+.pilha .bill th, .pilha .bill td { border: 1px solid #1b1c1a; padding: 0.55rem 0.65rem; text-align: left; }
+.pilha .bill th { background: #1b1c1a; color: #f8f6f3; }
+.pilha .stack.is-settled .plate { animation: pilha-drop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i) * 70ms); }
+.pilha .stack[data-kind="cache"].is-settled .plate[data-role="stable"] { animation: pilha-slim 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+.pilha .stack[data-kind="chat"].is-settled .plate[data-role="extra"] { animation: pilha-fold 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both; }
+.pilha .stack[data-kind="mention"].is-settled .plate[data-role="fat"] { animation: pilha-leave 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+.pilha .stack[data-kind="spine"].is-settled .plate[data-role="open"] { animation: pilha-open 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+.pilha .stack[data-kind="meter"].is-settled .plate:not([data-role="slip"]),
+.pilha .stack[data-kind="scout"].is-settled .plate:not([data-role="slip"]) { animation: pilha-fold 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+@keyframes pilha-drop { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+@keyframes pilha-slim { to { transform: scaleY(0.72); background: #1b1c1a; color: #f8f6f3; } }
+@keyframes pilha-fold { to { opacity: 0.2; transform: scaleY(0.35); } }
+@keyframes pilha-leave { to { opacity: 0.25; transform: translateX(-12px) scaleY(0.45); } }
+@keyframes pilha-open { from { max-height: 0; opacity: 0; } to { max-height: 6rem; opacity: 1; } }
+.pilha .agent-pull { position: absolute; top: 4.5rem; right: 0; z-index: 5; width: 36px; min-height: 96px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: #f8f6f3; color: #1b1c1a; border: 1px solid #e3ded5; border-right: none; border-radius: 4px 0 0 4px; cursor: pointer; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.pilha .agent-pull-label { writing-mode: vertical-rl; transform: rotate(180deg); }
+@media (min-width: 900px) {
+  .pilha .inner { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; gap: 3rem; }
+  .pilha .band { padding: 5.5rem 4.5rem 5.5rem 2.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pilha .stack.is-settled .plate { animation: none; }
+}

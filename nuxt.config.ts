@@ -86,7 +86,9 @@ export default defineNuxtConfig({
     },
   },
   colorMode: {
-    preference: 'dark'
+    preference: 'light',
+    fallback: 'light',
+    storageKey: 'bergamota-paper'
   },
   gsap: {
     extraPlugins: {

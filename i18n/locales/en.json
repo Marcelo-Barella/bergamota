@@ -66,6 +66,7 @@
       "manifesto": "Manifesto",
       "experiments": "Experiments",
       "chaos": "Chaos",
+      "lessons": "Lessons",
       "talk": "Talk?"
     },
     "hero": {
@@ -402,13 +403,150 @@
     "tokenEfficiency": {
       "label": "01 / Lesson",
       "kicker": "Token efficiency",
-      "title": "The door has a lock",
-      "body": "The lock on a finite window: agents, tokens, and the moves that keep a chat small.",
-      "imageAlt": "A shut door with an amber latch, boxes waiting outside, and one slip of paper inside"
+      "title": "The stack",
+      "body": "A token is a plate. The stack is the context, and every plate has a price.",
+      "imageAlt": "A stack of thin paper plates, the top two labeled con and texto"
     },
     "lesson": {
       "metaTitle": "Token optimization: Bergamota",
-      "metaDescription": "Agents, tokens, and a finite context window: what enters, what it costs, and how the lock keeps the next chat small."
+      "metaDescription": "What a token is, what each kind costs, and how the context stack stays small: cache, model choice, {'@'}, rules, skills, and MCP."
+    },
+    "pilha": {
+      "token": {
+        "eyebrow": "What a token is",
+        "title": "Pilha",
+        "stroke": "of plates",
+        "caption": "contexto, cut in two. Illustrative. The cut depends on the model.",
+        "lead": "The model does not read the whole word. It reads pieces. Each piece is a plate on this stack, and each plate is what you pay.",
+        "aside": "A token is about 3/4 of an English word. The window holds hundreds of thousands of tokens. The number depends on the model."
+      },
+      "tipos": {
+        "eyebrow": "Kinds of tokens",
+        "title": "Four prices",
+        "lead": "A token is not one price. On the Opus 5.5 list, per 1M: input $4, output $20, cache write $5, cache read $0.20.",
+        "aside": "Output often costs 2 to 4 times the input. On this model it is five times. Cache read is about 20 times cheaper than the $4 input. Cache write is the expensive write, at the start of a chat or when new content arrives.",
+        "p1": "Input",
+        "p1m": "$4",
+        "p2": "Output",
+        "p2m": "$20",
+        "p3": "Cache write",
+        "p3m": "$5",
+        "p4": "Cache read",
+        "p4m": "$0.20"
+      },
+      "cache": {
+        "eyebrow": "Cache",
+        "title": "The same plates, thinner",
+        "lead": "Keep the start of the chat stable and the next turn reads those plates from cache. Rules sit at the front. Each tool call resends the context and shows up as cache read.",
+        "aside": "A stable {'@'} reference comes back at the cache price, about 20 times cheaper than input."
+      },
+      "preco": {
+        "eyebrow": "Which model",
+        "title": "Pick the plate",
+        "lead": "A larger model is not always better. A simple question on an expensive model is waste. You can switch in the middle of the chat.",
+        "aside": "Fast models for a short edit. More capable models for reasoning and large refactors.",
+        "opus": "Opus 5.5",
+        "opusm": "Input $4. Output $20.",
+        "composer": "Composer 2.5",
+        "composerm": "Input $0.50. Output $2.50. 8 times less per token.",
+        "fast": "Composer 2.5 Fast",
+        "fastm": "Input $3. Cache read $0.50. Output $15.",
+        "bill": "A real bill, Opus 4.7 Thinking High. Not the list price.",
+        "total": "106.2M tokens. Total $117.69. Cache read and cache write dominate the bill.",
+        "usage": "On Usage, a short edit with Composer 2.5 in the same chat makes cache read grow, because each tool call resends the context.",
+        "kind": "Kind",
+        "tokens": "Tokens",
+        "rate": "Price",
+        "cost": "Cost",
+        "input": "Input",
+        "output": "Output",
+        "read": "Cache read",
+        "write": "Cache write",
+        "r1t": "152,279",
+        "r1r": "$5.00",
+        "r1c": "$0.76",
+        "r2t": "877,966",
+        "r2r": "$25.00",
+        "r2c": "$21.95",
+        "r3t": "97,748,796",
+        "r3r": "$0.50",
+        "r3c": "$48.87",
+        "r4t": "7,377,211",
+        "r4r": "$6.25",
+        "r4c": "$46.11"
+      },
+      "conversa": {
+        "eyebrow": "A chat that only grows",
+        "title": "Height is not a virtue",
+        "lead": "You ask for a feature. The agent reads files, runs tests, you ask for a tweak. Every turn resends the whole stack, and you pay for the history again.",
+        "aside": "Small, right context: only what the task needs, and a new chat when the task changes.",
+        "nolima": "NoLiMa (arXiv 2502.05167, Table 3) measured accuracy from 1K to 32K tokens. At 32K, 10 of 12 models sat under half their short-context score. Effective length in that test: 8K for GPT-4o, 4K for Claude 3.5 Sonnet, 2K for Llama 3.3 70B and Gemini 1.5 Pro. Early 2025 models, a needle test without a literal keyword match. A pattern, not Cursor data.",
+        "tall": "This chat",
+        "short": "New chat"
+      },
+      "contexto": {
+        "eyebrow": "What context is",
+        "title": "The stack is RAM",
+        "lead": "It has a limit, and it is cleared each session. It is not the model's whole memory. Everything the agent does lands here, not only your prompt.",
+        "chips": "System prompt, user prompt, reply, tool list, tool call, rules, skills, MCPs, files, index, images, linter errors, terminal, plugins, mode prompt, open file, workspace, current date"
+      },
+      "anel": {
+        "eyebrow": "The context ring",
+        "title": "Look at the ring",
+        "lead": "The window holds hundreds of thousands of tokens, depending on the model. When it fills, Cursor summarizes the chat and details drop.",
+        "aside": "The ring beside the prompt shows what occupies space: system prompt, tools, rules, skills, MCP, and the conversation."
+      },
+      "arroba": {
+        "eyebrow": "Reference, do not paste",
+        "title": "A path, not a manuscript",
+        "lead": "Paste turns the file into loose text, with no path, and the whole file joins the stack. {'@'} tells the agent where the file is, so it can read the span that matters.",
+        "aside": "{'@'}src/components/ for a folder, {'@'}Terminals for the terminal output, {'@'}Chats for another conversation. When you know the file: {'@'}auth.ts, where does the token expire? When you do not know where to start, skip {'@'}. The agent searches.",
+        "paste": "Pasted file",
+        "ref": "{'@'}auth.ts"
+      },
+      "rules": {
+        "eyebrow": "Rules",
+        "title": "One plate at the front",
+        "lead": "A criterion you repeat becomes fresh input every time. Write it once in .cursor/rules, scoped by globs or by description, under 500 lines. Rules sit at the front of the stack.",
+        "aside": "formato-reais: values as R$ 1.234,56, negatives in red with a minus. The proof is a new chat that only says: create a dashboard card for October spend. You do not repeat the format.",
+        "plate": "formato-reais"
+      },
+      "ignore": {
+        "eyebrow": ".cursorignore",
+        "title": "Plates that stay outside",
+        "lead": ".gitignore hides node_modules/ and logs from indexing. The agent can still read .env.",
+        "aside": "List .env, package-lock.json, logs, and builds in .cursorignore. That blocks Agent, Tab, and {'@'}. What does not enter does not cost a token, and it does not leak.",
+        "git": ".gitignore",
+        "cursor": ".cursorignore"
+      },
+      "skills": {
+        "eyebrow": "Skills",
+        "title": "The spine stays shut",
+        "lead": "An always-on rule spends context every turn. A skill keeps the name and the description fixed, and loads the body when the task asks.",
+        "aside": "importar-extrato reads a CSV or OFX statement, normalizes dates and amounts, drops duplicates, and saves the transactions. \"Import the October statement\" is enough for the agent to find it. exportar-csv writes exports/transacoes-AAAA-MM.csv. \"Export October's transactions for my accountant\" does not need the skill name.",
+        "spine": "importar-extrato",
+        "body": "The body, only when the task asks"
+      },
+      "mcp": {
+        "eyebrow": "MCP",
+        "title": "Every tool is a plate",
+        "lead": "A tool definition costs a few hundred tokens, and the result joins the stack. A precise prompt means fewer tools. Name the file and the goal.",
+        "aside": "In a Cursor A/B, loading only the MCPs a task needed cut 46.9% of tokens on runs that used MCP. The gain depends on how many servers are installed. Turn the rest off. Long output and the terminal can become files the agent reads in parts. After a summary, it can look back at the history."
+      },
+      "batedor": {
+        "eyebrow": "Subagents",
+        "title": "Send a scout",
+        "lead": "A wide search leaves every file in the main chat. Delegate the exploration and bring back the summary. Subagents show up as their own category on the ring.",
+        "aside": "Before the next chat: ask for a short handoff note, open a new chat, {'@'} the note, and use {'@'}Chats only if something is missing. The automatic summary is lossy.",
+        "slip": "Four-line slip"
+      },
+      "epilogo": {
+        "eyebrow": "Documentation",
+        "title": "Write it once",
+        "lead": "There is no required order. When you notice you are explaining the project again, write a README, an ARCHITECTURE.md, or a docs folder, and reference it. Write it yourself.",
+        "aside": "A study from ETH Zurich this year compared human and AI documentation. Human writing did better. AI-written docs left the agent about 20% more expensive, with no gain.",
+        "recap": "{'@'}, rules, skills, MCPs, and documentation. That is how the stack stays made of plates you chose."
+      }
     },
     "prompts": {
       "inicio": {
@@ -423,7 +561,7 @@
       },
       "token": {
         "title": "What a token is",
-        "preset": "Split this sentence into rough tokens and count them: 'What does not enter does not spend the window.' Then say what 128,000 tokens is in words and in pages.",
+        "preset": "Split the word contexto into pieces and say the cut depends on the model. A token is about 3/4 of an English word. The window holds hundreds of thousands of tokens, depending on the model. Do not pin one number.",
         "chat": "What a token is"
       },
       "tipos": {
@@ -448,7 +586,7 @@
       },
       "anel": {
         "title": "The context ring",
-        "preset": "The window holds about 128,000 tokens. Describe what the ring beside the prompt shows when it is half full, and what is lost when the window fills and the chat is summarized.",
+        "preset": "The window holds hundreds of thousands of tokens, depending on the model. Describe what the ring beside the prompt shows, and what is lost when Cursor summarizes a full window.",
         "chat": "The context ring"
       },
       "arroba": {
@@ -504,9 +642,9 @@
         "chat": "Quiet room"
       },
       "epilogo": {
-        "title": "The lock is part of the sentence",
-        "preset": "Close with the sentence the architect signs: the lock is part of the sentence. Then name one moment in this chat when you would shut the door.",
-        "chat": "The lock is part of the sentence"
+        "title": "Write it once",
+        "preset": "Name the five practices that keep the stack small: {'@'}, rules, skills, MCPs, and documentation. One line each, then stop.",
+        "chat": "Write it once"
       }
     }
   }
