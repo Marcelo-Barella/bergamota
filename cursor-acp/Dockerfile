@@ -18,9 +18,9 @@ RUN useradd --create-home --uid 10001 appuser
 COPY pyproject.toml /app/
 COPY app /app/app
 
-RUN pip install --upgrade pip && pip install .
-
-RUN mkdir -p /var/lib/cursor-acp/sessions && chown -R appuser:appuser /var/lib/cursor-acp /app
+RUN pip install --upgrade pip && pip install . \
+    && mkdir -p /var/lib/cursor-acp/sessions \
+    && chown -R appuser:appuser /app /var/lib/cursor-acp
 
 USER appuser
 
