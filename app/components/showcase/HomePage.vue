@@ -121,83 +121,7 @@
       </div>
     </header>
 
-    <section id="meetup-photos" class="relative bg-white px-4 py-24 sm:px-6 md:px-10 md:py-32">
-      <div class="mx-auto min-w-0 max-w-7xl">
-        <div
-          data-gsap-section-head
-          class="mb-16 grid grid-cols-1 gap-6 border-l-8 border-[#d97706] pl-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
-        >
-          <h2
-            class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
-          >
-            {{ t('home.meetup.titleLine1') }}<br />{{ t('home.meetup.titleLine2') }}
-          </h2>
-          <p class="font-editorial mt-8 max-w-sm text-2xl italic md:mt-0">
-            {{ t('home.meetup.subtitle') }}
-          </p>
-        </div>
-        <div data-gsap-photo-grid class="showcase-photo-mosaic">
-          <figure
-            v-for="photo in meetupPhotos"
-            :key="photo.id"
-            data-gsap-photo-tile
-            class="showcase-photo-mosaic-tile group relative z-0 overflow-visible hover:z-20"
-          >
-            <div
-              class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
-              :class="photoThrowClass(photo.id, 3)"
-            >
-              <img
-                class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
-                :src="photo.src"
-                :alt="t(`home.meetup.photos.${photo.id}.alt`)"
-                loading="lazy"
-                decoding="async"
-              >
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="cafe-cursor-florianopolis" class="relative bg-[#f5f3f0] px-4 py-24 sm:px-6 md:px-10 md:py-32">
-      <div class="mx-auto min-w-0 max-w-7xl">
-        <div
-          data-gsap-section-head
-          class="mb-16 grid grid-cols-1 gap-6 border-l-8 border-[#1b1c1a] pl-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline md:gap-x-10 md:gap-y-0 md:pl-8"
-        >
-          <h2
-            class="font-headline min-w-0 max-w-full break-words text-[clamp(2.25rem,7vw+0.75rem,6.5rem)] font-black uppercase leading-[0.9] tracking-tighter"
-          >
-            {{ t('home.cafeCursor.titleLine1') }}<br />{{ t('home.cafeCursor.titleLine2') }}
-          </h2>
-          <p class="font-editorial mt-8 max-w-sm text-2xl italic md:mt-0">
-            {{ t('home.cafeCursor.subtitle') }}
-          </p>
-        </div>
-        <div data-gsap-photo-grid class="showcase-photo-mosaic">
-          <figure
-            v-for="photo in cafeCursorFlorianopolisPhotos"
-            :key="photo.id"
-            data-gsap-photo-tile
-            class="showcase-photo-mosaic-tile group relative z-0 overflow-visible hover:z-20"
-          >
-            <div
-              class="showcase-photo-inner overflow-hidden border-2 border-[#1b1c1a]/12 bg-[#f8f6f3] shadow-[5px_8px_0_0_rgba(27,28,26,0.07)] transition-shadow duration-300 ease-out group-hover:shadow-[7px_11px_0_0_rgba(217,119,6,0.15)]"
-              :class="photoThrowClass(photo.id, 8)"
-            >
-              <img
-                class="aspect-[4/3] h-full w-full origin-center object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
-                :src="photo.src"
-                :alt="t(`home.cafeCursor.photos.${photo.id}.alt`)"
-                loading="lazy"
-                decoding="async"
-              >
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
+    <ShowcaseHomeEvents />
 
     <section id="projects" class="relative bg-white px-4 py-24 sm:px-6 md:px-10 md:py-32">
       <div class="mx-auto min-w-0 max-w-7xl">
@@ -517,28 +441,4 @@ const projectById = Object.fromEntries(
 function projectPath(id: string) {
   return `/projects/${id}`
 }
-
-const photoThrowCount = 12
-
-function photoThrowClass(id: number, offset: number) {
-  return `showcase-photo-throw-${(id - 1 + offset) % photoThrowCount}`
-}
-
-const meetupPhotos = [
-  { id: 1, src: '/images/cursor-meetup/bergamota-01.jpg' },
-  { id: 2, src: '/images/cursor-meetup/bergamota-02.jpg' },
-  { id: 3, src: '/images/cursor-meetup/bergamota-03.jpg' },
-  { id: 4, src: '/images/cursor-meetup/bergamota-04.jpg' },
-  { id: 5, src: '/images/cursor-meetup/bergamota-05.jpg' },
-  { id: 6, src: '/images/cursor-meetup/bergamota-06.jpg' },
-]
-
-const cafeCursorFlorianopolisPhotos = [
-  { id: 1, src: '/images/cafe-cursor-florianopolis/bergamota-01.jpg' },
-  { id: 2, src: '/images/cafe-cursor-florianopolis/bergamota-02.jpg' },
-  { id: 3, src: '/images/cafe-cursor-florianopolis/bergamota-03.jpg' },
-  { id: 4, src: '/images/cafe-cursor-florianopolis/bergamota-04.jpg' },
-  { id: 5, src: '/images/cafe-cursor-florianopolis/bergamota-05.jpg' },
-  { id: 6, src: '/images/cafe-cursor-florianopolis/bergamota-06.jpg' },
-]
 </script>
