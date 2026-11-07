@@ -129,6 +129,12 @@
         }
       }
     },
+    "events": {
+      "sectionLabel": "Eventos",
+      "moreLabel": "Mais eventos",
+      "solanaHackathon": "Cursor+\u200bSolana Hackathon",
+      "onlineMeetups": "Meetups online"
+    },
     "projectsSection": {
       "titleLine1": "Onde Minha",
       "titleLine2": "Cabeça Vai",
