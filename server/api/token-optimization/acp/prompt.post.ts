@@ -1,6 +1,10 @@
 import { cacheKey, getCached, setCached } from '../../../utils/token-optimization/cache'
 import { getAcpManager } from '../../../utils/token-optimization/acp/manager'
 import { broadcastAcp } from '../../../utils/token-optimization/acp/subscribers'
+import {
+  isAcpGatewayConfigured,
+  runGatewayLabPromptOneShot
+} from '../../../utils/token-optimization/acp/gatewayClient'
 import { enforceTokenLabLimits } from '../../../utils/token-optimization/enforceLabLimits'
 
 type Body = {
@@ -28,6 +32,23 @@ export default defineEventHandler(async (event) => {
     const payload = { ok: false, throttled: true, reason: rate.reason }
     setCached(cacheId, payload, 60_000)
     return payload
+  }
+
+  if (isAcpGatewayConfigured(config)) {
+    try {
+      const result = await runGatewayLabPromptOneShot(prompt)
+      const payload = {
+        ok: true,
+        mode: 'gateway',
+        result,
+        note:
+          'Prompt via Contabo ACP gateway (ask mode, no tool auto-approve, ephemeral session).'
+      }
+      setCached(cacheId, payload, 10 * 60_000)
+      return payload
+    } catch (error) {
+      console.error('[acp-gateway-lab]', error)
+    }
   }
 
   const manager = getAcpManager()

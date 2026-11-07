@@ -17,11 +17,15 @@ class AcpProcess:
         cwd: str,
         env: dict[str, str],
         on_update: UpdateHandler | None = None,
+        session_mode: str = "ask",
+        auto_allow_permissions: bool = False,
     ) -> None:
         self.argv = argv
         self.cwd = cwd
         self.env = env
         self.on_update = on_update
+        self.session_mode = session_mode
+        self.auto_allow_permissions = auto_allow_permissions
         self._proc: asyncio.subprocess.Process | None = None
         self._reader_task: asyncio.Task[None] | None = None
         self._next_id = 1
@@ -76,9 +80,10 @@ class AcpProcess:
             return
 
         if method == "session/request_permission" and "id" in msg:
+            option_id = "allow-once" if self.auto_allow_permissions else "reject-once"
             await self._respond(
                 int(msg["id"]),
-                {"outcome": {"outcome": "selected", "optionId": "allow-once"}},
+                {"outcome": {"outcome": "selected", "optionId": option_id}},
             )
             return
 
@@ -90,7 +95,7 @@ class AcpProcess:
             return
 
         if method == "cursor/create_plan" and "id" in msg:
-            await self._respond(int(msg["id"]), {"outcome": {"outcome": "accepted"}})
+            await self._respond(int(msg["id"]), {"outcome": {"outcome": "rejected", "reason": "bridge_lab"}})
             return
 
         if method and method.startswith("cursor/"):
@@ -132,6 +137,14 @@ class AcpProcess:
         if not session_id:
             raise RuntimeError("session/new did not return sessionId")
         self.acp_session_id = str(session_id)
+        if self.session_mode:
+            try:
+                await self.request(
+                    "session/set_mode",
+                    {"sessionId": self.acp_session_id, "mode": self.session_mode},
+                )
+            except Exception:
+                logger.warning("session_set_mode_failed", extra={"event": "set_mode"})
         return self.acp_session_id
 
     async def prompt(self, text: str) -> Any:

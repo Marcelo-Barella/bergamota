@@ -7,10 +7,9 @@ from fastapi import APIRouter, Depends, HTTPException, Request, WebSocket, WebSo
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from app import __version__
-from app.auth import check_bridge_auth, check_websocket_auth
+from app.auth import authorization_from_websocket_headers, bearer_fingerprint, bearer_valid
 from app.config import Settings, get_settings
-from app.logging_config import client_ip_var, request_id_var, session_id_var
+from app.logging_config import session_id_var
 from app.rate_limit import RateLimiter
 from app.session_manager import SessionCapacityError, SessionManager
 
@@ -33,7 +32,8 @@ class RateLimitDep:
         self.limiter = limiter
 
     def check_http(self, request: Request, session_id: str | None = None) -> None:
-        retry = self.limiter.check(client_ip(request), session_id)
+        fp = getattr(request.state, "bearer_fingerprint", None)
+        retry = self.limiter.check(client_ip(request), session_id, fp)
         if retry is not None:
             raise HTTPException(
                 status_code=429,
@@ -47,11 +47,6 @@ class PromptBody(BaseModel):
     stream: bool = False
 
 
-class CreateSessionResponse(BaseModel):
-    id: str
-    acp_session_id: str
-
-
 def get_manager(request: Request) -> SessionManager:
     return request.app.state.session_manager
 
@@ -61,30 +56,25 @@ def get_limiter_dep(request: Request) -> RateLimitDep:
 
 
 @router.get("/health")
-async def health(request: Request) -> dict[str, Any]:
-    manager: SessionManager = request.app.state.session_manager
-    return {
-        "status": "ok",
-        "active_sessions": manager.active_count(),
-        "version": __version__,
-    }
+async def health() -> dict[str, str]:
+    return {"status": "ok"}
 
 
 @router.post("/sessions")
 async def create_session(
     request: Request,
-    settings: Settings = Depends(get_settings),
     manager: SessionManager = Depends(get_manager),
     rl: RateLimitDep = Depends(get_limiter_dep),
 ) -> JSONResponse:
-    auth_err = check_bridge_auth(request, settings)
-    if auth_err:
-        return auth_err
     rl.check_http(request)
     try:
         session = await manager.create_session()
     except SessionCapacityError as exc:
-        raise HTTPException(status_code=503, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=429,
+            detail=str(exc),
+            headers={"Retry-After": "60"},
+        ) from exc
     except Exception as exc:
         logger.exception("create_session_failed", extra={"event": "create_failed"})
         raise HTTPException(status_code=502, detail="Failed to start ACP session") from exc
@@ -103,13 +93,9 @@ async def session_prompt(
     session_id: str,
     body: PromptBody,
     request: Request,
-    settings: Settings = Depends(get_settings),
     manager: SessionManager = Depends(get_manager),
     rl: RateLimitDep = Depends(get_limiter_dep),
 ):
-    auth_err = check_bridge_auth(request, settings)
-    if auth_err:
-        return auth_err
     rl.check_http(request, session_id)
 
     session = await manager.get_session(session_id)
@@ -119,8 +105,7 @@ async def session_prompt(
     session_id_var.set(session_id)
     await manager.touch(session_id)
 
-    prompt_len = len(body.prompt)
-    logger.info("prompt_received length=%s", prompt_len, extra={"event": "prompt"})
+    logger.info("prompt_received length=%s", len(body.prompt), extra={"event": "prompt"})
 
     if body.stream:
         return await _stream_prompt(session, body.prompt, manager)
@@ -172,13 +157,9 @@ async def _run_prompt(session, prompt: str) -> Any:
 async def delete_session(
     session_id: str,
     request: Request,
-    settings: Settings = Depends(get_settings),
     manager: SessionManager = Depends(get_manager),
     rl: RateLimitDep = Depends(get_limiter_dep),
 ):
-    auth_err = check_bridge_auth(request, settings)
-    if auth_err:
-        return auth_err
     rl.check_http(request, session_id)
     session_id_var.set(session_id)
     ok = await manager.destroy_session(session_id)
@@ -193,24 +174,16 @@ async def session_ws(
     session_id: str,
     settings: Settings = Depends(get_settings),
 ):
-    origin = websocket.headers.get("origin")
-    auth_header = websocket.headers.get("authorization")
-    if not auth_header:
-        proto = websocket.headers.get("sec-websocket-protocol")
-        if proto and proto.startswith("bearer."):
-            token = proto.removeprefix("bearer.")
-            auth_header = f"Bearer {token}"
-
-    err = check_websocket_auth(origin, auth_header, settings)
-    if err:
-        code, detail = err
-        await websocket.close(code=4401 if code == 401 else 4403, reason=detail)
+    auth_header = authorization_from_websocket_headers(websocket.headers)
+    if not bearer_valid(auth_header, settings.acp_bearer_token):
+        await websocket.close(code=4401, reason="Unauthorized")
         return
 
     manager: SessionManager = websocket.app.state.session_manager
     limiter: RateLimitDep = websocket.app.state.rate_limit_dep
     ip = websocket.client.host if websocket.client else "unknown"
-    retry = limiter.limiter.check(ip, session_id)
+    fp = bearer_fingerprint(auth_header)
+    retry = limiter.limiter.check(ip, session_id, fp)
     if retry is not None:
         await websocket.close(code=4429, reason="Rate limit")
         return
@@ -233,4 +206,4 @@ async def session_ws(
         pass
     finally:
         manager.unsubscribe(session, queue)
-
+        await manager.destroy_session(session_id, reason="ws_disconnect")

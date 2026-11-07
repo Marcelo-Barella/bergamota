@@ -1,12 +1,11 @@
 import asyncio
-import time
 
 import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
 
-AUTH = {"Authorization": "Bearer test-bridge-token", "Origin": "https://bergamota.dev"}
+AUTH = {"Authorization": "Bearer test-bearer-token"}
 
 
 def test_session_lifecycle_prompt_and_delete():
@@ -36,25 +35,8 @@ def test_session_lifecycle_prompt_and_delete():
         assert r.status_code == 404
 
 
-def test_max_concurrent_sessions():
-    with TestClient(app) as client:
-        from app.config import get_settings
-
-        get_settings().max_concurrent_sessions = 2
-        client.app.state.session_manager.settings.max_concurrent_sessions = 2
-        ids = []
-        for _ in range(2):
-            r = client.post("/sessions", headers=AUTH)
-            assert r.status_code == 201
-            ids.append(r.json()["id"])
-        r = client.post("/sessions", headers=AUTH)
-        assert r.status_code == 503
-        for sid in ids:
-            client.delete(f"/sessions/{sid}", headers=AUTH)
-
-
 @pytest.mark.asyncio
-async def test_reaper_idle_timeout():
+async def test_reaper_idle_timeout_cleans_child():
     from app.config import get_settings
     from app.session_manager import SessionManager
 

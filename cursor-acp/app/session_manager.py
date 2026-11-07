@@ -79,6 +79,8 @@ class SessionManager:
             cwd=str(workdir),
             env=AcpProcess.build_env(None, self.settings.cursor_api_key),
             on_update=on_update,
+            session_mode=self.settings.acp_session_mode,
+            auto_allow_permissions=self.settings.acp_auto_allow_permissions,
         )
         await acp.start()
         try:

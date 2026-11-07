@@ -4,7 +4,9 @@ import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
+from starlette.responses import JSONResponse
 
+from app.auth import bearer_fingerprint, bearer_valid, extract_bearer_token
 from app.config import get_settings
 from app.logging_config import client_ip_var, configure_logging, new_request_id, request_id_var
 from app.rate_limit import RateLimiter
@@ -23,6 +25,7 @@ async def lifespan(app: FastAPI):
     app.state.rate_limit_dep = RateLimitDep(
         RateLimiter(
             settings.rate_limit_ip_per_minute,
+            settings.rate_limit_token_per_minute,
             settings.rate_limit_session_per_minute,
             settings.rate_limit_global_daily,
         )
@@ -36,6 +39,18 @@ async def lifespan(app: FastAPI):
 configure_logging()
 app = FastAPI(title="Cursor ACP Bridge", version="0.1.0", lifespan=lifespan)
 app.include_router(router)
+
+
+@app.middleware("http")
+async def bearer_auth_middleware(request: Request, call_next):
+    if request.url.path == "/health":
+        return await call_next(request)
+    settings = get_settings()
+    auth_header = request.headers.get("authorization")
+    if not bearer_valid(auth_header, settings.acp_bearer_token):
+        return JSONResponse(status_code=401, content={"detail": "Unauthorized"})
+    request.state.bearer_fingerprint = bearer_fingerprint(auth_header)
+    return await call_next(request)
 
 
 @app.middleware("http")
